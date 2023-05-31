@@ -13,7 +13,7 @@ module.exports = {
         id: 'GTM-W3T2VJZ',
         includeInDevelopment: true,
         defaultDataLayer: { platform: 'gatsby' },
-        routeChangeEventName: 'gatsby-route-change',
+        routeChangeEventName: 'ga_event',
       },
     },
     {
