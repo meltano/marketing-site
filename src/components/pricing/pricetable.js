@@ -39,7 +39,7 @@ const PriceTable = ({ data }) => (
                   </div>
                 </div>
                 <p className="p2">
-                  Credits start at ¢30, bulk discounts available
+                  Credits start at 30¢, bulk discounts available
                 </p>
                 <a
                   href="https://meltano.com/cost-calculator "

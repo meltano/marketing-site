@@ -1213,6 +1213,6 @@ force = false
 
 [[redirects]]
 from = "/cost-calculator"
-to = "ttps://docs.google.com/spreadsheets/d/1XkN_zj9dSRFbcQ4m4d_hJoMKK5I2vhKX8yuWOSI--WM/edit#gid=219527670"
+to = "https://docs.google.com/spreadsheets/d/1XkN_zj9dSRFbcQ4m4d_hJoMKK5I2vhKX8yuWOSI--WM/edit#gid=219527670"
 status = 301
 force = false
