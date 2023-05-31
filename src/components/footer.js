@@ -17,6 +17,7 @@ import MeltanoSdkIcon from '../assets/img/footermeltanosdkicon.svg'
 import PartnersIcon from '../assets/img/footerpartnersicon.svg'
 import PricingIcon from '../assets/img/footerpricingicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
+import { Helmet } from 'react-helmet'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
 Modal.defaultStyles.overlay.zIndex = '99999'
@@ -506,6 +507,15 @@ const Footer = () => {
           </div>
         </div>
       </Modal>
+      <Helmet>
+        <script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/20712484.js"
+        ></script>
+      </Helmet>
     </footer>
   )
 }
