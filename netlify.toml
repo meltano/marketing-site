@@ -1,0 +1,1176 @@
+# netlify.toml file
+[[redirects]]
+from = "/tutorials/create-a-custom-extractor.html"
+to = "https://docs.meltano.com/tutorials/custom-extractor"
+status = 301
+force = false
+
+[[redirects]]
+from = "/tutorials/csv-with-postgres.html"
+to = "https://docs.meltano.com/tutorials/postgres-with-postgres"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/"
+to = "https://hub.meltano.com/extractors/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/05/meltano-launches-v0-1-0-of-the-singer-tap-sdk/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/05/13/why-we-are-building-an-open-source-platform-for-elt-pipelines/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/30/meltano-spins-out-of-gitlab-raises-seed-round"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/09/our-vision-for-the-future-of-meltano/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/10/13/announcing-the-singer-working-group-the-future-of-singer-is-bright/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/privacy.html/"
+to = "https://meltano.com/privacy-policy/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/11/04/meltano-month-in-review-october-2019/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/06/06/looker-acquired-by-google-for-2-6b-to-offer-end-to-end-business-intelligence-solution/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/01/meltanohub-for-singer-launches-with-over-200-taps-and-targets/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/10/02/announcing-the-meltano-1-click-app-now-available-in-the-digitalocean-marketplace/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/10/07/meltano-graduates-to-version-1-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/11/11/clarifying-the-target-persona-for-meltano/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/11/26/were-going-saas-let-us-set-you-up-with-free-hosted-dashboards/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/06/10/first-looker-and-tableau-which-data-visualization-companies-are-likely-to-be-acquired-next/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/02/07/meltano-v1-19-2-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/salesforce.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/06/06/rakam-is-collaborating-with-meltano-to-define-an-open-source-alternative-to-lookml/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/07/a-simplified-take-on-the-singer-spec/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/10/13/launching-meltanolabs-your-home-for-singer-connectors-dbt-packages-and-all-meltano-plugins/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/09/24/the-open-source-data-stack/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/09/28/meltanos-unique-values-unveil-the-future-tone-for-the-company/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/11/building-meltano-in-public-four-weeks-into-the-relaunch/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/15/building-meltano-in-public-bimonthly-recap-2/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/bigquery.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/spreadsheets-anywhere.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/05/13/revisiting-the-meltano-strategy-a-return-to-our-roots"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/meltano-demo-day-2019-09-27/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/jsonl.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/postgres.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/01/joining-the-team-taylor-murphy-shares-why-hes-excited/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/23/community-milestone-1000-slack-members/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/first-looker-and-tableau-which-data-visualization-companies-are-likely-to-be-acquired-next/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/mysql.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/postgres.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/postgres--transferwise.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/adwords.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/snowflake--transferwise.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/gitlab.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/chargebee.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/bigquery.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/tutorials/postgres-with-postgres.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/Source URL"
+to = "Target URL"
+status = 301
+force = false
+
+[[redirects]]
+from = "/team"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/tutorials/create-custom-transforms-and-models.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/taptoberfest"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/snowflake.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/snowflake--transferwise.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/snowflake--meltano.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/redshift.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/postgres.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/postgres--transferwise.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/postgres--meltano.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/jsonl.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/bigquery.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/loaders/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/zoom.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/zendesk.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/spreadsheets-anywhere.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/slack.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/salesforce.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/recharge.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/quickbooks.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/postgres.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/mysql.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/intacct.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/gitlab.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/chargebee.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/bing-ads.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/bigquery.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/plugins/extractors/adwords.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/merge_requests/89"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/merge_requests/85"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/merge_requests/83"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/merge_requests/79"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/issues/97"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/issues/91"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/singer-sdk/-/issues/39"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/sdk/-/merge_requests/107"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/meltano/sdk/-/issues/152"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/developer-tools/self-hosted-installation.html"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/meltanos-unique-values-unveil-the-future-tone-for-the-company/meltano.com/slack"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/meltano-v1-40-0-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/clarifying-the-target-persona-for-meltano/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/10/13/launching-meltanolabs-your-home-for-singer-connectors-dbt-packages-and-all-meltano-plugins/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/10/13/announcing-the-singer-working-group-the-future-of-singer-is-bright/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/10/05/meet-melty-the-dragon-meltanos-new-mascot/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/09/28/meltanos-unique-values-unveil-the-future-tone-for-the-company/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/07/15/now-available-meltano-v1-78-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/30/meltano-spins-out-of-gitlab-raises-seed-round/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/30/meltano-spins-out-of-gitlab-raises-seed-round"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/25/meltano-sdk-v0-3-0-released/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/17/now-available-meltano-v1-77-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/11/now-available-meltano-v1-76-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/06/01/meltanohub-for-singer-launches-with-over-200-taps-and-targets/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/05/28/now-available-meltano-v1-75-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/05/20/singer-sdk-v0-2-0-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/05/14/singer-sdk-v0-1-6-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/05/13/building-meltano-in-public-bimonthly-recap-3/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/05/11/now-available-meltano-v1-74-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/05/03/singer-sdk-v0-1-4-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/29/now-available-meltano-v1-73-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/26/singer-sdk-0-1-3-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/23/now-available-meltano-v1-72-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/23/community-milestone-1000-slack-members/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/09/our-vision-for-the-future-of-meltano/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/07/a-simplified-take-on-the-singer-spec/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/04/05/meltano-launches-v0-1-0-of-the-singer-tap-sdk/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/29/meltano-is-special/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/26/demo-day-recap-2021-03-26/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/23/now-available-meltano-v1-71-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/15/building-meltano-in-public-bimonthly-recap-2/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/03/01/joining-the-team-taylor-murphy-shares-why-hes-excited/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/02/23/now-available-meltano-v1-70-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/02/16/now-available-meltano-v1-69-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/02/11/now-available-meltano-v1-68-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/01/26/now-available-meltano-v1-67-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/01/18/now-available-meltano-v1-66-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/01/18/building-meltano-in-public-bimonthly-recap/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/01/12/now-available-meltano-v1-65-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/01/07/now-available-meltano-v1-64-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2021/01/04/now-available-meltano-v1-63-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/12/23/now-available-meltano-v1-62-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/12/09/now-available-meltano-v1-61-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/12/02/now-available-meltano-v1-60-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/11/24/building-meltano-in-public-6-weekly-recap-4/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/11/23/now-available-meltano-v1-59-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/11/16/build-a-slack-dashboard/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/11/12/now-available-meltano-v1-58-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/11/10/now-available-meltano-v1-57-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/11/02/now-available-meltano-v1-56-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/10/30/now-available-meltano-v1-55-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/10/27/watch-now-open-source-elt-with-meltano-and-singer/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/10/08/now-available-meltano-v1-54-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/10/08/building-meltano-in-public-6-weekly-recap-3/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/10/06/now-available-meltano-v1-53-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/28/now-available-meltano-v1-52-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/21/now-available-meltano-v1-51-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/17/now-available-meltano-v1-50-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/15/now-available-meltano-v1-49-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/07/now-available-meltano-v1-48-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/03/now-available-meltano-v1-47-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/09/02/building-meltano-in-public-6-weekly-recap-2/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/08/27/now-available-meltano-v1-46-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/08/17/now-available-meltano-v1-45-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/08/11/now-available-meltano-v1-44-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/08/04/now-available-meltano-v1-43-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/29/now-available-meltano-v1-42-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/20/now-available-meltano-v1-41-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/16/now-available-meltano-v1-40-1/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/14/now-available-meltano-v1-40-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/09/now-available-meltano-v1-39-1/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/08/now-available-meltano-v1-39-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/07/03/now-available-meltano-v1-38-1/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/30/now-available-meltano-v1-38-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/25/now-available-meltano-v1-37-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/19/now-available-meltano-v1-36-1/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/15/now-available-meltano-v1-36-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/11/now-available-meltano-v1-35-1/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/11/building-meltano-in-public-four-weeks-into-the-relaunch/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/06/09/now-available-meltano-v1-35-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/05/26/now-available-meltano-v1-34-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/05/13/why-we-are-building-an-open-source-platform-for-elt-pipelines/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/05/11/now-available-meltano-v1-32-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/23/now-available-meltano-v1-30-1/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/20/now-available-meltano-v1-30-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/17/new-in-meltano-your-shopify-data-analyzed/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/13/now-available-meltano-v1-29-0/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/10/new-in-meltano-your-google-ads-data-analyzed/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/09/meltano-v1-28-1-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/06/meltano-v1-28-0-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/03/meltano-weekly-sprint-review-demo-day-2020-04-03/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/04/02/meltano-v1-27-2-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2020/02/07/meltano-v1-19-2-is-now-available/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/11/26/were-going-saas-let-us-set-you-up-with-free-hosted-dashboards/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/11/11/clarifying-the-target-persona-for-meltano/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/2019/11/04/meltano-month-in-review-october-2019/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/blog/etl-vs-elt-which-is-better/"
+to = "https://meltano.com/blog/the-benefits-of-elt-vs-etl-what-you-need-to-know/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/extractors/tap-fabdb/"
+to = "https://hub.meltano.com/extractors/tap-fabdb"
+status = 301
+force = false
+
+[[redirects]]
+from = "/reference/command-line-interface"
+to = "https://docs.meltano.com/reference/command-line-interface"
+status = 301
+force = false
+
+[[redirects]]
+from = "/getting-started/"
+to = "https://docs.meltano.com/getting-started/part1"
+status = 301
+force = false
+
+[[redirects]]
+from = "/extractors/"
+to = "https://hub.meltano.com/extractors"
+status = 301
+force = false
+
+[[redirects]]
+from = "/guide/configuration"
+to = "https://docs.meltano.com/guide/configuration"
+status = 301
+force = false
+
+[[redirects]]
+from = "/reference/settings"
+to = "https://docs.meltano.com/reference/settings"
+status = 301
+force = false
+
+[[redirects]]
+from = "/singer/spec"
+to = "https://docs.meltano.com/reference/glossary"
+status = 301
+force = false
+
+[[redirects]]
+from = "/loaders/target-postgres/"
+to = "https://hub.meltano.com/loaders/target-postgres"
+status = 301
+force = false
+
+[[redirects]]
+from = "/loaders/target-bigquery/"
+to = "https://hub.meltano.com/loaders/target-bigquery"
+status = 301
+force = false
+
+[[redirects]]
+from = "/documentation/getting-started/"
+to = "https://docs.meltano.com/getting-started/part1"
+status = 301
+force = false
+
+[[redirects]]
+from = "/dataops/"
+to = "https://meltano.com/product/"
+status = 301
+force = false
+
+[[redirects]]
+from = "/data-council-2023"
+to = "https://gist.github.com/tayloramurphy/ebc64e53c33ca528a214e5dba8ff5d17"
+status = 301
+force = false
+
+[[redirects]]
+from = "/demo"
+to = "https://github.com/codespaces/new/meltano/meltano-codespace-ready"
+status = 301
+force = false
+
+[[redirects]]
+from = "/careers"
+to = "https://boards.greenhouse.io/meltano"
+status = 301
+force = false
+
+[[redirects]]
+from = "/jobs"
+to = "https://boards.greenhouse.io/meltano"
+status = 301
+force = false
+
+[[redirects]]
+from = "/slack"
+to = "https://meltano.slack.com/join/shared_invite/zt-1uzogak1u-jqp8RvkIRpUsBcHXTwiI3Q"
+status = 301
+force = false
