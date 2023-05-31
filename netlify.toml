@@ -1174,3 +1174,45 @@ from = "/slack"
 to = "https://meltano.slack.com/join/shared_invite/zt-1uzogak1u-jqp8RvkIRpUsBcHXTwiI3Q"
 status = 301
 force = false
+
+[[redirects]]
+from = "/cloud/sla"
+to = "https://docs.meltano.com/cloud/sla"
+status = 301
+force = false
+
+[[redirects]]
+from = "/cloud/support"
+to = "https://docs.meltano.com/cloud/support"
+status = 301
+force = false
+
+[[redirects]]
+from = "/cloud/fees"
+to = "https://docs.meltano.com/cloud/fees"
+status = 301
+force = false
+
+[[redirects]]
+from = "/cloud/security-policy"
+to = "https://docs.meltano.com/cloud/security-policy"
+status = 301
+force = false
+
+[[redirects]]
+from = "/talk-to-sales"
+to = "https://help.meltano.com/meetings/douwe/cloud-discovery"
+status = 301
+force = false
+
+[[redirects]]
+from = "/get-started"
+to = "https://docs.meltano.com/getting-started/installation"
+status = 301
+force = false
+
+[[redirects]]
+from = "/cost-calculator"
+to = "ttps://docs.google.com/spreadsheets/d/1XkN_zj9dSRFbcQ4m4d_hJoMKK5I2vhKX8yuWOSI--WM/edit#gid=219527670"
+status = 301
+force = false
