@@ -66,9 +66,12 @@ const ThankYou = ({ data }) => {
                 __html: thankYouHero.thankYouHeroTitle,
               }}
             />
-            <p className="hero-description p1">
-              {thankYouHero.thankYouHeroText}
-            </p>
+            <div
+              className="hero-description p1"
+              dangerouslySetInnerHTML={{
+                __html: thankYouHero.thankYouHeroText,
+              }}
+            />
           </div>
 
           <div className="background-elements">
