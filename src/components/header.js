@@ -793,7 +793,7 @@ const Header = () => {
           </nav>
           <div className="menu-extras">
             <a
-              href="https://docs.meltano.com/getting-started/installation"
+              href="https://meltano.com/get-started"
               target="_blank"
               id="get-started-btn"
               className="btn clear-btn"
