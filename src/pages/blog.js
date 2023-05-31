@@ -47,8 +47,8 @@ const Blog = ({ data, location }) => {
 
   const unFlattenResults = result =>
     result.map(post => {
-      const { date, slug, link, categories, title, featuredImage, id } = post
-      return { date, slug, link, categories, title, featuredImage, id }
+      const { date, slug, link, categories, title, id } = post
+      return { date, slug, link, categories, title, id }
     })
 
   const { index } = data.localSearchPages

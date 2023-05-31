@@ -65,16 +65,6 @@ module.exports = {
                       }
                       date(formatString: "MM/DD/YYYY")
                       excerpt
-                      featuredImage {
-                        node {
-                          localFile {
-                            childImageSharp {
-                              gatsbyImageData(aspectRatio: 1.34)
-                            }
-                            publicURL
-                          }
-                        }
-                      }
                     }
                   }
                 }`,
