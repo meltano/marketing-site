@@ -11,11 +11,11 @@ export const CtaIntrigued = () => (
           </h2>
           <p className="p2">You haven’t seen nothing yet!</p>
           <div className="cta-banner-buttons">
-            <a href="/product" class="btn alt-blue-btn">
+            <a href="https://meltano.com/demo" target="_blank" class="btn alt-blue-btn">
               Try live demo
             </a>
             <a
-              href="https://docs.meltano.com/getting-started/installation"
+              href="https://meltano.com/get-started"
               class="btn colorful-btn"
               target="_blank"
             >
