@@ -5853,6 +5853,7 @@ input.tgg-title {
   align-items: center;
   justify-content: space-between;
   gap: 25px;
+  z-index: 2;
 }
 
 .mailing-list-banner-info {
@@ -6227,6 +6228,20 @@ input.tgg-title {
     font-size: 32px;
     letter-spacing: -0.01em;
     padding-top: 30px;
+  }
+
+  .blog-filters {
+    display: block;
+    border-radius: 10px;
+  }
+
+  .blog-filters h5 {
+    margin-top: 10px;
+  }
+
+  .blog-filters>div {
+    display: block;
+    margin-bottom: 20px;
   }
 }
 
