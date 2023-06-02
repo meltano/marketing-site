@@ -6219,7 +6219,7 @@ input.tgg-title {
     content: '';
     position: absolute;
     left: 0;
-    width: 100vw;
+    width: 100vw;gatsby 
     height: 1px;
   }
 
@@ -7519,7 +7519,7 @@ html {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.video-container {
+.landing-page .video-container {
   position: relative;
   width: 100%;
   max-width: 800px;
