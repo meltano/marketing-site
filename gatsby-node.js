@@ -1,10 +1,43 @@
 const path = require(`path`)
+const loc = require(`path`)
 
 // This is a simple debugging tool
 // dd() will prettily dump to the terminal and kill the process
 // const { dd } = require(`dumper.js`)
 
 exports.createPages = async gatsbyUtilities => {
+  const landingPage = loc.resolve(`./src/templates/landingPages.js`)
+
+  const landingPageResult = await gatsbyUtilities.graphql(`
+    {
+      landingPages: allWpLandingPage(filter: { status: { eq: "publish" } }) {
+        edges {
+          node {
+            id
+            title
+            status
+            link
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (typeof landingPageResult !== 'undefined') {
+    landingPageResult.data.landingPages.edges.forEach(({ node }) => {
+      gatsbyUtilities.actions.createPage({
+        path: node.link,
+        id: node.id,
+        component: landingPage,
+        context: {
+          slug: node.slug,
+        },
+        title: node.title,
+      })
+    })
+  }
+
   const posts = await getPosts(gatsbyUtilities)
 
   if (!posts.length) {
@@ -12,6 +45,18 @@ exports.createPages = async gatsbyUtilities => {
   }
 
   await createIndividualBlogPostPages({ posts, gatsbyUtilities })
+}
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `WpLandingPage` && node.link !== null) {
+    const slug = node.link
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
 }
 
 /**

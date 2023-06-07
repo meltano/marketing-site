@@ -27,7 +27,7 @@ const NotFoundPage = ({ data }) => {
         <div className="page-content content-404 ml-margins">
           <StaticImage
             src="../assets/img/melty-flying.webp"
-            class="melty-404"
+            className="melty-404"
             alt="Melty 404"
           />
           <h1 className="title-404 page-title">

@@ -12,7 +12,7 @@ const PartnersHero = ({ data }) => (
         <p className="hero-description p1">{data.partnersHeroText}</p>
         <StaticImage
           src="../../assets/img/melty-flying.webp"
-          class="melty-flyng"
+          className="melty-flyng"
           alt=""
         />
       </div>

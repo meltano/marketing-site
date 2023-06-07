@@ -24,7 +24,7 @@ const Investors = ({ data }) => (
               key={investors.aboutInvestorsListLink.url}
             >
               <GatsbyImage
-                class="investitors-grid-item-image"
+                className="investitors-grid-item-image"
                 image={
                   investors.aboutInvestorsListImage.localFile.childImageSharp
                     .gatsbyImageData

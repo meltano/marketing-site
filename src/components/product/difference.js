@@ -44,7 +44,7 @@ const ProductDifference = ({ data }) => (
         </div>
         <div className="meltano-difference-table-item meltano-way">
           <StaticImage
-            class="meltano-way-melty"
+            className="meltano-way-melty"
             src="../../assets/img/meltano-way-melty.webp"
             alt="Melty"
           />

@@ -46,8 +46,8 @@ const About = ({ data }) => {
       <Quote data={aboutQuote} />
       <Story data={aboutStory} />
       <Values data={aboutValues} />
-      <SmallCta data={aboutSmallCta} />
-      <Contributors data={aboutContributors} />
+      {/* <SmallCta data={aboutSmallCta} /> */}
+      {/* <Contributors data={aboutContributors} /> */}
       <Investors data={aboutInvestors} />
     </Layout>
   )
@@ -130,7 +130,9 @@ export const pageQuery = graphql`
             aboutContributorsTeamMemberName
             aboutContributorsTeamMemberLocation
             aboutContributorsTeamMemberRole
-            aboutContributorsTeamMemberLinkedin
+            aboutContributorsTeamMemberLinkedin {
+              url
+            }
             aboutContributorsTeamMemberImage {
               localFile {
                 childImageSharp {

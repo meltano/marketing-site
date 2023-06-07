@@ -6239,7 +6239,7 @@ input.tgg-title {
     margin-top: 10px;
   }
 
-  .blog-filters>div {
+  .blog-filters > div {
     display: block;
     margin-bottom: 20px;
   }
@@ -7528,7 +7528,7 @@ html {
   padding-bottom: 0;
 }
 
-.video-container .video {
+.landing-page .video-container .video {
   position: absolute;
   top: 0;
   left: 0;
@@ -7545,7 +7545,6 @@ html {
 }
 
 .controls {
-  /*position: absolute;*/
   bottom: 0;
   left: 0;
   right: 0;

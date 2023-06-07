@@ -24,11 +24,11 @@ const Contributors = ({ data }) => (
         {data.aboutContributorsTeam.map(member => (
           <div
             className="contributors-grid-item"
-            key={member.aboutContributorsTeamMemberLinkedin}
+            key={member.aboutContributorsTeamMemberLinkedin.url}
           >
             <div className="contributors-grid-item-info">
               <a
-                href={member.aboutContributorsTeamMemberLinkedin}
+                href={member.aboutContributorsTeamMemberLinkedin.url}
                 className="contributors-grid-item-link"
                 target="_blank"
                 rel="noopener noreferrer"

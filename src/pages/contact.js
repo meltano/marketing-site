@@ -15,7 +15,7 @@ const Contact = ({ data }) => {
     themePicker,
     contactHero,
     contactForm,
-    contactFaq,
+    // contactFaq,
   } = data.contact.nodes[0]
   const metaImage = featuredImage?.node.localFile.publicURL
 
@@ -83,15 +83,15 @@ export const pageQuery = graphql`
             }
           }
         }
-        contactFaq {
-          contactFaqTitle
-          contactFaqList {
-            contactFaqItem {
-              contactFaqItemQuestion
-              contactFaqItemAnswer
-            }
-          }
-        }
+        # contactFaq {
+        #   contactFaqTitle
+        #   contactFaqList {
+        #     contactFaqItem {
+        #       contactFaqItemQuestion
+        #       contactFaqItemAnswer
+        #     }
+        #   }
+        # }
       }
     }
   }

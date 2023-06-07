@@ -30,4 +30,5 @@ const Values = ({ data }) => (
     </div>
   </div>
 )
+
 export default Values
