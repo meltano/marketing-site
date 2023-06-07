@@ -1216,3 +1216,9 @@ from = "/cost-calculator"
 to = "https://docs.google.com/spreadsheets/d/1XkN_zj9dSRFbcQ4m4d_hJoMKK5I2vhKX8yuWOSI--WM/edit#gid=219527670"
 status = 301
 force = false
+
+[[redirects]]
+from = "/resource-meltano-at-a-glance/"
+to = "https://meltano.com/lp/resource-meltano-at-a-glance/"
+status = 301
+force = false
