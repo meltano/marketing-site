@@ -316,7 +316,7 @@ const Sources = ({ data }) => (
           <StaticImage alt="" src="../../assets/img/data/ms-sql-1.png" />
         </a>
         <a
-          href="https://hub.meltano.com/extractors/tap-mssql"
+          href="https://hub.meltano.com/extractors/tap-oracle"
           className="logo-grid-item"
           target="_blank"
           rel="noopener noreferrer"
