@@ -1,10 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import LandingHero from '../components/landing/hero'
-import LandingContent from '../components/landing/content'
+import LandingContentThree from '../components/landing/contentThree'
+import LandingContentTwo from '../components/landing/contentTwo'
+import LandingContentOne from '../components/landing/contentOne'
 
 const LandingPage = ({ data }) => {
   const page = data.wpLandingPage
@@ -39,7 +41,7 @@ const LandingPage = ({ data }) => {
           return (
             <>
               <LandingHero data={block.landingLayoutOneHero} />
-              <LandingContent data={block.landingLayoutOneList} />
+              <LandingContentOne data={block.landingLayoutOneList} />
             </>
           )
         }
@@ -50,7 +52,18 @@ const LandingPage = ({ data }) => {
           return (
             <>
               <LandingHero data={block.landingLayoutTwoHero} />
-              <LandingContent data={block.landingLayoutTwoLists} />
+              <LandingContentTwo data={block.landingLayoutTwoLists} />
+            </>
+          )
+        }
+        if (
+          block.__typename ===
+          'WpLandingPage_Landing_LandingLayouts_LandingLayoutThree'
+        ) {
+          return (
+            <>
+              <LandingHero data={block.landingLayoutThreeHero} />
+              <LandingContentThree data={block.landingLayoutThreeContent} />
             </>
           )
         }
@@ -85,10 +98,6 @@ export const query = graphql`
         landingLayouts {
           ... on WpLandingPage_Landing_LandingLayouts_LandingLayoutOne {
             __typename
-            landingLayoutOneHero {
-              landingLayoutOneHeroTitle
-              landingLayoutOneHeroSubtitle
-            }
             landingLayoutOneList {
               landingLayoutOneListTitle
               landingLayoutOneListContent {
@@ -101,6 +110,10 @@ export const query = graphql`
                 url
                 target
               }
+            }
+            landingLayoutOneHero {
+              landingLayoutOneHeroTitle
+              landingLayoutOneHeroSubtitle
             }
           }
           ... on WpLandingPage_Landing_LandingLayouts_LandingLayoutTwo {
@@ -129,6 +142,23 @@ export const query = graphql`
                   target
                 }
               }
+            }
+          }
+          ... on WpLandingPage_Landing_LandingLayouts_LandingLayoutThree {
+            __typename
+            landingLayoutThreeHero {
+              landingLayoutOneHeroTitle
+              landingLayoutOneHeroSubtitle
+            }
+            landingLayoutThreeContent {
+              landingLayoutThreeContentImage {
+                localFile {
+                  publicURL
+                }
+              }
+              landingLayoutThreeContentText
+              landingLayoutThreeFormTitle
+              landingLayoutThreeFormId
             }
           }
         }
