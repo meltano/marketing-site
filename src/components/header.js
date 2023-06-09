@@ -301,6 +301,7 @@ const Header = () => {
                       <a
                         href="https://sdk.meltano.com/en/latest/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -337,6 +338,7 @@ const Header = () => {
                       <a
                         href="https://hub.meltano.com/extractors/"
                         target="_blank"
+                        rel="noreferrer"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -419,8 +421,8 @@ const Header = () => {
                       </div>
                       <a href="/pricing">
                         <div className="header-list-item">
-                          <p className="header-list-title"></p>
-                          <p className="header-list-info"></p>
+                          <p className="header-list-title" />
+                          <p className="header-list-info" />
                         </div>
                       </a>
                     </li>
@@ -431,6 +433,7 @@ const Header = () => {
                 <a
                   href="https://docs.meltano.com/?__hstc=165702497.60212c7701354a96f8b2b56a231656f9.1679956833281.1679959328336.1679989419063.3&__hssc=165702497.18.1679989419063&__hsfp=179051687"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Resources
                 </a>
@@ -446,7 +449,11 @@ const Header = () => {
                           where to get started
                         </p>
                       </div>
-                      <a href="https://docs.meltano.com/" target="_blank">
+                      <a
+                        href="https://docs.meltano.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="36"
