@@ -88,9 +88,10 @@ export const pageQuery = graphql`
                 }
                 pressTabsTabContentLogosListLinks {
                   pressTabsTabContentLogosListLinksItem {
-                    title
-                    url
-                    target
+                    localFile {
+                      publicURL
+                      ext
+                    }
                   }
                 }
               }

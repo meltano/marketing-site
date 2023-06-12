@@ -47,7 +47,6 @@ const PressTabs = ({ data }) => {
                 {activeTab === 'Logos' ? (
                   <>
                     <div className="tab-inside-heading">
-                      {console.log(tabContent)}
                       <h3 className="tab-inside-title">
                         {tabContent.pressTabsTabContentLogosTitle}
                       </h3>
@@ -71,6 +70,10 @@ const PressTabs = ({ data }) => {
                               ? 'rounded'
                               : ''
                           }`}
+                          key={
+                            item.pressTabsTabContentLogosListImage.localFile
+                              .publicURL
+                          }
                         >
                           <img
                             src={
@@ -84,23 +87,21 @@ const PressTabs = ({ data }) => {
                           </p>
                           <div className="sources-file-types">
                             {item.pressTabsTabContentLogosListLinks.map(
-                              link => (
-                                <a
-                                  href={
-                                    link.pressTabsTabContentLogosListLinksItem
-                                      .url
-                                  }
-                                  target={
-                                    link.pressTabsTabContentLogosListLinksItem
-                                      .target
-                                  }
-                                >
-                                  {
-                                    link.pressTabsTabContentLogosListLinksItem
-                                      .title
-                                  }
-                                </a>
-                              )
+                              link =>
+                                link.pressTabsTabContentLogosListLinksItem && (
+                                  <a
+                                    href={
+                                      link.pressTabsTabContentLogosListLinksItem
+                                        .localFile.publicURL
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    {link.pressTabsTabContentLogosListLinksItem.localFile.ext.substring(
+                                      1
+                                    )}
+                                  </a>
+                                )
                             )}
                           </div>
                         </div>
