@@ -1153,7 +1153,7 @@ force = false
 
 [[redirects]]
 from = "/demo"
-to = "https://github.com/codespaces/new/meltano/meltano-codespace-ready"
+to = "https://github.com/meltano/meltano-codespace-ready"
 status = 301
 force = false
 
