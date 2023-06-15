@@ -1201,7 +1201,13 @@ force = false
 
 [[redirects]]
 from = "/talk-to-sales"
-to = "https://help.meltano.com/meetings/douwe/cloud-discovery"
+to = "https://help.meltano.com/meetings/douwe/chat"
+status = 301
+force = false
+
+[[redirects]]
+from = "/douwe"
+to = "https://help.meltano.com/meetings/douwe/chat"
 status = 301
 force = false
 
