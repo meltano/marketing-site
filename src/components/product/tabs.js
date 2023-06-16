@@ -14,6 +14,18 @@ require('prismjs/components/prism-shell-session')
 const ProductTabs = ({ data, location }) => {
   const [tabIndex, setTabIndex] = useState(0)
 
+  const handleSelectChange = event => {
+    const selectedValue = event.target.value
+    console.log(selectedValue)
+    if (selectedValue === '0') {
+      navigate('#database')
+    } else if (selectedValue === '1') {
+      navigate('#custom-source')
+    } else if (selectedValue === '2') {
+      navigate('#saas')
+    }
+  }
+
   useEffect(() => {
     if (location.hash === '#database') {
       setTabIndex(0)
@@ -68,26 +80,11 @@ const ProductTabs = ({ data, location }) => {
                   ))}
                 </ul>
                 <div className="tab-title-drop">
-                  <select id="tab-title-filters">
+                  <select id="tab-title-filters" onChange={handleSelectChange}>
                     {data.productTab.map(tab => (
                       <option
                         key={tab.productTabNumber}
-                        value={
-                          tab.productTabNumber === 1
-                            ? 'database-button'
-                            : tab.productTabNumber === 2
-                            ? 'custom-source-button'
-                            : 'saas-button'
-                        }
-                        onClick={() => {
-                          navigate(
-                            tab.productTabNumber === 1
-                              ? '#database'
-                              : tab.productTabNumber === 2
-                              ? '#custom-source'
-                              : '#saas'
-                          )
-                        }}
+                        value={parseInt(tab.productTabNumber) - 1}
                       >
                         {tab.productTabTitle}
                       </option>
