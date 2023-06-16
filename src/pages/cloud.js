@@ -70,6 +70,18 @@ export const pageQuery = graphql`
           cloudWaitlistList {
             cloudWaitlistListItem
           }
+          cloudWaitlistButtons {
+            cloudWaitlistButtonsOne {
+              title
+              url
+              target
+            }
+            cloudWaitlistButtonsTwo {
+              title
+              url
+              target
+            }
+          }
         }
         cloudFocus {
           cloudFocusTitle

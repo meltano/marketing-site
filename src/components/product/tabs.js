@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/newline-after-import */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Highlight, Prism, themes } from 'prism-react-renderer'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import { navigate } from 'gatsby'
@@ -33,38 +33,67 @@ const ProductTabs = ({ data, location }) => {
               <h5 className="extract-data-box-title">
                 {data.productTabsTitle}
               </h5>
-              <TabList className="tab-title">
-                {data.productTab.map(tab => (
-                  <Tab key={tab.productTabNumber}>
-                    <button
-                      className={`tab-button ${
-                        tabIndex === tab.productTabNumber - 1
-                          ? 'tab_button-active'
-                          : ''
-                      }`}
-                      key={tab.productTabTitle}
-                      type="button"
-                      id={
-                        tab.productTabNumber === 1
-                          ? 'database-button'
-                          : tab.productTabNumber === 2
-                          ? 'custom-source-button'
-                          : 'saas-button'
-                      }
-                      onClick={() => {
-                        navigate(
+              <TabList className="">
+                <ul className="tab-title tab-title-nav">
+                  {data.productTab.map(tab => (
+                    <Tab key={tab.productTabNumber}>
+                      <button
+                        className={`tab-button ${
+                          tabIndex === tab.productTabNumber - 1
+                            ? 'tab_button-active'
+                            : ''
+                        }`}
+                        key={tab.productTabTitle}
+                        type="button"
+                        id={
                           tab.productTabNumber === 1
-                            ? '#database'
+                            ? 'database-button'
                             : tab.productTabNumber === 2
-                            ? '#custom-source'
-                            : '#saas'
-                        )
-                      }}
-                    >
-                      {tab.productTabTitle}
-                    </button>
-                  </Tab>
-                ))}
+                            ? 'custom-source-button'
+                            : 'saas-button'
+                        }
+                        onClick={() => {
+                          navigate(
+                            tab.productTabNumber === 1
+                              ? '#database'
+                              : tab.productTabNumber === 2
+                              ? '#custom-source'
+                              : '#saas'
+                          )
+                        }}
+                      >
+                        {tab.productTabTitle}
+                      </button>
+                    </Tab>
+                  ))}
+                </ul>
+                <div className="tab-title-drop">
+                  <select id="tab-title-filters">
+                    {data.productTab.map(tab => (
+                      <option
+                        key={tab.productTabNumber}
+                        value={
+                          tab.productTabNumber === 1
+                            ? 'database-button'
+                            : tab.productTabNumber === 2
+                            ? 'custom-source-button'
+                            : 'saas-button'
+                        }
+                        onClick={() => {
+                          navigate(
+                            tab.productTabNumber === 1
+                              ? '#database'
+                              : tab.productTabNumber === 2
+                              ? '#custom-source'
+                              : '#saas'
+                          )
+                        }}
+                      >
+                        {tab.productTabTitle}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </TabList>
             </div>
             <div className="benefit-tabs">

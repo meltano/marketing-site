@@ -1891,6 +1891,14 @@ nav li:hover>a>.header-list-icon {
   justify-content: center;
 }
 
+.cloud-buttons {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+  margin-top: 50px;
+}
+
 .cloud-left {
   position: fixed !important;
   left: 0px;
@@ -2215,6 +2223,13 @@ nav li:hover>a>.header-list-icon {
     align-items: center;
   }
 
+  .cloud-buttons {
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
   .hero-sidebar-container {
     flex-direction: column;
   }
@@ -2420,6 +2435,13 @@ nav li:hover>a>.header-list-icon {
 
 .contact-form-sidebar {
   max-width: 430px;
+}
+
+@media all and (min-width: 992px) {
+  .contact-form-sidebar {
+    left: 47px;
+    position: relative;
+  }
 }
 
 .contact-form-sidebar h4 {
@@ -2793,6 +2815,10 @@ ol.contact-form-sidebar-list li:before {
   color: #fff;
   margin-top: 20px;
   display: table;
+}
+
+.cloud-buttons .colorful-btn {
+  color: #fff;
 }
 
 .workflow-list li {
@@ -4437,6 +4463,10 @@ ol.contact-form-sidebar-list li:before {
   width: 100%;
 }
 
+.extract-data-box ul {
+  padding-left: 0;
+}
+
 .extract-data-box .tab-title {
   justify-content: center;
   gap: 16px;
@@ -4464,16 +4494,23 @@ ol.contact-form-sidebar-list li:before {
   display: none;
 }
 
+.benefit-tabs .tab-inside .tab-inside-column {
+  width: 100%;
+}
+
 .benefit-tabs .tab-inside-active {
-  padding: 55px;
+  padding: 55px 0;
   background: transparent;
   border-radius: 4.6px;
+  display: flex;
+  flex-direction: column;
 }
 
 .benefit-tabs h3 {
   text-align: left;
-  max-width: 320px;
+  max-width: 100%;
   margin: auto;
+  margin-bottom: 30px;
 }
 
 .benefits-list {
@@ -4482,18 +4519,105 @@ ol.contact-form-sidebar-list li:before {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
 }
 
 .benefits-list li {
   color: #fff;
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 20px;
+  flex: 1 1 0px;
 }
 
 .benefits-list h6 {
   margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.tab-title-nav {
+  display: none !important
+}
+
+.tab-title-drop {
+  display: block;
+  padding-left: 0;
+  max-width: 180px;
+  margin: 20px auto;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+#tab-title-filters {
+  width: 100%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 1);
+  padding: 12px 20px;
+  border: 1px solid #18c3fa;
+  border-radius: 50px;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#tab-title-filters option {
+  width: 100%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 1);
+  padding: 12px 20px;
+  background-color: #080216;
+}
+
+.tab-title-drop::after {
+  content: '';
+  width: 13px;
+  height: 8px;
+  background-image: url(../assets/img/dropdown-arrow.svg);
+  position: absolute;
+  z-index: 20000;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media all and (min-width: 768px) {
+  .tab-title-nav {
+    display: flex !important;
+  }
+
+  .tab-title-drop {
+    display: none;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .benefits-list {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .benefits-list li {
+    flex-direction: column;
+  }
+
+  .benefits-list h6 {
+    text-align: center;
+  }
 }
 
 .tabs-section {
@@ -4820,10 +4944,10 @@ pre.prism-code {
 
   .extract-data-box .tab-title {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     max-width: 70%;
     margin: 24px auto;
+    padding-left: 0;
   }
 
   #tab-database,
@@ -4833,10 +4957,6 @@ pre.prism-code {
   }
 
   .tabs-section {
-    padding: 12px;
-  }
-
-  .tabs-section-wrap {
     padding: 12px;
   }
 
@@ -5640,6 +5760,11 @@ input.tgg-title {
   gap: 16px;
 }
 
+.prices-list strong {
+  color: #f963bc;
+  font-weight: 600;
+}
+
 .purple-checkmark:before {
   content: '';
   width: 32px;
@@ -6357,15 +6482,17 @@ input.tgg-title {
   padding-bottom: 10px;
 }
 
+
 .mailing-list-widget {
   backdrop-filter: blur(13px);
   border-radius: 4.6px;
   padding: 22px;
 }
 
-.mailing-list-widget h5 {
-  /* margin-top: 10px; */
-}
+
+/* .mailing-list-widget h5 {
+  margin-top: 10px;
+} */
 
 .mailing-list-widget p {
   font-family: 'Hanken Grotesk';
@@ -6415,12 +6542,18 @@ input.tgg-title {
   backdrop-filter: blur(13px);
   border-radius: 4.6px;
   padding: 24px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   gap: 25px;
   z-index: 3;
   border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media all and (min-width: 768px) {
+  .mailing-list-banner {
+    display: flex;
+  }
 }
 
 .mailing-list-banner-info {
