@@ -18,6 +18,7 @@ const Values = ({ data }) => (
                   <img
                     src={value.aboutValuesItemIcon.localFile.publicURL}
                     alt={value.aboutValuesItemTitle}
+                    className="grid-2-by-2-icon"
                   />
                   <h4>{value.aboutValuesItemTitle}</h4>
                 </div>

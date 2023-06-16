@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 
 import { StaticImage } from 'gatsby-plugin-image'
-import { useInView } from 'react-intersection-observer'
 import { Helmet } from 'react-helmet'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
@@ -12,10 +11,6 @@ const ThankYou = ({ data }) => {
     data.thankyou.nodes[0]
   const metaImage = featuredImage?.node.localFile.publicURL
 
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  })
-
   const lCloudRef = useRef(null)
   const rCloudRef = useRef(null)
   const castleRef = useRef(null)
@@ -23,27 +18,20 @@ const ThankYou = ({ data }) => {
   const bgRef = useRef(null)
 
   useEffect(() => {
-    const addClasses = () => {
+    setTimeout(() => {
       setTimeout(() => {
-        setTimeout(() => {
-          lCloudRef.current.classList.add('show')
-          rCloudRef.current.classList.add('show')
-          castleRef.current.classList.add('show')
-          waterfallRef.current.classList.add('show')
-        }, 100)
+        lCloudRef.current.classList.add('show')
+        rCloudRef.current.classList.add('show')
+        castleRef.current.classList.add('show')
+        waterfallRef.current.classList.add('show')
+      }, 100)
 
-        setTimeout(() => {
-          bgRef.current.classList.add('show')
-        }, 300)
-      }, 200)
-    }
-
-    if (inView) {
-      addClasses()
-    }
-
+      setTimeout(() => {
+        bgRef.current.classList.add('show')
+      }, 300)
+    }, 200)
     return () => {}
-  }, [inView])
+  }, [])
 
   return (
     <Layout>
@@ -57,7 +45,7 @@ const ThankYou = ({ data }) => {
         description={metadata.metaDescription}
         image={metaImage}
       />
-      <div className="hero hero-scene section" ref={ref}>
+      <div className="hero hero-scene section">
         <div className="container">
           <div className="hero-info ml-margins">
             <h1

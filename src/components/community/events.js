@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Events = ({ data }) => (
-  <div className="grid-2-by-2 section">
+  <div className="events grid-2-by-2 section">
     <div className="container">
       <div className="heading">
         <h2

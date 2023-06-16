@@ -32,20 +32,22 @@ const ProductHero = ({ data }) => (
         </div>
         <div className="hero-sidebar">
           {data.productHeroBox.map(box => (
-            <div className="hero-mini-box" key={box.productHeroBoxTitle}>
-              <span href="#" className="hero-mini-box-btn">
-                {box.productHeroBoxCategory}
-              </span>
-              <h5
-                className="title-inline"
-                dangerouslySetInnerHTML={{ __html: box.productHeroBoxTitle }}
-              />
-              <p className="p2">{box.productHeroBoxText}</p>
-              <Link to={box.productHeroBoxLink.url} className="arrow-link">
-                {box.productHeroBoxLink.title}{' '}
-                <img src="../../assets/img/simple-arrow-right.svg" alt="" />
-              </Link>
-            </div>
+            <Link to={box.productHeroBoxLink.url}>
+              <div className="hero-mini-box" key={box.productHeroBoxTitle}>
+                <span href="#" className="hero-mini-box-btn">
+                  {box.productHeroBoxCategory}
+                </span>
+                <h5
+                  className="title-inline"
+                  dangerouslySetInnerHTML={{ __html: box.productHeroBoxTitle }}
+                />
+                <p className="p2">{box.productHeroBoxText}</p>
+                <div className="arrow-link">
+                  {box.productHeroBoxLink.title}{' '}
+                  <img src="../../assets/img/simple-arrow-right.svg" alt="" />
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

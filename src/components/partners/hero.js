@@ -4,7 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 const PartnersHero = ({ data }) => (
   <div className="hero hero-title-section hero-light section">
     <div className="container">
-      <div className="hero-info">
+      <div className="hero-info ml-margins">
         <h1
           className="hero-title title-inline"
           dangerouslySetInnerHTML={{ __html: data.partnersHeroTitle }}

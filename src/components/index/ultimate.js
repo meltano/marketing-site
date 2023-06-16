@@ -22,8 +22,9 @@ const Ultimate = ({ data }) => (
                 <div className="grid-2-by-2-header">
                   <img
                     src={ultimate.ultimateIcon.localFile.publicURL}
-                    alt="shield"
+                    alt={ultimate.ultimateTitle}
                     loading="lazy"
+                    className="grid-2-by-2-icon"
                   />
                   <h4>{ultimate.ultimateTitle}</h4>
                 </div>

@@ -8,6 +8,7 @@ import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { CtaIntrigued } from '../components/cta'
 import SearchBar from '../components/search'
+import MailingListBanner from '../components/mailingListBanner'
 
 const Hero = ({ data }) => (
   <div className="hero hero-title-section glow-bg section">
@@ -234,6 +235,7 @@ const Blog = ({ data, location }) => {
               </button>
             )}
           </div>
+          <MailingListBanner />
         </div>
       </div>
       <CtaIntrigued />

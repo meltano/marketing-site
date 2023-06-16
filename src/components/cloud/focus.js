@@ -15,6 +15,7 @@ const Focus = ({ data }) => (
             <img
               src={item.cloudFocusListIcon.localFile.publicURL}
               alt={item.cloudFocusListTitle}
+              className="focus-grid-icon"
             />
             <h4>{item.cloudFocusListTitle}</h4>
             <p className="p2">{item.cloudFocusListText}</p>

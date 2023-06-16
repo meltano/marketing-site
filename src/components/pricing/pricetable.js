@@ -13,29 +13,31 @@ const PriceTable = ({ data }) => (
           >
             <div className="price-table-top">
               <div className="price-table-head">
-                <h4>{table.pricingTableItemTitle}</h4>
-                <img
-                  src={table.pricingTableItemIcon.localFile.publicURL}
-                  alt={table.pricingTableItemTitle}
-                />
+                <div className="price-table-head-wrap price-table-head-title">
+                  <h4>{table.pricingTableItemTitle}</h4>
+                </div>
+                <div className="price-table-head-wrap price-table-head-image">
+                  <img
+                    src={table.pricingTableItemIcon.localFile.publicURL}
+                    alt={table.pricingTableItemTitle}
+                  />
+                </div>
               </div>
               <div className="cloud-table-header-wrap">
                 <div className="cloud-table-header-labels">
                   <div className="blue-label-btn">
-                    <span className="blue-label-btn-title">
-                      1 credit
-                      <span className="blue-label-btn-subtitle">
-                        per daily run
-                      </span>
-                    </span>
+                    <div className="blue-label-btn-title">
+                      <div>1 credit</div>
+                    </div>
+                    <div className="blue-label-btn-subtitle">per daily run</div>
                   </div>
                   <div className="blue-label-btn">
-                    <span className="blue-label-btn-title">
-                      ½ credit
-                      <span className="blue-label-btn-subtitle">
-                        per hourly run
-                      </span>
-                    </span>
+                    <div className="blue-label-btn-title">
+                      <div>½ credit</div>
+                    </div>
+                    <div className="blue-label-btn-subtitle">
+                      per hourly run
+                    </div>
                   </div>
                 </div>
                 <p className="p2">
@@ -45,6 +47,7 @@ const PriceTable = ({ data }) => (
                   href="https://meltano.com/cost-calculator "
                   className="calculate-link"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Calculate your cost
                   <svg
@@ -61,9 +64,17 @@ const PriceTable = ({ data }) => (
                   </svg>
                 </a>
               </div>
-              <h1 className={i === 0 ? `` : `coming-soon`}>
-                {table.pricingTableItemTier}
-              </h1>
+              <div
+                className={
+                  i === 0 ? `open-source-btn` : `open-source-btn coming-soon`
+                }
+              >
+                <div className="blue-label-btn">
+                  <div className="blue-label-btn-title">
+                    <h3>{table.pricingTableItemTier}</h3>
+                  </div>
+                </div>
+              </div>
               <p className="p2">{table.pricingTableItemDescription}</p>
             </div>
             <ul className="prices-list">
@@ -72,7 +83,12 @@ const PriceTable = ({ data }) => (
                   className="purple-checkmark"
                   key={item.pricingTableItemListItem}
                 >
-                  <p className="p3">{item.pricingTableItemListItem}</p>
+                  <p
+                    className="p3"
+                    dangerouslySetInnerHTML={{
+                      __html: item.pricingTableItemListItem,
+                    }}
+                  />
                 </li>
               ))}
             </ul>

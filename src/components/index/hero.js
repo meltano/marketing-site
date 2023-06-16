@@ -1,43 +1,67 @@
 import React, { useEffect, useRef } from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
-import { useInView } from 'react-intersection-observer'
+import MountBack from '../../assets/img/Mountainsback.svg'
+import MountFront from '../../assets/img/Mountainsfront.svg'
 
 const IndexHero = ({ data }) => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  })
-
   const lCloudRef = useRef(null)
   const rCloudRef = useRef(null)
   const castleRef = useRef(null)
   const waterfallRef = useRef(null)
   const bgRef = useRef(null)
+  const bgFrontRef = useRef(null)
+
+  const parallaxEffectHandler = () => {
+    const scrollTop = window.pageYOffset
+    const movement = scrollTop * 0.7
+
+    const isDesktop =
+      window.innerWidth / window.innerHeight > 1 && window.innerWidth > 768
+
+    const bgTranslateY = isDesktop ? movement / 8 : movement / 8
+    const bgScale = 1 + (isDesktop ? movement / 1200 : movement / 100)
+    const bgFrontTranslateY = isDesktop ? movement / 20 : movement / 2
+    const castleTranslateX = isDesktop ? -movement / 2 : -movement
+    const waterfallTranslateX = isDesktop ? movement / 2 : movement
+    const frontTranslateY = isDesktop ? movement / 200 : movement / 1000
+    const cloudMove = isDesktop ? movement / 50 : movement / 10
+
+    lCloudRef.current.style.marginLeft = `-${cloudMove}vw`
+    rCloudRef.current.style.marginRight = `-${cloudMove}vw`
+    lCloudRef.current.style.marginTop = `-${cloudMove}vw`
+    rCloudRef.current.style.marginTop = `-${cloudMove}vw`
+    bgRef.current.style.transform = `translateY(${bgTranslateY}%) scale(${bgScale})`
+    bgFrontRef.current.style.transform = `translateY(${bgFrontTranslateY}%) scale(${bgScale})`
+    castleRef.current.style.transform = `translateX(${castleTranslateX}px) scale(${bgScale}) translateY(-${frontTranslateY}%) `
+    waterfallRef.current.style.transform = `translateX(${waterfallTranslateX}px) scale(${bgScale}) translateY(-${frontTranslateY}%) `
+  }
 
   useEffect(() => {
-    const addClasses = () => {
+    const isBrowser = typeof window !== 'undefined'
+    if (!isBrowser) return
+
+    setTimeout(() => {
       setTimeout(() => {
-        setTimeout(() => {
-          lCloudRef.current.classList.add('show')
-          rCloudRef.current.classList.add('show')
-          castleRef.current.classList.add('show')
-          waterfallRef.current.classList.add('show')
-        }, 100)
+        lCloudRef.current.classList.add('show')
+        rCloudRef.current.classList.add('show')
+        castleRef.current.classList.add('show')
+        waterfallRef.current.classList.add('show')
+      }, 100)
 
-        setTimeout(() => {
-          bgRef.current.classList.add('show')
-        }, 300)
-      }, 200)
+      setTimeout(() => {
+        bgRef.current.classList.add('show')
+        bgFrontRef.current.classList.add('show')
+      }, 300)
+    }, 200)
+
+    window.addEventListener('scroll', parallaxEffectHandler)
+    return () => {
+      window.removeEventListener('scroll', parallaxEffectHandler)
     }
-
-    if (inView) {
-      addClasses()
-    }
-
-    return () => {}
-  }, [inView])
+  }, [])
 
   return (
-    <div className="hero hero-scene section" ref={ref}>
+    <div className="hero hero-scene section">
       <div className="container">
         <div className="hero-info ml-margins">
           <h1
@@ -87,36 +111,35 @@ const IndexHero = ({ data }) => {
             <StaticImage
               alt="cloud left"
               src="../../assets/img/clouds-1.webp"
-              layout="constrained"
+              layout="fullWidth"
             />
           </div>
           <div ref={rCloudRef} className="cloud-right ready">
             <StaticImage
               alt="cloud right"
               src="../../assets/img/clouds-2.webp"
-              layout="constrained"
+              layout="fullWidth"
             />
           </div>
           <div ref={castleRef} className="hero-castle ready">
             <StaticImage
               alt="castle"
               src="../../assets/img/hero-castle.webp"
-              layout="constrained"
+              layout="fullWidth"
             />
           </div>
           <div ref={waterfallRef} className="hero-waterfall ready">
             <StaticImage
               alt="waterfall"
               src="../../assets/img/hero-waterfall.webp"
-              layout="constrained"
+              layout="fullWidth"
             />
           </div>
           <div ref={bgRef} className="hero-bg ready">
-            <StaticImage
-              alt="mountain"
-              src="../../assets/img/hero-mountain.webp"
-              layout="fullWidth"
-            />
+            <img alt="" src={MountBack} className="full-width-img" />
+          </div>
+          <div ref={bgFrontRef} className="hero-bg ready">
+            <img alt="" src={MountFront} className="full-width-img" />
           </div>
         </div>
       </div>

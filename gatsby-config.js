@@ -41,7 +41,7 @@ module.exports = {
       options: {
         defaults: {
           placeholder: `none`,
-          quality: 80,
+          quality: 100,
         },
       },
     },

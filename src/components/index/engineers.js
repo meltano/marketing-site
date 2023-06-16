@@ -1,76 +1,100 @@
-import React, { useState, useEffect } from 'react'
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+import React, { useState, useEffect, useRef } from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
+import Modal from 'react-modal'
 import MeltanoGivesScreensB from '../../assets/img/meltano-gives-b.svg'
 import MeltanoGivesScreensM from '../../assets/img/meltano-gives-m.svg'
 import MeltanoGivesScreensS from '../../assets/img/meltano-gives-s.svg'
+import PlayButton from '../../assets/img/play-btn.svg'
+import CloseButton from '../../assets/img/close-btn.svg'
 
 const Engineers = ({ data }) => {
-  const [meltanoGivesEngineers, setMeltanoGivesEngineers] = useState(null)
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-  })
+  const [modalIsOpen, setIsOpen] = useState(false)
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize({
-        width: window.innerWidth,
-      })
-    }
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize)
-
-      return () => window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setMeltanoGivesEngineers(document.querySelector('.meltano-gives-screens'))
-    }
-  }, [])
-
-  function checkSize() {
-    if (meltanoGivesEngineers && typeof window !== 'undefined') {
-      if (window.innerWidth > 1024) {
-        meltanoGivesEngineers.src = MeltanoGivesScreensB
-      } else if (window.innerWidth > 768 && window.innerWidth <= 1024) {
-        meltanoGivesEngineers.src = MeltanoGivesScreensM
-      } else if (window.innerWidth <= 768) {
-        meltanoGivesEngineers.src = MeltanoGivesScreensS
-      }
-    }
+  function openModal(e) {
+    e.preventDefault()
+    setIsOpen(true)
   }
 
-  useEffect(() => {
-    checkSize()
-  }, [meltanoGivesEngineers, windowSize])
-
-  useEffect(() => {
-    checkSize()
-  }, [])
+  function closeModal() {
+    setIsOpen(false)
+    document.body.classList.remove('modal-open')
+  }
 
   return (
-    <div className="meltano-gives-engineers section">
-      <div className="container">
-        <div className="heading">
-          <h2 dangerouslySetInnerHTML={{ __html: data.engineersTitle }} />
-          <p
-            className="heading-description p2"
-            dangerouslySetInnerHTML={{ __html: data.engineersText }}
-          />
-        </div>
+    <>
+      <div className="meltano-gives-engineers section">
+        <div className="container">
+          <div className="heading">
+            <h2 dangerouslySetInnerHTML={{ __html: data.engineersTitle }} />
+            <p
+              className="heading-description p2"
+              dangerouslySetInnerHTML={{ __html: data.engineersText }}
+            />
+          </div>
 
-        <div className="meltano-gives-table ml-margins">
-          <img className="meltano-gives-screens" alt="screens" />
-          <StaticImage
-            className="meltano-gives-melty"
-            src="../../assets/img/meltano-gives-melty.webp"
-            alt="melty"
-          />
+          <div className="meltano-gives-table ml-margins">
+            <div className="meltano-gives-play-wrapper">
+              <button type="button" onClick={openModal}>
+                <img src={PlayButton} className="meltano-gives-play" alt="" />
+              </button>
+            </div>
+            <img
+              className="meltano-gives-screens meltano-gives-s"
+              src={MeltanoGivesScreensS}
+              alt="screens"
+              loading="lazy"
+            />
+            <img
+              className="meltano-gives-screens meltano-gives-m"
+              src={MeltanoGivesScreensM}
+              alt="screens"
+              loading="lazy"
+            />
+            <img
+              className="meltano-gives-screens meltano-gives-b"
+              src={MeltanoGivesScreensB}
+              alt="screens"
+              loading="lazy"
+            />
+            <StaticImage
+              className="meltano-gives-melty"
+              src="../../assets/img/melty-programming5.png"
+              alt="melty"
+            />
+          </div>
         </div>
       </div>
-    </div>
+      <Modal
+        isOpen={modalIsOpen}
+        // eslint-disable-next-line react/jsx-no-bind
+        onRequestClose={closeModal}
+        contentLabel="Subscribe Modal"
+        ariaHideApp={false}
+        className="video-modal"
+        overlayClassName="video-overlay"
+        shouldCloseOnOverlayClick
+      >
+        <div className="button-wrapper">
+          <button type="button" onClick={closeModal}>
+            <img src={CloseButton} alt="" className="" />
+          </button>
+        </div>
+        <div className="modal-content">
+          <div className="video-poster">
+            <iframe
+              width="791"
+              height="508"
+              src="https://www.youtube.com/embed/rGlf43bAG6I"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+        </div>
+      </Modal>
+    </>
   )
 }
 

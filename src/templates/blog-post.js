@@ -66,8 +66,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     if (tocContentRef.current) {
       const tocContent = tocContentRef.current
       tocContent.style.transition = 'max-height 0.1s ease-out'
-      tocContent.style.overflow = 'hidden'
-      tocContent.style.maxHeight = `${tocContent.scrollHeight}px`
     }
   }, [])
 
@@ -94,9 +92,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
 
       <div className="blog-single ml-margins">
         <div className={`container${divContent ? '' : '-narrow '}`}>
-          <div
-            className={`${divContent ? 'container-narrow margin-unset' : ''}`}
-          >
+          <div className={`${divContent ? 'container-subnarrow' : ''}`}>
             <label className="light-dark-toggle">
               <input
                 className="toggle-checkbox"
@@ -295,9 +291,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     <div
                       className="toc-content"
                       style={{
-                        maxHeight: isOpen
-                          ? `${tocContentRef.current?.scrollHeight}px`
-                          : '0',
+                        maxHeight: isOpen ? `Calc(100vh - 515px)` : '0',
                       }}
                       ref={tocContentRef}
                     >
@@ -310,26 +304,6 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                     <p>Stay current with all things Meltano</p>
 
                     <form className="mainling-list-widget-form">
-                      <input
-                        type="email"
-                        placeholder="Enter your email"
-                        required
-                      />
-                      <button type="submit" className="btn alt-blue-btn">
-                        Subscribe
-                      </button>
-                    </form>
-                  </div>
-                </div>
-
-                <div className="container">
-                  <div className="mailing-list-banner">
-                    <div className="mailing-list-banner-info">
-                      <h5>Join our mailing list</h5>
-                      <p>Stay current with all things Meltano</p>
-                    </div>
-
-                    <form className="mainling-list-banner-form">
                       <input
                         type="email"
                         placeholder="Enter your email"

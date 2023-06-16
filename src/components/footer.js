@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import Modal from 'react-modal'
 import HubspotForm from 'react-hubspot-form'
 import SVG from 'react-inlinesvg'
+import { Helmet } from 'react-helmet'
 import AboutIcon from '../assets/img/footerabouticon.svg'
 import BlogIcon from '../assets/img/footerblogicon.svg'
 import CareerIcon from '../assets/img/footercareersicon.svg'
@@ -17,7 +18,7 @@ import MeltanoSdkIcon from '../assets/img/footermeltanosdkicon.svg'
 import PartnersIcon from '../assets/img/footerpartnersicon.svg'
 import PricingIcon from '../assets/img/footerpricingicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
-import { Helmet } from 'react-helmet'
+import FooterImg from '../assets/img/footer.svg'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
 Modal.defaultStyles.overlay.zIndex = '99999'
@@ -134,19 +135,8 @@ const footerData = [
   },
 ]
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-}
-
 const Footer = () => {
-  const [modalIsOpen, setIsOpen] = React.useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false)
 
   function openModal() {
     setIsOpen(true)
@@ -288,12 +278,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <StaticImage
-        src="../assets/img/cave-down.webp"
-        alt=""
-        className="dark-bg-footer"
-        layout="fullWidth"
-      />
+      <img src={FooterImg} alt="" className="dark-bg-footer" loading="lazy" />
       <StaticImage
         src="../assets/img/footer-light-bg.webp"
         alt=""
@@ -514,7 +499,7 @@ const Footer = () => {
           async
           defer
           src="//js.hs-scripts.com/20712484.js"
-        ></script>
+        />
       </Helmet>
     </footer>
   )

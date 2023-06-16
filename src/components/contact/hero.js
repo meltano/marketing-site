@@ -3,7 +3,7 @@ import React from 'react'
 const ContactHero = ({ data }) => (
   <div className="hero hero-title-section glow-bg section">
     <div className="container">
-      <div className="hero-info">
+      <div className="hero-info ml-margins">
         <h1
           className="hero-title"
           dangerouslySetInnerHTML={{ __html: data.contactHeroTitle }}
