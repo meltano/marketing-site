@@ -5911,8 +5911,8 @@ input.tgg-title {
 }
 
 @media all and (min-width: 768px) {
-  .blog-content {
-    padding-top: 115px;
+  .blog-d-flex .blog-content {
+    padding-right: 40px;
   }
 }
 
