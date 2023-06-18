@@ -6483,6 +6483,9 @@ input.tgg-title {
   padding-bottom: 10px;
 }
 
+.ez-toc-page-1 .ez-toc-heading-level-3 {
+  padding-bottom: 8px;
+}
 
 .mailing-list-widget {
   backdrop-filter: blur(13px);
