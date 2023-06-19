@@ -1,12 +1,18 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import RadialGradientFX from '../../utils/RadialGradientFX'
 
 const Community = ({ data }) => (
   <div className="community section">
+    <RadialGradientFX />
     <div className="container">
       <div className="community-extras">
         {data.communityArray.map(community => (
-          <div className="community-item" key={community.communityIconLink.url}>
+          <a
+            href={community.communityIconLink.url}
+            className="community-item radial-gradient"
+            key={community.communityIconLink.url}
+          >
             <div className="community-info">
               <a
                 href={community.communityIconLink.url}
@@ -38,14 +44,9 @@ const Community = ({ data }) => (
                 rel="noopener noreferrer"
               >
                 {community.communityDescriptionLink.title}
-                <span className="right-arrow">
-                  <span />
-                  <span />
-                  <span />
-                </span>
               </a>
             </div>
-          </div>
+          </a>
         ))}
         {/* <div className="community-item">
             <div className="community-info">

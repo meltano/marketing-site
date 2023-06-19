@@ -4161,6 +4161,7 @@ ol.contact-form-sidebar-list li:before {
   color: #ffffff;
 }
 
+.testimonials-grid-quote b,
 .testimonials-grid-quote strong {
   font-weight: 600;
   color: #f963bc;
@@ -6571,6 +6572,7 @@ input.tgg-title {
   line-height: 170%;
   margin-top: 8px;
   margin-bottom: 0;
+  color: #fff;
 }
 
 .mainling-list-banner-form {
