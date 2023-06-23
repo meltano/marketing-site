@@ -108,6 +108,7 @@ a {
 
 pre {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
+  white-space: pre-line;
 }
 
 ol {
@@ -5899,6 +5900,7 @@ input.tgg-title {
   padding-top: 65px;
   padding-bottom: 65px;
   background-color: transparent;
+  overflow-x: hidden;
 }
 
 @media all and (min-width: 768px) {
@@ -6167,6 +6169,7 @@ input.tgg-title {
 .blog-single {
   padding-top: 150px;
   position: relative;
+  overflow-x: hidden;
 }
 
 .toggle-checkbox {
@@ -6388,8 +6391,6 @@ input.tgg-title {
 #toc {
   margin-bottom: 25px;
   padding: 22px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(13px);
   border-radius: 4.6px;
 }
@@ -6692,6 +6693,20 @@ input.tgg-title {
   color: rgba(8, 2, 22, 0.75);
 }
 
+.dark-blog #toc {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dark-blog .wp-block-syntaxhighlighter-code {
+  backdrop-filter: blur(13px);
+  background: hsla(0,0%,100%,.05);
+  border: 1px solid hsla(0,0%,100%,.15);
+  border-radius: 4.6px;
+  color: hsla(0,0%,100%,.7);
+  padding: 20px 20px 0;
+}
+
 /*** Light blog ***/
 
 .light-blog {
@@ -6840,6 +6855,20 @@ input.tgg-title {
   background: #311772;
 }
 
+.light-blog #toc {
+  background: rgba(49,23,114,.05);
+  border: 1px solid rgba(49,23,114,.15);
+}
+
+.light-blog .wp-block-syntaxhighlighter-code {
+  backdrop-filter: blur(13px);
+  background: rgba(49,23,114,.05);
+  border: 1px solid rgba(49,23,114,.15);
+  border-radius: 4.6px;
+  color: rgba(8,2,22,.75);
+  padding: 20px 20px 0;
+}
+
 @media all and (min-width: 1024px) {
   .spotlight-item {
     min-height: 520px;
@@ -6983,7 +7012,7 @@ input.tgg-title {
 }
 
 .cta-banner-info {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: #080216;
   backdrop-filter: blur(13px);
   border-radius: 4.6px;
   border: 1px solid rgb(245 99 249 / 60%);
