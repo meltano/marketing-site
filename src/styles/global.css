@@ -2428,7 +2428,7 @@ nav li:hover>a>.header-list-icon {
 }
 
 .contact-form-sidebar {
-  max-width: 430px;
+  max-width: 400px;
 }
 
 @media all and (min-width: 992px) {
@@ -6700,10 +6700,10 @@ input.tgg-title {
 
 .dark-blog .wp-block-syntaxhighlighter-code {
   backdrop-filter: blur(13px);
-  background: hsla(0,0%,100%,.05);
-  border: 1px solid hsla(0,0%,100%,.15);
+  background: hsla(0, 0%, 100%, .05);
+  border: 1px solid hsla(0, 0%, 100%, .15);
   border-radius: 4.6px;
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0, 0%, 100%, .7);
   padding: 20px 20px 0;
 }
 
@@ -6856,16 +6856,16 @@ input.tgg-title {
 }
 
 .light-blog #toc {
-  background: rgba(49,23,114,.05);
-  border: 1px solid rgba(49,23,114,.15);
+  background: rgba(49, 23, 114, .05);
+  border: 1px solid rgba(49, 23, 114, .15);
 }
 
 .light-blog .wp-block-syntaxhighlighter-code {
   backdrop-filter: blur(13px);
-  background: rgba(49,23,114,.05);
-  border: 1px solid rgba(49,23,114,.15);
+  background: rgba(49, 23, 114, .05);
+  border: 1px solid rgba(49, 23, 114, .15);
   border-radius: 4.6px;
-  color: rgba(8,2,22,.75);
+  color: rgba(8, 2, 22, .75);
   padding: 20px 20px 0;
 }
 
