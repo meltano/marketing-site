@@ -1212,8 +1212,20 @@ status = 301
 force = false
 
 [[redirects]]
+from = "/taylor"
+to = "https://help.meltano.com/meetings/tayloramurphy/external-chat"
+status = 301
+force = false
+
+[[redirects]]
 from = "/get-started"
 to = "https://docs.meltano.com/getting-started/installation"
+status = 301
+force = false
+
+[[redirects]]
+from = "/oh"
+to = "https://github.com/orgs/meltano/projects/9"
 status = 301
 force = false
 
