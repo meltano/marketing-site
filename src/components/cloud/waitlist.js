@@ -66,9 +66,9 @@ const Waitlist = ({ data }) => (
 
           <p class="hs-field-desc hs-form-field">
             By signing up, you agree to our 
-            <a href="/terms-of-service" target="_blank" style="color: #18c3fa">Terms of Service</a>
+            <a href="/terms-of-service" target="_blank" style={{color: "#18c3fa"}}>Terms of Service</a>
             and
-            <a href="/privacy-policy" target="_blank" style="color: #18c3fa">Privacy Policy</a>.
+            <a href="/privacy-policy" target="_blank" style={{color: "#18c3fa"}}>Privacy Policy</a>.
           </p>
         </div>
       </div>
