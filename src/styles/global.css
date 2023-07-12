@@ -98,6 +98,14 @@ h6 {
   line-height: 170%;
 }
 
+.p3a {
+  font-family: 'Hanken Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 170%;
+}
+
 a {
   text-decoration: none;
   -webkit-transition: all 0.2s ease;
@@ -1104,7 +1112,7 @@ header {
   /*position: absolute;*/
   position: fixed;
   top: 0;
-  z-index: 99999;
+  z-index: 1010;
   width: 100%;
   background: rgb(233, 230, 250, 0%);
 }
@@ -4578,7 +4586,6 @@ ol.contact-form-sidebar-list li:before {
   height: 8px;
   background-image: url(../assets/img/dropdown-arrow.svg);
   position: absolute;
-  z-index: 20000;
   right: 20px;
   top: 0;
   bottom: 0;
@@ -6004,7 +6011,7 @@ input.tgg-title {
   height: 14px;
   background-image: url(../assets/img/magnifier.svg);
   position: absolute;
-  z-index: 20000;
+  z-index: 1000;
   right: 20px;
   top: 0;
   bottom: 0;
@@ -6037,7 +6044,6 @@ input.tgg-title {
   height: 8px;
   background-image: url(../assets/img/dropdown-arrow.svg);
   position: absolute;
-  z-index: 20000;
   right: 20px;
   top: 0;
   bottom: 0;
@@ -8209,10 +8215,37 @@ table td {
   width: 100%;
   background-color: #32106f;
   z-index: 1020;
+  display: flex;
+  align-items: center;
+  font-size: 85%;
 }
 
 .pre-header-container {
   margin: 0 auto;
+  flex: 1 1 auto;
+}
+
+.close-preheader-button {
+  align-self: stretch;
+  flex: 0 0 30px;
+  line-height: 0;
+  opacity: 1;
+  padding: 0;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.close-preheader-button svg {
+  display: block;
+}
+
+@media all and (min-width: 992px) {
+  .close-preheader-button {
+    flex-basis: 50px;
+  }
 }
 
 .pre-header-content {
@@ -8606,7 +8639,7 @@ html {
   inset: 0px;
   min-height: 100%;
   background-color: rgba(8, 2, 22, 0.5);
-  z-index: 99999;
+  z-index: 1030;
   display: flex;
   flex-direction: column;
   align-items: center;
