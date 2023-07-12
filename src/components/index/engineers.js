@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import Modal from 'react-modal'
 import MeltanoGivesScreensB from '../../assets/img/meltano-gives-b.svg'
