@@ -1,0 +1,6 @@
+Contact: mailto:security@meltano.com
+Expires: 2025-09-02T03:59:00.000Z
+Preferred-Languages: en
+
+# For reporting vulnerabilities
+Policy: https://docs.meltano.com/contribute/responsible-disclosure
