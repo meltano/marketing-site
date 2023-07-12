@@ -40,7 +40,7 @@ const footerData = [
         title: 'Meltano/Cloud',
         url: '/cloud/',
         icon: CloudIcon,
-        desc: 'You build the pipelines, we manage the infrastructure',
+        desc: 'You define the pipelines, we manage the infrastructure',
       },
       {
         id: 2,

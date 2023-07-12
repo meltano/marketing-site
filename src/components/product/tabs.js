@@ -59,18 +59,18 @@ const ProductTabs = ({ data, location }) => {
                         type="button"
                         id={
                           tab.productTabNumber === 1
-                            ? 'database-button'
+                            ? 'saas-button'
                             : tab.productTabNumber === 2
-                            ? 'custom-source-button'
-                            : 'saas-button'
+                            ? 'database-button'
+                            : 'custom-source-button'
                         }
                         onClick={() => {
                           navigate(
                             tab.productTabNumber === 1
-                              ? '#database'
+                              ? '#saas'
                               : tab.productTabNumber === 2
-                              ? '#custom-source'
-                              : '#saas'
+                              ? '#database'
+                              : '#custom-source'
                           )
                         }}
                       >

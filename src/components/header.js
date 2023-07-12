@@ -299,8 +299,7 @@ const Header = () => {
                           data integration engine
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          No more point-and-click-and-cross-your-fingers. Build
-                          data pipelines that fit exactly to your needs.
+                          Unlock 600+ APIs and DBs and realize your wildest data and ML-powered product ideas.
                         </p>
                       </div>
                       <Link to="/product/">
@@ -330,7 +329,7 @@ const Header = () => {
                           Meltano <span className="brackets">Cloud</span>
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          You build the pipelines, we manage the infrastructure
+                          You define the pipelines, we manage the infrastructure
                         </p>
                       </div>
                       <Link to="/cloud/">
@@ -350,7 +349,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Meltano/Cloud</p>
                           <p className="header-list-info">
-                            You build the pipelines, we manage the
+                            You define the pipelines, we manage the
                             infrastructure
                           </p>
                         </div>
