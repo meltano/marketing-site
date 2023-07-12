@@ -96,7 +96,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Meltano - Extract & load with joy`,
+        name: `Meltano - Build data-powered features in minutes, not days`,
         short_name: `Meltano`,
         start_url: `/`,
         background_color: `#ffffff`,

@@ -10,7 +10,7 @@ const Partners = ({ data }) => (
     <div className="container">
       <div className="heading">
         <h2>1,000+ organizations</h2>
-        <h4>take control of their data movements with Meltano</h4>
+        <h4>integrate their data using Meltano</h4>
       </div>
       <div className="logos">
         <a
