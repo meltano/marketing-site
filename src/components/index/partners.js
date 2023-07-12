@@ -9,7 +9,7 @@ const IndexPartners = () => (
   <>
     <div className="logos-section loved-by-data-teams section">
       <div className="container">
-        <p className="logos-title">Loved by data teams</p>
+        <p className="logos-title">Loved by developers, data scientists & ML engineers</p>
         <div className="logos">
           <a
             href="https://www.netlify.com/"

@@ -14,7 +14,7 @@ h1 {
   font-family: 'Plus Jakarta Sans', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 86px;
+  font-size: 76px;
   line-height: 110%;
   letter-spacing: -0.03em;
   margin: 38px;
@@ -2695,7 +2695,7 @@ ol.contact-form-sidebar-list li:before {
 .sources {
   background-color: #080216;
   background-size: 50% 120%;
-  padding-bottom: 60px;
+  padding: 65px 0;
 }
 
 .source-logos-grid {
@@ -5548,7 +5548,7 @@ input.tgg-title {
 /* Paragraphs with links */
 
 .paragraphs-with-links {
-  padding: 65px 0;
+  padding-bottom: 65px;
   overflow-y: hidden;
 }
 

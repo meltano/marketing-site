@@ -33,7 +33,7 @@ const footerData = [
         title: 'Overview',
         url: '/product/',
         icon: ProductIcon,
-        desc: 'The only EL tool built for data engineers',
+        desc: 'The declarative code-first data integration engine',
       },
       {
         id: 1,
@@ -81,14 +81,14 @@ const footerData = [
         title: 'Community',
         url: '/community/',
         icon: CommunityIcon,
-        desc: 'Join 3,500+ data professionals on Slack and GitHub',
+        desc: 'Join 3,500+ data integrators on Slack and GitHub',
       },
       {
         id: 2,
         title: 'Blog',
         url: '/blog/',
         icon: BlogIcon,
-        desc: 'Stay up to date on Meltano & data engineering',
+        desc: 'Stay up to date on Meltano & data integration',
       },
       {
         id: 3,
@@ -115,7 +115,7 @@ const footerData = [
         title: 'Careers',
         url: 'https://meltano.com/careers',
         icon: CareerIcon,
-        desc: 'Join Melty & team us on our mission to unshackle data engineers everywhere!',
+        desc: 'Join Melty & team us on our mission to unlock all data everywhere!',
       },
       {
         id: 2,

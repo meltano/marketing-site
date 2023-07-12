@@ -294,9 +294,9 @@ const Header = () => {
                     <li className="menu-item--active">
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
-                          The only EL tool{' '}
-                          <span className="brackets">built for</span> data
-                          engineers
+                          The declarative{' '}
+                          <span className="brackets">code-first</span>
+                          data integration engine
                         </p>
                         <p className="submenu-subtitle title-inline">
                           No more point-and-click-and-cross-your-fingers. Build
@@ -319,7 +319,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Overview</p>
                           <p className="header-list-info">
-                            The only EL tool built for data engineers
+                            The declarative code-first data integration engine
                           </p>
                         </div>
                       </Link>
@@ -669,7 +669,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Community</p>
                           <p className="header-list-info">
-                            Join 3,500+ data professionals on Slack and GitHub
+                            Join 3,500+ data integrators on Slack and GitHub
                           </p>
                         </div>
                       </Link>
@@ -678,10 +678,10 @@ const Header = () => {
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
                           <span className="brackets">The latest</span> in
-                          Meltano & data engineering
+                          Meltano & data integration
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Meltano updates, data engineering trends, tutorials,
+                          Meltano updates, data integration trends, tutorials,
                           and other data musings
                         </p>
                       </div>
@@ -708,7 +708,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Blog</p>
                           <p className="header-list-info">
-                            Stay up to date on Meltano & data engineering
+                            Stay up to date on Meltano & data integration
                           </p>
                         </div>
                       </Link>
@@ -814,8 +814,8 @@ const Header = () => {
                           Join the <span className="brackets">team</span>
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Join Melty & team on our mission to unshackle data
-                          engineers everywhere!
+                          Join Melty & team on our mission to unlock all data
+                          everywhere!
                         </p>
                       </div>
                       <a
@@ -849,8 +849,8 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Careers</p>
                           <p className="header-list-info">
-                            Join Melty & team on our mission to unshackle data
-                            engineers everywhere!
+                            Join Melty & team on our mission to unlock all data
+                            everywhere!
                           </p>
                         </div>
                       </a>

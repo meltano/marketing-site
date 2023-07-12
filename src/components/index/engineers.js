@@ -9,17 +9,17 @@ import PlayButton from '../../assets/img/play-btn.svg'
 import CloseButton from '../../assets/img/close-btn.svg'
 
 const Engineers = ({ data }) => {
-  const [modalIsOpen, setIsOpen] = useState(false)
+  // const [modalIsOpen, setIsOpen] = useState(false)
 
-  function openModal(e) {
-    e.preventDefault()
-    setIsOpen(true)
-  }
+  // function openModal(e) {
+  //   e.preventDefault()
+  //   setIsOpen(true)
+  // }
 
-  function closeModal() {
-    setIsOpen(false)
-    document.body.classList.remove('modal-open')
-  }
+  // function closeModal() {
+  //   setIsOpen(false)
+  //   document.body.classList.remove('modal-open')
+  // }
 
   return (
     <>
@@ -34,11 +34,11 @@ const Engineers = ({ data }) => {
           </div>
 
           <div className="meltano-gives-table ml-margins">
-            <div className="meltano-gives-play-wrapper">
+            {/* <div className="meltano-gives-play-wrapper">
               <button type="button" onClick={openModal}>
                 <img src={PlayButton} className="meltano-gives-play" alt="" />
               </button>
-            </div>
+            </div> */}
             <img
               className="meltano-gives-screens meltano-gives-s"
               src={MeltanoGivesScreensS}
@@ -65,7 +65,7 @@ const Engineers = ({ data }) => {
           </div>
         </div>
       </div>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         // eslint-disable-next-line react/jsx-no-bind
         onRequestClose={closeModal}
@@ -93,7 +93,7 @@ const Engineers = ({ data }) => {
             />
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </>
   )
 }
