@@ -84,7 +84,7 @@ const Preheader = () => {
           <div className="pre-header-container">
             {preHeader.preHeaderLink ? (
               <Link to={preHeader.preHeaderLink.url}>
-                <div className="pre-header-content p3a">
+                <div className="pre-header-content p3">
                   <span
                     className="show-desktop"
                     dangerouslySetInnerHTML={{
