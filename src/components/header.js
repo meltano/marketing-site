@@ -295,7 +295,7 @@ const Header = () => {
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
                           The declarative{' '}
-                          <span className="brackets">code-first</span>
+                          <span className="brackets">code-first</span>{' '}
                           data integration engine
                         </p>
                         <p className="submenu-subtitle title-inline">

@@ -37,7 +37,7 @@ const Product = ({ data, location }) => {
       <div className="product-glow-bg" />
       <ProductHero data={productHero} />
       <ProductTabs data={productTabs} location={location} />
-      <ProductDifference data={productDifference} />
+      {/* <ProductDifference data={productDifference} /> */}
       <CtaYourself />
       <Related data={latest} posts={data.stickyPosts} />
     </Layout>

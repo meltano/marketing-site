@@ -18,20 +18,20 @@ const ProductTabs = ({ data, location }) => {
     const selectedValue = event.target.value
     console.log(selectedValue)
     if (selectedValue === '0') {
-      navigate('#database')
-    } else if (selectedValue === '1') {
-      navigate('#custom-source')
-    } else if (selectedValue === '2') {
       navigate('#saas')
+    } else if (selectedValue === '1') {
+      navigate('#database')
+    } else if (selectedValue === '2') {
+      navigate('#custom-source')
     }
   }
 
   useEffect(() => {
-    if (location.hash === '#database') {
+    if (location.hash === '#saas') {
       setTabIndex(0)
-    } else if (location.hash === '#custom-source') {
+    } else if (location.hash === '#database') {
       setTabIndex(1)
-    } else if (location.hash === '#saas') {
+    } else if (location.hash === '#custom-source') {
       setTabIndex(2)
     }
   }, [location])
@@ -294,7 +294,7 @@ const ProductTabs = ({ data, location }) => {
                   <div className="tabs-subtitle enjoy-tab">
                     <h4 className="brackets">Enjoy</h4>
                     <p className="p1">
-                      Meltano is now moving your data in production!
+                      Meltano is now syncing your data in production!
                     </p>
                   </div>
                 </div>
