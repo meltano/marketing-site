@@ -7085,6 +7085,12 @@ input.tgg-title {
   list-style: disc;
 }
 
+.legal-teamplate ol {
+  margin-bottom: 30px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+
 @media all and (min-width: 1024px) {
   .legal-teamplate h1 {
     font-size: 74px;
