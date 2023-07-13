@@ -26,24 +26,23 @@ const PriceTable = ({ data }) => (
               <div className="cloud-table-header-wrap">
                 <div className="cloud-table-header-labels">
                   <div className="blue-label-btn">
-                    <div className="blue-label-btn-title">
-                      <div>1 credit</div>
-                    </div>
-                    <div className="blue-label-btn-subtitle">per daily run</div>
+                    <a href="/contact" target="_blank">
+                      <div className="blue-label-btn-title">
+                        <h3>{table.pricingTableItemTier}</h3>
+                      </div>
+                    </a>
                   </div>
-                  <div className="blue-label-btn">
+                  {/* <div className="blue-label-btn">
                     <div className="blue-label-btn-title">
                       <div>½ credit</div>
                     </div>
                     <div className="blue-label-btn-subtitle">
                       per hourly run
                     </div>
-                  </div>
+                  </div> */}
                 </div>
-                <p className="p2">
-                  Credits start at 30¢, bulk discounts available
-                </p>
-                <a
+                <p className="p2">{table.pricingTableItemDescription}</p>
+                {/* <a
                   href="https://meltano.com/cost-calculator "
                   className="calculate-link"
                   target="_blank"
@@ -62,7 +61,7 @@ const PriceTable = ({ data }) => (
                       fill="#18C3FA"
                     />
                   </svg>
-                </a>
+                </a> */}
               </div>
               <div
                 className={

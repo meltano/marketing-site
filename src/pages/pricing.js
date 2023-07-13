@@ -34,7 +34,7 @@ const Pricing = ({ data }) => {
       <PricingHero data={pricingHero} />
       <PriceTable data={pricingTable} />
       <Partners />
-      <Faq data={contactFaq} />
+      {/* <Faq data={contactFaq} /> */}
     </Layout>
   )
 }
