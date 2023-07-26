@@ -350,6 +350,13 @@ em span {
   font-style: normal;
 }
 
+.hero-title em span {
+  width: auto !important;
+  white-space: break-spaces !important;
+  text-indent: initial !important;
+  overflow: visible !important;
+}
+
 .title-inline em {
   display: inline-block;
   font-style: normal;
@@ -1052,7 +1059,7 @@ em span {
 
 @media all and (max-width: 768px) {
   h1 {
-    font-size: 46px;
+    font-size: 36px;
   }
 
   h2 {
@@ -8755,4 +8762,52 @@ html {
   .contributors-bg {
     display: block;
   }
+}
+
+/* New */
+
+.hero-title em {
+  display: none;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink:before,
+.blink:after {
+  animation: blink 0.4s linear infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  46% {
+    opacity: 1;
+  }
+}
+
+/* align util */
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
 }

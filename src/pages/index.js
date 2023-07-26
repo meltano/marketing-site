@@ -85,6 +85,7 @@ export const pageQuery = graphql`
         hero {
           heroTitle
           heroText
+          heroAlign
           heroButton1 {
             title
             url

@@ -11,6 +11,8 @@ const IndexHero = ({ data }) => {
   const bgRef = useRef(null)
   const bgFrontRef = useRef(null)
 
+  const titleRef = useRef(null)
+
   const parallaxEffectHandler = () => {
     const scrollTop = window.pageYOffset
     const movement = scrollTop * 0.7
@@ -60,16 +62,83 @@ const IndexHero = ({ data }) => {
     }
   }, [])
 
+  useEffect(() => {
+    const container = titleRef.current
+    const emTags = Array.from(container.querySelectorAll('em'))
+    const texts = emTags.map(tag => tag.textContent)
+
+    let currentIndex = 0
+    const currentText = texts[currentIndex]
+    let targetText = texts[currentIndex]
+    let textLength = currentText.length
+    const emTag = container.querySelector('em')
+    emTag.style.display = 'inline-block'
+    emTag.innerHTML = Array.from(currentText)
+      .map((char, i) => `<span>${char}</span>`)
+      .join('')
+
+    function animate() {
+      const spans = Array.from(emTag.children)
+      if (spans.length > 0) {
+        if (spans.length > 1) {
+          emTag.removeChild(spans[spans.length - 1])
+        }
+        emTag.removeChild(spans[0])
+        setTimeout(animate, 30)
+      } else {
+        currentIndex = (currentIndex + 1) % texts.length
+        targetText = texts[currentIndex]
+        textLength = 0
+        emTag.innerHTML = ''
+        loadText()
+      }
+    }
+
+    function loadText() {
+      if (textLength < targetText.length) {
+        const nextChar = targetText[textLength]
+        const span = document.createElement('span')
+        span.style.animation = 'fadeIn 0.5s ease both'
+        span.textContent = nextChar
+        emTag.appendChild(span)
+        textLength++
+        setTimeout(loadText, 30)
+      } else {
+        setTimeout(() => {
+          emTag.classList.add('blink')
+          setTimeout(() => {
+            emTag.classList.remove('blink')
+            animate()
+          }, 600)
+        }, 2500)
+      }
+    }
+
+    setTimeout(() => {
+      emTag.classList.add('blink')
+      setTimeout(() => {
+        emTag.classList.remove('blink')
+        animate()
+      }, 600)
+    }, 2500)
+
+    // Clean up the animation when the component unmounts
+    return () => {
+      emTag.innerHTML = ''
+    }
+  }, [data.heroTitle])
+
   return (
     <div className="hero hero-scene section">
       <div className="container">
         <div className="hero-info ml-margins">
           <h1
-            className="hero-title"
+            ref={titleRef}
+            className={`hero-title align-${data.heroAlign}`}
             dangerouslySetInnerHTML={{ __html: data.heroTitle }}
           />
           <p
-            className="hero-description p1"
+            className={`hero-description p1 align-${data.heroAlign}`}
             dangerouslySetInnerHTML={{ __html: data.heroText }}
           />
           <div className="hero-buttons">
