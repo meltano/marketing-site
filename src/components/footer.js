@@ -113,7 +113,7 @@ const footerData = [
       {
         id: 1,
         title: 'Careers',
-        url: 'https://meltano.com/careers',
+        url: 'https://boards.greenhouse.io/meltano',
         icon: CareerIcon,
         desc: 'Join Melty & team us on our mission to unlock all data everywhere!',
       },
