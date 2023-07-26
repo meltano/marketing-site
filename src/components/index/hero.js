@@ -65,8 +65,11 @@ const IndexHero = ({ data }) => {
   useEffect(() => {
     const container = titleRef.current
     const emTags = Array.from(container.querySelectorAll('em'))
+    if (emTags.length < 2) {
+      container.querySelector('em').style.display = 'inline-block'
+      return
+    }
     const texts = emTags.map(tag => tag.textContent)
-
     let currentIndex = 0
     const currentText = texts[currentIndex]
     let targetText = texts[currentIndex]
