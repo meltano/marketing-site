@@ -63,13 +63,42 @@ const IndexHero = ({ data }) => {
   }, [])
 
   useEffect(() => {
-    const container = titleRef.current
-    const emTags = Array.from(container.querySelectorAll('em'))
-    if (emTags.length < 2) {
-      container.querySelector('em').style.display = 'inline-block'
-      return
+    const titleTag = titleRef.current
+
+    if (titleTag) {
+      const emContainers = Array.from(titleTag.querySelectorAll('span'))
+      if (emContainers.length) {
+        emContainers.forEach((emContainer, index) => {
+          const emTagsCount = emContainer.querySelectorAll('em').length
+          if (emTagsCount > 1) {
+            go(emContainer)
+          } else if (emTagsCount === 1) {
+            emContainer.querySelector('em').style.display = 'inline-block'
+          }
+        })
+      } else {
+        const emTagsCount = titleTag.querySelectorAll('em').length
+        if (emTagsCount > 1) {
+          go(titleTag)
+        } else if (emTagsCount === 1) {
+          titleTag.querySelector('em').style.display = 'inline-block'
+        }
+      }
     }
+  }, [data.heroTitle])
+
+  let offset = 0
+  function go(container) {
+    const emTags = Array.from(container.querySelectorAll('em'))
     const texts = emTags.map(tag => tag.textContent)
+    emTags.forEach((tag, index) => {
+      let _a
+      if (index !== 0) {
+        ;(_a = tag.parentNode) === null || _a === void 0
+          ? void 0
+          : _a.removeChild(tag)
+      }
+    })
     let currentIndex = 0
     const currentText = texts[currentIndex]
     let targetText = texts[currentIndex]
@@ -79,7 +108,6 @@ const IndexHero = ({ data }) => {
     emTag.innerHTML = Array.from(currentText)
       .map((char, i) => `<span>${char}</span>`)
       .join('')
-
     function animate() {
       const spans = Array.from(emTag.children)
       if (spans.length > 0) {
@@ -96,7 +124,6 @@ const IndexHero = ({ data }) => {
         loadText()
       }
     }
-
     function loadText() {
       if (textLength < targetText.length) {
         const nextChar = targetText[textLength]
@@ -104,7 +131,7 @@ const IndexHero = ({ data }) => {
         span.style.animation = 'fadeIn 0.5s ease both'
         span.textContent = nextChar
         emTag.appendChild(span)
-        textLength++
+        textLength += 1
         setTimeout(loadText, 30)
       } else {
         setTimeout(() => {
@@ -116,20 +143,15 @@ const IndexHero = ({ data }) => {
         }, 2500)
       }
     }
-
     setTimeout(() => {
       emTag.classList.add('blink')
       setTimeout(() => {
         emTag.classList.remove('blink')
         animate()
       }, 600)
-    }, 2500)
-
-    // Clean up the animation when the component unmounts
-    return () => {
-      emTag.innerHTML = ''
-    }
-  }, [data.heroTitle])
+    }, 2500 + (offset % 3) * (2500 / 3))
+    offset += 1
+  }
 
   return (
     <div className="hero hero-scene section">
