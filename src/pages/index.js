@@ -215,7 +215,7 @@ export const pageQuery = graphql`
     }
     stickyPosts: allWpPost(
       sort: { date: DESC }
-      filter: { status: { eq: "publish" }, isSticky: { eq: true } }
+      filter: { status: { eq: "publish" } }
       limit: 3
     ) {
       edges {
