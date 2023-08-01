@@ -105,6 +105,18 @@ export const pageQuery = graphql`
         engineers {
           engineersTitle
           engineersText
+          engineersHead {
+            engineersHeadLeft
+            engineersHeadRight
+          }
+          engineersTable {
+            engineersTableText
+            engineersTableImage {
+              localFile {
+                publicURL
+              }
+            }
+          }
         }
         sources {
           sourcesText

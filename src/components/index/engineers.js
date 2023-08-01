@@ -2,13 +2,39 @@
 import React, { useState } from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import Modal from 'react-modal'
-import MeltanoGivesScreensB from '../../assets/img/meltano-gives-b.svg'
-import MeltanoGivesScreensM from '../../assets/img/meltano-gives-m.svg'
-import MeltanoGivesScreensS from '../../assets/img/meltano-gives-s.svg'
+import Path1 from '../../assets/img/path-1.svg'
+import Path2 from '../../assets/img/path-2.svg'
+import Path3 from '../../assets/img/path-3.svg'
+import Path4 from '../../assets/img/path-4.svg'
+import Path5 from '../../assets/img/path-5.svg'
+import Path6 from '../../assets/img/path-6.svg'
+import Path7 from '../../assets/img/path-7.svg'
+import Path8 from '../../assets/img/path-8.svg'
+import MeltyProgramming from '../../assets/img/melty-programming.webp'
+import MeltanoTerminal from '../../assets/img/meltano-terminal.svg'
 import PlayButton from '../../assets/img/play-btn.svg'
 import CloseButton from '../../assets/img/close-btn.svg'
 
 const Engineers = ({ data }) => {
+  const paths = [
+    { svg: Path1, class: '' },
+    { svg: Path2, class: '' },
+    { svg: Path3, class: 'curved-path-3' },
+    { svg: Path4, class: 'curved-path-4' },
+    { svg: Path5, class: '' },
+    { svg: Path6, class: '' },
+    { svg: Path7, class: 'curved-path-7' },
+    { svg: Path8, class: 'curved-path-8' },
+  ]
+
+  const tableItems = data.engineersTable.map((path, index) => ({
+    ...path,
+    line: paths[index],
+  }))
+
+  const firstTable = tableItems.slice(0, 4)
+  const secondTable = tableItems.slice(4)
+
   // const [modalIsOpen, setIsOpen] = useState(false)
 
   // function openModal(e) {
@@ -33,35 +59,67 @@ const Engineers = ({ data }) => {
             />
           </div>
 
-          <div className="meltano-gives-table ml-margins">
-            {/* <div className="meltano-gives-play-wrapper">
-              <button type="button" onClick={openModal}>
-                <img src={PlayButton} className="meltano-gives-play" alt="" />
-              </button>
-            </div> */}
-            <img
-              className="meltano-gives-screens meltano-gives-s"
-              src={MeltanoGivesScreensS}
-              alt="screens"
-              loading="lazy"
-            />
-            <img
-              className="meltano-gives-screens meltano-gives-m"
-              src={MeltanoGivesScreensM}
-              alt="screens"
-              loading="lazy"
-            />
-            <img
-              className="meltano-gives-screens meltano-gives-b"
-              src={MeltanoGivesScreensB}
-              alt="screens"
-              loading="lazy"
-            />
-            <StaticImage
-              className="meltano-gives-melty"
-              src="../../assets/img/melty-programming5.png"
-              alt="melty"
-            />
+          <div className="meltano-gives-table-head">
+            <h5 className="brackets">{data.engineersHead.engineersHeadLeft}</h5>
+            <h5 className="brackets-blue">
+              {data.engineersHead.engineersHeadRight}
+            </h5>
+          </div>
+          <div className="meltano-gives-table">
+            <div className="meltano-gives-table-list table-list-left">
+              {firstTable.map(item => (
+                <div className="meltano-gives-table-item">
+                  <div className="meltano-gives-table-item-bubble">
+                    <img
+                      className="meltano-gives-table-item-image"
+                      src={item.engineersTableImage.localFile.publicURL}
+                      alt={item.engineersTableText}
+                    />
+                    <span className="meltano-gives-table-item-label">
+                      {item.engineersTableText}
+                    </span>
+                  </div>
+                  <img
+                    className={`meltano-gives-table-item-path ${item.line.class}`}
+                    src={item.line.svg}
+                    alt=""
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="meltano-gives-terminal">
+              <img
+                className="meltano-gives-terminal-image"
+                src={MeltanoTerminal}
+                alt=""
+              />
+              <img
+                className="meltano-gives-melty-image"
+                src={MeltyProgramming}
+                alt=""
+              />
+            </div>
+            <div className="meltano-gives-table-list table-list-right">
+              {secondTable.map(item => (
+                <div className="meltano-gives-table-item">
+                  <img
+                    className={`meltano-gives-table-item-path ${item.line.class}`}
+                    src={item.line.svg}
+                    alt=""
+                  />
+                  <div className="meltano-gives-table-item-bubble">
+                    <img
+                      className="meltano-gives-table-item-image"
+                      src={item.engineersTableImage.localFile.publicURL}
+                      alt={item.engineersTableText}
+                    />
+                    <span className="meltano-gives-table-item-label">
+                      {item.engineersTableText}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

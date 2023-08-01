@@ -291,6 +291,21 @@ img {
   display: block;
 }
 
+.brackets-blue {
+  position: relative;
+  display: block;
+}
+
+.brackets-blue:before {
+  content: '/';
+  color: #3A64FA;
+}
+
+.brackets-blue:after {
+  content: '/';
+  color: #3A64FA;
+}
+
 .brackets:before {
   content: '/';
   color: #f963bc;
@@ -5446,7 +5461,6 @@ input.tgg-title {
 /* Meltano gives engineers */
 
 .meltano-gives-engineers {
-  /* padding-top: 100px; */
   margin-top: -1px;
   position: sticky;
   bottom: 0px;
@@ -5456,6 +5470,7 @@ input.tgg-title {
 @media all and (min-width: 768px) {
   .meltano-gives-engineers {
     bottom: -100px;
+    margin-bottom: 100px;
   }
 }
 
@@ -5478,9 +5493,169 @@ input.tgg-title {
 }
 
 .meltano-gives-table {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 1160px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+.meltano-gives-table-head {
+  width: 94%;
+  margin: 0 auto;
+  padding-bottom: 10px;
   position: relative;
-  margin-top: -20px;
-  margin-bottom: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media all and (max-width: 768px) {
+  .meltano-gives-table-head {
+    display: none;
+  }
+}
+
+.meltano-gives-table-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 33.33%;
+  margin-top: -40px;
+}
+
+.meltano-gives-table-list h5 {
+  padding-bottom: 20px;
+}
+
+.meltano-gives-terminal {
+  width: 33.33%;
+  position: relative;
+  z-index: 2;
+}
+
+.meltano-gives-table-item {
+  font-family: IBM Plex Mono;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  color: #fff;
+  flex: 1;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.table-list-right .meltano-gives-table-item {
+  justify-content: end;
+}
+
+.meltano-gives-table-item-bubble {
+  display: flex;
+  gap: 15px;
+  height: 100%;
+  width: 224px;
+  min-width: 224px;
+  max-width: 224px;
+  align-items: center;
+  flex: 1;
+  border: 1px solid #F963BC;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 58px;
+  padding-left: 25px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.table-list-right .meltano-gives-table-item-bubble {
+  border: 1px solid #3A64FA;
+
+}
+
+.meltano-gives-table-item-path {
+  width: calc(105.5% - 220px);
+}
+
+.curved-path-3 {
+  position: relative;
+  bottom: 41%;
+}
+
+.curved-path-4 {
+  width: 50%;
+  position: absolute;
+  bottom: 43%;
+  left: 223px;
+}
+
+.curved-path-7 {
+  position: relative;
+  bottom: 35%;
+}
+
+.curved-path-8 {
+  width: 48%;
+  position: absolute;
+  bottom: 43%;
+  right: 223px;
+}
+
+.meltano-gives-terminal-image {
+  width: 100%;
+  padding-bottom: 20%;
+}
+
+.meltano-gives-melty-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 80%;
+}
+
+@media all and (max-width:1024px) {
+  .meltano-gives-table-item {
+    font-size: 13px;
+  }
+
+  .curved-path-3 {
+    position: absolute;
+    bottom: 50%;
+    margin: auto;
+    left: 223px;
+    width: calc(105.5% - 240px);
+  }
+
+  .curved-path-7 {
+    position: absolute;
+    bottom: 50%;
+    margin: auto;
+    right: 223px;
+    width: calc(105.5% - 240px);
+  }
+
+  .curved-path-4,
+  .curved-path-8 {
+    opacity: 0.65;
+  }
+}
+
+@media all and (max-width:768px) {
+  .meltano-gives-terminal {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 350px;
+  }
+
+  .meltano-gives-table-list {
+    display: none;
+  }
 }
 
 .meltano-gives-melty {
@@ -5537,7 +5712,7 @@ input.tgg-title {
 
 @media all and (max-width: 767px) {
   .meltano-gives-table {
-    margin-bottom: 40%;
+    margin-bottom: 40px;
   }
 
   .meltano-gives-screens {
