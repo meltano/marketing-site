@@ -55,9 +55,10 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     }
   }
 
-  const ulRegex = /<ul[^>]*>([\s\S]*?)<\/ul>/
-
   const [remainingContent, divContent] = separateTOCFromContent(post.content)
+
+  const startIndex = divContent.indexOf('<ul')
+  const toc = divContent.substring(startIndex).slice(0, -12)
 
   const [isOpen, setIsOpen] = useState(true)
   const tocContentRef = useRef(null)
@@ -295,7 +296,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                       }}
                       ref={tocContentRef}
                     >
-                      {parse(divContent.match(ulRegex)[0])}
+                      {parse(toc)}
                     </div>
                   </div>
 

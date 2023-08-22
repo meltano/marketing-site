@@ -6649,12 +6649,27 @@ input.tgg-title {
   background: #555;
 }
 
-.ez-toc-page-1 .ez-toc-heading-level-3 {
+.toc-content .ez-toc-page-1 .ez-toc-heading-level-3 {
   padding-bottom: 10px;
 }
 
-.ez-toc-page-1 .ez-toc-heading-level-3 {
+.toc-content .ez-toc-page-1 .ez-toc-heading-level-3 {
   padding-bottom: 8px;
+}
+
+.toc-content li .ez-toc-list-level-3 {
+  padding-left: 20px !important;
+  margin-top: 0 !important;
+  list-style-type: disc;
+}
+
+.toc-content li .ez-toc-list-level-3 li::before {
+  content: "\2022";
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 .mailing-list-widget {
