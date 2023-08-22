@@ -6649,12 +6649,13 @@ input.tgg-title {
   background: #555;
 }
 
-.toc-content .ez-toc-page-1 .ez-toc-heading-level-3 {
+.toc-content .ez-toc-heading-level-2 {
   padding-bottom: 10px;
 }
 
-.toc-content .ez-toc-page-1 .ez-toc-heading-level-3 {
-  padding-bottom: 8px;
+.toc-content .ez-toc-heading-level-3 {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .toc-content li .ez-toc-list-level-3 {
