@@ -4849,6 +4849,10 @@ ol.contact-form-sidebar-list li:before {
   display: flex;
 }
 
+.terminal-circle-blue {
+  background-color: #3a64fa;
+}
+
 .terminal-content {
   font-size: 14px;
   color: #fff;
@@ -6725,7 +6729,6 @@ input.tgg-title {
   left: 0;
   right: 0;
   bottom: 20px;
-  width: 100%;
   max-width: 884px;
   margin: auto;
   backdrop-filter: blur(13px);

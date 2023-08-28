@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Highlight, Prism, themes } from 'prism-react-renderer'
 import { Link, graphql } from 'gatsby'
-import parse from 'html-react-parser'
+import parse, { domToReact } from 'html-react-parser'
 
 // We're using Gutenberg so we need the block styles
 // these are copied into this project due to a conflict in the postCSS
@@ -26,6 +27,56 @@ function separateTOCFromContent(content) {
     }
   }
   return [content, '']
+}
+
+const HighlightedCode = ({ code }) => {
+  const lines = code.split('\n')
+  const codeLines = lines.slice(2).join('\n')
+
+  return (
+    <div className="tab-terminal">
+      <div className="terminal-header">
+        <div className="terminal-header-circles">
+          <span className="red-bg" />
+          <span className="yellow-bg" />
+          <span className="green-bg" />
+        </div>
+        <span className="tab-terminal-title">{lines[0]}</span>
+        <span className="terminal-circle-clear terminal-circle-blue" />
+      </div>
+      <div className="terminal-content">
+        <Highlight
+          theme={themes.oceanicNext}
+          code={codeLines}
+          language={lines[1]}
+        >
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <pre className={className} style={style}>
+              {tokens.map((line, i) => (
+                <div {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => (
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
+          )}
+        </Highlight>
+      </div>
+    </div>
+  )
+}
+
+const terminalOptions = {
+  replace: ({ attribs, children }) => {
+    if (!attribs) {
+      return
+    }
+
+    if (attribs.class === 'wp-block-preformatted') {
+      return <HighlightedCode code={domToReact(children, terminalOptions)} />
+    }
+  },
 }
 
 const BlogPostTemplate = ({ data: { previous, next, post } }) => {
@@ -253,7 +304,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
               <div>
                 {!!post.content && (
                   <div className="blog-content" itemProp="articleBody">
-                    {parse(remainingContent)}
+                    {parse(remainingContent, terminalOptions)}
                   </div>
                 )}
               </div>
