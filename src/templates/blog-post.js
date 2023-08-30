@@ -16,6 +16,10 @@ import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { CtaIntrigued } from '../components/cta'
 
+;(typeof global !== 'undefined' ? global : window).Prism = Prism
+require('prismjs/components/prism-python')
+require('prismjs/components/prism-bash')
+
 function separateTOCFromContent(content) {
   const divIndex = content.indexOf(`<div id="ez-toc-container"`)
   if (divIndex !== -1) {
