@@ -6822,9 +6822,24 @@ input.tgg-title {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.dark-blog .blog-content code {
-  background-color: rgb(255 255 255 / 5%);
+.dark-blog .blog-content .wp-block-code {
+  border: none;
+  padding: 0px;
+}
+
+.dark-blog .blog-content .wp-block-code code {
+  border: none;
   padding: 20px;
+}
+
+.dark-blog .blog-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-size: 14px;
+  vertical-align: middle;
+  background-color: rgb(255 255 255 / 10%);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 6px;
+  padding: 2px;
 }
 
 .dark-blog .blog-metadata:before,
@@ -6933,9 +6948,23 @@ input.tgg-title {
   color: rgba(8, 2, 22, 0.75);
 }
 
-.light-blog .blog-content code {
-  background-color: rgb(8 2 22 / 5%);
+.light-blog .blog-content .wp-block-code {
+  border: none;
+  padding: 0px;
+}
+
+.light-blog .blog-content .wp-block-code code {
   padding: 20px;
+}
+
+.light-blog .blog-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-size: 14px;
+  vertical-align: middle;
+  background-color: rgba(49, 23, 114, 0.05);
+  border: 1px solid rgba(49, 23, 114, 0.15) !important;
+  border-radius: 6px;
+  padding: 2px;
 }
 
 .light-blog .blog-metadata:before,
