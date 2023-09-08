@@ -6954,12 +6954,14 @@ input.tgg-title {
 }
 
 .light-blog .blog-content .wp-block-code code {
+  border: none;
   padding: 20px;
 }
 
 .light-blog .blog-content code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   font-size: 14px;
+  color: rgba(8, 2, 22, 0.75) !important;
   vertical-align: middle;
   background-color: rgba(49, 23, 114, 0.05);
   border: 1px solid rgba(49, 23, 114, 0.15) !important;
@@ -7012,9 +7014,6 @@ input.tgg-title {
   font-size: 16px;
 }
 
-.light-blog .blog-content code {
-  color: rgba(8, 2, 22, 0.75) !important;
-}
 
 .light-blog .toc-toggle {
   border: 1px solid #311772;
