@@ -8174,6 +8174,16 @@ footer li:hover>a>* {
   color: #fff;
 }
 
+.inputs-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.inputs-list .hs-form-checkbox-display input {
+  width: auto !important;
+  margin-right: 10px;
+}
+
 .wpcf7 form.init .wpcf7-response-output {
   display: none !important;
 }
