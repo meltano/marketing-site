@@ -28,7 +28,7 @@ const LandingHero = ({ data }) => (
       {(data.landingLayoutTwoHeroTitle ||
         data.landingLayoutTwoHeroSubtitle) && (
         <div className="ml-margins">
-          <div className="row col-1-3">
+          <div className="row col-2">
             <div className="side-content">
               {data.landingLayoutTwoHeroTitle && (
                 <h2
