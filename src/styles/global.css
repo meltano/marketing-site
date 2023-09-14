@@ -8549,6 +8549,13 @@ html {
 
 /* Landing pages */
 
+.landing-page header, .landing-page footer {
+  display: none;
+}
+.landing-page main {
+  padding-bottom: 200px;
+}
+
 .landing-page em {
   font-style: normal;
 }
@@ -8600,6 +8607,7 @@ html {
   display: flex;
   flex-direction: column;
   padding-bottom: 0;
+  align-self: center;
 }
 
 .landing-page .video-container .video {
