@@ -4,7 +4,6 @@ const LandingContentTwo = ({ data }) => (
   <div className="container">
     <div className="ml-margins">
       <div className="row col-2">
-        test
         {data.map(list => (
           <div
             className="contact-form-sidebar"
