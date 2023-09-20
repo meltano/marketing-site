@@ -45,7 +45,7 @@ const LandingHero = ({ data }) => (
                   }}
                 />
               )}
-              {data.landingLayoutTwoHeroButton && (
+              {/* {data.landingLayoutTwoHeroButton && (
                 <a
                   href={data.landingLayoutTwoHeroButton.url}
                   target={data.landingLayoutTwoHeroButton.target}
@@ -53,7 +53,7 @@ const LandingHero = ({ data }) => (
                 >
                   {data.landingLayoutTwoHeroButton.title}
                 </a>
-              )}
+              )} */}
               <p className="p2" />
             </div>
             {data.landingLayoutTwoHeroVideo[0] && (

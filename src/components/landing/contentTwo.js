@@ -35,12 +35,13 @@ const LandingContentTwo = ({ data }) => (
                   list.landingLayoutTwoListsList.landingLayoutTwoListsListButton
                     .target
                 }
-                className="btn alt-blue-btn"
               >
-                {
-                  list.landingLayoutTwoListsList.landingLayoutTwoListsListButton
-                    .title
-                }
+                <h5>
+                  {
+                    list.landingLayoutTwoListsList.landingLayoutTwoListsListButton
+                      .title
+                  }
+                </h5>
               </a>
             )}
           </div>

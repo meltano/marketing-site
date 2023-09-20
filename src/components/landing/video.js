@@ -5,6 +5,7 @@ import PauseButton from '../../assets/img/icon-pause-button.png'
 import SoundOn from '../../assets/img/icon-sound-on.png'
 import SoundOff from '../../assets/img/icon-sound-off.png'
 import Fullscreen from '../../assets/img/icon-fullscreen.png'
+import HubspotForm from 'react-hubspot-form'
 
 const LandingVideo = ({ data }) => {
   const videoRef = useRef(null)
@@ -156,6 +157,24 @@ const LandingVideo = ({ data }) => {
         >
           <img decoding="async" src={Fullscreen} alt="" />
         </button>
+      </div>
+
+      <div className="widget-form">
+        <div className="wpcf7 js" id="wpcf7-f4915-p5212-o1" dir="ltr" lang="en">
+          <div className="screen-reader-response">
+            <p role="status" aria-live="polite" aria-atomic="true" /> <ul />
+          </div>
+
+          <HubspotForm
+            portalId="20712484"
+            formId="e234a47b-f830-4fe6-80a0-3de4cac49e4a"
+            onSubmit={() => console.log('Submitted!')}
+            onReady={form => console.log('Form ready!')}
+            loading={<div>Loading...</div>}
+            cssClass="form-subscribe"
+            submitButtonClass="form-subscribe-submit"
+          />
+        </div>
       </div>
     </div>
   )
