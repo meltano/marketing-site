@@ -171,7 +171,7 @@ const LandingVideo = ({ data }) => {
             onSubmit={() => console.log('Submitted!')}
             onReady={form => console.log('Form ready!')}
             loading={<div>Loading...</div>}
-            cssClass="form-subscribe"
+            cssClass="form-subsribe"
             submitButtonClass="form-subscribe-submit"
           />
         </div>
