@@ -159,7 +159,7 @@ const LandingVideo = ({ data }) => {
         </button>
       </div>
 
-      <div className="widget-form">
+      <div className="dark-form widget-form">
         <div className="wpcf7 js" id="wpcf7-f4915-p5212-o1" dir="ltr" lang="en">
           <div className="screen-reader-response">
             <p role="status" aria-live="polite" aria-atomic="true" /> <ul />
