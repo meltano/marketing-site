@@ -167,7 +167,7 @@ const LandingVideo = ({ data }) => {
 
           <HubspotForm
             portalId="20712484"
-            formId="e234a47b-f830-4fe6-80a0-3de4cac49e4a"
+            formId="c1df19aa-2559-456d-bb68-a679272db2e1"
             onSubmit={() => console.log('Submitted!')}
             onReady={form => console.log('Form ready!')}
             loading={<div>Loading...</div>}
