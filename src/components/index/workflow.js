@@ -10,7 +10,7 @@ require('prismjs/components/prism-python')
 require('prismjs/components/prism-bash')
 
 const Workflow = ({ data }) => {
-  const colors = ['pink', 'blue', 'yellow', 'green']
+  const colors = ['pink', 'blue', 'yellow', 'green', 'pink']
   const separators = [DashBreak1, DashBreak2, DashBreak3, DashBreak2]
 
   const [title, setTitle] = useState('')

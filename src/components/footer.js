@@ -15,8 +15,8 @@ import DocumentationIcon from '../assets/img/footerdocumentationicon.svg'
 import MediaPressIcon from '../assets/img/footermediapressicon.svg'
 import MeltanoHubIcon from '../assets/img/footermeltanohubicon.svg'
 import MeltanoSdkIcon from '../assets/img/footermeltanosdkicon.svg'
+import MeltanoEdkIcon from '../assets/img/footermeltanoedkicon.svg'
 import PartnersIcon from '../assets/img/footerpartnersicon.svg'
-import PricingIcon from '../assets/img/footerpricingicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
 import FooterImg from '../assets/img/footer.svg'
 
@@ -37,17 +37,17 @@ const footerData = [
       },
       {
         id: 1,
-        title: 'Meltano/Cloud',
-        url: '/cloud/',
-        icon: CloudIcon,
-        desc: 'You define the pipelines, we manage the infrastructure',
-      },
-      {
-        id: 2,
         title: 'Meltano/SDK',
         url: 'https://sdk.meltano.com/en/latest/',
         icon: MeltanoSdkIcon,
         desc: 'Build a connector for any data source under the sun',
+      },
+      {
+        id: 2,
+        title: 'Meltano/EDK',
+        url: 'https://edk.meltano.com/en/latest/',
+        icon: MeltanoEdkIcon,
+        desc: 'Integrate any existing data tool for any data source',
       },
       {
         id: 3,
@@ -55,13 +55,6 @@ const footerData = [
         url: 'https://hub.meltano.com/extractors/',
         icon: MeltanoHubIcon,
         desc: 'Connectors for 600+ sources and destinations',
-      },
-      {
-        id: 4,
-        title: 'Pricing',
-        url: '/pricing/',
-        icon: PricingIcon,
-        desc: 'Pay only for the workloads you run, no matter how much the data volume grows',
       },
     ],
   },

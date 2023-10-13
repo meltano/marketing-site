@@ -295,11 +295,12 @@ const Header = () => {
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
                           The declarative{' '}
-                          <span className="brackets">code-first</span>{' '}
-                          data integration engine
+                          <span className="brackets">code-first</span> data
+                          integration engine
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Unlock 600+ APIs and DBs and realize your wildest data and ML-powered product ideas.
+                          Unlock 600+ APIs and DBs and realize your wildest data
+                          and ML-powered product ideas.
                         </p>
                       </div>
                       <Link to="/product/">
@@ -319,38 +320,6 @@ const Header = () => {
                           <p className="header-list-title">Overview</p>
                           <p className="header-list-info">
                             The declarative code-first data integration engine
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <div className="submenu-info">
-                        <p className="submenu-title title-inline">
-                          Meltano <span className="brackets">Cloud</span>
-                        </p>
-                        <p className="submenu-subtitle title-inline">
-                          You define the pipelines, we manage the infrastructure
-                        </p>
-                      </div>
-                      <Link to="/cloud/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="36"
-                          viewBox="0 0 36 36"
-                          fill="none"
-                        >
-                          <rect width="36" height="36" rx="18" fill="#E9E5FB" />
-                          <path
-                            d="M8 19.25C8 22.4256 10.5744 25 13.75 25L24 25C26.2091 25 28 23.2091 28 21C28 19.7368 27.4145 18.7331 26.5 18C26.5 14.134 23.366 11 19.5001 11C17.3476 11 15.5341 11.993 14.25 13.5214C14.0852 13.5072 13.9185 13.5 13.75 13.5C10.5744 13.5 8 16.0744 8 19.25Z"
-                            fill="#311772"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Meltano/Cloud</p>
-                          <p className="header-list-info">
-                            You define the pipelines, we manage the
-                            infrastructure
                           </p>
                         </div>
                       </Link>
@@ -381,6 +350,45 @@ const Header = () => {
                           <rect width="36" height="36" rx="18" fill="#E9E5FB" />
                           <path
                             d="M25.9167 22.8072V13.6024L17.9586 9L10 13.6024V22.8072L17.9586 27.4096L25.9167 22.8072Z"
+                            fill="#311772"
+                          />
+                        </svg>
+                        <div className="header-list-item">
+                          <p className="header-list-title">Meltano/SDK</p>
+                          <p className="header-list-info">
+                            Build a connector for any data source under the sun
+                          </p>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div className="submenu-info">
+                        <p className="submenu-title title-inline">
+                          <span className="brackets">Integrate</span> any
+                          existing data tool for any data source
+                        </p>
+                        <p className="submenu-subtitle title-inline">
+                          The Meltano EDK is the fastest way to build custom
+                          extensions and utilities for Meltano.
+                        </p>
+                      </div>
+                      <a
+                        href="https://edk.meltano.com/en/latest/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="36"
+                          height="36"
+                          viewBox="0 0 36 36"
+                          fill="none"
+                        >
+                          <rect width="36" height="36" rx="18" fill="#E9E5FB" />
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M24.9704 22.2426C25.7515 23.0237 25.7515 24.29 24.9704 25.0711C24.1894 25.8521 22.9231 25.8521 22.142 25.0711L21.4349 24.364L19.3136 26.4853C18.5325 27.2663 17.2662 27.2663 16.4852 26.4853L14.3638 24.364L15.0709 23.6569C15.852 22.8758 15.852 21.6095 15.0709 20.8284C14.2899 20.0474 13.0236 20.0474 12.2425 20.8284L11.5354 21.5355L9.41409 19.4142C8.63304 18.6332 8.63304 17.3668 9.41409 16.5858L11.5354 14.4645L12.2425 15.1716C13.0236 15.9526 14.2899 15.9526 15.0709 15.1716C15.852 14.3905 15.852 13.1242 15.0709 12.3431L14.3638 11.636L16.4852 9.51472C17.2662 8.73367 18.5325 8.73367 19.3136 9.51472L21.4349 11.636L22.142 10.9289C22.9231 10.1479 24.1894 10.1479 24.9704 10.9289C25.7515 11.71 25.7515 12.9763 24.9704 13.7574L24.2633 14.4645L26.3846 16.5858C27.1657 17.3668 27.1657 18.6332 26.3846 19.4142L24.2633 21.5355L24.9704 22.2426Z"
                             fill="#311772"
                           />
                         </svg>
@@ -428,158 +436,6 @@ const Header = () => {
                           </p>
                         </div>
                       </a>
-                    </li>
-                    <li className="hide-d">
-                      <Link to="/pricing/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="37"
-                          viewBox="0 0 36 37"
-                          fill="none"
-                        >
-                          <rect
-                            y="0.5"
-                            width="36"
-                            height="36"
-                            rx="18"
-                            fill="#E9E5FB"
-                          />
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M13.7385 14.3703C13.2713 14.7501 13 15.3202 13 15.9223V26.5C13 27.6046 13.8954 28.5 15 28.5H22C23.1046 28.5 24 27.6046 24 26.5V15.9223C24 15.3202 23.7287 14.7501 23.2615 14.3703L19.7615 11.5254C19.0266 10.9281 17.9734 10.9281 17.2385 11.5254L13.7385 14.3703ZM18.5 16.5C19.3284 16.5 20 15.8284 20 15C20 14.1716 19.3284 13.5 18.5 13.5C17.6716 13.5 17 14.1716 17 15C17 15.8284 17.6716 16.5 18.5 16.5Z"
-                            fill="#311772"
-                          />
-                          <path
-                            d="M18.5 14.5C20.433 14.5 22 12.933 22 11C22 9.067 20.433 7.5 18.5 7.5C16.567 7.5 15 9.067 15 11"
-                            stroke="#311772"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Pricing</p>
-                          <p className="header-list-info">
-                            Pay only for the workloads you run, no matter how
-                            much the data volume grows
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li className="hide-m has-sub">
-                <Link to="/pricing/">Pricing</Link>
-                <div className="hop">
-                  <ul className="sub pricing-menu">
-                    <li className="menu-item--active">
-                      <div className="submenu-info">
-                        <p className="submenu-title title-inline">
-                          Meltano Cloud{' '}
-                          <span className="brackets">Pricing</span>
-                        </p>
-                        <p className="submenu-subtitle title-inline">
-                          Meltano and its connectors are open source, and can be
-                          deployed on Meltano Cloud or on self-managed
-                          infrastructure. Either way, you only pay for the
-                          workloads you run, no matter how much the data volume
-                          grows.
-                        </p>
-                      </div>
-                      <Link to="/pricing/">
-                        <svg
-                          width="36"
-                          height="36"
-                          viewBox="0 0 36 36"
-                          fill="none"
-                        >
-                          <rect width="36" height="36" rx="18" fill="#E9E5FB" />
-                          <path
-                            d="M29 13.7473C25.8336 18.2623 19.0204 19.2751 18.2595 16.5854C17.488 13.8957 21.4504 12.0334 23.5368 11.7737C11.4813 8.31605 13.6659 17.5166 7 18.4032C10.6819 20.3212 14.511 23.508 17.0988 23.8976C21.5381 24.5728 27.7552 21.9907 29 13.7399"
-                            fill="#311772"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Open Source</p>
-                          <p className="header-list-info">
-                            Meltano Cloud Pricing
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <div className="submenu-info">
-                        <p className="submenu-title title-inline">
-                          Meltano Cloud{' '}
-                          <span className="brackets">Pricing</span>
-                        </p>
-                        <p className="submenu-subtitle title-inline">
-                          Meltano and its connectors are open source, and can be
-                          deployed on Meltano Cloud or on self-managed
-                          infrastructure. Either way, you only pay for the
-                          workloads you run, no matter how much the data volume
-                          grows.
-                        </p>
-                      </div>
-                      <Link to="/pricing/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="36"
-                          viewBox="0 0 36 36"
-                          fill="none"
-                        >
-                          <rect width="36" height="36" rx="18" fill="#E9E5FB" />
-                          <path
-                            d="M8 19.25C8 22.4256 10.5744 25 13.75 25L24 25C26.2091 25 28 23.2091 28 21C28 19.7368 27.4145 18.7331 26.5 18C26.5 14.134 23.366 11 19.5001 11C17.3476 11 15.5341 11.993 14.25 13.5214C14.0852 13.5072 13.9185 13.5 13.75 13.5C10.5744 13.5 8 16.0744 8 19.25Z"
-                            fill="#311772"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Cloud</p>
-                          <p className="header-list-info">
-                            Meltano Cloud Pricing
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li className="hide-d">
-                      <Link to="/pricing/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="37"
-                          viewBox="0 0 36 37"
-                          fill="none"
-                        >
-                          <rect
-                            y="0.5"
-                            width="36"
-                            height="36"
-                            rx="18"
-                            fill="#E9E5FB"
-                          />
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M13.7385 14.3703C13.2713 14.7501 13 15.3202 13 15.9223V26.5C13 27.6046 13.8954 28.5 15 28.5H22C23.1046 28.5 24 27.6046 24 26.5V15.9223C24 15.3202 23.7287 14.7501 23.2615 14.3703L19.7615 11.5254C19.0266 10.9281 17.9734 10.9281 17.2385 11.5254L13.7385 14.3703ZM18.5 16.5C19.3284 16.5 20 15.8284 20 15C20 14.1716 19.3284 13.5 18.5 13.5C17.6716 13.5 17 14.1716 17 15C17 15.8284 17.6716 16.5 18.5 16.5Z"
-                            fill="#311772"
-                          />
-                          <path
-                            d="M18.5 14.5C20.433 14.5 22 12.933 22 11C22 9.067 20.433 7.5 18.5 7.5C16.567 7.5 15 9.067 15 11"
-                            stroke="#311772"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Pricing</p>
-                          <p className="header-list-info">
-                            Pay only for the workloads you run, no matter how
-                            much the data volume grows
-                          </p>
-                        </div>
-                      </Link>
                     </li>
                   </ul>
                 </div>

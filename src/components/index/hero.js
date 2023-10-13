@@ -175,29 +175,7 @@ const IndexHero = ({ data }) => {
             >
               {data.heroButton1.title}
             </a>
-            <a
-              href={data.heroButton2.url}
-              className="btn colorful-btn"
-              target={data.heroButton2.target}
-              rel="noopener noreferrer"
-            >
-              <span />
-              {data.heroButton2.title}
-            </a>
           </div>
-          <a
-            href={data.heroLink.url}
-            className="main-link btn-with-arrow"
-            target={data.heroLink.target}
-            rel="noopener noreferrer"
-          >
-            {data.heroLink.title}
-            <span className="right-arrow">
-              <span />
-              <span />
-              <span />
-            </span>
-          </a>
         </div>
 
         <div className="background-elements">
