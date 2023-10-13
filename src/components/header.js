@@ -393,9 +393,9 @@ const Header = () => {
                           />
                         </svg>
                         <div className="header-list-item">
-                          <p className="header-list-title">Meltano/SDK</p>
+                          <p className="header-list-title">Meltano/EDK</p>
                           <p className="header-list-info">
-                            Build a connector for any data source under the sun
+                            Integrate any existing data tool for any data source
                           </p>
                         </div>
                       </a>
