@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-import React, { useState } from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
+import React, { useState, useRef, useEffect } from 'react'
 import Modal from 'react-modal'
 import Path1 from '../../assets/img/path-1.svg'
-import Path2 from '../../assets/img/path-2.svg'
 import Path3 from '../../assets/img/path-3.svg'
 import Path4 from '../../assets/img/path-4.svg'
 import Path5 from '../../assets/img/path-5.svg'
-import Path6 from '../../assets/img/path-6.svg'
 import Path7 from '../../assets/img/path-7.svg'
 import Path8 from '../../assets/img/path-8.svg'
 import MeltyProgramming from '../../assets/img/melty-programming.webp'
@@ -17,12 +14,12 @@ import CloseButton from '../../assets/img/close-btn.svg'
 
 const Engineers = ({ data }) => {
   const paths = [
-    { svg: Path1, class: '' },
-    { svg: Path2, class: '' },
+    { svg: Path1, class: 'curved-path-1' },
+    { svg: Path1, class: 'curved-path-2' },
     { svg: Path3, class: 'curved-path-3' },
     { svg: Path4, class: 'curved-path-4' },
-    { svg: Path5, class: '' },
-    { svg: Path6, class: '' },
+    { svg: Path5, class: 'curved-path-5' },
+    { svg: Path5, class: 'curved-path-6' },
     { svg: Path7, class: 'curved-path-7' },
     { svg: Path8, class: 'curved-path-8' },
   ]
@@ -35,21 +32,39 @@ const Engineers = ({ data }) => {
   const firstTable = tableItems.slice(0, 4)
   const secondTable = tableItems.slice(4)
 
-  // const [modalIsOpen, setIsOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const givesRef = useRef(null)
 
-  // function openModal(e) {
-  //   e.preventDefault()
-  //   setIsOpen(true)
-  // }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleScroll = () => {
+        const scrollTop = window.scrollY
 
-  // function closeModal() {
-  //   setIsOpen(false)
-  //   document.body.classList.remove('modal-open')
-  // }
+        const elementOffsetTop = givesRef.current.offsetTop
+        const elementHeight = givesRef.current.offsetHeight
+
+        if (scrollTop > elementOffsetTop + elementHeight) {
+          setIsVisible(true)
+        }
+      }
+
+      handleScroll()
+      window.addEventListener('scroll', handleScroll)
+
+      // Clean up the event listener on component unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [])
 
   return (
     <>
-      <div className="meltano-gives-engineers section">
+      <div
+        className={`meltano-gives-engineers section ${
+          isVisible ? 'in-view' : ''
+        }`}
+      >
         <div className="container">
           <div className="heading">
             <h2 dangerouslySetInnerHTML={{ __html: data.engineersTitle }} />
@@ -60,15 +75,21 @@ const Engineers = ({ data }) => {
           </div>
 
           <div className="meltano-gives-table-head">
-            <h5 className="brackets">{data.engineersHead.engineersHeadLeft}</h5>
-            <h5 className="brackets-blue">
+            <h5 className="brackets brackets-left">
+              {data.engineersHead.engineersHeadLeft}
+            </h5>
+            <h5 className="brackets-blue brackets-right">
               {data.engineersHead.engineersHeadRight}
             </h5>
           </div>
           <div className="meltano-gives-table">
             <div className="meltano-gives-table-list table-list-left">
               {firstTable.map(item => (
-                <div className="meltano-gives-table-item">
+                <div
+                  className={`meltano-gives-table-item table-item-order-${item.line.class.substring(
+                    12
+                  )}`}
+                >
                   <div className="meltano-gives-table-item-bubble">
                     <img
                       className="meltano-gives-table-item-image"
@@ -84,10 +105,13 @@ const Engineers = ({ data }) => {
                     src={item.line.svg}
                     alt=""
                   />
+                  <div
+                    className={`meltano-gives-table-item-path-dot ${item.line.class}`}
+                  />
                 </div>
               ))}
             </div>
-            <div className="meltano-gives-terminal">
+            <div className="meltano-gives-terminal" ref={givesRef}>
               <img
                 className="meltano-gives-terminal-image"
                 src={MeltanoTerminal}
@@ -95,17 +119,25 @@ const Engineers = ({ data }) => {
               />
               <img
                 className="meltano-gives-melty-image"
+                ref={givesRef}
                 src={MeltyProgramming}
                 alt=""
               />
             </div>
             <div className="meltano-gives-table-list table-list-right">
               {secondTable.map(item => (
-                <div className="meltano-gives-table-item">
+                <div
+                  className={`meltano-gives-table-item table-item-order-${item.line.class.substring(
+                    12
+                  )}`}
+                >
                   <img
                     className={`meltano-gives-table-item-path ${item.line.class}`}
                     src={item.line.svg}
                     alt=""
+                  />
+                  <div
+                    className={`meltano-gives-table-item-path-dot ${item.line.class}`}
                   />
                   <div className="meltano-gives-table-item-bubble">
                     <img

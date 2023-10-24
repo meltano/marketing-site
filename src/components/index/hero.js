@@ -14,7 +14,7 @@ const IndexHero = ({ data }) => {
   const titleRef = useRef(null)
 
   const parallaxEffectHandler = () => {
-    const scrollTop = window.pageYOffset
+    const scrollTop = window.scrollY
     const movement = scrollTop * 0.7
 
     const isDesktop =
