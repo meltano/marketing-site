@@ -1206,6 +1206,12 @@ status = 301
 force = false
 
 [[redirects]]
+from = "/chat-with-founders"
+to = "https://help.meltano.com/meetings/douwe/chat"
+status = 301
+force = false
+
+[[redirects]]
 from = "/douwe"
 to = "https://help.meltano.com/meetings/douwe/chat"
 status = 301
