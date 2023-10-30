@@ -1006,6 +1006,11 @@
       "permanent": true
     },
     {
+      "source": "/chat-with-founders",
+      "destination": "https://help.meltano.com/meetings/douwe/chat",
+      "permanent": true
+    },
+    {
       "source": "/douwe",
       "destination": "https://help.meltano.com/meetings/douwe/chat",
       "permanent": true
