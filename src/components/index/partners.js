@@ -1,5 +1,5 @@
 import React from 'react'
-import NetlifyIcon from '../../assets/img/netify.svg'
+import NetlifyIcon from '../../assets/img/netlify.svg'
 import HackeroneIcon from '../../assets/img/hackerone.svg'
 import GitlabIcon from '../../assets/img/gitlub.svg'
 import ZapierIcon from '../../assets/img/zapier.svg'
