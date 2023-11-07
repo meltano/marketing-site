@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Highlight, Prism, themes } from 'prism-react-renderer'
 import { Link, graphql } from 'gatsby'
 import parse, { domToReact } from 'html-react-parser'
+import { useLocation } from '@reach/router'
 
 // We're using Gutenberg so we need the block styles
 // these are copied into this project due to a conflict in the postCSS
@@ -15,7 +16,6 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { CtaIntrigued } from '../components/cta'
-
 ;(typeof global !== 'undefined' ? global : window).Prism = Prism
 require('prismjs/components/prism-python')
 require('prismjs/components/prism-bash')
@@ -128,6 +128,11 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
   const toggleTOC = () => {
     setIsOpen(prevState => !prevState)
   }
+
+  const location = useLocation()
+  const shouldHideCta = location.pathname.includes(
+    '/were-bringing-powerful-data-engineering-capabilities-to-software-teams-with-arch/'
+  )
 
   return (
     <Layout>
@@ -313,7 +318,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
                 )}
               </div>
 
-              <CtaIntrigued />
+              {!shouldHideCta && <CtaIntrigued />}
             </div>
             {divContent && (
               <div className="toc-wrapper">
