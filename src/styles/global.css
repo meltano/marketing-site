@@ -1272,7 +1272,7 @@ body .pre-header ~ main .background-elements {
   }
 
   body .pre-header ~ main .hero-scene {
-    height: Calc(100svh - 80px);
+    height: Calc(100svh - 40px);
   }
 }
 
@@ -9236,6 +9236,12 @@ table td {
   justify-content: center;
 }
 
+.pre-header-content a {
+  color: rgb(255 255 255 / 75%);
+  text-decoration: underline;
+  display: inline-block;
+}
+
 .show-mobile {
   display: inline;
   text-align: center;
@@ -9261,7 +9267,7 @@ table td {
 @media all and (min-width: 768px) {
   .pre-header,
   .pre-header-content {
-    height: 80px;
+    height: 40px;
   }
 
   .pre-header-content {
@@ -9270,7 +9276,7 @@ table td {
   }
 
   .pre-header ~ header {
-    margin-top: 60px !important;
+    margin-top: 20px !important;
   }
 
   .show-desktop {
