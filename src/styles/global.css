@@ -1272,7 +1272,7 @@ body .pre-header ~ main .background-elements {
   }
 
   body .pre-header ~ main .hero-scene {
-    height: Calc(100svh - 40px);
+    height: Calc(100svh - 80px);
   }
 }
 
@@ -5581,7 +5581,7 @@ input.tgg-title {
   max-width: 224px;
   align-items: center;
   flex: 1;
-  border: 1px solid #F963BC;
+  border: 1px solid #f963bc;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 58px;
   padding-left: 25px;
@@ -5590,8 +5590,7 @@ input.tgg-title {
 }
 
 .table-list-right .meltano-gives-table-item-bubble {
-  border: 1px solid #3A64FA;
-
+  border: 1px solid #3a64fa;
 }
 
 .meltano-gives-terminal-image {
@@ -5608,7 +5607,7 @@ input.tgg-title {
   width: 80%;
 }
 
-@media all and (min-width:679px) and (max-width:1199px) {
+@media all and (min-width: 679px) and (max-width: 1199px) {
   .meltano-gives-table-list {
     max-width: 25%;
     top: -13px;
@@ -5682,15 +5681,14 @@ input.tgg-title {
   }
 }
 
-@media all and (min-width:1200px) {
-
+@media all and (min-width: 1200px) {
   .meltano-gives-table-item-path-dot.curved-path-1,
   .meltano-gives-table-item-path-dot.curved-path-2 {
     position: absolute;
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #FF5894;
+    background-color: #ff5894;
     animation: dotmoveStraight 3s linear infinite;
     left: 221px;
     margin-top: 2px;
@@ -5702,7 +5700,7 @@ input.tgg-title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #FF5894;
+    background-color: #ff5894;
     animation: dotmoveUpStraight 5s linear infinite;
     left: 221.5px;
     top: 48.5px;
@@ -5714,7 +5712,7 @@ input.tgg-title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #FF5894;
+    background-color: #ff5894;
     animation: dotmoveUp 5s linear infinite;
     left: 221px;
     margin-top: 2px;
@@ -5727,7 +5725,7 @@ input.tgg-title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     animation: dotmoveStraightReverse 3s linear infinite;
     right: 221px;
     margin-top: 2px;
@@ -5739,7 +5737,7 @@ input.tgg-title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     animation: dotmoveUpStraightReverse 5s linear infinite;
     right: 221.5px;
     top: 48.5px;
@@ -5751,7 +5749,7 @@ input.tgg-title {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     animation: dotmoveUpReverse 5s linear infinite;
     right: 221px;
     margin-top: 2px;
@@ -5783,35 +5781,35 @@ input.tgg-title {
   }
 
   .table-list-left .table-item-order-1 {
-    transition-delay: .1s;
+    transition-delay: 0.1s;
   }
 
   .table-list-left .table-item-order-2 {
-    transition-delay: .3s;
+    transition-delay: 0.3s;
   }
 
   .table-list-left .table-item-order-3 {
-    transition-delay: .5s;
+    transition-delay: 0.5s;
   }
 
   .table-list-left .table-item-order-4 {
-    transition-delay: .7s;
+    transition-delay: 0.7s;
   }
 
   .table-list-right .table-item-order-5 {
-    transition-delay: .2s;
+    transition-delay: 0.2s;
   }
 
   .table-list-right .table-item-order-6 {
-    transition-delay: .4s;
+    transition-delay: 0.4s;
   }
 
   .table-list-right .table-item-order-7 {
-    transition-delay: .6s;
+    transition-delay: 0.6s;
   }
 
   .table-list-right .table-item-order-8 {
-    transition-delay: .8s;
+    transition-delay: 0.8s;
   }
 
   .meltano-gives-engineers.in-view .table-list-left .meltano-gives-table-item {
@@ -5911,7 +5909,6 @@ input.tgg-title {
     transform-origin: right;
   }
 
-
   .meltano-gives-table-item-path.curved-path-6 {
     position: relative;
     right: 0px;
@@ -5940,110 +5937,110 @@ input.tgg-title {
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-1 {
-    transition: all .5s linear 2.1s;
+    transition: all 0.5s linear 2.1s;
     left: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-1 {
-    transition: opacity .1s linear 2.7s;
+    transition: opacity 0.1s linear 2.7s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-2 {
-    transition: all .5s linear 2.7s;
+    transition: all 0.5s linear 2.7s;
     left: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-2 {
-    transition: opacity .1s linear 3.3s;
+    transition: opacity 0.1s linear 3.3s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-3 {
-    transition: all .5s linear 3.3s;
+    transition: all 0.5s linear 3.3s;
     left: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-3 {
-    transition: opacity .1s linear 3.9s;
+    transition: opacity 0.1s linear 3.9s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-4 {
-    transition: all .5s linear 3.9s;
+    transition: all 0.5s linear 3.9s;
     left: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-4 {
-    transition: opacity .1s linear 4.5s;
+    transition: opacity 0.1s linear 4.5s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-5 {
-    transition: all .5s linear 2.4s;
+    transition: all 0.5s linear 2.4s;
     right: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-5 {
-    transition: opacity .1s linear 3s;
+    transition: opacity 0.1s linear 3s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-6 {
-    transition: all .5s linear 3s;
+    transition: all 0.5s linear 3s;
     right: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-6 {
-    transition: opacity .1s linear 3.6s;
+    transition: opacity 0.1s linear 3.6s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-7 {
-    transition: all .5s linear 3.6s;
+    transition: all 0.5s linear 3.6s;
     right: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-7 {
-    transition: opacity .1s linear 4.2s;
+    transition: opacity 0.1s linear 4.2s;
     opacity: 1;
   }
 
   .in-view .meltano-gives-table-item-path.curved-path-8 {
-    transition: all .5s linear 4.2s;
+    transition: all 0.5s linear 4.2s;
     right: -3px;
     opacity: 1;
     transform: scale(1);
   }
 
   .in-view .meltano-gives-table-item-path-dot.curved-path-8 {
-    transition: opacity .1s linear 4.8s;
+    transition: opacity 0.1s linear 4.8s;
     opacity: 1;
   }
 }
 
 @keyframes dotmoveStraight {
   0% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     left: 221px;
   }
 
   10% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     left: 221px;
     width: 5px;
     height: 5px;
@@ -6065,26 +6062,26 @@ input.tgg-title {
   }
 
   90% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     left: 323px;
     width: 5px;
     height: 5px;
   }
 
   100% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     left: 323px;
   }
 }
 
 @keyframes dotmoveStraightReverse {
   0% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     right: 221px;
   }
 
   10% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     right: 221px;
     width: 5px;
     height: 5px;
@@ -6106,26 +6103,26 @@ input.tgg-title {
   }
 
   90% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     right: 323px;
     width: 5px;
     height: 5px;
   }
 
   100% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     right: 323px;
   }
 }
 
 @keyframes dotmoveUpStraight {
   0% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(0px) translateY(0px);
   }
 
   10% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(0px) translateY(0px);
     width: 5px;
     height: 5px;
@@ -6176,26 +6173,26 @@ input.tgg-title {
   }
 
   90% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(101.5px) translateY(-49.5px);
     width: 5px;
     height: 5px;
   }
 
   100% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(101.5px) translateY(-49.5px);
   }
 }
 
 @keyframes dotmoveUpStraightReverse {
   0% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(0px) translateY(0px);
   }
 
   10% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(0px) translateY(0px);
     width: 5px;
     height: 5px;
@@ -6246,33 +6243,32 @@ input.tgg-title {
   }
 
   90% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(-101.5px) translateY(-49.5px);
     width: 5px;
     height: 5px;
   }
 
   100% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(-101.5px) translateY(-49.5px);
   }
 }
 
 @keyframes dotmoveUp {
   0% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(0px) translateY(0px);
   }
 
   10% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(0px) translateY(0px);
     width: 5px;
     height: 5px;
   }
 
   30% {
-
     width: 7px;
     height: 7px;
   }
@@ -6301,26 +6297,26 @@ input.tgg-title {
   }
 
   90% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(167px) translateY(-54px);
     width: 5px;
     height: 5px;
   }
 
   100% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(167px) translateY(-54px);
   }
 }
 
 @keyframes dotmoveUpReverse {
   0% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(0px) translateY(0px);
   }
 
   10% {
-    background-color: #3A64FA;
+    background-color: #3a64fa;
     transform: translateX(0px) translateY(0px);
     width: 5px;
     height: 5px;
@@ -6361,12 +6357,12 @@ input.tgg-title {
   }
 
   100% {
-    background-color: #FF5894;
+    background-color: #ff5894;
     transform: translateX(-125px) translateY(-54px);
   }
 }
 
-@media all and (max-width:1024px) {
+@media all and (max-width: 1024px) {
   .meltano-gives-table-item {
     font-size: 13px;
   }
@@ -6393,7 +6389,7 @@ input.tgg-title {
   }
 }
 
-@media all and (max-width:768px) {
+@media all and (max-width: 768px) {
   .meltano-gives-terminal {
     width: 100%;
     margin: 0 auto;
@@ -9198,7 +9194,7 @@ table td {
   height: 72px;
   width: 100%;
   background-color: #32106f;
-  z-index: 1020;
+  z-index: 1;
   display: flex;
   align-items: center;
   font-size: 85%;
@@ -9265,11 +9261,16 @@ table td {
 @media all and (min-width: 768px) {
   .pre-header,
   .pre-header-content {
-    height: 40px;
+    height: 80px;
+  }
+
+  .pre-header-content {
+    max-width: calc(100% - 40px);
+    margin: auto;
   }
 
   .pre-header ~ header {
-    margin-top: 20px !important;
+    margin-top: 60px !important;
   }
 
   .show-desktop {
