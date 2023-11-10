@@ -86,6 +86,7 @@ const Community = ({ data }) => {
             <a
               href={community.communityIconLink.url}
               className="community-item"
+              target="_blank"
               ref={el => gradientRef.current.push(el)}
               key={community.communityIconLink.url}
             >
