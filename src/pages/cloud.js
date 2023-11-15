@@ -10,7 +10,7 @@ import Focus from '../components/cloud/focus'
 import Partners from '../components/partners'
 
 const Cloud = ({ data }) => {
-  const {
+  /*   const {
     metadata,
     featuredImage,
     cloudHero,
@@ -18,10 +18,12 @@ const Cloud = ({ data }) => {
     cloudFocus,
     themePicker,
   } = data.cloud.nodes[0]
-  const metaImage = featuredImage?.node.localFile.publicURL
+  const metaImage = featuredImage?.node.localFile.publicURL */
 
   return null
 }
+
+export default Cloud
 
 /*   return (
     <Layout>
