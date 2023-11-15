@@ -67,9 +67,7 @@ const Header = () => {
     if (typeof window !== 'undefined') {
       const mainNav = document.querySelector('.main-nav')
       const extrasItems = document.querySelector('.menu-extras')
-      const menuItems = mainNav.querySelectorAll(
-        'ul > li.has-sub:not(.has-one-sub)'
-      )
+      const menuItems = mainNav.querySelectorAll('ul > li.has-sub-items')
       const hopItems = mainNav.querySelectorAll('.hop')
       const cupItemOne = extrasItems.querySelector(
         'a[data-tooltip="View code and issue tracker"]'
@@ -289,7 +287,7 @@ const Header = () => {
           </Link>
           <nav className="main-nav" ref={mainNavRef}>
             <ul>
-              <li className="has-sub mobile-menu-item--active">
+              <li className="has-sub has-sub-items mobile-menu-item--active">
                 <Link to="/product/">Product</Link>
                 <div className="hop">
                   <ul className="sub">
@@ -388,8 +386,8 @@ const Header = () => {
                         >
                           <rect width="36" height="36" rx="18" fill="#E9E5FB" />
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             d="M24.9704 22.2426C25.7515 23.0237 25.7515 24.29 24.9704 25.0711C24.1894 25.8521 22.9231 25.8521 22.142 25.0711L21.4349 24.364L19.3136 26.4853C18.5325 27.2663 17.2662 27.2663 16.4852 26.4853L14.3638 24.364L15.0709 23.6569C15.852 22.8758 15.852 21.6095 15.0709 20.8284C14.2899 20.0474 13.0236 20.0474 12.2425 20.8284L11.5354 21.5355L9.41409 19.4142C8.63304 18.6332 8.63304 17.3668 9.41409 16.5858L11.5354 14.4645L12.2425 15.1716C13.0236 15.9526 14.2899 15.9526 15.0709 15.1716C15.852 14.3905 15.852 13.1242 15.0709 12.3431L14.3638 11.636L16.4852 9.51472C17.2662 8.73367 18.5325 8.73367 19.3136 9.51472L21.4349 11.636L22.142 10.9289C22.9231 10.1479 24.1894 10.1479 24.9704 10.9289C25.7515 11.71 25.7515 12.9763 24.9704 13.7574L24.2633 14.4645L26.3846 16.5858C27.1657 17.3668 27.1657 18.6332 26.3846 19.4142L24.2633 21.5355L24.9704 22.2426Z"
                             fill="#311772"
                           />
@@ -442,7 +440,7 @@ const Header = () => {
                   </ul>
                 </div>
               </li>
-              <li className="has-sub">
+              <li className="has-sub has-sub-items">
                 <a
                   href="https://docs.meltano.com/?__hstc=165702497.60212c7701354a96f8b2b56a231656f9.1679956833281.1679959328336.1679989419063.3&__hssc=165702497.18.1679989419063&__hsfp=179051687"
                   target="_blank"
