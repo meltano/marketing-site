@@ -20,7 +20,10 @@ const Cloud = ({ data }) => {
   } = data.cloud.nodes[0]
   const metaImage = featuredImage?.node.localFile.publicURL
 
-  return (
+  return null
+}
+
+/*   return (
     <Layout>
       <Helmet
         bodyAttributes={{
@@ -99,3 +102,4 @@ export const pageQuery = graphql`
     }
   }
 `
+ */
