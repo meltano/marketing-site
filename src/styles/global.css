@@ -1976,6 +1976,12 @@ nav li:hover > a > .header-list-icon {
   }
 }
 
+@media all and (max-width: 768px) {
+  .cloud-right {
+    right: -24%;
+  }
+}
+
 .community-bg {
   width: 100%;
   position: absolute;
