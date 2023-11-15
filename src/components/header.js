@@ -67,7 +67,9 @@ const Header = () => {
     if (typeof window !== 'undefined') {
       const mainNav = document.querySelector('.main-nav')
       const extrasItems = document.querySelector('.menu-extras')
-      const menuItems = mainNav.querySelectorAll('ul > li.has-sub')
+      const menuItems = mainNav.querySelectorAll(
+        'ul > li.has-sub:not(.has-one-sub)'
+      )
       const hopItems = mainNav.querySelectorAll('.hop')
       const cupItemOne = extrasItems.querySelector(
         'a[data-tooltip="View code and issue tracker"]'
@@ -614,9 +616,15 @@ const Header = () => {
                   </ul>
                 </div>
               </li>
-              <li className="has-sub">
-                <Link to="/about/">Company</Link>
-                <div className="hop">
+              <li className="has-sub has-one-sub">
+                <a
+                  href="http://arch.dev/about"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Company
+                </a>
+                <div className="hop hide-d">
                   <ul className="sub">
                     <li className="menu-item--active">
                       <div className="submenu-info">
@@ -624,11 +632,14 @@ const Header = () => {
                           <span className="brackets">About</span> Meltano
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          We bring together data, software development
-                          workflows, and dragons!
+                          Meltano is an open source project by Arch
                         </p>
                       </div>
-                      <Link to="/about/">
+                      <a
+                        href="http://arch.dev/about"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="36"
@@ -657,139 +668,10 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">About</p>
                           <p className="header-list-info">
-                            We bring together data, software development
-                            workflows, and dragons!
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <div className="submenu-info">
-                        <p className="submenu-title title-inline">
-                          Join the <span className="brackets">team</span>
-                        </p>
-                        <p className="submenu-subtitle title-inline">
-                          Join Melty & team on our mission to unlock all data
-                          everywhere!
-                        </p>
-                      </div>
-                      <a
-                        href="https://meltano.com/careers"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="37"
-                          viewBox="0 0 36 37"
-                          fill="none"
-                        >
-                          <rect
-                            y="0.257812"
-                            width="36"
-                            height="36"
-                            rx="18"
-                            fill="#E9E5FB"
-                          />
-                          <path
-                            d="M18 18.2578C20.2091 18.2578 22 16.467 22 14.2578C22 12.0487 20.2091 10.2578 18 10.2578C15.7909 10.2578 14 12.0487 14 14.2578C14 16.467 15.7909 18.2578 18 18.2578Z"
-                            fill="#311772"
-                          />
-                          <path
-                            d="M19.9105 19.2578L18 23.5456L16.0895 19.2578C13.3829 19.7873 11.1767 21.4276 10.1608 23.5779C9.55427 24.863 10.7446 26.2578 12.3746 26.2578H23.6254C25.2554 26.2578 26.4457 24.863 25.8392 23.5779C24.8233 21.4276 22.6171 19.7873 19.9105 19.2578Z"
-                            fill="#311772"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Careers</p>
-                          <p className="header-list-info">
-                            Join Melty & team on our mission to unlock all data
-                            everywhere!
+                            Meltano is an open source project by Arch
                           </p>
                         </div>
                       </a>
-                    </li>
-                    <li>
-                      <div className="submenu-info">
-                        <p className="submenu-title title-inline">
-                          Let’s start a{' '}
-                          <span className="brackets">conversation</span>
-                        </p>
-                        <p className="submenu-subtitle title-inline">
-                          The Meltano team is here to help. Ask us anything, or
-                          give us your feedback!
-                        </p>
-                      </div>
-                      <Link to="/contact/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="37"
-                          viewBox="0 0 36 37"
-                          fill="none"
-                        >
-                          <rect
-                            y="0.257812"
-                            width="36"
-                            height="36"
-                            rx="18"
-                            fill="#E9E5FB"
-                          />
-                          <path
-                            d="M18.6068 19.5762L26.6515 13.3207C26.8729 13.1485 26.9959 12.9158 26.9959 12.6702V12.1442C26.9959 11.6564 26.4875 11.2578 25.856 11.2578H10.1399C9.50843 11.2578 9 11.6532 9 12.1442V13.0273C9 13.2697 9.12301 13.5056 9.34442 13.6778L16.9339 19.5762C17.3973 19.9365 18.1435 19.9365 18.6068 19.5762Z"
-                            fill="#311772"
-                          />
-                          <path
-                            d="M18.6396 22.2544C18.3977 22.4425 18.0861 22.535 17.7704 22.535C17.4547 22.535 17.139 22.4425 16.9011 22.2544L11.0173 17.6823C10.2711 17.102 9 17.5133 9 18.3327V24.3715C9 24.8593 9.50843 25.2578 10.1399 25.2578H25.8601C26.4875 25.2578 27 24.8625 27 24.3715V17.9756C27 17.1562 25.7248 16.7449 24.9827 17.3252L18.6437 22.2544H18.6396Z"
-                            fill="#311772"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Contact</p>
-                          <p className="header-list-info">
-                            The Meltano team is here to help. Ask us anything,
-                            or give us your feedback!
-                          </p>
-                        </div>
-                      </Link>
-                    </li>
-                    <li>
-                      <div className="submenu-info">
-                        <p className="submenu-title title-inline">
-                          Meltano <span className="brackets">Press</span>
-                        </p>
-                        <p className="submenu-subtitle title-inline">
-                          Meltano related news, press releases, and logos
-                        </p>
-                      </div>
-                      <Link to="/press/">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="36"
-                          height="37"
-                          viewBox="0 0 36 37"
-                          fill="none"
-                        >
-                          <rect
-                            y="0.257812"
-                            width="36"
-                            height="36"
-                            rx="18"
-                            fill="#E9E5FB"
-                          />
-                          <path
-                            d="M24.9868 10.2578H11.0132C10.4519 10.2578 10 10.7097 10 11.271V25.2446C10 25.8022 10.4519 26.2578 11.0132 26.2578H24.9868C25.5444 26.2578 26 25.8059 26 25.2446V11.271C26 10.7134 25.5481 10.2578 24.9868 10.2578ZM12.2451 13.8223C12.2451 13.2173 12.7371 12.7252 13.3421 12.7252H15.9189C16.5239 12.7252 17.0159 13.2173 17.0159 13.8223V18.2542C17.0159 18.8592 16.5239 19.3512 15.9189 19.3512H13.3421C12.7371 19.3512 12.2451 18.8592 12.2451 18.2542V13.8223ZM22.6141 23.7904H13.3385C12.7335 23.7904 12.2451 23.302 12.2451 22.697C12.2451 22.092 12.7335 21.6036 13.3385 21.6036H22.6141C23.2191 21.6036 23.7075 22.092 23.7075 22.697C23.7075 23.302 23.2191 23.7904 22.6141 23.7904ZM22.6141 19.3512H19.5854C18.9804 19.3512 18.492 18.8628 18.492 18.2578C18.492 17.6528 18.9804 17.1644 19.5854 17.1644H22.6141C23.2191 17.1644 23.7075 17.6528 23.7075 18.2578C23.7075 18.8628 23.2191 19.3512 22.6141 19.3512ZM22.6141 14.912H19.5854C18.9804 14.912 18.492 14.4236 18.492 13.8186C18.492 13.2136 18.9804 12.7252 19.5854 12.7252H22.6141C23.2191 12.7252 23.7075 13.2136 23.7075 13.8186C23.7075 14.4236 23.2191 14.912 22.6141 14.912Z"
-                            fill="#311772"
-                          />
-                        </svg>
-                        <div className="header-list-item">
-                          <p className="header-list-title">Press</p>
-                          <p className="header-list-info">
-                            Related news, press releases, and logos
-                          </p>
-                        </div>
-                      </Link>
                     </li>
                   </ul>
                 </div>
