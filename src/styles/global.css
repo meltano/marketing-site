@@ -8320,6 +8320,10 @@ footer li:hover > a > * {
   line-height: 170%;
 }
 
+.newsletter-popup-container .hs-input {
+  color: rgba(49, 23, 114, 0.75) !important;
+}
+
 .form-subsribe {
   position: relative;
 }
