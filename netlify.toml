@@ -1240,3 +1240,9 @@ from = "/resource-meltano-at-a-glance/"
 to = "https://meltano.com/lp/resource-meltano-at-a-glance/"
 status = 301
 force = false
+
+[[redirects]]
+from = "/cloud"
+to = "https://arch.dev/"
+status = 301
+force = false
