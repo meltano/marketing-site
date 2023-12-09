@@ -27,9 +27,7 @@ const SlackPage = ({ data }) => {
             </p>
 
             <p>
-              In the mean time, you can access the
-              <a href="https://www.linen.dev/s/meltano"><strong>Slack Archive</strong></a>
-              &mdash; there's a great chance your question has been asked before!
+              In the mean time, you can access the <a href="https://www.linen.dev/s/meltano"><strong>Slack Archive</strong></a> that has every discussion up until about a month ago &mdash; there's a great chance your question has been asked before!
             </p>
           </div>
         </div>
