@@ -1170,12 +1170,6 @@ status = 301
 force = false
 
 [[redirects]]
-from = "/slack"
-to = "https://join.slack.com/t/meltano/shared_invite/zt-280vyt7b8-bOIHI6bF2Wvrpkin8SZkgg"
-status = 301
-force = false
-
-[[redirects]]
 from = "/cloud/sla"
 to = "https://docs.meltano.com/cloud/sla"
 status = 301
