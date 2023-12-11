@@ -9302,6 +9302,12 @@ table td {
   }
 }
 
+@media all and (max-width: 768px) {
+  .pre-header-content {
+    font-size: 12px;
+  }
+}
+
 /* body[data-prehead='true'] div:has(not:(.pre-header)) header:not(.shrink-menu) {
   margin-top: 40px;
 } */
