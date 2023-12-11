@@ -5533,6 +5533,10 @@ input.tgg-title {
   justify-content: space-between;
 }
 
+.meltano-gives-table-item-image {
+  width: 32px;
+}
+
 @media all and (max-width: 768px) {
   .meltano-gives-table-head {
     display: none;

@@ -95,6 +95,8 @@ const Engineers = ({ data }) => {
                       className="meltano-gives-table-item-image"
                       src={item.engineersTableImage.localFile.publicURL}
                       alt={item.engineersTableText}
+                      width="100%"
+                      height="auto"
                     />
                     <span className="meltano-gives-table-item-label">
                       {item.engineersTableText}
@@ -104,6 +106,8 @@ const Engineers = ({ data }) => {
                     className={`meltano-gives-table-item-path ${item.line.class}`}
                     src={item.line.svg}
                     alt=""
+                    width="100%"
+                    height="auto"
                   />
                   <div
                     className={`meltano-gives-table-item-path-dot ${item.line.class}`}
@@ -116,12 +120,16 @@ const Engineers = ({ data }) => {
                 className="meltano-gives-terminal-image"
                 src={MeltanoTerminal}
                 alt=""
+                width="100%"
+                height="auto"
               />
               <img
                 className="meltano-gives-melty-image"
                 ref={givesRef}
                 src={MeltyProgramming}
                 alt=""
+                width="100%"
+                height="auto"
               />
             </div>
             <div className="meltano-gives-table-list table-list-right">
@@ -135,6 +143,8 @@ const Engineers = ({ data }) => {
                     className={`meltano-gives-table-item-path ${item.line.class}`}
                     src={item.line.svg}
                     alt=""
+                    width="100%"
+                    height="auto"
                   />
                   <div
                     className={`meltano-gives-table-item-path-dot ${item.line.class}`}
@@ -144,6 +154,8 @@ const Engineers = ({ data }) => {
                       className="meltano-gives-table-item-image"
                       src={item.engineersTableImage.localFile.publicURL}
                       alt={item.engineersTableText}
+                      width="100%"
+                      height="auto"
                     />
                     <span className="meltano-gives-table-item-label">
                       {item.engineersTableText}

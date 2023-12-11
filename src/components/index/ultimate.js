@@ -25,6 +25,8 @@ const Ultimate = ({ data }) => (
                     alt={ultimate.ultimateTitle}
                     loading="lazy"
                     className="grid-2-by-2-icon"
+                    width="100%"
+                    height="auto"
                   />
                   <h4>{ultimate.ultimateTitle}</h4>
                 </div>

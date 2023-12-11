@@ -95,6 +95,8 @@ const Community = ({ data }) => {
                   <img
                     src={community.communityIcon.localFile.publicURL}
                     alt={community.communityIconLink.title}
+                    width="100%"
+                    height="auto"
                   />
                 </span>
                 <GatsbyImage
