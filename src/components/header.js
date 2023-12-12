@@ -73,7 +73,7 @@ const Header = () => {
         'a[data-tooltip="View code and issue tracker"]'
       )
       const cupItemTwo = extrasItems.querySelector(
-        'a[data-tooltip="Join our 3,500+ community"]'
+        'a[data-tooltip="Join our 4,000+ community"]'
       )
       const arrow = mainNav.querySelector('.subcontainer-arrow')
       const arrowWidth = arrow.getBoundingClientRect().width
@@ -524,7 +524,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Community</p>
                           <p className="header-list-info">
-                            Join 3,500+ data integrators on Slack and GitHub
+                            Join 4,000+ data integrators on Slack and GitHub
                           </p>
                         </div>
                       </Link>
@@ -716,7 +716,7 @@ const Header = () => {
             <a
               href="https://meltano.com/slack"
               target="_blank"
-              data-tooltip="Join our 3,500+ community"
+              data-tooltip="Join our 4,000+ community"
               rel="noreferrer"
               className="cup"
             >
