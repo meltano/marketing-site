@@ -22,7 +22,13 @@ const SlackPage = ({ data }) => {
             <h1><strong>Meltano Slack</strong></h1>
 
             <p>
-              Unfortunately the Meltano Slack community has been inaccessible since last Friday (2023-12-08) as the result of a botched migration by Slack.
+              TL;DR: Until we resolve an issue with Slack, you can access the Meltano Slack community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com/</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a> that lets you browse the entire history anonymously or sign in with GitHub or email to start a new conversation.
+            </p>
+
+            <hr />
+
+            <p>
+              Unfortunately the Meltano Slack community at meltano.slack.com has been inaccessible since last Friday (2023-12-08) as the result of a botched migration by Slack.
             </p>
 
             <p>
@@ -42,13 +48,8 @@ const SlackPage = ({ data }) => {
             </ol>
 
             <p>
-              While we work with Slack to get this resolved in a reasonable and timely fashion, you can:
+              While we work with Slack to get this resolved in a reasonable and timely fashion, you can access the community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com/</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a> that lets you browse the entire history anonymously or sign in with GitHub or email to start a new conversation.
             </p>
-
-            <ul>
-              <li>chat with other Meltano users including our team in the <strong><a href="https://getdbt.slack.com/archives/C01Q4ACBNE5" target="_blank"><code>#tools-meltano</code></a></strong> channel in the <a href="https://www.getdbt.com/community/join-the-community" target="_blank">dbt Slack</a>, or</li>
-              <li>access the <a href="https://www.linen.dev/s/meltano"><strong>Meltano Slack Archive</strong></a> &mdash; there's a great chance your question has been asked before!</li>
-            </ul>
 
             <p>
               We're really sorry for the inconvenience and hope that Slack can resolve this promptly.
