@@ -22,7 +22,8 @@ const SlackPage = ({ data }) => {
             <h1><strong>Meltano Slack</strong></h1>
 
             <p>
-              TL;DR: Until we resolve an issue with Slack, you can access the Meltano Slack community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com/</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a> that lets you browse the entire history anonymously or sign in with GitHub or email to start a new conversation.
+              TL;DR: Until we resolve an issue with Slack, you can access the Meltano Slack community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a>.
+              Here, you can browse the entire history anonymously or sign in with GitHub or email and start a new conversation.
             </p>
 
             <hr />
@@ -48,7 +49,8 @@ const SlackPage = ({ data }) => {
             </ol>
 
             <p>
-              While we work with Slack to get this resolved in a reasonable and timely fashion, you can access the community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com/</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a> that lets you browse the entire history anonymously or sign in with GitHub or email to start a new conversation.
+              While we work with Slack to get this resolved in a reasonable and timely fashion, you can access the community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a>.
+              Here, you can browse the entire history anonymously or sign in with GitHub or email and start a new conversation.
             </p>
 
             <p>
