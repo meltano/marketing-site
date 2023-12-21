@@ -22,21 +22,20 @@ const SlackPage = ({ data }) => {
             <h1><strong>Meltano Slack</strong></h1>
 
             <p>
-              TL;DR: Until we resolve an issue with Slack, you can access the Meltano Slack community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a>.
-              Here, you can browse the entire history anonymously or sign in with GitHub or email and start a new conversation.
+              TL;DR: Looking for our community Slack? You can find it on <a href="https://discuss.meltano.com" target="_blank">discuss.meltano.com</a> while we resolve an issue with Slack. We'll be back on meltano.slack.com in the new year!
             </p>
 
             <hr />
 
             <p>
-              Unfortunately the Meltano Slack community at meltano.slack.com has been inaccessible since last Friday (2023-12-08) as the result of a botched migration by Slack.
+              Unfortunately the Meltano Slack community at meltano.slack.com is currently inaccessible as the result of an botched migration by Slack.
             </p>
 
             <p>
               As part of upgrading our company's internal Slack workspace to Slack Enterprise Grid,
               Slack inadvertently included the separate community Slack workspace as well, contrary to the project scope we'd agreed to, and without warning of the consequences.
               Post-migration, when the "I can't join Slack!" messages started flowing in, we were told that the Meltano Slack community's <strong>4,200+ members were now completely locked out</strong>,
-              and we were given three unviable options:
+              and we were given three bad options:
             </p>
 
             <ol>
@@ -45,17 +44,17 @@ const SlackPage = ({ data }) => {
                 (Note that we'd negotiated our enterprise contract for 20 seats, a full two orders of magnitude lower &mdash; it's difficult to understand how Slack could not have noticed this.)
               </li>
               <li>Engage Slack in a "<strong>paid engagement that is pretty costly</strong> and traditionally has around a <strong>4 week minimum</strong> backlog" to revert the "upgrade".</li>
-              <li><strong>Start from scratch</strong> with a new Slack community and try to get 4200+ people to rejoin.</li>
+              <li><strong>Start from scratch</strong> with a new Slack community and get 4200+ people to rejoin.</li>
             </ol>
 
             <p>
-              While we work with Slack to get this resolved in a reasonable and timely fashion, you can access the community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a>.
-              Here, you can browse the entire history anonymously or sign in with GitHub or email and start a new conversation.
+              After trying to work with Slack to find a workable solution, we've decided to go with least-bad option 3 and start a new Slack workspace.
+              Slack is helping us transfer over all channels, messages and members, so <strong>expect an invite to reclaim your account after the holidays</strong>!
             </p>
 
             <p>
-              We're really sorry for the inconvenience and hope that Slack can resolve this promptly.
-              If you know anyone at Slack who could help, we'd appreciate it if you could let them know you're locked out of one of your favorite data communities and send them a link to this page.
+              In the mean time, you can access the community via <strong><a href="https://discuss.meltano.com/" target="_blank">discuss.meltano.com</a></strong>, an alternative Slack frontend powered by <a href="https://linen.dev/" target="_blank">Linen.dev</a>.
+              Here, you can browse the entire history anonymously or sign in with GitHub or email and start a new conversation.
             </p>
           </div>
         </div>
