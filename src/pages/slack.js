@@ -28,7 +28,7 @@ const SlackPage = ({ data }) => {
             <hr />
 
             <p>
-              Unfortunately the Meltano Slack community at meltano.slack.com is currently inaccessible as the result of an botched migration by Slack.
+              Unfortunately the Meltano Slack community at meltano.slack.com is currently inaccessible as the result of an improper migration by Slack.
             </p>
 
             <p>
@@ -44,7 +44,7 @@ const SlackPage = ({ data }) => {
                 (Note that we'd negotiated our enterprise contract for 20 seats, a full two orders of magnitude lower &mdash; it's difficult to understand how Slack could not have noticed this.)
               </li>
               <li>Engage Slack in a "<strong>paid engagement that is pretty costly</strong> and traditionally has around a <strong>4 week minimum</strong> backlog" to revert the "upgrade".</li>
-              <li><strong>Start from scratch</strong> with a new Slack community and get 4200+ people to rejoin.</li>
+              <li><strong>Start from scratch</strong> with a new Slack workspace and reinvite everyone.</li>
             </ol>
 
             <p>
