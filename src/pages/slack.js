@@ -33,15 +33,14 @@ const SlackPage = ({ data }) => {
 
             <p>
               As part of upgrading our company's internal Slack workspace to Slack Enterprise Grid,
-              Slack inadvertently included the separate community Slack workspace as well, contrary to the project scope we'd agreed to, and without warning of the consequences.
+              Slack inadvertently included the separate community Slack workspace as well.
               Post-migration, when the "I can't join Slack!" messages started flowing in, we were told that the Meltano Slack community's <strong>4,200+ members were now completely locked out</strong>,
-              and we were given three bad options:
+              and we were given three suboptimal options:
             </p>
 
             <ol>
               <li>
                 Adopt all 4,200+ of them into your enterprise account and <strong>start paying tens of thousands of dollars per month</strong> to keep them.
-                (Note that we'd negotiated our enterprise contract for 20 seats, a full two orders of magnitude lower &mdash; it's difficult to understand how Slack could not have noticed this.)
               </li>
               <li>Engage Slack in a "<strong>paid engagement that is pretty costly</strong> and traditionally has around a <strong>4 week minimum</strong> backlog" to revert the "upgrade".</li>
               <li><strong>Start from scratch</strong> with a new Slack workspace and reinvite everyone.</li>
