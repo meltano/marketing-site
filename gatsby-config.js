@@ -2,8 +2,6 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-process.env.GATSBY_SITE_URL = 'https://www.meltano.com/';
-
 module.exports = {
   flags: {
     DEV_SSR: true,
@@ -107,62 +105,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-        {
-          site {
-            siteMetadata {
-              title
-              description
-              siteUrl
-            }
-          }
-        }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allWpPost } }) => {
-              return allWpPost.edges.map(edge => {
-                const customSlug = '/blog/' + edge.node.slug
-                let description = edge.node.excerpt
-                description = description.replace(/<img[^>]*>/g, '')
-
-                return Object.assign({}, edge.node.frontmatter, {
-                  title: edge.node.title,
-                  description: description,
-                  date: edge.node.date,
-                  url: site.siteMetadata.siteUrl + customSlug,
-                  guid: site.siteMetadata.siteUrl + customSlug,
-                  custom_elements: [{ 'content:encoded': edge.node.content }],
-                })
-              })
-            },
-
-            query: `
-            {
-              allWpPost(sort: { order: DESC, fields: [date] }) {
-                edges {
-                  node {
-                    title
-                    excerpt
-                    slug
-                  }
-                }
-              }
-            }
-            `,
-            output: '/rss.xml',
-            title: 'Meltano RSS Feed',
-            setup: options => ({
-              ...options,
-              site_url: process.env.GATSBY_SITE_URL,
-            }),
-          },
-        ],
-      },
-    },
   ],
 }
 
