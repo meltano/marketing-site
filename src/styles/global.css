@@ -1537,10 +1537,6 @@ body:not(.menu-opened) .shrink-menu #get-started-btn:hover {
   opacity: 1;
 }
 
-.light-header .menu-logo path {
-  fill: #080216;
-}
-
 .light-header header:not(.shrink-menu) .menu-extras a:hover svg path {
   opacity: 1;
   fill: #080216;
