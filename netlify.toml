@@ -1243,6 +1243,6 @@ force = false
 
 [[redirects]]
 from = "/slack"
-to = "https://join.slack.com/t/meltano/shared_invite/zt-28jjzmm0m-K9z2_FJI38U7mNzZ_M~wZA"
+to = "https://join.slack.com/t/meltano/shared_invite/zt-2dsu0vnlt-dgh1ANPmjydfAtXIQvMwAA"
 status = 302
 force = false
