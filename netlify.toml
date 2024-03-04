@@ -1246,3 +1246,9 @@ from = "/slack"
 to = "https://join.slack.com/t/meltano/shared_invite/zt-2dsu0vnlt-dgh1ANPmjydfAtXIQvMwAA"
 status = 302
 force = false
+
+[[redirects]]
+from = "/about"
+to = "https://arch.dev/about"
+status = 301
+force = true
