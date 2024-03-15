@@ -73,7 +73,7 @@ const Header = () => {
         'a[data-tooltip="View code and issue tracker"]'
       )
       const cupItemTwo = extrasItems.querySelector(
-        'a[data-tooltip="Join our 4,000+ community"]'
+        'a[data-tooltip="Join our 4,500+ community"]'
       )
       const arrow = mainNav.querySelector('.subcontainer-arrow')
       const arrowWidth = arrow.getBoundingClientRect().width
@@ -273,9 +273,9 @@ const Header = () => {
           </g>
           </Link>
         </svg>
-          
-          
-          
+
+
+
           <nav className="main-nav" ref={mainNavRef}>
             <ul>
               <li className="has-sub has-sub-items mobile-menu-item--active">

@@ -70,7 +70,7 @@ const footerData = [
         title: 'Community',
         url: '/community/',
         icon: CommunityIcon,
-        desc: 'Join 4,000+ data integrators on Slack and GitHub',
+        desc: 'Join 4,500+ data integrators on Slack and GitHub',
       },
       {
         id: 2,
