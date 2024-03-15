@@ -154,13 +154,14 @@ const Header = () => {
         arrow.classList.toggle('show-arrow', isHovering)
       }
 
-      cupItemOne.addEventListener('mouseenter', cupItemOneMouseEnterHandler)
-      cupItemOne.addEventListener('mouseleave', cupItemOneMouseLeaveHandler)
-      cupItemTwo.addEventListener('mouseenter', cupItemTwoMouseEnterHandler)
-      cupItemTwo.addEventListener('mouseleave', cupItemTwoMouseLeaveHandler)
+      cupItemOne && cupItemOne.addEventListener('mouseenter', cupItemOneMouseEnterHandler)
+      cupItemOne && cupItemOne.addEventListener('mouseleave', cupItemOneMouseLeaveHandler)
+      cupItemTwo && cupItemTwo.addEventListener('mouseenter', cupItemTwoMouseEnterHandler)
+      cupItemTwo && cupItemTwo.addEventListener('mouseleave', cupItemTwoMouseLeaveHandler)
 
-      mainNav.addEventListener('mouseover', handleArrowVisibility)
-      mainNav.addEventListener('mouseout', handleArrowVisibility)
+
+      mainNav && mainNav.addEventListener('mouseover', handleArrowVisibility)
+      mainNav && mainNav.addEventListener('mouseout', handleArrowVisibility)
 
       const subListItems = document.querySelectorAll('.sub > li')
 
