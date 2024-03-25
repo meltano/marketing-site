@@ -1252,3 +1252,45 @@ from = "/about"
 to = "https://arch.dev/about"
 status = 301
 force = true
+
+[[redirects]]
+from = "/about/"
+to = "https://arch.dev/about"
+status = 301
+force = true
+
+[[redirects]]
+from = "/terms-of-service"
+to = "https://arch.dev/terms-of-service"
+status = 301
+force = true
+
+[[redirects]]
+from = "/terms-of-service/"
+to = "https://arch.dev/terms-of-service"
+status = 301
+force = true
+
+[[redirects]]
+from = "/privacy-policy"
+to = "https://arch.dev/privacy-policy"
+status = 301
+force = true
+
+[[redirects]]
+from = "/privacy-policy/"
+to = "https://arch.dev/privacy-policy"
+status = 301
+force = true
+
+[[redirects]]
+from = "/data-processing-addendum"
+to = "https://arch.dev/data-processing-addendum"
+status = 301
+force = true
+
+[[redirects]]
+from = "/data-processing-addendum/"
+to = "https://arch.dev/data-processing-addendum"
+status = 301
+force = true
