@@ -1,281 +1,340 @@
 /* eslint-disable no-inner-declarations */
-import React, { useEffect, useState, useRef } from 'react'
-import { Link } from 'gatsby'
+import React, { useEffect, useState, useRef } from "react";
+import { Link } from "gatsby";
 
 const Header = () => {
-  const [shrinkMenu, setShrinkMenu] = useState(false)
+  const [shrinkMenu, setShrinkMenu] = useState(false);
 
-  const [menuOpened, setMenuOpened] = useState(false)
+  const [menuOpened, setMenuOpened] = useState(false);
 
-  const hamburgerMenuRef = useRef(null)
-  const mainNavRef = useRef(null)
+  const hamburgerMenuRef = useRef(null);
+  const mainNavRef = useRef(null);
 
   const handleMenuClick = () => {
-    if (typeof window !== 'undefined') {
-      const hamburgerMenu = hamburgerMenuRef.current
-      const mainNav = mainNavRef.current
-      const { body } = document
+    if (typeof window !== "undefined") {
+      const hamburgerMenu = hamburgerMenuRef.current;
+      const mainNav = mainNavRef.current;
+      const { body } = document;
 
       if (menuOpened) {
         hamburgerMenu.innerHTML =
-          "<svg width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M20 3H0' stroke='white' stroke-width='2'/><path d='M20 10H0' stroke='white' stroke-width='2'/><path d='M20 17H0' stroke='white' stroke-width='2'/></svg>"
-        hamburgerMenu.classList.remove('menu-opened')
-        body.classList.remove('modal-opened')
-        body.classList.remove('menu-opened')
-        mainNav.classList.remove('main-nav-active')
+          "<svg width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M20 3H0' stroke='white' stroke-width='2'/><path d='M20 10H0' stroke='white' stroke-width='2'/><path d='M20 17H0' stroke='white' stroke-width='2'/></svg>";
+        hamburgerMenu.classList.remove("menu-opened");
+        body.classList.remove("modal-opened");
+        body.classList.remove("menu-opened");
+        mainNav.classList.remove("main-nav-active");
       } else {
         hamburgerMenu.innerHTML =
-          "<svg width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M18 18L2 2' stroke='white' stroke-width='2'/><path d='M18 2L2 18' stroke='white' stroke-width='2'/></svg>"
-        hamburgerMenu.classList.add('menu-opened')
-        body.classList.add('modal-opened')
-        body.classList.add('menu-opened')
-        mainNav.classList.add('main-nav-active')
+          "<svg width='20' height='20' viewBox='0 0 20 20' fill='none'><path d='M18 18L2 2' stroke='white' stroke-width='2'/><path d='M18 2L2 18' stroke='white' stroke-width='2'/></svg>";
+        hamburgerMenu.classList.add("menu-opened");
+        body.classList.add("modal-opened");
+        body.classList.add("menu-opened");
+        mainNav.classList.add("main-nav-active");
       }
     }
 
-    setMenuOpened(!menuOpened)
-  }
+    setMenuOpened(!menuOpened);
+  };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const html = document.documentElement
-      const { body } = document
+    if (typeof window !== "undefined") {
+      const html = document.documentElement;
+      const { body } = document;
       if (
         html.getBoundingClientRect().top <= -2 ||
         body.getBoundingClientRect().top <= -2
       ) {
-        setShrinkMenu(true)
+        setShrinkMenu(true);
       } else {
-        setShrinkMenu(false)
+        setShrinkMenu(false);
       }
       const handleScroll = () => {
         if (
           html.getBoundingClientRect().top <= -2 ||
           body.getBoundingClientRect().top <= -2
         ) {
-          setShrinkMenu(true)
+          setShrinkMenu(true);
         } else {
-          setShrinkMenu(false)
+          setShrinkMenu(false);
         }
-      }
-      window.addEventListener('scroll', handleScroll)
-      return () => window.removeEventListener('scroll', handleScroll)
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const mainNav = document.querySelector('.main-nav')
-      const extrasItems = document.querySelector('.menu-extras')
-      const menuItems = mainNav.querySelectorAll('ul > li.has-sub-items')
-      const hopItems = mainNav.querySelectorAll('.hop')
+    if (typeof window !== "undefined") {
+      const mainNav = document.querySelector(".main-nav");
+      const extrasItems = document.querySelector(".menu-extras");
+      const menuItems = mainNav.querySelectorAll("ul > li.has-sub-items");
+      const hopItems = mainNav.querySelectorAll(".hop");
       const cupItemOne = extrasItems.querySelector(
         'a[data-tooltip="View code and issue tracker"]'
-      )
+      );
       const cupItemTwo = extrasItems.querySelector(
         'a[data-tooltip="Join our 4,500+ community"]'
-      )
-      const arrow = mainNav.querySelector('.subcontainer-arrow')
-      const arrowWidth = arrow.getBoundingClientRect().width
+      );
+      const arrow = mainNav.querySelector(".subcontainer-arrow");
+      const arrowWidth = arrow.getBoundingClientRect().width;
 
       function handleArrowVisibility() {
-        const isHovering = [...menuItems, ...hopItems].some(el =>
-          el.matches(':hover')
-        )
+        const isHovering = [...menuItems, ...hopItems].some((el) =>
+          el.matches(":hover")
+        );
 
-        arrow.classList.toggle('show-arrow', isHovering)
+        arrow.classList.toggle("show-arrow", isHovering);
 
         if (!isHovering) {
-          hopItems.forEach(hop => {
-            hop.classList.remove('menu-container--active')
-          })
+          hopItems.forEach((hop) => {
+            hop.classList.remove("menu-container--active");
+          });
         }
       }
 
-      menuItems.forEach(item => {
-        item.addEventListener('mouseenter', e => {
-          const menuItem = e.currentTarget
-          const menuItemRect = menuItem.getBoundingClientRect()
-          const menuItemCenter = menuItemRect.left + menuItemRect.width / 2
-          const mainNavRect = mainNav.getBoundingClientRect()
+      menuItems.forEach((item) => {
+        item.addEventListener("mouseenter", (e) => {
+          const menuItem = e.currentTarget;
+          const menuItemRect = menuItem.getBoundingClientRect();
+          const menuItemCenter = menuItemRect.left + menuItemRect.width / 2;
+          const mainNavRect = mainNav.getBoundingClientRect();
 
           arrow.style.transform = `translateX(${
             menuItemCenter - mainNavRect.left - arrowWidth / 2
-          }px) translateY(-50%)`
+          }px) translateY(-50%)`;
 
-          hopItems.forEach(hop => {
-            hop.classList.remove('menu-container--active')
-          })
+          hopItems.forEach((hop) => {
+            hop.classList.remove("menu-container--active");
+          });
 
-          const hoveredHop = menuItem.querySelector('.hop')
+          const hoveredHop = menuItem.querySelector(".hop");
           if (hoveredHop) {
-            hoveredHop.classList.add('menu-container--active')
+            hoveredHop.classList.add("menu-container--active");
           }
-        })
-      })
+        });
+      });
 
       function cupItemOneMouseEnterHandler(e) {
-        const menuItem = e.currentTarget
-        const menuItemRect = menuItem.getBoundingClientRect()
-        const menuItemCenter = menuItemRect.left + menuItemRect.width / 2
-        const mainNavRect = mainNav.getBoundingClientRect()
+        const menuItem = e.currentTarget;
+        const menuItemRect = menuItem.getBoundingClientRect();
+        const menuItemCenter = menuItemRect.left + menuItemRect.width / 2;
+        const mainNavRect = mainNav.getBoundingClientRect();
 
         arrow.style.transform = `translateX(${
           menuItemCenter - mainNavRect.left - arrowWidth / 2
-        }px) translateY(-50%)`
+        }px) translateY(-50%)`;
 
-        const isHovering = cupItemOne.matches(':hover')
+        const isHovering = cupItemOne.matches(":hover");
 
-        arrow.classList.toggle('show-arrow', isHovering)
+        arrow.classList.toggle("show-arrow", isHovering);
       }
 
       function cupItemOneMouseLeaveHandler() {
-        const isHovering = cupItemOne.matches(':hover')
-        arrow.classList.toggle('show-arrow', isHovering)
+        const isHovering = cupItemOne.matches(":hover");
+        arrow.classList.toggle("show-arrow", isHovering);
       }
 
       function cupItemTwoMouseEnterHandler(e) {
-        const menuItem = e.currentTarget
-        const menuItemRect = menuItem.getBoundingClientRect()
-        const menuItemCenter = menuItemRect.left + menuItemRect.width / 2
-        const mainNavRect = mainNav.getBoundingClientRect()
+        const menuItem = e.currentTarget;
+        const menuItemRect = menuItem.getBoundingClientRect();
+        const menuItemCenter = menuItemRect.left + menuItemRect.width / 2;
+        const mainNavRect = mainNav.getBoundingClientRect();
 
         arrow.style.transform = `translateX(${
           menuItemCenter - mainNavRect.left - arrowWidth / 2
-        }px) translateY(-50%)`
+        }px) translateY(-50%)`;
 
-        const isHovering = cupItemTwo.matches(':hover')
+        const isHovering = cupItemTwo.matches(":hover");
 
-        arrow.classList.toggle('show-arrow', isHovering)
+        arrow.classList.toggle("show-arrow", isHovering);
       }
 
       function cupItemTwoMouseLeaveHandler() {
-        const isHovering = cupItemOne.matches(':hover')
-        arrow.classList.toggle('show-arrow', isHovering)
+        const isHovering = cupItemOne.matches(":hover");
+        arrow.classList.toggle("show-arrow", isHovering);
       }
 
-      cupItemOne && cupItemOne.addEventListener('mouseenter', cupItemOneMouseEnterHandler)
-      cupItemOne && cupItemOne.addEventListener('mouseleave', cupItemOneMouseLeaveHandler)
-      cupItemTwo && cupItemTwo.addEventListener('mouseenter', cupItemTwoMouseEnterHandler)
-      cupItemTwo && cupItemTwo.addEventListener('mouseleave', cupItemTwoMouseLeaveHandler)
+      cupItemOne &&
+        cupItemOne.addEventListener("mouseenter", cupItemOneMouseEnterHandler);
+      cupItemOne &&
+        cupItemOne.addEventListener("mouseleave", cupItemOneMouseLeaveHandler);
+      cupItemTwo &&
+        cupItemTwo.addEventListener("mouseenter", cupItemTwoMouseEnterHandler);
+      cupItemTwo &&
+        cupItemTwo.addEventListener("mouseleave", cupItemTwoMouseLeaveHandler);
 
+      mainNav && mainNav.addEventListener("mouseover", handleArrowVisibility);
+      mainNav && mainNav.addEventListener("mouseout", handleArrowVisibility);
 
-      mainNav && mainNav.addEventListener('mouseover', handleArrowVisibility)
-      mainNav && mainNav.addEventListener('mouseout', handleArrowVisibility)
+      const subListItems = document.querySelectorAll(".sub > li");
 
-      const subListItems = document.querySelectorAll('.sub > li')
-
-      subListItems.forEach(listItem => {
-        listItem.addEventListener('mouseover', () => {
-          const parentContainer = listItem.closest('.menu-container--active')
+      subListItems.forEach((listItem) => {
+        listItem.addEventListener("mouseover", () => {
+          const parentContainer = listItem.closest(".menu-container--active");
           if (parentContainer) {
             const activeItems =
-              parentContainer.querySelectorAll('.menu-item--active')
-            activeItems.forEach(item =>
-              item.classList.remove('menu-item--active')
-            )
+              parentContainer.querySelectorAll(".menu-item--active");
+            activeItems.forEach((item) =>
+              item.classList.remove("menu-item--active")
+            );
           } else {
-            subListItems.forEach(li => li.classList.remove('menu-item--active'))
+            subListItems.forEach((li) =>
+              li.classList.remove("menu-item--active")
+            );
           }
-          listItem.classList.add('menu-item--active')
-        })
-      })
+          listItem.classList.add("menu-item--active");
+        });
+      });
 
       function activateMobileMenu() {
         if (window.innerWidth < 768) {
-          const mobileMenuItems = document.querySelectorAll('nav > ul > li')
+          const mobileMenuItems = document.querySelectorAll("nav > ul > li");
 
-          mobileMenuItems.forEach(item => {
-            item.addEventListener('click', () => {
-              mobileMenuItems.forEach(i => {
-                i.classList.remove('mobile-menu-item--active')
-              })
-              item.classList.add('mobile-menu-item--active')
-            })
-          })
+          mobileMenuItems.forEach((item) => {
+            item.addEventListener("click", () => {
+              mobileMenuItems.forEach((i) => {
+                i.classList.remove("mobile-menu-item--active");
+              });
+              item.classList.add("mobile-menu-item--active");
+            });
+          });
         } else if (window.innerWidth > 1024) {
           if (
             document
-              .querySelector('#hamburger-menu')
-              .classList.contains('menu-opened')
+              .querySelector("#hamburger-menu")
+              .classList.contains("menu-opened")
           ) {
-            document.querySelector('#hamburger-menu').click()
+            document.querySelector("#hamburger-menu").click();
           }
         }
       }
 
-      activateMobileMenu()
+      activateMobileMenu();
 
-      window.addEventListener('resize', () => {
-        activateMobileMenu()
-      })
+      window.addEventListener("resize", () => {
+        activateMobileMenu();
+      });
 
       return () => {
-        mainNav.removeEventListener('mouseover', handleArrowVisibility)
-        mainNav.removeEventListener('mouseout', handleArrowVisibility)
+        mainNav.removeEventListener("mouseover", handleArrowVisibility);
+        mainNav.removeEventListener("mouseout", handleArrowVisibility);
         cupItemOne.removeEventListener(
-          'mouseenter',
+          "mouseenter",
           cupItemOneMouseEnterHandler
-        )
+        );
         cupItemOne.removeEventListener(
-          'mouseleave',
+          "mouseleave",
           cupItemOneMouseLeaveHandler
-        )
+        );
         cupItemTwo.removeEventListener(
-          'mouseenter',
+          "mouseenter",
           cupItemTwoMouseEnterHandler
-        )
+        );
         cupItemTwo.removeEventListener(
-          'mouseleave',
+          "mouseleave",
           cupItemTwoMouseLeaveHandler
-        )
-      }
+        );
+      };
     }
-  }, [])
+  }, []);
 
   return (
-    <header className={shrinkMenu ? 'shrink-menu' : ''}>
+    <header className={shrinkMenu ? "shrink-menu" : ""}>
       <div className="container">
         <div className="menu ml-margins">
-        <svg className="menu-logo" xmlns="http://www.w3.org/2000/svg" width="179" height="46" viewBox="0 0 179 46" fill="none">
-        <a
-            href="https://arch.dev/"
-            target="_blank"
-            rel="noreferrer"
+          <svg
+            className="menu-logo"
+            xmlns="http://www.w3.org/2000/svg"
+            width="179"
+            height="46"
+            viewBox="0 0 179 46"
+            fill="none"
           >
-          <g>
-          <rect x="50" y="27" width="129" height="26" fill="transparent"/>
-              <path d="M52.5612 28.9741V34.5339H52.6166C53.1704 33.297 54.6473 32.3002 56.4595 32.3002C58.8594 32.3002 61.2255 34.017 61.2255 37.2877C61.2255 40.5583 58.8625 42.2752 56.4595 42.2752C54.6503 42.2752 53.1735 41.2783 52.6166 40.0414H52.5612V42.0906H51.4351V28.9772H52.5612V28.9741ZM56.3087 41.2383C58.1918 41.2383 60.0963 39.946 60.0963 37.2877C60.0963 34.6293 58.1948 33.334 56.3087 33.334C54.4227 33.334 52.5212 34.6447 52.5212 37.2877C52.5212 39.9307 54.4227 41.2383 56.3087 41.2383Z" fill="#311772"/>
-          <path d="M65.7669 42.0138L61.7024 32.4849H62.8839L66.3176 40.6477L69.7544 32.4849H70.9359L66.8345 42.0876L65.2838 45.5952H64.1762L65.7638 42.0138H65.7669Z" fill="#311772"/>
-          <path d="M74.2404 37.3216C74.2404 34.0079 76.6311 32.3218 78.908 32.3218C80.6648 32.3218 81.8894 33.2848 82.2432 34.0417H82.2986V32.5064H84.3355V42.1337H82.2986V40.5984H82.2432C81.8925 41.3584 80.671 42.3184 78.908 42.3184C76.6311 42.3184 74.2404 40.6323 74.2404 37.3185V37.3216ZM79.2987 40.4661C80.8556 40.4661 82.354 39.3923 82.354 37.3216C82.354 35.2509 80.8525 34.1771 79.2987 34.1771C77.7449 34.1771 76.2588 35.2509 76.2588 37.3216C76.2588 39.3923 77.7603 40.4661 79.2987 40.4661Z" fill="#311772"/>
-          <path d="M86.077 32.5064H88.0954V34.9832C88.4246 33.5402 89.3815 32.3218 91.1229 32.3218C91.3414 32.3218 91.5291 32.3402 91.7291 32.3925V34.334C91.526 34.2971 91.3629 34.2786 91.1414 34.2786C89.323 34.2786 88.0954 35.6078 88.0954 37.6231V42.1153H86.077V32.5002V32.5064Z" fill="#311772"/>
-          <path d="M92.5414 37.3216C92.5414 34.0817 95.0367 32.3218 97.535 32.3218C99.2058 32.3218 100.75 33.1187 101.63 34.6909L100.126 35.6355C99.575 34.7463 98.6365 34.1925 97.5535 34.1925C96.0089 34.1925 94.5413 35.3401 94.5413 37.3216C94.5413 39.3031 96.0089 40.4507 97.5535 40.4507C98.6365 40.4507 99.5719 39.8938 100.126 39.0046L101.63 39.9492C100.75 41.5061 99.2058 42.3184 97.535 42.3184C95.0398 42.3184 92.5414 40.5584 92.5414 37.3185V37.3216Z" fill="#311772"/>
-
-              <path d="M103.11 29.6724H105.141V33.9461C105.655 33.0599 106.673 32.3184 108.224 32.3184C110.199 32.3184 111.898 33.5584 111.898 36.4598V42.1181H109.852V36.7952C109.852 35.1122 108.932 34.1707 107.507 34.1707C106.082 34.1707 105.147 35.1122 105.147 36.7952V42.1181H103.116V29.6724H103.11Z" fill="#311772"/>
-          </g>
-          </a>
-          <Link to="/">
-          <g>
-          <rect x="50" y="0" width="129" height="26" fill="transparent"/>
-          <path d="M102.184 25.1268C101.652 24.5204 101.268 23.8263 101.034 23.0425C100.796 22.2586 100.682 21.2007 100.682 19.8755V0H105.08V19.4061C105.08 20.9154 105.246 22.0766 105.58 22.8987C105.915 23.7006 106.346 24.3856 106.879 24.9539V25.1313H102.184L102.189 25.1268H102.184Z" fill="#080216"/>
-          <path d="M112.092 25.1262C111.638 24.5961 111.276 23.9627 111 23.2215C110.744 22.478 110.616 21.3617 110.616 19.8748V10.9894H108.195V7.52143H110.674V2.64746H114.958V7.52143H117.878V10.9894H114.985V19.3762C114.985 20.9395 115.164 22.1344 115.517 22.9542C115.87 23.7561 116.296 24.4231 116.786 24.951V25.1284H112.092V25.1239V25.1262Z" fill="#080216"/>
-          <path d="M51.441 7.50146H55.6187V9.64421H55.8523C56.6272 8.30331 58.2466 7.06348 60.6724 7.06348C63.0981 7.06348 64.9175 8.10341 65.9327 9.74304H66.2022C67.4173 7.90126 69.1693 7.06348 71.4625 7.06348C75.3729 7.06348 77.9312 9.7116 77.9312 13.4266V25.1197H73.5514V14.936C73.5514 12.5237 72.4373 11.1468 70.3507 11.1468C68.2641 11.1468 66.912 12.6562 66.912 15.0348V25.1174H62.5276V14.6642C62.5276 12.5214 61.2474 11.1446 59.2259 11.1446C57.2044 11.1446 55.8231 12.7528 55.8231 14.9966V25.1174H51.4433V7.49922H51.4388L51.441 7.50146Z" fill="#080216"/>
-          <path d="M80.4581 16.4139C80.4581 10.8526 84.2 7.06348 89.3907 7.06348C95.0867 7.06348 98.1863 11.2524 98.1863 16.2117V17.5841H84.7054C84.8379 20.2637 86.6954 22.074 89.5254 22.074C91.6794 22.074 93.3348 21.0655 93.9412 19.6258H98.0179C97.1419 23.2127 93.9727 25.5554 89.3884 25.5554C84.1663 25.5554 80.4558 21.6674 80.4558 16.4071L80.4603 16.4116L80.4581 16.4139ZM94.0086 14.5047C93.8065 12.1261 91.9535 10.5516 89.3907 10.5516C86.8279 10.5516 85.0445 12.2923 84.7728 14.5047H94.0086Z" fill="#080216"/>
-          <path d="M119.919 16.4139C119.919 10.884 123.291 7.06348 128.14 7.06348C131.208 7.06348 132.926 8.87382 133.533 9.77674H133.766V7.49697H138.151V25.1197H133.836V22.8758H133.602C133.097 23.6148 131.511 25.5554 128.279 25.5554C123.327 25.5554 119.919 21.8718 119.919 16.4071V16.4116V16.4139ZM133.872 16.3443C133.872 13.0246 131.85 11.0143 129.086 11.0143C126.321 11.0143 124.367 13.2245 124.367 16.3443C124.367 19.464 126.287 21.636 129.117 21.636C131.947 21.636 133.867 19.2933 133.867 16.3443H133.872Z" fill="#080216"/>
-          <path d="M141.796 7.50146H145.974V9.64421H146.207C146.913 8.337 148.669 7.06348 151.196 7.06348C155.171 7.06348 157.597 9.84412 157.597 13.5951V25.1197H153.217V14.7316C153.217 12.5888 151.836 11.1446 149.815 11.1446C147.692 11.1446 146.174 12.8224 146.174 15.0325V25.1152H141.794V7.50146H141.796Z" fill="#080216"/>
-          <path d="M160.128 16.3128C160.128 11.0839 163.972 7.06348 169.564 7.06348C175.157 7.06348 179 11.0839 179 16.3128C179 21.5417 175.09 25.5621 169.564 25.5621C164.039 25.5621 160.128 21.5731 160.128 16.3128ZM174.553 16.3128C174.553 13.2626 172.462 11.0211 169.564 11.0211C166.667 11.0211 164.576 13.2649 164.576 16.3128C164.576 19.3607 166.667 21.6045 169.564 21.6045C172.462 21.6045 174.553 19.3944 174.553 16.3128Z" fill="#080216"/>
-          </g>
-          </Link>
-          <Link to="/">
+            <a href="https://arch.dev/" target="_blank" rel="noreferrer">
               <g>
-              <rect x="0" y="0" width="50" height="46" fill="transparent"/>
-              <path d="M43.7573 10.9428C42.0772 13.2159 38.4633 13.7257 38.059 12.3713C37.6502 11.017 39.7525 10.0803 40.8598 9.95007C34.4653 8.20937 35.6242 12.8408 32.0867 13.2877C34.0408 14.2536 36.0712 15.8572 37.4436 16.0527C39.7997 16.3918 43.0969 15.0936 43.7573 10.9406" fill="#080216"/>
-          <path fillRule="evenodd" clipRule="evenodd" d="M18.5316 5.12563C18.4081 4.40689 17.9094 4.17779 17.1121 3.85885H17.1076C22.3005 1.41737 25.6135 3.17829 26.9476 4.27886C27.6888 4.8898 27.9696 5.47153 28.2346 6.02182C28.448 6.46205 28.6502 6.88206 29.0724 7.27961C29.7058 7.87707 30.8828 8.72833 31.3567 9.07198C31.4038 9.10567 31.4443 9.13488 31.4757 9.15958C31.8284 9.41564 31.9766 10.1254 31.6554 10.6083C31.3365 11.0912 30.4874 12.084 29.47 11.9178C28.4525 11.7516 26.2222 11.3675 24.3849 11.0485C22.5476 10.7296 21.2718 9.70313 21.2718 9.70313C21.0405 10.9924 21.8176 12.1379 23.282 12.5197C23.5651 12.5938 23.9065 12.6702 24.2905 12.7578C26.0133 13.1486 28.5918 13.7326 30.7233 15.0937C33.6185 16.9445 35.9095 19.8644 36.8034 24.3543C37.6973 28.8442 36.581 38.354 28.6344 42.26C20.6878 46.1636 13.159 43.1404 13.159 43.1404C20.2813 42.808 24.4522 39.9151 26.0447 37.9947C27.161 36.647 28.2167 34.2213 27.5743 31.4227C26.8713 28.359 24.2838 26.0321 21.6469 26.4229C19.01 26.8137 17.8937 29.6617 17.3996 31.0453C16.9054 32.4289 16.135 33.4508 15.4612 33.5632C14.7874 33.6755 13.8216 33.7114 12.9726 31.663C12.1236 29.6168 9.85952 25.949 6.85652 27.3258C3.85352 28.7027 3.30997 35.077 3.30997 35.077C-0.366852 29.2013 -1.30346 21.6612 2.15549 14.339C5.61444 7.01683 12.8311 4.31929 12.8311 4.31929C11.5396 5.99262 10.1133 11.0575 11.5643 15.6148C13.0152 20.1698 16.5977 22.4541 18.6529 22.764C20.7058 23.074 23.154 21.8566 23.0215 19.3567C22.9114 17.3038 21.146 15.8461 19.2773 14.9926C17.9431 14.3839 16.6224 12.9802 16.5304 10.8217C16.4383 8.6632 17.3839 7.29759 17.8465 6.75628C18.2082 6.32953 18.6372 5.73881 18.5338 5.12788L18.5316 5.12563ZM23.7402 7.19651C22.2241 7.19651 21.5346 7.96692 21.5346 7.96692C21.5391 7.92874 21.5458 7.88381 21.5503 7.83215C21.6155 7.28636 21.748 6.15209 22.3028 5.59956C22.907 4.99536 23.9357 4.5439 25.3776 5.59956C26.8196 6.65521 27.2733 8.57784 27.2733 8.57784C26.768 8.15109 25.2586 7.19651 23.7425 7.19651H23.7402Z" fill="#080216"/>
-          </g>
-          </Link>
-        </svg>
+                <rect
+                  x="50"
+                  y="27"
+                  width="129"
+                  height="26"
+                  fill="transparent"
+                />
+                <path
+                  d="M52.5612 28.9741V34.5339H52.6166C53.1704 33.297 54.6473 32.3002 56.4595 32.3002C58.8594 32.3002 61.2255 34.017 61.2255 37.2877C61.2255 40.5583 58.8625 42.2752 56.4595 42.2752C54.6503 42.2752 53.1735 41.2783 52.6166 40.0414H52.5612V42.0906H51.4351V28.9772H52.5612V28.9741ZM56.3087 41.2383C58.1918 41.2383 60.0963 39.946 60.0963 37.2877C60.0963 34.6293 58.1948 33.334 56.3087 33.334C54.4227 33.334 52.5212 34.6447 52.5212 37.2877C52.5212 39.9307 54.4227 41.2383 56.3087 41.2383Z"
+                  fill="#311772"
+                />
+                <path
+                  d="M65.7669 42.0138L61.7024 32.4849H62.8839L66.3176 40.6477L69.7544 32.4849H70.9359L66.8345 42.0876L65.2838 45.5952H64.1762L65.7638 42.0138H65.7669Z"
+                  fill="#311772"
+                />
+                <path
+                  d="M74.2404 37.3216C74.2404 34.0079 76.6311 32.3218 78.908 32.3218C80.6648 32.3218 81.8894 33.2848 82.2432 34.0417H82.2986V32.5064H84.3355V42.1337H82.2986V40.5984H82.2432C81.8925 41.3584 80.671 42.3184 78.908 42.3184C76.6311 42.3184 74.2404 40.6323 74.2404 37.3185V37.3216ZM79.2987 40.4661C80.8556 40.4661 82.354 39.3923 82.354 37.3216C82.354 35.2509 80.8525 34.1771 79.2987 34.1771C77.7449 34.1771 76.2588 35.2509 76.2588 37.3216C76.2588 39.3923 77.7603 40.4661 79.2987 40.4661Z"
+                  fill="#311772"
+                />
+                <path
+                  d="M86.077 32.5064H88.0954V34.9832C88.4246 33.5402 89.3815 32.3218 91.1229 32.3218C91.3414 32.3218 91.5291 32.3402 91.7291 32.3925V34.334C91.526 34.2971 91.3629 34.2786 91.1414 34.2786C89.323 34.2786 88.0954 35.6078 88.0954 37.6231V42.1153H86.077V32.5002V32.5064Z"
+                  fill="#311772"
+                />
+                <path
+                  d="M92.5414 37.3216C92.5414 34.0817 95.0367 32.3218 97.535 32.3218C99.2058 32.3218 100.75 33.1187 101.63 34.6909L100.126 35.6355C99.575 34.7463 98.6365 34.1925 97.5535 34.1925C96.0089 34.1925 94.5413 35.3401 94.5413 37.3216C94.5413 39.3031 96.0089 40.4507 97.5535 40.4507C98.6365 40.4507 99.5719 39.8938 100.126 39.0046L101.63 39.9492C100.75 41.5061 99.2058 42.3184 97.535 42.3184C95.0398 42.3184 92.5414 40.5584 92.5414 37.3185V37.3216Z"
+                  fill="#311772"
+                />
 
-
+                <path
+                  d="M103.11 29.6724H105.141V33.9461C105.655 33.0599 106.673 32.3184 108.224 32.3184C110.199 32.3184 111.898 33.5584 111.898 36.4598V42.1181H109.852V36.7952C109.852 35.1122 108.932 34.1707 107.507 34.1707C106.082 34.1707 105.147 35.1122 105.147 36.7952V42.1181H103.116V29.6724H103.11Z"
+                  fill="#311772"
+                />
+              </g>
+            </a>
+            <Link to="/">
+              <g>
+                <rect x="50" y="0" width="129" height="26" fill="transparent" />
+                <path
+                  d="M102.184 25.1268C101.652 24.5204 101.268 23.8263 101.034 23.0425C100.796 22.2586 100.682 21.2007 100.682 19.8755V0H105.08V19.4061C105.08 20.9154 105.246 22.0766 105.58 22.8987C105.915 23.7006 106.346 24.3856 106.879 24.9539V25.1313H102.184L102.189 25.1268H102.184Z"
+                  fill="#080216"
+                />
+                <path
+                  d="M112.092 25.1262C111.638 24.5961 111.276 23.9627 111 23.2215C110.744 22.478 110.616 21.3617 110.616 19.8748V10.9894H108.195V7.52143H110.674V2.64746H114.958V7.52143H117.878V10.9894H114.985V19.3762C114.985 20.9395 115.164 22.1344 115.517 22.9542C115.87 23.7561 116.296 24.4231 116.786 24.951V25.1284H112.092V25.1239V25.1262Z"
+                  fill="#080216"
+                />
+                <path
+                  d="M51.441 7.50146H55.6187V9.64421H55.8523C56.6272 8.30331 58.2466 7.06348 60.6724 7.06348C63.0981 7.06348 64.9175 8.10341 65.9327 9.74304H66.2022C67.4173 7.90126 69.1693 7.06348 71.4625 7.06348C75.3729 7.06348 77.9312 9.7116 77.9312 13.4266V25.1197H73.5514V14.936C73.5514 12.5237 72.4373 11.1468 70.3507 11.1468C68.2641 11.1468 66.912 12.6562 66.912 15.0348V25.1174H62.5276V14.6642C62.5276 12.5214 61.2474 11.1446 59.2259 11.1446C57.2044 11.1446 55.8231 12.7528 55.8231 14.9966V25.1174H51.4433V7.49922H51.4388L51.441 7.50146Z"
+                  fill="#080216"
+                />
+                <path
+                  d="M80.4581 16.4139C80.4581 10.8526 84.2 7.06348 89.3907 7.06348C95.0867 7.06348 98.1863 11.2524 98.1863 16.2117V17.5841H84.7054C84.8379 20.2637 86.6954 22.074 89.5254 22.074C91.6794 22.074 93.3348 21.0655 93.9412 19.6258H98.0179C97.1419 23.2127 93.9727 25.5554 89.3884 25.5554C84.1663 25.5554 80.4558 21.6674 80.4558 16.4071L80.4603 16.4116L80.4581 16.4139ZM94.0086 14.5047C93.8065 12.1261 91.9535 10.5516 89.3907 10.5516C86.8279 10.5516 85.0445 12.2923 84.7728 14.5047H94.0086Z"
+                  fill="#080216"
+                />
+                <path
+                  d="M119.919 16.4139C119.919 10.884 123.291 7.06348 128.14 7.06348C131.208 7.06348 132.926 8.87382 133.533 9.77674H133.766V7.49697H138.151V25.1197H133.836V22.8758H133.602C133.097 23.6148 131.511 25.5554 128.279 25.5554C123.327 25.5554 119.919 21.8718 119.919 16.4071V16.4116V16.4139ZM133.872 16.3443C133.872 13.0246 131.85 11.0143 129.086 11.0143C126.321 11.0143 124.367 13.2245 124.367 16.3443C124.367 19.464 126.287 21.636 129.117 21.636C131.947 21.636 133.867 19.2933 133.867 16.3443H133.872Z"
+                  fill="#080216"
+                />
+                <path
+                  d="M141.796 7.50146H145.974V9.64421H146.207C146.913 8.337 148.669 7.06348 151.196 7.06348C155.171 7.06348 157.597 9.84412 157.597 13.5951V25.1197H153.217V14.7316C153.217 12.5888 151.836 11.1446 149.815 11.1446C147.692 11.1446 146.174 12.8224 146.174 15.0325V25.1152H141.794V7.50146H141.796Z"
+                  fill="#080216"
+                />
+                <path
+                  d="M160.128 16.3128C160.128 11.0839 163.972 7.06348 169.564 7.06348C175.157 7.06348 179 11.0839 179 16.3128C179 21.5417 175.09 25.5621 169.564 25.5621C164.039 25.5621 160.128 21.5731 160.128 16.3128ZM174.553 16.3128C174.553 13.2626 172.462 11.0211 169.564 11.0211C166.667 11.0211 164.576 13.2649 164.576 16.3128C164.576 19.3607 166.667 21.6045 169.564 21.6045C172.462 21.6045 174.553 19.3944 174.553 16.3128Z"
+                  fill="#080216"
+                />
+              </g>
+            </Link>
+            <Link to="/">
+              <g>
+                <rect x="0" y="0" width="50" height="46" fill="transparent" />
+                <path
+                  d="M43.7573 10.9428C42.0772 13.2159 38.4633 13.7257 38.059 12.3713C37.6502 11.017 39.7525 10.0803 40.8598 9.95007C34.4653 8.20937 35.6242 12.8408 32.0867 13.2877C34.0408 14.2536 36.0712 15.8572 37.4436 16.0527C39.7997 16.3918 43.0969 15.0936 43.7573 10.9406"
+                  fill="#080216"
+                />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M18.5316 5.12563C18.4081 4.40689 17.9094 4.17779 17.1121 3.85885H17.1076C22.3005 1.41737 25.6135 3.17829 26.9476 4.27886C27.6888 4.8898 27.9696 5.47153 28.2346 6.02182C28.448 6.46205 28.6502 6.88206 29.0724 7.27961C29.7058 7.87707 30.8828 8.72833 31.3567 9.07198C31.4038 9.10567 31.4443 9.13488 31.4757 9.15958C31.8284 9.41564 31.9766 10.1254 31.6554 10.6083C31.3365 11.0912 30.4874 12.084 29.47 11.9178C28.4525 11.7516 26.2222 11.3675 24.3849 11.0485C22.5476 10.7296 21.2718 9.70313 21.2718 9.70313C21.0405 10.9924 21.8176 12.1379 23.282 12.5197C23.5651 12.5938 23.9065 12.6702 24.2905 12.7578C26.0133 13.1486 28.5918 13.7326 30.7233 15.0937C33.6185 16.9445 35.9095 19.8644 36.8034 24.3543C37.6973 28.8442 36.581 38.354 28.6344 42.26C20.6878 46.1636 13.159 43.1404 13.159 43.1404C20.2813 42.808 24.4522 39.9151 26.0447 37.9947C27.161 36.647 28.2167 34.2213 27.5743 31.4227C26.8713 28.359 24.2838 26.0321 21.6469 26.4229C19.01 26.8137 17.8937 29.6617 17.3996 31.0453C16.9054 32.4289 16.135 33.4508 15.4612 33.5632C14.7874 33.6755 13.8216 33.7114 12.9726 31.663C12.1236 29.6168 9.85952 25.949 6.85652 27.3258C3.85352 28.7027 3.30997 35.077 3.30997 35.077C-0.366852 29.2013 -1.30346 21.6612 2.15549 14.339C5.61444 7.01683 12.8311 4.31929 12.8311 4.31929C11.5396 5.99262 10.1133 11.0575 11.5643 15.6148C13.0152 20.1698 16.5977 22.4541 18.6529 22.764C20.7058 23.074 23.154 21.8566 23.0215 19.3567C22.9114 17.3038 21.146 15.8461 19.2773 14.9926C17.9431 14.3839 16.6224 12.9802 16.5304 10.8217C16.4383 8.6632 17.3839 7.29759 17.8465 6.75628C18.2082 6.32953 18.6372 5.73881 18.5338 5.12788L18.5316 5.12563ZM23.7402 7.19651C22.2241 7.19651 21.5346 7.96692 21.5346 7.96692C21.5391 7.92874 21.5458 7.88381 21.5503 7.83215C21.6155 7.28636 21.748 6.15209 22.3028 5.59956C22.907 4.99536 23.9357 4.5439 25.3776 5.59956C26.8196 6.65521 27.2733 8.57784 27.2733 8.57784C26.768 8.15109 25.2586 7.19651 23.7425 7.19651H23.7402Z"
+                  fill="#080216"
+                />
+              </g>
+            </Link>
+          </svg>
 
           <nav className="main-nav" ref={mainNavRef}>
             <ul>
@@ -286,13 +345,13 @@ const Header = () => {
                     <li className="menu-item--active">
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
-                          The declarative{' '}
-                          <span className="brackets">code-first</span> data
-                          integration engine
+                          The only EL tool{" "}
+                          <span className="brackets">built for</span> data
+                          engineers
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Unlock 600+ APIs and DBs and realize your wildest data
-                          and ML-powered product ideas.
+                          No more point-and-click-and-cross-your-fingers. Build
+                          data pipelines that fit exactly to your needs.
                         </p>
                       </div>
                       <Link to="/product/">
@@ -311,7 +370,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Overview</p>
                           <p className="header-list-info">
-                            The declarative code-first data integration engine
+                            The only EL tool built for data engineers
                           </p>
                         </div>
                       </Link>
@@ -319,7 +378,7 @@ const Header = () => {
                     <li>
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
-                          Build a <span className="brackets">connector</span>{' '}
+                          Build a <span className="brackets">connector</span>{" "}
                           for any data source
                         </p>
                         <p className="submenu-subtitle title-inline">
@@ -489,7 +548,9 @@ const Header = () => {
                         <p className="submenu-title title-inline">
                           <span className="brackets">Join</span> the Melty Crew!
                         </p>
-                        <p className="submenu-subtitle title-inline" />
+                        <p className="submenu-subtitle title-inline">
+                          Join 4,500+ data professionals on Slack and GitHub
+                        </p>
                       </div>
                       <Link to="/community/" target="_blank">
                         <svg
@@ -516,7 +577,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Community</p>
                           <p className="header-list-info">
-                            Join 4,000+ data integrators on Slack and GitHub
+                            Join 4,500+ data professionals on Slack and GitHub
                           </p>
                         </div>
                       </Link>
@@ -525,10 +586,10 @@ const Header = () => {
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
                           <span className="brackets">The latest</span> in
-                          Meltano & data integration
+                          Meltano & data engineering
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Meltano updates, data integration trends, tutorials,
+                          Meltano updates, data engineering trends, tutorials,
                           and other data musings
                         </p>
                       </div>
@@ -555,7 +616,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Blog</p>
                           <p className="header-list-info">
-                            Stay up to date on Meltano & data integration
+                            Stay up to date on Meltano & data engineering
                           </p>
                         </div>
                       </Link>
@@ -608,7 +669,7 @@ const Header = () => {
               </li>
               <li className="has-sub has-one-sub">
                 <a
-                  href="http://arch.dev/about"
+                  href="https://arch.dev/about"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -626,7 +687,7 @@ const Header = () => {
                         </p>
                       </div>
                       <a
-                        href="http://arch.dev/about"
+                        href="https://arch.dev/about"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -708,7 +769,7 @@ const Header = () => {
             <a
               href="https://meltano.com/slack"
               target="_blank"
-              data-tooltip="Join our 4,000+ community"
+              data-tooltip="Join our 4,500+ community"
               rel="noreferrer"
               className="cup"
             >
@@ -739,7 +800,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

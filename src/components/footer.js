@@ -29,7 +29,7 @@ const footerData = [
         title: 'Overview',
         url: '/product/',
         icon: ProductIcon,
-        desc: 'The declarative code-first data integration engine',
+        desc: 'The only EL tool built for data engineers',
       },
       {
         id: 1,
@@ -70,14 +70,14 @@ const footerData = [
         title: 'Community',
         url: '/community/',
         icon: CommunityIcon,
-        desc: 'Join 4,500+ data integrators on Slack and GitHub',
+        desc: 'Join 4,500+ data professionals on Slack and GitHub',
       },
       {
         id: 2,
         title: 'Blog',
         url: '/blog/',
         icon: BlogIcon,
-        desc: 'Stay up to date on Meltano & data integration',
+        desc: 'Stay up to date on Meltano & data engineering',
       },
       {
         id: 3,
@@ -95,7 +95,7 @@ const footerData = [
       {
         id: 0,
         title: 'About',
-        url: 'http://arch.dev/about',
+        url: 'https://arch.dev/about',
         icon: AboutIcon,
         desc: 'Meltano is an open source project by Arch',
       },
@@ -259,7 +259,7 @@ const Footer = () => {
             <div className="footer-legal">
               <Link to="/terms-of-service/">Terms of Service</Link>
               <Link to="/privacy-policy/">Privacy Policy</Link>
-              <Link to="/">© Meltano 2023</Link>
+              <Link to="/">© Arch 2024</Link>
             </div>
             <div className="footer-social">
               <a

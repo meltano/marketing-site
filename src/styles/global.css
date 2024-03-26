@@ -2730,7 +2730,7 @@ ol.contact-form-sidebar-list li:before {
 .sources {
   background-color: #080216;
   background-size: 50% 120%;
-  padding: 65px 0;
+  padding-bottom: 60px;
 }
 
 .source-logos-grid {
@@ -6479,7 +6479,7 @@ input.tgg-title {
 /* Paragraphs with links */
 
 .paragraphs-with-links {
-  padding-bottom: 65px;
+  padding: 65px 0;
   overflow-y: hidden;
 }
 

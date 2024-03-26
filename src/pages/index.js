@@ -49,8 +49,8 @@ const Home = ({ data }) => {
       <IndexHero data={hero} />
       <IndexPartners />
       <Engineers data={engineers} />
-      <Links data={links} />
       <Sources data={sources} />
+      <Links data={links} />
       <Workflow data={workflow} />
       <Ultimate data={ultimate} />
       <Community data={community} />
