@@ -182,6 +182,7 @@ const IndexHero = ({ data }) => {
               target={data.heroButton2.target}
               rel="noopener noreferrer"
             >
+              <span />
               {data.heroButton2.title}
             </a>
           </div>
