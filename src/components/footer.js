@@ -14,6 +14,7 @@ import MeltanoSdkIcon from '../assets/img/footermeltanosdkicon.svg'
 import MeltanoEdkIcon from '../assets/img/footermeltanoedkicon.svg'
 import PartnersIcon from '../assets/img/footerpartnersicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
+import PricingIcon from '../assets/img/footerpricingicon.svg'
 import FooterImg from '../assets/img/footer.svg'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
