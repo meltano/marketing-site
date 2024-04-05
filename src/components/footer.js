@@ -56,6 +56,13 @@ const footerData = [
   },
   {
     id: 1,
+    header: 'Pricing',
+    url: '/pricing/',
+    icon: PricingIcon,
+    desc: 'Open source and free to use, with paid support options',
+  },
+  {
+    id: 2,
     header: 'Resources',
     links: [
       {
@@ -89,7 +96,7 @@ const footerData = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     header: 'Company',
     links: [
       {
