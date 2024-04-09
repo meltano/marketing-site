@@ -519,8 +519,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Pricing</p>
                           <p className="header-list-info">
-                            Pay only for the workloads you run, no matter how
-                            much the data volume grows
+                            Self-managed or work with the team for support
                           </p>
                         </div>
                       </Link>
@@ -540,10 +539,8 @@ const Header = () => {
                         </p>
                         <p className="submenu-subtitle title-inline">
                           Meltano and its connectors are open source, and can be
-                          deployed on Meltano Cloud or on self-managed
-                          infrastructure. Either way, you only pay for the
-                          workloads you run, no matter how much the data volume
-                          grows.
+                          deployed on your infrastructure. We can also support your
+                          team with your deployments.
                         </p>
                       </div>
                       <Link to="/pricing/">
@@ -575,10 +572,8 @@ const Header = () => {
                         </p>
                         <p className="submenu-subtitle title-inline">
                           Meltano and its connectors are open source, and can be
-                          deployed on Meltano Cloud or on self-managed
-                          infrastructure. Either way, you only pay for the
-                          workloads you run, no matter how much the data volume
-                          grows.
+                          deployed on your infrastructure. We can also support your
+                          team with your deployments.
                         </p>
                       </div>
                       <Link to="/pricing/">
