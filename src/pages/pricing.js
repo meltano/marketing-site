@@ -63,6 +63,11 @@ export const pageQuery = graphql`
         pricingHero {
           pricingHeroTitle
           pricingHeroText
+          pricingHeroLink {
+            title
+            url
+            target
+          }
         }
         pricingTable {
           pricingTableItem {

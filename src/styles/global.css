@@ -6830,7 +6830,7 @@ input.tgg-title {
   display: block;
 }
 
-.price-table-cloud .prices-list .purple-checkmark:nth-child(n + 4):before {
+.price-table-cloud .prices-list .purple-checkmark:before {
   background-image: url(../assets/img/list-item-checkmark-blue.svg);
 }
 
