@@ -491,6 +491,64 @@ const Header = () => {
                   </ul>
                 </div>
               </li>
+
+              <li className="hide-m">
+                <Link to="/pricing/">Pricing</Link>
+              </li>
+
+              <li className="has-sub hide-d has-one-sub">
+                <a>Pricing</a>
+                <div className="hop">
+                  <ul className="sub">
+                    <li className="menu-item--active">
+                      <div className="submenu-info">
+                        <p className="submenu-title title-inline">
+                          <span className="brackets">Pricing</span>
+                        </p>
+                        <p className="submenu-subtitle title-inline">
+                          Meltano is an open source project by Arch
+                        </p>
+                      </div>
+                      <Link to="/pricing/">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="36"
+                          height="37"
+                          viewBox="0 0 36 37"
+                          fill="none"
+                        >
+                          <rect
+                            y="0.5"
+                            width="36"
+                            height="36"
+                            rx="18"
+                            fill="#E9E5FB"
+                          />
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M13.7385 14.3703C13.2713 14.7501 13 15.3202 13 15.9223V26.5C13 27.6046 13.8954 28.5 15 28.5H22C23.1046 28.5 24 27.6046 24 26.5V15.9223C24 15.3202 23.7287 14.7501 23.2615 14.3703L19.7615 11.5254C19.0266 10.9281 17.9734 10.9281 17.2385 11.5254L13.7385 14.3703ZM18.5 16.5C19.3284 16.5 20 15.8284 20 15C20 14.1716 19.3284 13.5 18.5 13.5C17.6716 13.5 17 14.1716 17 15C17 15.8284 17.6716 16.5 18.5 16.5Z"
+                            fill="#311772"
+                          />
+                          <path
+                            d="M18.5 14.5C20.433 14.5 22 12.933 22 11C22 9.067 20.433 7.5 18.5 7.5C16.567 7.5 15 9.067 15 11"
+                            stroke="#311772"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        <div className="header-list-item">
+                          <p className="header-list-title">Pricing</p>
+                          <p className="header-list-info">
+                          Open source and free to use, with paid support options
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+
               <li className="has-sub has-sub-items">
                 <a
                   href="https://docs.meltano.com/?__hstc=165702497.60212c7701354a96f8b2b56a231656f9.1679956833281.1679959328336.1679989419063.3&__hssc=165702497.18.1679989419063&__hsfp=179051687"
