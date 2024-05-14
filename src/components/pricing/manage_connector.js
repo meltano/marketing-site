@@ -1,23 +1,7 @@
 import React from 'react'
 
-const table = {
-  pricingTableItemTitle: 'Don\'t want to manage your own connectors?',
-  pricingTableItemTier: 'Free',
-  pricingTableItemDescription: 'Check out Arch - a fully featured Data Platform built with Meltano and other open source technologies.',
-  pricingTableItemLink: {
-    title: 'Talk with the Team',
-    url: '/contact',
-    target: '_blank',
-  },
-  pricingTableItemIcon: {
-    localFile: {
-      publicURL: '/static/e66d981ff8632eca49cd4fa27ce7ecef/Meltyhead1.png',
-    },
-  },
-}
-
-const ManageConnector = () => (
-  <div class="price-table">
+const ManageConnector = ({ table }) => (
+  <div className="price-table">
     <div
       className="price-table-item price-table-connectors"
       key={table.pricingTableItemTitle}
