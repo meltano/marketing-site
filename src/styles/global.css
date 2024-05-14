@@ -7027,13 +7027,17 @@ input.tgg-title {
     margin-right: 0px;
   }
 
-  .price-table-connectors {
+  .price-table-connectors, .price-table-cloud, .price-table-free {
     padding: 32px;
     width: calc(100% - 64px);
   }
 
   .price-table-connectors .price-table-head:first-child {
     width: 100%;
+  }
+
+  .price-table-cloud .price-table-head h4 {
+    font-size: 24px;
   }
 
   .price-table-connectors .price-table-head h4 {
