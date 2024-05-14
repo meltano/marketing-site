@@ -6836,20 +6836,12 @@ input.tgg-title {
   width: 40%;
 }
 
-.price-table-connectors h4 {
-  font-size: 46px;
-}
-
 .price-table-connectors p {
   width: 450px;
 }
 
 .price-table-connectors {
   display: flex;
-}
-
-.price-table-cloud h4 {
-  font-size: 46px;
 }
 
 .price-table-item p {
