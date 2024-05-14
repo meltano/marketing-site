@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import ManageConnector from './manage_connector';
 
 const PriceTable = ({ data }) => (
   <div className="prices">
@@ -101,6 +102,7 @@ const PriceTable = ({ data }) => (
           </div>
         ))}
       </div>
+      <ManageConnector />
     </div>
   </div>
 )

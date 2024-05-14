@@ -19,6 +19,8 @@ const Pricing = ({ data }) => {
   } = data.pricing.nodes[0]
   const metaImage = featuredImage?.node.localFile.publicURL
 
+  console.log(data.pricing);
+
   return (
     <Layout>
       <Helmet
