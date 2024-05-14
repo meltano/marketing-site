@@ -7010,7 +7010,7 @@ input.tgg-title {
   }
 
   .price-table-connectors {
-    background-image: none;
+    background-image: none !important;
   }
 
   .price-table-connectors .price-table-second-row {
