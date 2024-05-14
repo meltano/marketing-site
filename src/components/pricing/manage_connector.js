@@ -5,6 +5,7 @@ const ManageConnector = ({ table }) => (
     <div
       className="price-table-item price-table-connectors"
       key={table.pricingTableItemTitle}
+      style={{ backgroundImage: `url(${table.pricingTableItemIcon.localFile.publicURL})` }}
     >
       <div className="price-table-top-row">
         <div className="price-table-head">
