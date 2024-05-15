@@ -6828,7 +6828,7 @@ input.tgg-title {
   margin-top: 25px;
   background-image: url(../assets/img/pricing-manage-connectors.png);
   background-size: 246px 203px;
-  background-position: right 110px top 15px;
+  background-position: right 103px top 15px;
   background-repeat: no-repeat;
 }
 
@@ -6985,6 +6985,10 @@ input.tgg-title {
   .coming-soon {
     font-size: 58px;
     line-height: 100%;
+  }
+
+  .price-table-connectors {
+    background-position: right 13% top 15px;
   }
 }
 
