@@ -5,27 +5,22 @@ const ManageConnector = ({ table }) => (
     <div
       className="price-table-item price-table-connectors"
       key={table.pricingTableItemTitle}
-      style={{ backgroundImage: `url(${table.pricingTableItemIcon.localFile.publicURL})` }}
+      
     >
-      <div className="price-table-top-row">
-        <div className="price-table-head">
-          <div className="price-table-head-wrap price-table-head-title">
+      <div className="price-table-two-column">
+        <div className="price-table-first-col">
             <h4>{table.pricingTableItemTitle}</h4>
-          </div>
-        </div>
-        <div className="price-table-head price-table-second-row">
-          <div className="price-table-head-wrap price-table-head-title">
             <p className="p2">{table.pricingTableItemDescription}</p>
-          </div>
-          <div className="price-table-head-wrap price-table-head-title button-wrap">
+        </div>
+        <div className="price-table-second-col"
+        style={{ backgroundImage: `url(${table.pricingTableItemIcon.localFile.publicURL})` }}>
             <a
               href={table.pricingTableItemLink.url}
               target={table.pricingTableItemLink.target}
               className="btn alt-blue-btn"
             >
-              {table.pricingTableItemLink.title}
+              {/* {table.pricingTableItemLink.title} */}Check out Arch
             </a>
-          </div>
         </div>
       </div>
     </div>
