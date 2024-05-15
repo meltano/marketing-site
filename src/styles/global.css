@@ -6822,6 +6822,8 @@ input.tgg-title {
   background-repeat: no-repeat;
   background-size: 246px 203px;
   align-content: end;
+  position: relative; 
+  top: -5px;
 }
 
 .price-table-connectors .price-table-second-row .button-wrap {
@@ -7016,6 +7018,7 @@ input.tgg-title {
 
   .price-table-connectors .price-table-second-col {
     background-image: none !important;
+    top: 0px;
   }
 
   .price-table-connectors .price-table-second-row {
