@@ -408,7 +408,7 @@ const Footer = () => {
             <div className="footer-legal">
               <Link to="/terms-of-service/">Terms of Service</Link>
               <Link to="/privacy-policy/">Privacy Policy</Link>
-              <Link to="/">© Arch 2024</Link>
+              <Link to="/">{`© Arch ${new Date().getFullYear()}`}</Link>
             </div>
             <a
               href="https://www.arch.dev"
