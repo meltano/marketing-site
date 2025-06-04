@@ -77,7 +77,7 @@ const footerData = [
         title: 'Community',
         url: '/community/',
         icon: CommunityIcon,
-        desc: 'Join 4,500+ data professionals on Slack and GitHub',
+        desc: 'Join 5,500+ data professionals on Slack and GitHub',
       },
       {
         id: 2,
