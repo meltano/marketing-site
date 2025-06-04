@@ -73,7 +73,7 @@ const Header = () => {
         'a[data-tooltip="View code and issue tracker"]'
       );
       const cupItemTwo = extrasItems.querySelector(
-        'a[data-tooltip="Join our 4,500+ community"]'
+        'a[data-tooltip="Join our 5,500+ community"]'
       );
       const arrow = mainNav.querySelector(".subcontainer-arrow");
       const arrowWidth = arrow.getBoundingClientRect().width;
@@ -607,7 +607,7 @@ const Header = () => {
                           <span className="brackets">Join</span> the Melty Crew!
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Join 4,500+ data professionals on Slack and GitHub
+                          Join 5,500+ data professionals on Slack and GitHub
                         </p>
                       </div>
                       <Link to="/community/" target="_blank">
@@ -635,7 +635,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">Community</p>
                           <p className="header-list-info">
-                            Join 4,500+ data professionals on Slack and GitHub
+                            Join 5,500+ data professionals on Slack and GitHub
                           </p>
                         </div>
                       </Link>
@@ -827,7 +827,7 @@ const Header = () => {
             <a
               href="https://meltano.com/slack"
               target="_blank"
-              data-tooltip="Join our 4,500+ community"
+              data-tooltip="Join our 5,500+ community"
               rel="noreferrer"
               className="cup"
             >
