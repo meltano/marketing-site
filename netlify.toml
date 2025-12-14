@@ -1,5 +1,11 @@
 # netlify.toml file
 [[redirects]]
+from = "/looking-for-arch"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = false
+
+[[redirects]]
 from = "/tutorials/create-a-custom-extractor.html"
 to = "https://docs.meltano.com/tutorials/custom-extractor"
 status = 301
