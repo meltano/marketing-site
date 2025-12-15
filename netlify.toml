@@ -1,6 +1,18 @@
 # netlify.toml file
 [[redirects]]
-from = "/looking-for-arch"
+from = "https://arch.dev/*"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = false
+
+[[redirects]]
+from = "https://www.arch.dev/*"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = false
+
+[[redirects]]
+from = "https://docs.arch.dev/*"
 to = "https://matatika.com/looking-for-arch"
 status = 301
 force = false
