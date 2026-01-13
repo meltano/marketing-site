@@ -19,7 +19,7 @@ const ManageConnector = ({ table }) => (
               target={table.pricingTableItemLink.target}
               className="btn alt-blue-btn"
             >
-              {/* {table.pricingTableItemLink.title} */}Check out Arch
+              {/* {table.pricingTableItemLink.title} */}Check out Matatika
             </a>
         </div>
       </div>
