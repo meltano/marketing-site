@@ -102,9 +102,9 @@ const footerData = [
       {
         id: 0,
         title: 'About',
-        url: 'https://arch.dev/about',
+        url: 'https://www.matatika.com/about-us/',
         icon: AboutIcon,
-        desc: 'Meltano is an open source project by Arch',
+        desc: 'Meltano is an open source project by Matatika',
       },
     ],
   },
@@ -408,10 +408,10 @@ const Footer = () => {
             <div className="footer-legal">
               <Link to="/terms-of-service/">Terms of Service</Link>
               <Link to="/privacy-policy/">Privacy Policy</Link>
-              <Link to="/">{`© Arch ${new Date().getFullYear()}`}</Link>
+              <Link to="/">{`© Matatika ${new Date().getFullYear()}`}</Link>
             </div>
             <a
-              href="https://www.arch.dev"
+              href="https://www.matatika.com"
               target="_blank"
               className="portal-bottom portal-meltano"
               rel="noreferrer"
