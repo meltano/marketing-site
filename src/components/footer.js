@@ -353,7 +353,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.youtube.com/meltano"
+                href="https://www.youtube.com/@matatika"
                 target="_blank"
                 rel="noreferrer"
               >
