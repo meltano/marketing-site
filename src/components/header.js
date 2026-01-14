@@ -708,7 +708,7 @@ const Header = () => {
               </li>
               <li className="has-sub has-one-sub">
                 <a
-                  href="https://arch.dev/about"
+                  href="https://www.matatika.com/about-us/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -726,7 +726,7 @@ const Header = () => {
                         </p>
                       </div>
                       <a
-                        href="https://arch.dev/about"
+                        href="https://www.matatika.com/about-us/"
                         target="_blank"
                         rel="noreferrer"
                       >
