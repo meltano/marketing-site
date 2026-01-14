@@ -26,6 +26,7 @@ const Engineers = ({ data }) => {
 
   const tableItems = data.engineersTable.map((path, index) => ({
     ...path,
+    index: index,
     line: paths[index],
   }))
 
@@ -86,6 +87,7 @@ const Engineers = ({ data }) => {
             <div className="meltano-gives-table-list table-list-left">
               {firstTable.map(item => (
                 <div
+                  key={item.index}
                   className={`meltano-gives-table-item table-item-order-${item.line.class.substring(
                     12
                   )}`}
@@ -135,6 +137,7 @@ const Engineers = ({ data }) => {
             <div className="meltano-gives-table-list table-list-right">
               {secondTable.map(item => (
                 <div
+                  key={item.index}
                   className={`meltano-gives-table-item table-item-order-${item.line.class.substring(
                     12
                   )}`}
