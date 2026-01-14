@@ -22,3 +22,20 @@ This site is built with:
 
 - [Wordpress](https://wordpress.com/)
 - [Gatsby](https://www.gatsbyjs.com/)
+
+## Local Development
+
+Create a local environment `.env.development`
+
+```
+NPM_FLAGS=--legacy-peer-deps
+WPGRAPHQL_URL=[your url]
+WPUSERNAME=[your user]
+WPPASSWORD=[your password]
+```
+
+Start the local server
+
+```
+netlify dev
+```
