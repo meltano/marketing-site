@@ -27,17 +27,8 @@ const Preheader = () => {
   const { preHeader } = data.allWpPage.nodes[0]
   const { preHeaderOn } = preHeader
 
-  const [isVisible, setIsVisible] = useState(
-    (typeof localStorage !== 'undefined' &&
-      localStorage.getItem(`meltano.announcement`) &&
-      !localStorage.getItem(`meltano.announcement.closed`)) ||
-      false
-  )
-  const [isClosed, setIsClosed] = useState(
-    (typeof localStorage !== 'undefined' &&
-      localStorage.getItem(`meltano.announcement.closed`)) ||
-      false
-  )
+  const [isVisible, setIsVisible] = useState(true)
+  const [isClosed, setIsClosed] = useState(false)
   const [isNew, setIsNew] = useState(false)
 
   const id = encodeURIComponent(`${preHeader.preHeaderTextShort}w`)
