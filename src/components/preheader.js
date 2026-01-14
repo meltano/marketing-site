@@ -83,7 +83,7 @@ const Preheader = () => {
         <div className="pre-header">
           <div className="pre-header-container">
             {preHeader.preHeaderLink ? (
-              <Link to={preHeader.preHeaderLink.url}>
+              <a to={preHeader.preHeaderLink.url}>
                 <div className="pre-header-content p3">
                   <span
                     className="show-desktop"
@@ -102,7 +102,7 @@ const Preheader = () => {
                     }}
                   />
                 </div>
-              </Link>
+              </a>
             ) : (
               <div className="pre-header-content p3">
                 <span
