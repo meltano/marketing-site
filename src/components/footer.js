@@ -533,8 +533,8 @@ const Footer = () => {
               <em>Stay current</em> with all things Meltano
             </h2>
             <HubspotForm
-              portalId="20712484"
-              formId="21c9121f-92ff-4a9c-9c7a-5da576a9b72c"
+              portalId="7921409"
+              formId="5beb0e30-412f-442b-8179-2a85a3f81d47"
               onSubmit={() => console.log('Submitted!')}
               onReady={form => console.log('Form ready!')}
               loading={<div>Loading...</div>}
