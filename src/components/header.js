@@ -707,13 +707,7 @@ const Header = () => {
                 </div>
               </li>
               <li className="has-sub has-one-sub">
-                <a
-                  href="https://www.matatika.com/about-us/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Company
-                </a>
+                <Link to="/about/">Company</Link>
                 <div className="hop hide-d">
                   <ul className="sub">
                     <li className="menu-item--active">

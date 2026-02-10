@@ -102,7 +102,7 @@ const footerData = [
       {
         id: 0,
         title: 'About',
-        url: 'https://www.matatika.com/about-us/',
+        url: '/about/',
         icon: AboutIcon,
         desc: 'Meltano is an open source project by Matatika',
       },
