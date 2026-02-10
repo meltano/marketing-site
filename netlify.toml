@@ -1290,18 +1290,6 @@ status = 302
 force = false
 
 [[redirects]]
-from = "/about"
-to = "https://arch.dev/about"
-status = 301
-force = true
-
-[[redirects]]
-from = "/about/"
-to = "https://arch.dev/about"
-status = 301
-force = true
-
-[[redirects]]
 from = "/terms-of-service"
 to = "https://arch.dev/terms-of-service"
 status = 301
