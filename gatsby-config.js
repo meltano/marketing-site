@@ -10,10 +10,18 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        id: 'GTM-W3T2VJZ',
+        id: 'GTM-P66BT8VF',
         includeInDevelopment: true,
         defaultDataLayer: { platform: 'gatsby' },
         routeChangeEventName: 'gatsby-route-change',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-H5HPTMG70X",
+        ],
       },
     },
     {

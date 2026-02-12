@@ -12,6 +12,48 @@
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
 [[redirects]]
+from = "/overview/"
+to = "https://meltano.com/"
+status = 301
+force = false
+
+[[redirects]]
+from = "https://arch.dev/*"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://arch.dev"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.arch.dev/*"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.arch.dev"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://docs.arch.dev/*"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://docs.arch.dev"
+to = "https://matatika.com/looking-for-arch"
+status = 301
+force = true
+
+[[redirects]]
 from = "/tutorials/create-a-custom-extractor.html"
 to = "https://docs.meltano.com/tutorials/custom-extractor"
 status = 301
@@ -1255,21 +1297,9 @@ force = false
 
 [[redirects]]
 from = "/slack"
-to = "https://join.slack.com/t/meltano/shared_invite/zt-2dsu0vnlt-dgh1ANPmjydfAtXIQvMwAA"
+to = "https://join.slack.com/t/meltano/shared_invite/zt-3l3dkwhwj-EQa52wy~ddtp75EDZgt3lg"
 status = 302
 force = false
-
-[[redirects]]
-from = "/about"
-to = "https://arch.dev/about"
-status = 301
-force = true
-
-[[redirects]]
-from = "/about/"
-to = "https://arch.dev/about"
-status = 301
-force = true
 
 [[redirects]]
 from = "/terms-of-service"

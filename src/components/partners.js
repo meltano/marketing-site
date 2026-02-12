@@ -9,7 +9,7 @@ const Partners = ({ data }) => (
   <div className="logos-section logos-diamond-bg section">
     <div className="container">
       <div className="heading">
-        <h2>1,000+ organizations</h2>
+        <h2>2,000+ organizations</h2>
         <h4>integrate their data using Meltano</h4>
       </div>
       <div className="logos">
