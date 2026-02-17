@@ -387,7 +387,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.crunchbase.com/organization/meltano"
+                href="https://www.crunchbase.com/organization/matatika"
                 target="_blank"
                 rel="noreferrer"
               >
