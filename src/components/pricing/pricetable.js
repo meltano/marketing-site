@@ -33,7 +33,7 @@ const PriceTable = ({ data }) => (
                 <div className="cloud-table-header-wrap">
                   <div className="cloud-table-header-labels">
                     <div className="blue-label-btn">
-                      <a href="/contact" target="_blank">
+                      <a href="/contact">
                         <div className="blue-label-btn-title">
                           <h3>{table.pricingTableItemTier}</h3>
                         </div>
