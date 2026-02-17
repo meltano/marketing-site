@@ -20,7 +20,7 @@ const Testimonials = ({ data }) => {
   // }
 
   return (
-    <div className="testimonials section">
+    <div id="testimonials" className="testimonials section">
       <div className="container">
         <div className="heading">
           <h2 dangerouslySetInnerHTML={{ __html: title }} />
