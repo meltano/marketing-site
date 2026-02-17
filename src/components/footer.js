@@ -228,7 +228,6 @@ const Footer = () => {
               <div className="footer-col" key={c.header}>
                 <div className="footer-col-info">
                   <p className="footer-col-title">{c.header}</p>
-                  {console.log(c)}
                   <ul>
                     {c.links?.map(l => (
                       <li key={l.title}>

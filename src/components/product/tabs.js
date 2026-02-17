@@ -16,7 +16,6 @@ const ProductTabs = ({ data, location }) => {
 
   const handleSelectChange = event => {
     const selectedValue = event.target.value
-    console.log(selectedValue)
     if (selectedValue === '0') {
       navigate('#saas')
     } else if (selectedValue === '1') {

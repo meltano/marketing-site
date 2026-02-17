@@ -53,7 +53,6 @@ const Waitlist = ({ data }) => (
             </div>
           )}
         </div>
-        {console.log(data.cloudWaitlistButtons)}
         <div className="form dark-form">
           <h3>Access the Beta</h3>
           <HubspotForm
