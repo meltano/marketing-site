@@ -9022,6 +9022,40 @@ footer li:hover > a > * {
   grid-gap: 28px;
 }
 
+/* Make Sources sticky and scroll under loved by data teams content */
+
+.sources {
+  margin-top: -1px;
+  position: sticky;
+  bottom: 0px;
+  z-index: 1;
+}
+
+@media all and (min-width: 768px) {
+  .sources {
+    bottom: -100px;
+    margin-bottom: 100px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .sources {
+    bottom: -300px;
+  }
+}
+
+@media all and (min-width: 1920px) {
+  .sources {
+    bottom: -200px;
+  }
+}
+
+@media all and (min-width: 2650px) {
+  .sources {
+    bottom: -300px;
+  }
+}
+
 .sources-mini-box {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);

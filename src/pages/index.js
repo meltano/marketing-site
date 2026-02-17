@@ -48,7 +48,7 @@ const Home = ({ data }) => {
       />
       <IndexHero data={hero} />
       <IndexPartners />
-      <Engineers data={engineers} />
+      {/* <Engineers data={engineers} /> */}
       <Sources data={sources} />
       <Links data={links} />
       <Workflow data={workflow} />
