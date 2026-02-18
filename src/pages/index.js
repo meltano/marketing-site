@@ -52,7 +52,7 @@ const Home = ({ data }) => {
       <Sources data={sources} />
       <Links data={links} />
       <Workflow data={workflow} />
-      <Ultimate data={ultimate} />
+      {/* <Ultimate data={ultimate} /> */}
       <Community data={community} />
       <Testimonials data={testimonials} />
       <Related data={latest} posts={data.stickyPosts} />
