@@ -53,8 +53,8 @@ const Home = ({ data }) => {
       <Links data={links} />
       <Workflow data={workflow} />
       {/* <Ultimate data={ultimate} /> */}
-      <Community data={community} />
       <Testimonials data={testimonials} />
+      <Community data={community} />
       <Related data={latest} posts={data.stickyPosts} />
       <CtaIntrigued />
     </Layout>
