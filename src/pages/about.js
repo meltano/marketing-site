@@ -46,7 +46,7 @@ const About = ({ data }) => {
       <Quote data={aboutQuote} />
       <Story data={aboutStory} />
       <Values data={aboutValues} />
-      <SmallCta data={aboutSmallCta} />
+      {/* <SmallCta data={aboutSmallCta} /> */}
       <Contributors data={aboutContributors} />
       {/* <Investors data={aboutInvestors} /> */}
     </Layout>
