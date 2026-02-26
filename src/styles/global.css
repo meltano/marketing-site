@@ -394,7 +394,7 @@ em span {
 .portal-top {
   display: none;
   transition: 0.4s ease-in;
-  position: absolute; 
+  position: absolute;
   border: 1px solid rgba(8, 2, 22, 0.20);
   border-radius: 100px 0px 0px 100px;
 }
@@ -422,11 +422,11 @@ em span {
 }
 
 .portal-image {
-  overflow: hidden; 
-  position: relative; 
+  overflow: hidden;
+  position: relative;
   border-radius: 100px;
-  width: 2rem; 
-  height: 2rem; 
+  width: 2rem;
+  height: 2rem;
   transition: 0.18s ease-in;
 }
 
@@ -440,12 +440,12 @@ em span {
 
 .portal-image:before {
   content: "";
-  position: absolute; 
-  left: 0; 
+  position: absolute;
+  left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: 0; 
+  opacity: 0;
   width: 30%;
   height: 30%;
   background: url('../assets/img/portal-arch.webp');
@@ -457,11 +457,20 @@ em span {
 }
 
 .portal-logo {
-  display: flex; 
-  gap: 1.25rem; 
-  align-items: center; 
-  text-align: center; 
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  text-align: center;
   margin-left: 18px;
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: #311772;
+}
+
+.portal-logo span {
+  opacity: 0.5;
 }
 
 .portal-logo-arch {
@@ -477,9 +486,9 @@ em span {
 }
 
 .portal-meltano:hover .portal-image {
-  width: 4rem; 
-  height: 4rem; 
-  opacity: 1; 
+  width: 4rem;
+  height: 4rem;
+  opacity: 1;
   background: radial-gradient(86.54% 86.54% at 71.43% 6.44%, #33223F 0%, #080216 100%), #060111;
 }
 
@@ -499,7 +508,8 @@ em span {
 }
 
 .portal-meltano:hover .portal-logo-arch,
-.portal-meltano:hover .portal-out {
+.portal-meltano:hover .portal-out,
+.portal-meltano:hover .portal-logo span {
   opacity: 1;
 }
 
@@ -4330,6 +4340,12 @@ ol.contact-form-sidebar-list li:before {
 .testimonials-grid-quote strong {
   font-weight: 600;
   color: #f963bc;
+}
+
+.testimonials-item-image {
+  max-height: 180px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .testimonials-grid-author {
