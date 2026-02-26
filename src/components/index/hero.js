@@ -178,7 +178,7 @@ const IndexHero = ({ data }) => {
   return (
     <div className="hero hero-scene section">
 
-      <a href="https://www.matatika.com" target='_blank' className='portal-top portal-meltano'>
+      <a href="https://docs.meltano.com" target='_blank' className='portal-top portal-meltano'>
         <div className='portal-wrap'>
           <div className='portal-image'>
           </div>
