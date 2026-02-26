@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Testimonials = ({ data }) => {
   const [shuffled, setShuffled] = useState([])
   const [title, setTitle] = useState('')
   // const [loadMoreBtn, setLoadMoreBtn] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(6)
 
   useEffect(() => {
     setTitle(data.testimonialsHeading)
@@ -31,12 +33,20 @@ const Testimonials = ({ data }) => {
             !loadMoreBtn ? 'reveal-testimonials' : ''
           }`}
         > */}
-          {shuffled.map(testimonial => (
+          {shuffled.slice(0, visibleCount).map((testimonial, index) => (
             <div
               className="testimonials-grid-item"
               key={testimonial.testimonialsAuthor}
             >
               <div className="testimonials-grid-item-info">
+                <GatsbyImage
+                  className="testimonials-item-image w-100"
+                  image={
+                    testimonial?.testimonialsImage?.localFile?.childImageSharp?.gatsbyImageData
+                  }
+                  alt={testimonial.testimonialsTitle}
+                  imgStyle={{ objectFit: 'contain' }}
+                />
                 <p
                   className="p3 testimonials-grid-quote"
                   dangerouslySetInnerHTML={{
@@ -59,6 +69,18 @@ const Testimonials = ({ data }) => {
             </div>
           ))}
         </div>
+        {visibleCount < shuffled.length && (
+          <>
+            <br />
+            <button
+              onClick={() => setVisibleCount(prev => prev + 6)}
+              className="btn alt-blue-btn middle"
+              type="button"
+            >
+              Show More
+            </button>
+          </>
+        )}
         {/* {loadMoreBtn && (
           <button
             onClick={handleShowMore}

@@ -213,6 +213,13 @@ export const pageQuery = graphql`
           testimonialsArray {
             testimonialsText
             testimonialsAuthor
+            testimonialsImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
           }
         }
         latest {
