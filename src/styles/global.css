@@ -4556,7 +4556,9 @@ opacity: 0.7;
 .testemonials .owl-next img {
   transform: translateX(2px);
 }
-
+.testimonials-grid-quote {
+  color: #ffffff;
+}
 /* Benefit & Tabs */
 
 .extract-data {
