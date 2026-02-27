@@ -10,11 +10,12 @@ const Testimonials = ({ data }) => {
   useEffect(() => {
     setTitle(data.testimonialsHeading)
     // setLoadMoreBtn(true)
-    const shuffledTestimonials = data.testimonialsArray
-      .map(value => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value)
-    setShuffled(shuffledTestimonials)
+    // const shuffledTestimonials = data.testimonialsArray
+    //   .map(value => ({ value, sort: Math.random() }))
+    //   .sort((a, b) => a.sort - b.sort)
+    //   .map(({ value }) => value)
+    // setShuffled(shuffledTestimonials)
+    setShuffled(data.testimonialsArray)
   }, [])
 
   // const handleShowMore = () => {
