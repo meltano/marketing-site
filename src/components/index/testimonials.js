@@ -39,14 +39,18 @@ const Testimonials = ({ data }) => {
               key={testimonial.testimonialsAuthor}
             >
               <div className="testimonials-grid-item-info">
-                <GatsbyImage
-                  className="testimonials-item-image w-100"
-                  image={
-                    testimonial?.testimonialsImage?.localFile?.childImageSharp?.gatsbyImageData
-                  }
-                  alt={testimonial.testimonialsTitle}
-                  imgStyle={{ objectFit: 'contain' }}
-                />
+                {
+                  testimonial?.testimonialsImage?.localFile?.childImageSharp?.gatsbyImageData && (
+                    <GatsbyImage
+                      className="testimonials-item-image w-100"
+                      image={
+                        testimonial?.testimonialsImage?.localFile?.childImageSharp?.gatsbyImageData
+                      }
+                      alt={testimonial.testimonialsTitle}
+                      imgStyle={{ objectFit: 'contain' }}
+                    />
+                  )
+                }
                 <p
                   className="p3 testimonials-grid-quote"
                   dangerouslySetInnerHTML={{

@@ -2757,21 +2757,29 @@ ol.contact-form-sidebar-list li:before {
 
 .logos {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 60px;
-  width: fit-content;
-  padding: 24px 64px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(13px);
-  border-radius: 4.6px;
-  margin: 24px auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px 60px;
+    padding: 40px 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    border-radius: 4.6px;
+    margin: 24px auto;
+}
+
+.logos a img {
+  max-width: 260px;
+  max-height: 60px;
+  filter: brightness(0) invert(1);
+  width: 100%;
 }
 
 .logos a {
-  opacity: 0.7;
+opacity: 0.7;
+  display: inline-block
 }
 
 .logos a:hover {

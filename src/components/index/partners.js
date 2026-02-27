@@ -4,6 +4,13 @@ import HackeroneIcon from '../../assets/img/hackerone.svg'
 import GitlabIcon from '../../assets/img/gitlub.svg'
 import ZapierIcon from '../../assets/img/zapier.svg'
 import RemoteIcon from '../../assets/img/remote.svg'
+import cityprient from '../../assets/img/clientlogo/citysprint-768x271.png (1).webp'
+import logo300 from '../../assets/img/clientlogo/logo-300x98.png.webp'
+import ra from '../../assets/img/clientlogo/ra-logo (1).png'
+import mvf from '../../assets/img/clientlogo/MVF_Logo_Navy.png.webp'
+import city from '../../assets/img/clientlogo/city-logo-approved (2).svg'
+
+
 
 const IndexPartners = () => (
   <>
@@ -15,31 +22,31 @@ const IndexPartners = () => (
             href="#testimonials"
             rel="noopener noreferrer"
           >
-            <img src={NetlifyIcon} alt="Netlify" />
+            <img src={cityprient} alt="Netlify" />
           </a>
           <a
             href="#testimonials"
             rel="noopener noreferrer"
           >
-            <img src={HackeroneIcon} alt="hackerone" />
+            <img src={logo300} alt="hackerone" />
           </a>
           <a
             href="#testimonials"
             rel="noopener noreferrer"
           >
-            <img src={GitlabIcon} alt="gitlab" />
+            <img src={ra} alt="gitlab" />
           </a>
           <a
             href="#testimonials"
             rel="noopener noreferrer"
           >
-            <img src={ZapierIcon} alt="zapier" />
+            <img src={mvf} alt="zapier" />
           </a>
           <a
             href="#testimonials"
             rel="noopener noreferrer"
           >
-            <img src={RemoteIcon} alt="remote" />
+            <img src={city} alt="remote" />
           </a>
         </div>
       </div>
