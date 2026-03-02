@@ -25,28 +25,28 @@ const IndexPartners = () => (
             <img src={cityprient} alt="Netlify" />
           </a>
           <a
-            href="#testimonials"
+            href="blog/the-little-bike-company-boosts-monthly-productivity-by-20-with-meltanos-streamlined-solution"
             rel="noopener noreferrer"
           >
-            <img src={logo300} alt="hackerone" />
+            <img src={logo300} alt="little-bike" />
           </a>
           <a
-            href="#testimonials"
+            href="/blog/how-resident-advisor-escaped-year-long-etl-firefighting"
             rel="noopener noreferrer"
           >
-            <img src={ra} alt="gitlab" />
+            <img src={ra} alt="ra" />
           </a>
           <a
-            href="#testimonials"
+            href="/blog/mvf-makes-etl-7x-cheaper-while-migrating-1b-rows-across-60-sources"
             rel="noopener noreferrer"
           >
-            <img src={mvf} alt="zapier" />
+            <img src={mvf} alt="mvf" />
           </a>
           <a
-            href="#testimonials"
+            href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
             rel="noopener noreferrer"
           >
-            <img src={city} alt="remote" />
+            <img src={city} alt="city" />
           </a>
         </div>
       </div>
