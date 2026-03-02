@@ -157,6 +157,13 @@ export const pageQuery = graphql`
             workflowWindowTitle
             workflowWindowContent
             workflowWindowLanguage
+            workflowVideoOrImage
+            workflowUiVideo {
+             mediaItemUrl
+            }
+            workflowUiImage {
+              mediaItemUrl
+            }
           }
         }
         ultimate {

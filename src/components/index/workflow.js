@@ -5,11 +5,12 @@ import { ParallaxProvider, Parallax } from 'react-scroll-parallax'
 import DashBreak1 from '../../assets/img/dash-break1.svg'
 import DashBreak2 from '../../assets/img/dash-break2.svg'
 import DashBreak3 from '../../assets/img/dash-break3.svg'
-;(typeof global !== 'undefined' ? global : window).Prism = Prism
+  ; (typeof global !== 'undefined' ? global : window).Prism = Prism
 require('prismjs/components/prism-python')
 require('prismjs/components/prism-bash')
 
 const Workflow = ({ data }) => {
+  const [terminalView, setTerminalView] = useState({});
   const colors = ['pink', 'blue', 'yellow', 'green', 'pink']
   const separators = [DashBreak1, DashBreak2, DashBreak3, DashBreak2]
 
@@ -43,9 +44,8 @@ const Workflow = ({ data }) => {
                 className={`workflow-section ml-margins workflow-${colors[index]}`}
               >
                 <div
-                  className={`workflow-info ${
-                    index % 2 ? 'workflow-left' : ''
-                  }`}
+                  className={`workflow-info ${index % 2 ? 'workflow-left' : ''
+                    }`}
                 >
                   <h3 className="brackets">{workflow.workflowTitle}</h3>
                   <h5>{workflow.workflowSubtitle}</h5>
@@ -69,46 +69,108 @@ const Workflow = ({ data }) => {
                   </div>
                 </div>
                 <div className="workflow-terminal">
-                  <div className="tab-terminal">
-                    <div className="terminal-header">
-                      <div className="terminal-header-circles">
-                        <span className="red-bg" />
-                        <span className="yellow-bg" />
-                        <span className="green-bg" />
-                      </div>
-                      <span className="tab-terminal-title">
-                        {workflow.workflowWindowTitle}
-                      </span>
-                      <span className="terminal-circle-clear" />
-                    </div>
-                    <div className="terminal-content">
-                      <Highlight
-                        theme={themes.oceanicNext}
-                        code={workflow.workflowWindowContent
-                          .slice(5)
-                          .slice(0, -7)}
-                        language={workflow.workflowWindowLanguage}
-                      >
-                        {({
-                          className,
-                          style,
-                          tokens,
-                          getLineProps,
-                          getTokenProps,
-                        }) => (
-                          <pre className={className} style={style}>
-                            {tokens.map((line, i) => (
-                              <div {...getLineProps({ line, key: i })}>
-                                {line.map((token, key) => (
-                                  <span {...getTokenProps({ token, key })} />
-                                ))}
-                              </div>
-                            ))}
-                          </pre>
-                        )}
-                      </Highlight>
-                    </div>
+                  <div className="toggle-container">
+                    <button
+                      className={`toggle-btn ${(terminalView[index] || "ui") === "ui" || !terminalView[index]
+                        ? "active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setTerminalView(prev => ({
+                          ...prev,
+                          [index]: "ui",
+                        }))
+                      }
+                    >
+                      UI VIEW
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
+                        <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
+                      </svg>
+                    </button>
+
+                    <button
+                      className={`toggle-btn ${terminalView[index] === "local" ? "active" : ""
+                        }`}
+                      onClick={() =>
+                        setTerminalView(prev => ({
+                          ...prev,
+                          [index]: "local",
+                        }))
+                      }
+                    >
+                      TERMINAL
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
+                        <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
+                      </svg>
+                    </button>
                   </div>
+                  {
+                    terminalView[index] === "local" ? (
+                      <div className="tab-terminal">
+                        <div className="terminal-header">
+                          <div className="terminal-header-circles">
+                            <span className="red-bg" />
+                            <span className="yellow-bg" />
+                            <span className="green-bg" />
+                          </div>
+                          <span className="tab-terminal-title">
+                            {workflow.workflowWindowTitle}
+                          </span>
+                          <span className="terminal-circle-clear" />
+                        </div>
+                        <div className="terminal-content">
+                          <Highlight
+                            theme={themes.oceanicNext}
+                            code={workflow.workflowWindowContent
+                              .slice(5)
+                              .slice(0, -7)}
+                            language={workflow.workflowWindowLanguage}
+                          >
+                            {({
+                              className,
+                              style,
+                              tokens,
+                              getLineProps,
+                              getTokenProps,
+                            }) => (
+                              <pre className={className} style={style}>
+                                {tokens.map((line, i) => (
+                                  <div {...getLineProps({ line, key: i })}>
+                                    {line.map((token, key) => (
+                                      <span {...getTokenProps({ token, key })} />
+                                    ))}
+                                  </div>
+                                ))}
+                              </pre>
+                            )}
+                          </Highlight>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="video-ui-tab">
+                        <div className="video-wrapper">
+                          {workflow.workflowVideoOrImage === "ui_video" &&
+                            workflow.workflowUiVideo?.mediaItemUrl && (
+                              <video
+                                src={workflow.workflowUiVideo.mediaItemUrl}
+                                controls
+                                playsInline
+                                width="100%"
+                                height="100%"
+                              />
+                            )}
+
+                          {workflow.workflowVideoOrImage === "ui_image" &&
+                            workflow.workflowUiImage?.mediaItemUrl && (
+                              <img
+                                src={workflow.workflowUiImage.mediaItemUrl}
+                                alt={workflow.workflowTitle}
+                                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                              />
+                            )}
+                        </div>
+                      </div>
+                    )}
                 </div>
               </div>
 
