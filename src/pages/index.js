@@ -16,6 +16,7 @@ import Testimonials from '../components/index/testimonials'
 import Related from '../components/related'
 import { CtaIntrigued } from '../components/cta'
 import Video from '../components/index/video'
+import CostComparison from '../components/index/costComparison'
 
 const Home = ({ data }) => {
   const {
@@ -31,6 +32,7 @@ const Home = ({ data }) => {
     community,
     testimonials,
     latest,
+    costComparison
   } = data.home.nodes[0]
   const metaImage = featuredImage?.node.localFile.publicURL
 
@@ -52,6 +54,7 @@ const Home = ({ data }) => {
       <Sources data={sources} />
       <Links data={links} />
       <Workflow data={workflow} />
+      <CostComparison data={costComparison} />
       {/* <Ultimate data={ultimate} /> */}
       <Testimonials data={testimonials} />
       <Community data={community} />
@@ -127,6 +130,21 @@ export const pageQuery = graphql`
             target
           }
         }
+        costComparison {
+          costCompareLink
+          costCompareTitle
+          costCategoryTabs{
+          categoryTabTitle
+          costConnectors{
+          connectorLogo{
+            mediaItemUrl
+          }
+          connectorName
+          ourPrice
+          competitorPrice
+        }
+      }
+    }
         links {
           linksArray {
             linksTitle

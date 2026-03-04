@@ -10303,3 +10303,91 @@ html {
   background: #15111F;
   border-radius: 0 0 4px 4px;
 }
+
+.cost-comparison {
+  background: #05001a;
+  padding: 80px 0;
+  color: #fff;
+}
+
+.cost-comparison__container {
+  display: flex;
+  gap: 60px;
+}
+
+.cost-comparison__table-box {
+  background: #0a0218;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 30px;
+  width: 700px;
+}
+
+.cost-comparison__tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cost-comparison__tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #aaa;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cost-comparison__tab--active {
+  background: #1c0b3b;
+  color: #fff;
+}
+
+.cost-comparison__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cost-comparison__table th,
+.cost-comparison__table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cost-comparison__connector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cost-comparison__logo {
+  width: 20px;
+  height: 20px;
+}
+
+.cost-comparison__footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.cost-comparison__cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cost-comparison__title {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.cost-comparison__button {
+  border: 1px solid #a855f7;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+}

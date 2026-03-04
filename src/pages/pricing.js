@@ -7,6 +7,7 @@ import PricingHero from '../components/pricing/hero'
 import Partners from '../components/partners'
 import PriceTable from '../components/pricing/pricetable'
 import Faq from '../components/faq'
+import CostComparison from '../components/pricing/costComparison'
 
 const Pricing = ({ data }) => {
   const {
@@ -16,6 +17,7 @@ const Pricing = ({ data }) => {
     pricingHero,
     pricingTable,
     contactFaq,
+    costComparison
   } = data.pricing.nodes[0]
   const metaImage = featuredImage?.node.localFile.publicURL
 
@@ -33,6 +35,7 @@ const Pricing = ({ data }) => {
       />
       <PricingHero data={pricingHero} />
       <PriceTable data={pricingTable} />
+      <CostComparison data={costComparison} />
       <Partners />
       {/* <Faq data={contactFaq} /> */}
     </Layout>
@@ -89,6 +92,21 @@ export const pageQuery = graphql`
             }
           }
         }
+          costComparison {
+          costCompareLink
+          costCompareTitle
+          costCategoryTabs{
+          categoryTabTitle
+          costConnectors{
+          connectorLogo{
+            mediaItemUrl
+          }
+          connectorName
+          ourPrice
+          competitorPrice
+        }
+      }
+    }
         contactFaq {
           contactFaqTitle
           contactFaqList {
