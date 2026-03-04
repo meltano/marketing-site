@@ -69,6 +69,8 @@ const Workflow = ({ data }) => {
                   </div>
                 </div>
                 <div className="workflow-terminal">
+                  { workflow.workflowWindowContent && ( workflow.workflowUiVideo?.mediaItemUrl || workflow.workflowUiImage?.mediaItemUrl ) &&
+                  (
                   <div className="toggle-container">
                     <button
                       className={`toggle-btn ${(terminalView[index] || "ui") === "ui" || !terminalView[index]
@@ -104,10 +106,27 @@ const Workflow = ({ data }) => {
                       </svg>
                     </button>
                   </div>
+                  )
+          }
                   {
-                    terminalView[index] === "local" ? (
+                    terminalView[index] === "local" || ( !workflow.workflowUiVideo?.mediaItemUrl && !workflow.workflowUiImage?.mediaItemUrl )? (
                       <div className="tab-terminal">
-                        <div className="terminal-header">
+                        {
+                          workflow?.workflowWindowTitle && (
+                            <div className="terminal-header">
+                              <div className="terminal-header-circles">
+                                <span className="red-bg" />
+                                <span className="yellow-bg" />
+                                <span className="green-bg" />
+                              </div>
+                              <span className="tab-terminal-title">
+                                {workflow.workflowWindowTitle}
+                              </span>
+                              <span className="terminal-circle-clear" />
+                            </div>
+                          )
+                        }
+                        {/* <div className="terminal-header">
                           <div className="terminal-header-circles">
                             <span className="red-bg" />
                             <span className="yellow-bg" />
@@ -117,7 +136,7 @@ const Workflow = ({ data }) => {
                             {workflow.workflowWindowTitle}
                           </span>
                           <span className="terminal-circle-clear" />
-                        </div>
+                        </div> */}
                         <div className="terminal-content">
                           <Highlight
                             theme={themes.oceanicNext}
@@ -148,9 +167,14 @@ const Workflow = ({ data }) => {
                       </div>
                     ) : (
                       <div className="video-ui-tab">
-                        <div className="video-wrapper">
+                        <div
+                          className={`video-wrapper ${
+                            workflow.workflowVideoOrImage === "ui_image" && "imgBox"
+                          }`}
+                        >
                           {workflow.workflowVideoOrImage === "ui_video" &&
                             workflow.workflowUiVideo?.mediaItemUrl && (
+                              <div>
                               <video
                                 src={workflow.workflowUiVideo.mediaItemUrl}
                                 controls
@@ -158,6 +182,7 @@ const Workflow = ({ data }) => {
                                 width="100%"
                                 height="100%"
                               />
+                              </div>
                             )}
 
                           {workflow.workflowVideoOrImage === "ui_image" &&
@@ -165,7 +190,7 @@ const Workflow = ({ data }) => {
                               <img
                                 src={workflow.workflowUiImage.mediaItemUrl}
                                 alt={workflow.workflowTitle}
-                                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                                style={{ width: "100%", height: "100%", objectFit: "contain" }}
                               />
                             )}
                         </div>
