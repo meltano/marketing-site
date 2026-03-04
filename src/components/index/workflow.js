@@ -21,6 +21,7 @@ const Workflow = ({ data }) => {
     setTitle(data.workflowHeading)
     setDesc(data.workflowDescription)
   }, [])
+  
 
   return (
     <ParallaxProvider>
