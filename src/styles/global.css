@@ -1995,7 +1995,7 @@ nav li:hover>a>.header-list-icon {
   .big-scene {
     height: calc(105svh);
   }
-  
+
   .workflow-info {
     width: calc(50% - 60px);
   }
@@ -2961,8 +2961,9 @@ ol.contact-form-sidebar-list li:before {
 
 .workflow-info {
   width: calc(50% - 80px);
-  
+
 }
+
 .workflow-info.workflow-left {
   margin-left: auto;
 }
@@ -4962,6 +4963,8 @@ ol.contact-form-sidebar-list li:before {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4.6px;
   backdrop-filter: blur(13px);
+  display: flex;
+  flex-direction: column;
 }
 
 .workflow-terminal {
@@ -4969,7 +4972,7 @@ ol.contact-form-sidebar-list li:before {
 }
 
 .workflow-terminal .tab-terminal {
-  background: rgba(255, 255, 255, 0.05);
+  background: #2a1f47;
   min-height: 382px;
 }
 
@@ -5036,6 +5039,9 @@ ol.contact-form-sidebar-list li:before {
   padding: 0 0 24px 0;
   margin: 0;
   word-break: break-word;
+  background: #15111F;
+  flex: 1;
+  border-radius: 0 0 4px 4px;
 }
 
 pre.prism-code {
@@ -5047,6 +5053,7 @@ pre.prism-code {
   word-wrap: break-word;
   background: transparent !important;
   background-color: transparent !important;
+  margin: 0;
 }
 
 .tabs-container-color-pink .brackets:before,
@@ -5130,9 +5137,11 @@ pre.prism-code {
   .workflow-terminal {
     order: 2;
   }
-.workflow-terminal {
-  width: 100%;
-}
+
+  .workflow-terminal {
+    width: 100%;
+  }
+
   .extract-data-box .tab-title {
     display: flex;
     justify-content: center;
@@ -5598,7 +5607,7 @@ input.tgg-title {
     height: 500px;
     margin-top: -200px;
   }
-  
+
 }
 
 @media all and (min-width: 1600px) {
@@ -9910,8 +9919,9 @@ html {
 
 @media all and (max-width: 992px) {
   .workflow-info {
-  width: calc(50% - 60px);
-}
+    width: calc(50% - 60px);
+  }
+
   .col-1-3 {
     flex-direction: column;
   }
@@ -10224,7 +10234,7 @@ html {
 .workflow-terminal .video-ui-tab {
   background: #2a1f47;
   border: none;
-  border-radius: 0 12px 12px 12px;
+  border-radius: 0 4px 4px 4px;
   padding: 6px;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 40px rgba(0, 0, 0, 0.4);
   margin-top: -1px;
@@ -10235,31 +10245,36 @@ html {
 .workflow-terminal .video-wrapper {
   position: relative;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 4px;
   overflow: hidden;
   background: #15111F;
-  position:relative;
+  position: relative;
   height: 100%;
 }
+
 .workflow-terminal .video-wrapper:not(.imgBox) {
   display: flex;
   align-items: center;
 }
-.workflow-terminal .video-wrapper:not(.imgBox) > div {
-  padding-top:56.25%;
+
+.workflow-terminal .video-wrapper:not(.imgBox)>div {
+  padding-top: 56.25%;
   position: relative;
   width: 100%;
 }
+
 .workflow-terminal .video-wrapper.imgBox {
   padding-top: 0;
 }
+
 .workflow-terminal .video-wrapper video {
   position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
+
 .workflow-terminal .video-wrapper iframe {
   position: absolute;
   inset: 0;
@@ -10269,21 +10284,22 @@ html {
 }
 
 .workflow-terminal .toggle-container+.tab-terminal {
-  border-radius: 0 12px 12px 12px;
+  border-radius: 0 4px 4px 4px;
   border: none;
   padding: 6px;
   background: #2a1f47;
   display: flex;
-  flex-direction: column;width: calc(100% - 12px);
+  flex-direction: column;
+  width: calc(100% - 12px);
   margin-top: -1px;
 }
 
 .workflow-terminal .toggle-container+.tab-terminal .terminal-header {
-  border-radius: 12px 12px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 
 .workflow-terminal .toggle-container+.tab-terminal .terminal-content {
   flex: 1;
   background: #15111F;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 4px 4px;
 }
