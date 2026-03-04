@@ -117,7 +117,7 @@ const CostComparison = ({ data }) => {
                     </h2>
 
                     <Link
-                        to={data?.costCompareLink || "#"}
+                        to={`/${data?.costCompareLink || "#"}/`}
                         className="cost-comparison__button"
                     >
                         Try the pricing calculator
