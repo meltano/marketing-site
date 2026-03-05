@@ -4556,6 +4556,7 @@ ol.contact-form-sidebar-list li:before {
 
 .testimonials-grid-quote a {
   color: #18C3FA;
+  text-decoration: underline;
 }
 
 /* Benefit & Tabs */
