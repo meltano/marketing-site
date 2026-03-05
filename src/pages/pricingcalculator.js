@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
+import PricingCalculator from '../components/PricingCalculator/PricingCalculator'
 
 const Pricingcalculator = ({ data }) => {
 
@@ -13,6 +14,7 @@ const Pricingcalculator = ({ data }) => {
         <Layout>
             <h1>{pricingcalculatordata?.pricingCalculatorTitle}</h1>
             <p>{pricingcalculatordata?.pricingCalculatorSmallText}</p>
+        <PricingCalculator />
         </Layout>
     )
 }
