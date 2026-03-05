@@ -13,7 +13,7 @@ const CostComparison = ({ data }) => {
     0
   )
 
-  const savings = totalCompetitorPrice - totalOurPrice
+  const savings = (totalCompetitorPrice - totalOurPrice).toFixed(2);
 
   return (
     <section className="costComparison centerLarge">
