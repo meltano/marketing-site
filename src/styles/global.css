@@ -448,8 +448,8 @@ em span {
   opacity: 0;
   width: 30%;
   height: 30%;
-  background: url('../assets/img/portal-arch.webp');
-  background-size: 90%;
+  background: url('../assets/img/meltano-logo-icon-white.svg');
+  background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;
@@ -2930,7 +2930,7 @@ ol.contact-form-sidebar-list li:before {
 /* Workflow */
 
 .workflow {
-  padding: 65px 0;
+  padding: 65px 0 0;
   position: relative;
   overflow-y: hidden;
 }
@@ -4334,6 +4334,9 @@ ol.contact-form-sidebar-list li:before {
   padding: 40px;
 }
 
+.testimonials-grid-item-info img {
+  filter: brightness(0) invert(1);
+}
 .testimonials-grid-quote {
   color: #ffffff;
 }
@@ -4552,7 +4555,7 @@ ol.contact-form-sidebar-list li:before {
 }
 
 .testimonials-grid-quote a {
-  color: #ffffff;
+  color: #18C3FA;
 }
 
 /* Benefit & Tabs */
@@ -10180,21 +10183,31 @@ html {
   text-align: right;
 }
 
-.workflow-terminal .toggle-container {
+.tabsToggle .toggle-container {
   display: flex;
-  align-items: flex-end;
   position: relative;
-  z-index: 3;
   margin-bottom: 0;
+  width: calc(100% - 10px);
 }
-
-.workflow-terminal .toggle-btn {
+.centerLarge .tabsToggle .btnGroup {
+  border-radius: 4px 4px 0 0;
+  border: none;
+  padding: 6px 6px 0 6px;
+  background: #2a1f47;
+}
+.centerLarge .tabsToggle .toggle-container {
+  width: calc(100% - 12px);
+  background: #15111F !important;
+  padding: 6px;
+}
+.tabsToggle .toggle-btn {
   position: relative;
   padding: 10px 40px 10px 20px;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  background: linear-gradient(90deg, #221937 calc(100% - 25px), transparent calc(100% - 25px));
+  line-height: 1;
+  background: linear-gradient(90deg, #221937 calc(100% - 15px), transparent calc(100% - 15px));
   color: rgba(255, 255, 255, 0.7);
   border: none;
   border-bottom: none;
@@ -10203,29 +10216,69 @@ html {
   transition: all 0.2s ease;
   text-align: left;
 }
-
-.workflow-terminal .toggle-container .toggle-btn:nth-child(1) {
-  z-index: 1;
+.centerLarge .tabsToggle .toggle-btn {
+  flex: 1;
+  border: 0;
+  background: #15111F !important;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+}
+.centerLarge .tabsToggle .toggle-btn.active {
+  background: #2a1f47 !important;
+  border: 1px solid #342B4D;
+}
+.tabsToggle .toggle-btn.smBtn {
+  font-size: 12px;
+  padding: 6px 16px 6px 8px;
 }
 
-.workflow-terminal .toggle-btn svg {
+.tabsToggle .toggle-btn svg {
   position: absolute;
   top: 0;
   height: 100%;
   width: auto;
-  right: -10px
+  right: -10px;
+  z-index: -1;
 }
 
-.workflow-terminal .toggle-btn svg path {
+.tabsToggle .toggle-btn svg path {
   fill: #221937;
 }
-
-.workflow-terminal .toggle-btn.active {
-  background: linear-gradient(90deg, #2a1f47 calc(100% - 25px), transparent calc(100% - 25px));
+.tabsToggle .toggle-btn:not(.active):nth-child(1) {
+  z-index: 3;
+  background: linear-gradient(90deg, #261c40 calc(100% - 15px), transparent calc(100% - 15px));
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(1) svg path {
+  fill: #261c40;
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(2) {
+  z-index: 2;
+  background: linear-gradient(90deg, #221937 calc(100% - 15px), transparent calc(100% - 15px));
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(2) svg path {
+  fill: #221937;
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(3) {
   z-index: 1;
+  background: linear-gradient(90deg, #1d152f calc(100% - 15px), transparent calc(100% - 15px));
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(3) svg path {
+  fill: #1d152f;
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(4) {
+  background: linear-gradient(90deg, #171023 calc(100% - 15px), transparent calc(100% - 15px));
+}
+.tabsToggle .toggle-btn:not(.active):nth-child(4) svg path {
+  fill: #171023;
 }
 
-.workflow-terminal .toggle-btn.active svg path {
+.tabsToggle .toggle-btn.active {
+  background: linear-gradient(90deg, #2a1f47 calc(100% - 15px), transparent calc(100% - 15px));
+  z-index: 4;
+}
+
+.tabsToggle .toggle-btn.active svg path {
   fill: #2a1f47;
 }
 
@@ -10251,7 +10304,42 @@ html {
   position: relative;
   height: 100%;
 }
-
+.tabsToggle .toggleContent {
+  border-radius: 0 4px 4px 4px;
+  border: none;
+  padding: 6px;
+  background: #2a1f47;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 12px);
+  margin-top: -1px;
+  position: relative;
+  z-index: 1;
+}
+.tabsToggle .toggleContent .toggleContentInner {
+  background: #15111F;
+  border-radius: 4px;
+  padding: 35px 30px;
+}
+.tabsToggle .toggleContent table {
+  font-size: 12px;
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1;
+}
+.centerLarge .tabsToggle .toggleContent table {
+  font-size: 14px;
+}
+.tabsToggle .toggleContent table th {
+  padding: 0 8px 10px 14px;
+  border-bottom: 2px solid #2D2248;
+  font-weight: normal;
+ }
+.tabsToggle .toggleContent table td {
+  padding: 10px 8px 10px 14px;
+  border-bottom: 1px solid #2D224899;
+  font-weight: normal;
+ }
 .workflow-terminal .video-wrapper:not(.imgBox) {
   display: flex;
   align-items: center;
@@ -10283,7 +10371,7 @@ html {
   border: 0;
 }
 
-.workflow-terminal .toggle-container+.tab-terminal {
+.tabsToggle .toggle-container +.tab-terminal {
   border-radius: 0 4px 4px 4px;
   border: none;
   padding: 6px;
@@ -10294,12 +10382,197 @@ html {
   margin-top: -1px;
 }
 
-.workflow-terminal .toggle-container+.tab-terminal .terminal-header {
+.tabsToggle .toggle-container + .tab-terminal .terminal-header {
   border-radius: 4px 4px 0 0;
 }
 
-.workflow-terminal .toggle-container+.tab-terminal .terminal-content {
+.tabsToggle .toggle-container + .tab-terminal .terminal-content {
   flex: 1;
   background: #15111F;
   border-radius: 0 0 4px 4px;
+}
+
+.costComparison {
+  color: #fff;
+}
+
+.tabsToggle .toggleContent table td > .company {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tabsToggle .toggleContent table td .logoIcon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.tabsToggle .toggleContent table td .logoIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+}
+.tabsToggle .toggleContent .bottomText {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+}
+.tabsToggle .toggleContent .bottomText p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 16px;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: normal;
+} 
+.centerLarge .tabsToggle .toggleContent .bottomText p {
+  font-size: 12px;
+  max-width: 400px;
+}
+.tabsToggle .toggleContent .bottomText .leftText {
+  flex: 1;
+}
+.tabsToggle .toggleContent .bottomText .rightText {
+  margin-left: auto;
+  text-align: right;
+}
+.tabsToggle .toggleContent .bottomText .rightText span {
+  display: block;
+}
+.tabsToggle .toggleContent .bottomText .rightText span:first-child {
+  font-size: 12px;
+}
+.centerLarge .tabsToggle .toggleContent .bottomText .rightText span:first-child {
+  font-size: 14px;
+}
+.costComparison .row .titleBlock h2 {
+  font-size: 32px;
+  text-align: left;
+  margin-bottom: 44px;
+}
+
+.costComparison .row .titleBlock a,
+.costComparison .row .tabsToggle .btnBox a {
+  color: white;
+  text-align: center;
+}
+
+.costComparison .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+}
+.costComparison .row .tabsToggle {
+  width: 60%;
+}
+.costComparison.centerLarge .row .tabsToggle {
+  width: 100%;
+  max-width: 840px
+}
+.costComparison .row .tabsToggle .btnBox {
+  display: none;
+}
+.centerLarge.costComparison .row .tabsToggle .btnBox {
+  padding-top: 40px;
+  display: block;
+  text-align: center;
+}
+.costComparison .row .titleBlock {
+  flex: 1;
+}
+@media (max-width : 1180px) {
+  .tabsToggle .toggleContent .toggleContentInner {
+    padding: 25px 20px;
+  }
+  .costComparison .row {
+    gap: 30px;
+  }
+  .costComparison .row .tabsToggle {
+    width: 600px;
+  }
+  .costComparison .row .titleBlock h2 {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width : 1023px) {
+  .workflow {
+    padding-bottom: 65px;
+  }
+  .workflow-fr >div:last-child .workflow-separator{
+  display: none;
+  }
+  .workflow-fr >div:last-child .workflow-terminal {
+    height: 100%;
+  }
+  .costComparison .row {
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  .costComparison .row .tabsToggle {
+    width: 100%;
+  }
+  .costComparison .row .titleBlock h2 {
+    margin-bottom: 0;
+  }
+  .costComparison .row .titleBlock {
+    order: -1;
+    text-align: center;
+  }
+  .costComparison .row .titleBlock h2 {
+    text-align: center;
+  }
+  
+  .costComparison .row .tabsToggle .btnBox {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+  }
+  .costComparison .row .titleBlock a {
+    display: none;
+  }
+}
+@media (max-width : 768px) {
+    .workflow {
+    padding-bottom: 0;
+  }
+  .costComparison {
+    margin-bottom: 75px;
+  }
+  .tabsToggle .toggle-btn.smBtn {
+    font-size: 12px;
+    padding: 6px 12px 6px 6px;
+  }
+}
+@media (max-width : 600px) {
+  .tabsToggle .toggleContent .bottomText {
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .tabsToggle .toggleContent .bottomText .leftText {
+    min-width: 100%;
+    order: 1;
+  }
+}
+@media (max-width : 480px) {
+    .tabsToggle .toggleContent .toggleContentInner {
+    padding: 25px 10px;
+  }
+  .tabsToggle .toggleContent table th {
+  padding: 0 8px 8px 10px;
+}
+  .tabsToggle .toggleContent table td {
+  padding: 8px 8px 8px 10px;
+  }
+  .centerLarge .tabsToggle .toggle-btn {
+  padding: 6px 4px;
+  font-size: 12px;
+  }
+}
+@media (max-width : 375px) {
+  .costComparison {
+    margin-bottom: 75px;
+  }
+  .tabsToggle .toggle-btn.smBtn {
+    font-size: 10px;
+  }
 }

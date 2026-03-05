@@ -21,6 +21,7 @@ const Workflow = ({ data }) => {
     setTitle(data.workflowHeading)
     setDesc(data.workflowDescription)
   }, [])
+  
 
   return (
     <ParallaxProvider>
@@ -68,7 +69,7 @@ const Workflow = ({ data }) => {
                     ))}
                   </div>
                 </div>
-                <div className="workflow-terminal">
+                <div className="workflow-terminal tabsToggle">
                   { workflow.workflowWindowContent && ( workflow.workflowUiVideo?.mediaItemUrl || workflow.workflowUiImage?.mediaItemUrl ) &&
                   (
                   <div className="toggle-container">
