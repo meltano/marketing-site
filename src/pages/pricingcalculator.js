@@ -32,6 +32,22 @@ query {
         pricingCalculatorSubtitle
         pricingCalculatorSubtitleSmallText
       }
+        costComparison {
+            costCompareLink
+            costCompareTitle
+            costCategoryTabs{
+              categoryTabTitle
+              costConnectors{
+              connectorLogo{
+                mediaItemUrl
+              }
+              connectorName
+              ourPrice
+              competitorPrice
+            }
+          }
+        }
+
     }
   }
 }
