@@ -17,16 +17,16 @@ export const CtaIntrigued = () => (
               className="btn alt-blue-btn"
               rel="noreferrer"
             >
-              Try live demo
+              Install open source
             </a>
             <a
-              href="https://meltano.com/get-started"
+              href="/pricing/"
               className="btn colorful-btn"
               target="_blank"
               rel="noreferrer"
             >
               <span />
-              Install open source
+              Calculate TCO
             </a>
           </div>
         </div>

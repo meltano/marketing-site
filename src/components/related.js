@@ -47,9 +47,9 @@ const Related = ({ data, posts }) => {
               </div>
             ))}
           </div>
-          <Link to={data.latestLink.url} className="btn colorful-btn">
+          {/* <Link to={data.latestLink.url} className="btn colorful-btn">
             <span /> {data.latestLink.title}
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
