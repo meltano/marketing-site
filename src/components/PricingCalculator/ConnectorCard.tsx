@@ -2,13 +2,6 @@ import * as React from 'react'
 
 import { Button } from './ui/button'
 import { Card } from './ui/card'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from './ui/select'
 import { Slider } from './ui/slider'
 import { X } from 'lucide-react'
 
@@ -24,23 +17,6 @@ interface ConnectorCardProps {
   onRemove: (id: string) => void
   onUpdate: (id: string, updates: Partial<Connector>) => void
 }
-
-const CONNECTORS = [
-  'Salesforce',
-  'HubSpot',
-  'Postgres',
-  'MySQL',
-  'MongoDB',
-  'Snowflake',
-  'BigQuery',
-  'Redshift',
-  'DynamoDB',
-  'Oracle',
-  'SAP',
-  'NetSuite',
-  'Zendesk',
-  'Jira',
-]
 
 export default function ConnectorCard({
   connector,
@@ -113,100 +89,88 @@ export default function ConnectorCard({
     setMounted(true)
   }, [])
  
-  const [isOpen, setIsOpen] = React.useState(false)
 
-React.useEffect(() => {
-  setIsOpen(true)
-}, [])
 
   return (
     <Card className="p-4">
       <div className="connectorBox">
         {mounted && (
           <div className="connectorBoxInner">
-            <Select
-             open={isOpen}
-            onOpenChange={setIsOpen}
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="18" height="18" rx="9" fill="white" fill-opacity="0.1"/>
+              <path d="M12.75 10.5L9 6.75L5.25 10.5" stroke="white" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span className="connectorName">{connector.name}</span>
 
-
-              value={connector.name}
-              onValueChange={value => onUpdate(connector.id, { name: value })}
-            >
-              <SelectTrigger
-                data-testid={`select-connector-${connector.id}`}
-                className="w-full"
-              >
-                <SelectValue placeholder="Select connector" />
-              </SelectTrigger>
-              <SelectContent>
-                {CONNECTORS.map(name => (
-                  <SelectItem key={name} value={name}>
-                    {name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <div className="timeTabs">
-              <Button
-                variant={
-                  connector.frequency === '15min' ? 'default' : 'outline'
-                }
-                size="sm"
-                onClick={() => onUpdate(connector.id, { frequency: '15min' })}
-                data-testid={`button-frequency-15min-${connector.id}`}
-                className="flex-1"
-              >
-                Every 15min
-              </Button>
-              <Button
-                variant={
-                  connector.frequency === 'hourly' ? 'default' : 'outline'
-                }
-                size="sm"
-                onClick={() => onUpdate(connector.id, { frequency: 'hourly' })}
-                data-testid={`button-frequency-hourly-${connector.id}`}
-                className="flex-1"
-              >
-                Hourly
-              </Button>
-              <Button
-                variant={
-                  connector.frequency === 'daily' ? 'default' : 'outline'
-                }
-                size="sm"
-                onClick={() => onUpdate(connector.id, { frequency: 'daily' })}
-                data-testid={`button-frequency-daily-${connector.id}`}
-                className="flex-1"
-              >
-                Daily
-              </Button>
-            </div>
-
-            <div className="space-y-3 priceRangeBox">
-              <div className="priceRangeBoxTop">
-                <span className="text-sm font-medium">
-                  {connector.numberOfRows.toLocaleString()} active rows/month
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  Est. {minutesPerSync} min/sync
-                </span>
+            <div className='connectorContent'>
+              <div className="timeTabs">
+                <span className='textLabel'>Run Frequency</span>
+                <Button
+                  variant={
+                    connector.frequency === '15min' ? 'default' : 'outline'
+                  }
+                  size="sm"
+                  onClick={() => onUpdate(connector.id, { frequency: '15min' })}
+                  data-testid={`button-frequency-15min-${connector.id}`}
+                  className="flex-1"
+                >
+                  <span></span>
+                  Every 15min
+                </Button>
+                <Button
+                  variant={
+                    connector.frequency === 'hourly' ? 'default' : 'outline'
+                  }
+                  size="sm"
+                  onClick={() => onUpdate(connector.id, { frequency: 'hourly' })}
+                  data-testid={`button-frequency-hourly-${connector.id}`}
+                  className="flex-1"
+                >
+                  <span></span>
+                  Hourly
+                </Button>
+                <Button
+                  variant={
+                    connector.frequency === 'daily' ? 'default' : 'outline'
+                  }
+                  size="sm"
+                  onClick={() => onUpdate(connector.id, { frequency: 'daily' })}
+                  data-testid={`button-frequency-daily-${connector.id}`}
+                  className="flex-1"
+                >
+                  <span></span>
+                  Daily
+                </Button>
               </div>
 
-              <Slider
-                value={[getSliderFromRows(connector.numberOfRows)]}
-                onValueChange={handleSliderChange}
-                max={100}
-                step={1}
-                data-testid={`slider-rows-${connector.id}`}
-              />
-              <div className="flex justify-between text-xs text-muted-foreground font-medium tabular-nums">
-                <span>1K</span>
-                <span>10K</span>
-                <span>100K</span>
-                <span>1M</span>
-                <span>5M</span>
-                <span>10M</span>
+              <div className="space-y-3 priceRangeBox">
+                <span className='textLabel'>Active Rows/ Month</span>
+                <div>
+                  <div className="priceRangeBoxTop">
+                    <span className="text-sm font-medium">
+                      {connector.numberOfRows.toLocaleString()} active rows/month
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      Est. {minutesPerSync} min/sync
+                    </span>
+                  </div>
+
+                  <Slider
+                    value={[getSliderFromRows(connector.numberOfRows)]}
+                    onValueChange={handleSliderChange}
+                    max={100}
+                    step={1}
+                    data-testid={`slider-rows-${connector.id}`}
+                  />
+                  <div className="flex justify-between text-xs text-muted-foreground font-medium tabular-nums">
+                    <span>1K</span>
+                    <span>10K</span>
+                    <span>100K</span>
+                    <span>1M</span>
+                    <span>5M</span>
+                    <span>10M</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

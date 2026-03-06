@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Button } from './ui/button'
 import { Switch } from './ui/switch'
 import { Label } from './ui/label'
@@ -8,21 +8,43 @@ import PricingSummary from './PricingSummary'
 import ComparisonChart from './ComparisonChart'
 import EmbedCode from './EmbedCode'
 
-export default function PricingCalculator() {
-  const [connectors, setConnectors] = useState<Connector[]>([
-    { id: '1', name: 'Salesforce', frequency: 'hourly', numberOfRows: 1000000 },
-  ])
-  const [showComparison, setShowComparison] = useState(false)
+const CONNECTORS = [
+  'Salesforce', 'HubSpot', 'Postgres', 'MySQL', 'MongoDB',
+  'Snowflake', 'BigQuery', 'Redshift', 'DynamoDB', 'Oracle',
+  'SAP', 'NetSuite', 'Zendesk', 'Jira',
+] 
 
-  const addConnector = () => {
+export default function PricingCalculator() {
+  const [connectors, setConnectors] = useState<Connector[]>([])
+  const [showComparison, setShowComparison] = useState(false)
+  const [showPickerDropdown, setShowPickerDropdown] = useState(false)
+  const pickerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!showPickerDropdown) return
+    const handleClickOutside = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
+        setShowPickerDropdown(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [showPickerDropdown])
+
+  const handleAddConnectorClick = () => {
     if (connectors.length >= 10) return
+    setShowPickerDropdown(true)
+  }
+
+  const handlePickConnector = (name: string) => {
     const newConnector: Connector = {
       id: Date.now().toString(),
-      name: 'Salesforce',
+      name,
       frequency: 'hourly',
       numberOfRows: 1000000,
     }
-    setConnectors([...connectors, newConnector])
+    setConnectors(prev => [...prev, newConnector])
+    setShowPickerDropdown(false)
   }
 
   const removeConnector = (id: string) => {
@@ -66,27 +88,8 @@ export default function PricingCalculator() {
 
   const totalCost = connectorCosts.reduce((sum, item) => sum + item.cost, 0)
 
-  // Categorize connectors as API or Database
-  const apiConnectors = [
-    'Salesforce',
-    'HubSpot',
-    'SAP',
-    'NetSuite',
-    'Zendesk',
-    'Jira',
-  ]
-  const databaseConnectors = [
-    'Postgres',
-    'MySQL',
-    'MongoDB',
-    'Snowflake',
-    'BigQuery',
-    'Redshift',
-    'DynamoDB',
-    'Oracle',
-  ]
+  const apiConnectors = ['Salesforce', 'HubSpot', 'SAP', 'NetSuite', 'Zendesk', 'Jira']
 
-  // Calculate traditional row-based pricing: 5x for API, 3x for Database
   const rowBasedPrice = connectors.reduce((sum, connector) => {
     const connectorCost =
       connectorCosts.find(cc => cc.name === connector.name)?.cost || 0
@@ -97,45 +100,84 @@ export default function PricingCalculator() {
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-6 lg:p-8 pricingCalc">
-
       <div className="container">
-        <div className="text-center mb-8">
-          <div className="heading">
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
-              Pricing Calculator
-            </h2>
-            <p className="heading-description p2">
-              Calculate your monthly cost based on connector usage time
-            </p>
-          </div>
-        </div>
-
-        <div className="calcSection">
+        <div className="row calcSection">
           <div className="leftSide">
-            <div className="space-y-4">
+            <div className="heading">
+              <h2 className="title-inline">
+                Pricing Calculator
+              </h2>
+              <p className="heading-description p2">
+                Calculate your monthly cost based on connector usage time
+              </p>
+            </div>
+            <div className="connectorBoxes">
               <div className="leftSideTitle">
-                <h5>
-                  Connectors
-                </h5>
+                <h5>Connectors</h5>
                 {connectors.length < 10 && (
-                  <Button
-                    onClick={addConnector}
-                    size="sm"
-                    data-testid="button-add-connector"
-                  >
-                    <Plus className="h-4 w-4 mr-2" />
-                    Add Connector
-                  </Button>
+                  <div ref={pickerRef} style={{ position: 'relative', display: 'inline-block' }}>
+                    <Button
+                      onClick={handleAddConnectorClick}
+                      size="sm"
+                      data-testid="button-add-connector"
+                    >
+                      <Plus className="h-4 w-4 mr-2" />
+                      Add Connector
+                    </Button>
+                    {showPickerDropdown && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '100%',
+                          right: 0,
+                          marginTop: '4px',
+                          background: 'var(--popover, #1a1a2e)',
+                          border: '1px solid var(--border, rgba(255,255,255,0.1))',
+                          borderRadius: '8px',
+                          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                          zIndex: 50,
+                          minWidth: '180px',
+                          padding: '4px',
+                        }}
+                      >
+                        {CONNECTORS.map(name => (
+                          <button
+                            key={name}
+                            onClick={() => handlePickConnector(name)}
+                            style={{
+                              display: 'block',
+                              width: '100%',
+                              textAlign: 'left',
+                              padding: '8px 12px',
+                              fontSize: '14px',
+                              background: 'transparent',
+                              border: 'none',
+                              borderRadius: '4px',
+                              cursor: 'pointer',
+                              color: 'var(--foreground, #fff)',
+                            }}
+                            onMouseEnter={e => {
+                              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.08)'
+                            }}
+                            onMouseLeave={e => {
+                              (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
+                            }}
+                          >
+                            {name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
-
               {connectors.length === 0 ? (
                 <div className="text-center py-12 border-2 border-dashed rounded-lg">
                   <p className="text-muted-foreground mb-4">
                     Add your first connector to get started
                   </p>
                   <Button
-                    onClick={addConnector}
+                    onClick={handleAddConnectorClick}
                     data-testid="button-add-first-connector"
                   >
                     <Plus className="h-4 w-4 mr-2" />
@@ -159,7 +201,6 @@ export default function PricingCalculator() {
                   )}
                 </div>
               )}
-            </div>
 
             <div className="compareSolution">
               <div>
@@ -192,9 +233,9 @@ export default function PricingCalculator() {
               />
             )}
 
+            </div>
             {/* <EmbedCode /> */}
           </div>
-
           <div className="rightSide">
             <PricingSummary
               connectorCosts={connectorCosts}

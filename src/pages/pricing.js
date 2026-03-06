@@ -93,20 +93,20 @@ export const pageQuery = graphql`
           }
         }
           costComparison {
-          costCompareLink
-          costCompareTitle
-          costCategoryTabs{
-          categoryTabTitle
-          costConnectors{
-          connectorLogo{
-            mediaItemUrl
+            costCompareLink
+            costCompareTitle
+            costCategoryTabs{
+              categoryTabTitle
+              costConnectors{
+              connectorLogo{
+                mediaItemUrl
+              }
+              connectorName
+              ourPrice
+              competitorPrice
+            }
           }
-          connectorName
-          ourPrice
-          competitorPrice
         }
-      }
-    }
         contactFaq {
           contactFaqTitle
           contactFaqList {

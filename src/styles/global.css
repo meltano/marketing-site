@@ -4980,7 +4980,7 @@ ol.contact-form-sidebar-list li:before {
 }
 
 .terminal-header {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: #221937;
   height: 36px;
   padding: 0 16px;
   text-align: center;
@@ -10225,7 +10225,7 @@ html {
   text-align: center;
 }
 .centerLarge .tabsToggle .toggle-btn.active {
-  background: #2a1f47 !important;
+  background: #332C46  !important;
   border: 1px solid #342B4D;
 }
 .tabsToggle .toggle-btn.smBtn {
@@ -10274,18 +10274,18 @@ html {
 }
 
 .tabsToggle .toggle-btn.active {
-  background: linear-gradient(90deg, #2a1f47 calc(100% - 15px), transparent calc(100% - 15px));
+  background: linear-gradient(90deg, #332C46  calc(100% - 15px), transparent calc(100% - 15px));
   z-index: 4;
 }
 
 .tabsToggle .toggle-btn.active svg path {
-  fill: #2a1f47;
+  fill: #332C46 ;
 }
 
 /* === Workflow Video UI Frame === */
 
 .workflow-terminal .video-ui-tab {
-  background: #2a1f47;
+  background: #332C46;
   border: none;
   border-radius: 0 4px 4px 4px;
   padding: 6px;
@@ -10308,7 +10308,7 @@ html {
   border-radius: 0 4px 4px 4px;
   border: none;
   padding: 6px;
-  background: #2a1f47;
+  background: #332C46;
   display: flex;
   flex-direction: column;
   width: calc(100% - 12px);
@@ -10375,7 +10375,7 @@ html {
   border-radius: 0 4px 4px 4px;
   border: none;
   padding: 6px;
-  background: #2a1f47;
+  background: #332C46;
   display: flex;
   flex-direction: column;
   width: calc(100% - 12px);
@@ -10601,6 +10601,16 @@ html {
 .calcSection .leftSide {
   flex: 1;
 }
+.calcSection .leftSide .heading h2 {
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+.calcSection .leftSide .heading .heading-description {
+  margin: 0 0 30px 0;
+  text-align: left;
+}
 
 .calcSection .rightSide {
   width: 40%;
@@ -10613,10 +10623,29 @@ html {
 
 .calcSection .leftSide .leftSideTitle h5 {
   margin: 0;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .calcSection .leftSide .leftSideTitle button {
-  margin: 0 0 0 auto;
+margin: 0 0 0 auto;
+  background: #211936;
+  color: #fff;
+  padding: 4px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 12px;
+  line-height: 1;
+}
+.calcSection .leftSide .leftSideTitle button svg {
+  width: 18px;
+  height: auto;
+  background-color: #37304a;
+  border-radius: 50%;
+}
+.calcSection .leftSide .leftSideTitle button svg path {
+  stroke: rgba(255, 255, 255, 0.7);
 }
 
 .calcSection .rightSide>div {
@@ -10672,34 +10701,95 @@ html {
   background: #fff;
   z-index: 3 !important;
 }
-
+.connectorBoxes {
+  border-radius: 4px;
+  background-color: #150F22;
+  padding: 18px 14px 48px 14px;
+}
 .connectorBox {
-  background: rgba(255, 255, 255, 0.05);
-  -webkit-backdrop-filter: blur(13px);
-  backdrop-filter: blur(13px);
-  border-radius: 4.6px;
-  border: 1px solid rgb(245 99 249 / 60%);
-  padding: 20px;
+  background: #211936;
+  border-radius: 4px;
+  padding: 11px 20px;
   margin-bottom: 1.5rem;
 }
 
-.connectorBoxInner>button {
+.connectorBoxInner > button {
   width: 100%;
 }
-
+.connectorBox .textLabel {
+  font-size: 14px;
+  line-height: 20px;
+  width: 190px;
+  padding-right: 15px;
+}
 .timeTabs {
   display: flex;
-  gap: 1rem;
 }
 
-.timeTabs>* {
-  flex: 1;
+.timeTabs * {
+  margin: 0;
 }
+.timeTabs .btn {
+  font-size: 12px;
+  padding: 4px 7px 4px 8px;
+  background: #37304a;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 12px;
+} 
+.timeTabs .btn span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0px 0px 0px 1.5px #3A64FA;
+}
+.timeTabs .btn span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 60%;
+  height: 60%;
+  background: #3A64FA;
+  border-radius: 50%;
+  opacity: 0;
+}
+.timeTabs .btn[class*="shadow-none"] span{
+  box-shadow: 0px 0px 0px 1.5px #ffffff;
+}
+.timeTabs .btn[class*="shadow-none"] span::after {
+  opacity: 0;
+}
+.timeTabs .btn span{
+  box-shadow: 0px 0px 0px 1.5px #3A64FA;
+}
+.timeTabs .btn span::after {
+  opacity: 1;
+}
+/* 
+btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex-1
 
+btn alt-blue-btn middle hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-8 rounded-md px-3 text-xs flex-1
+btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex-1
+btn alt-blue-btn middle hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-8 rounded-md px-3 text-xs flex-1
+
+
+btn alt-blue-btn middle hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-8 rounded-md px-3 text-xs flex-1
+
+btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex-1
+*/
 .priceRangeBox {
-  --tw-space-y-reverse: 0;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+ display: flex;
+  margin: 0;
+}
+.priceRangeBox > div {
+  flex: 1;
 }
 
 .priceRangeBoxTop {
