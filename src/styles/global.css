@@ -2763,7 +2763,13 @@ ol.contact-form-sidebar-list li:before {
   border-radius: 4.6px;
   margin: 24px auto;
 }
-
+.logos .swiper-slide {
+  width: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
 .logos a img {
   max-width: 260px;
   max-height: 60px;
@@ -2773,7 +2779,8 @@ ol.contact-form-sidebar-list li:before {
 
 .logos a {
   opacity: 0.7;
-  display: inline-block
+  display: inline-block;
+  margin-right: 20px;
 }
 
 .logos a:hover {
@@ -2792,11 +2799,6 @@ ol.contact-form-sidebar-list li:before {
     gap: 38px;
     padding: 24px 18px;
   }
-
-  .logos a {
-    width: 24%;
-  }
-
   .logos-diamond-bg {
     padding: 35px 20px 35px;
   }
@@ -10553,6 +10555,14 @@ html {
     min-width: 100%;
     order: 1;
   }
+  
+.logos a {
+  margin-right: 0;
+}
+.logos a img {
+  max-width: 180px;
+  max-height: 40px;
+}
 }
 @media (max-width : 480px) {
     .tabsToggle .toggleContent .toggleContentInner {
