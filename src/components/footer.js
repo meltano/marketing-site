@@ -111,7 +111,7 @@ const footerData = [
         title: 'Contact',
         url: '/contact/',
         icon: AboutIcon,
-        desc: '',
+        desc: 'The Meltano team is here to help. Ask us anything, or give us your feedback!',
       },
     ],
   },
