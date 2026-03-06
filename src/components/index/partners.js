@@ -77,7 +77,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={fiveXLogo} alt="5X logo" />
@@ -86,7 +86,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={consilLogo} alt="Consil logo" />
@@ -95,7 +95,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={ifgLogo} alt="IFG logo" />
@@ -104,7 +104,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={lotusLabsLogo} alt="Lotus Labs logo" />
@@ -113,7 +113,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={sessionLogo} alt="Session Climbing logo" />
@@ -122,7 +122,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={vertexLogo} alt="Vertex logo" />
@@ -131,7 +131,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={vieveLogo} alt="VIEVE logo" />
@@ -140,7 +140,7 @@ const IndexPartners = () => (
             <SwiperSlide>
               
               <a
-                href="/blog/cbes-increased-revenue-through-customer-service-intelligence"
+                href="/blog/"
                 rel="noopener noreferrer"
               >
                 <img src={woomLogo} alt="Woom logo" />
