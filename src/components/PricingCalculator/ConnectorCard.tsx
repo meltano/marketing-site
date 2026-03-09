@@ -10,6 +10,7 @@ export interface Connector {
   name: string
   frequency: '15min' | 'hourly' | 'daily'
   numberOfRows: number
+  pricePerMinute: number
 }
 
 interface ConnectorCardProps {

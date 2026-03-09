@@ -8,18 +8,15 @@ import PricingSummary from './PricingSummary'
 import ComparisonChart from './ComparisonChart'
 import EmbedCode from './EmbedCode'
 
-const CONNECTORS = [
-  'Salesforce', 'HubSpot', 'Postgres', 'MySQL', 'MongoDB',
-  'Snowflake', 'BigQuery', 'Redshift', 'DynamoDB', 'Oracle',
-  'SAP', 'NetSuite', 'Zendesk', 'Jira',
-] 
 
-export default function PricingCalculator() {
+
+export default function PricingCalculator(data:any) {
   const [connectors, setConnectors] = useState<Connector[]>([])
   const [showComparison, setShowComparison] = useState(false)
   const [showPickerDropdown, setShowPickerDropdown] = useState(false)
   const pickerRef = useRef<HTMLDivElement>(null)
-
+console.log("Data in the pricing calculator component", data) 
+  const CONNECTORS = data?.data || []
   useEffect(() => {
     if (!showPickerDropdown) return
     const handleClickOutside = (e: MouseEvent) => {
@@ -36,13 +33,15 @@ export default function PricingCalculator() {
     setShowPickerDropdown(true)
   }
 
-  const handlePickConnector = (name: string) => {
+  const handlePickConnector = (connector: any) => {
     const newConnector: Connector = {
       id: Date.now().toString(),
-      name,
+      name: connector.connectorName,
+      pricePerMinute: Number(connector.pricePerMinute) || 0.05,
       frequency: 'hourly',
       numberOfRows: 1000000,
     }
+
     setConnectors(prev => [...prev, newConnector])
     setShowPickerDropdown(false)
   }
@@ -61,28 +60,39 @@ export default function PricingCalculator() {
 
   const calculateMonthlyCost = (
     frequency: Connector['frequency'],
-    minutesPerSync: number
+    minutesPerSync: number,
+    pricePerMinute: number
   ): number => {
+
     const runsPerMonth = {
       '15min': 2880,
       hourly: 720,
       daily: 30,
     }
+
     const totalMinutes = runsPerMonth[frequency] * minutesPerSync
-    return totalMinutes * 0.05
+
+    if (!pricePerMinute) return 0
+
+    return totalMinutes * pricePerMinute
   }
 
   const connectorCosts = connectors.map(connector => {
     const minutesPerSync = calculateMinutesPerSync(connector.numberOfRows)
+
     return {
       name: connector.name,
       frequency:
         connector.frequency === '15min'
           ? 'Every 15min'
           : connector.frequency === 'hourly'
-          ? 'Hourly'
-          : 'Daily',
-      cost: calculateMonthlyCost(connector.frequency, minutesPerSync),
+            ? 'Hourly'
+            : 'Daily',
+      cost: calculateMonthlyCost(
+        connector.frequency,
+        minutesPerSync,
+        connector.pricePerMinute
+      ),
     }
   })
 
@@ -140,10 +150,10 @@ export default function PricingCalculator() {
                           padding: '4px',
                         }}
                       >
-                        {CONNECTORS.map(name => (
+                        {CONNECTORS.map((connector: any) => (
                           <button
-                            key={name}
-                            onClick={() => handlePickConnector(name)}
+                            key={connector.connectorName}
+                            onClick={() => handlePickConnector(connector)}
                             style={{
                               display: 'block',
                               width: '100%',
@@ -156,14 +166,8 @@ export default function PricingCalculator() {
                               cursor: 'pointer',
                               color: 'var(--foreground, #fff)',
                             }}
-                            onMouseEnter={e => {
-                              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.08)'
-                            }}
-                            onMouseLeave={e => {
-                              (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
-                            }}
                           >
-                            {name}
+                            {connector.connectorName}
                           </button>
                         ))}
                       </div>

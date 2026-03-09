@@ -6,15 +6,17 @@ import PricingCalculator from '../components/PricingCalculator/PricingCalculator
 const Pricingcalculator = ({ data }) => {
 
     const pricingcalculatordata = data?.pricingcalculator?.nodes[0]?.pricingCalculator
+  const connectorPricing = data?.pricingcalculator?.nodes[0]?.connectorPricing?.connectors
 
-    console.log("Data inside the pricing calculator", data)
-    console.log("Pricing calculator data", pricingcalculatordata)
+
+    // console.log("Data inside the pricing calculator", data)
+  // console.log("Pricing calculator data", costComparisondata)
 
     return (
         <Layout>
             <h1>{pricingcalculatordata?.pricingCalculatorTitle}</h1>
             <p>{pricingcalculatordata?.pricingCalculatorSmallText}</p>
-        <PricingCalculator />
+        <PricingCalculator data={connectorPricing} />
         </Layout>
     )
 }
@@ -32,21 +34,15 @@ query {
         pricingCalculatorSubtitle
         pricingCalculatorSubtitleSmallText
       }
-        costComparison {
-            costCompareLink
-            costCompareTitle
-            costCategoryTabs{
-              categoryTabTitle
-              costConnectors{
-              connectorLogo{
-                mediaItemUrl
-              }
-              connectorName
-              ourPrice
-              competitorPrice
-            }
-          }
+    connectorPricing {
+      connectors {
+        connectorLogo {
+          mediaItemUrl
         }
+        connectorName
+        pricePerMinute
+      }
+    }
 
     }
   }
