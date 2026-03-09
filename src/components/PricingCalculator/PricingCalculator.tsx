@@ -257,7 +257,7 @@ export default function PricingCalculator(data: any) {
               )}
 
 
-              <div className="compareSolution">
+              {/* <div className="compareSolution">
 
                 <div>
                   <Label htmlFor="comparison-toggle" className="text-base font-medium cursor-pointer">
@@ -275,10 +275,10 @@ export default function PricingCalculator(data: any) {
                   onCheckedChange={setShowComparison}
                 />
 
-              </div>
+              </div> */}
 
 
-              {showComparison && (
+              {/* {showComparison && (
 
                 <ComparisonChart
                   timeBasedPrice={totalCost}
@@ -289,7 +289,7 @@ export default function PricingCalculator(data: any) {
                   )}
                 />
 
-              )}
+              )} */}
 
             </div>
 

@@ -10710,6 +10710,7 @@ height: 24px;
 .calcSection .rightSide .breakdownItem p {
   padding: 0;
   margin: 0;
+  text-transform: capitalize;
 }
 
 .calcSection .rightSide .breakdownItem p small {
@@ -10731,8 +10732,222 @@ height: 24px;
   font-size: 22px;
   font-weight: 600;
   margin: 0 0 .75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px 20px;
+}
+.breakdownTitle .toggleSwitch span span {
+	display: none;
+}  
+  
+.breakdownTitle .toggleSwitch {
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+    padding: 0;
+    cursor: pointer;
+    width: 115px;
+    background-color: #211936;
+    border: 1px solid #211936;
+    border-radius: 5px;
+    height: 18px;
+}
+.breakdownTitle .toggleSwitch * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.breakdownTitle .toggleSwitch label,
+.toggleSwitch > span {
+	line-height: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+.breakdownTitle .toggleSwitch input:focus ~ a,
+.breakdownTitle .toggleSwitch input:focus + label {
+	outline: none;
+}
+.breakdownTitle .toggleSwitch label {
+	position: relative;
+	z-index: 3;
+	display: block;
+	width: 100%;
+}
+.breakdownTitle .toggleSwitch input {
+	position: absolute;
+	opacity: 0;
+	z-index: 5;
+}
+.breakdownTitle .toggleSwitch > span {
+	position: absolute;
+	left: 0;
+	width: calc(100% - 6px);
+	margin: 0;
+	text-align: left;
+	white-space: nowrap;
+  margin:0 3px;
+}
+.breakdownTitle .toggleSwitch > span span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	display: block;
+	width: 50%;
+	margin-left: 50px;
+	text-align: left;
+	font-size: 12px;
+	width: auto;
+	left: 0;
+	top: -1px;
+	opacity: 1;
+	width:40%;
+	text-align: center;
+  line-height: 1.6;
+}
+.breakdownTitle .toggleSwitch a {
+  position: absolute;
+  right: 50%;
+  z-index: 4;
+  display: block;
+  top: 1px;
+  bottom: 1px;
+  padding: 0;
+  left: 1px;
+  width: 50%;
+  background-color: #150F22;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+.breakdownTitle .toggleSwitch > span span:first-of-type {
+	color: #FFF;
+	opacity: 1;
+	left: 0;
+	margin: 0;
+    width: 50%;
+}
+.breakdownTitle .toggleSwitch > span span:last-of-type {
+	left:auto;
+	right:0;
+	color: rgba(255, 255, 255, 0.7);
+	margin: 0;
+    width: 50%;
+}
+.breakdownTitle .toggleSwitch > span:before {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: -2px;
+	border-radius: 30px;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
+}
+.breakdownTitle .toggleSwitch input:checked ~ a {
+	left: calc(50% - 1px);
+}
+.breakdownTitle .toggleSwitch input:checked ~ span span:first-of-type {
+	left:0;
+	color:rgba(255, 255, 255, 0.7);
+}
+.breakdownTitle .toggleSwitch input:checked ~ span span:last-of-type {
+	color:#FFF;
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.7);
 }
 
+.comparisonPrice {
+  background: #211936;
+  border-radius: 4px;
+  padding: 11px 7px;
+}
+.comparisonPrice p {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 6px;
+  margin: 0;
+  font-size: 18px;
+}
+.comparisonPrice p.compareComp {
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+.comparisonPrice p.totalSave span span {
+  font-weight: 600;
+}
+.totalCost {
+  text-align: center;
+  font-weight: 700;
+}
+.totalCost span {
+  font-weight: 400;
+}
+.compareWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #211936;
+  padding: 12px 14px;
+  border-radius: 4px;
+  color: white;
+}
+
+.compareCheck .compareLabel {
+  font-size: 14px;
+}
+
+.compareCheck .radioGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.compareCheck .radioCard input {
+  display: none;
+}
+
+.compareCheck .radioContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.compareCheck .radioCircle {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  position: relative;
+}
+
+.compareCheck .radioCard input:checked + .radioContent {
+  background: #3A64FA;
+}
+
+.compareCheck .radioCard input:checked + .radioContent .radioCircle {
+  border-color: white;
+}
+
+.compareCheck .radioCard input:checked + .radioContent .radioCircle::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+}
+
+  /*  End Toggle Switch  */
 [data-radix-popper-content-wrapper] {
   background: #fff;
   z-index: 3 !important;
@@ -10755,6 +10970,11 @@ height: 24px;
   padding: 11px 20px;
   margin-bottom: 1.5rem;
   position: relative;
+}
+.connectorBox .totalCardValue {
+  position: absolute;
+  right: 44px;
+  top: 11px;
 }
 .connectorBox .deleteCard {
   position: absolute;

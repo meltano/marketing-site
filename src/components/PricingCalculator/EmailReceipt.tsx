@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 interface ConnectorCost {
   name: string
@@ -31,9 +31,80 @@ export default function EmailReceipt({
   competitorTotal,
   savings,
 }: EmailReceiptProps) {
+    const [email, setEmail] = useState("")
+    const [loading, setLoading] = useState(false)
+    
+    const emailPayload = {
+        totalPrice: totalCost,
+        competitorTotal,
+        totalSavings: savings,
+
+        connectors: connectors.map((connector, index) => ({
+            id: connector.id,
+            name: connector.name,
+            logo: connector.logo || "",
+            frequency: connector.frequency,
+            rowsPerMonth: connector.numberOfRows,
+            cost: connectorCosts[index]?.cost || 0
+        }))
+    }
+
+    const sendEmailReceipt = async () => {
+        if (!email) {
+            alert("Please enter email")
+            return
+        }
+        setLoading(true)
+        try {
+            const res = await fetch("/api/send-receipt", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    receipt: emailPayload
+                })
+            })
+
+            const data = await res.json()
+
+            console.log("Email sent", data)
+
+            alert("Receipt sent successfully!")
+
+        } catch (error) {
+
+            console.error(error)
+            alert("Failed to send email")
+
+        }
+        setLoading(false)
+    }
+
   return (
     <div className="receipt-container">
       <h2 className="receipt-title">Pricing Receipt</h2>
+          {/* EMAIL INPUT */}
+          <div className="email-send-box">
+
+              <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="receipt-email-input"
+              />
+
+              <button
+                  onClick={sendEmailReceipt}
+                  disabled={loading}
+                  className="receipt-send-btn"
+              >
+                  {loading ? "Sending..." : "Send Email"}
+              </button>
+
+          </div>
       <div className="receipt-summary">
         <div>
           <strong>Total Your Price:</strong> ${totalCost.toFixed(2)}
