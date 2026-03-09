@@ -98,7 +98,7 @@ export default function ConnectorCard({
     setMounted(true)
   }, [])
  
-  console.log("connectorCost",connectorCost?.cost);
+  console.log("connectorCost", connectorCost);
   return (
     <Card className="p-4">
       <div className="connectorBox">
@@ -183,7 +183,9 @@ export default function ConnectorCard({
             </div>
           </div>
         )}   
-        <span className="totalCardValue">&pound; {connectorCost?.cost}</span>
+        <span className="totalCardValue">
+          £{connectorCost?.cost?.toFixed(2) || "0.00"}
+        </span>
         <Button
           variant="ghost"
           size="icon"

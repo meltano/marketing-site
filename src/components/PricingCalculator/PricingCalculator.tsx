@@ -11,10 +11,10 @@ import ReceiptModal from './ReceiptModal'
 export default function PricingCalculator(data: any) {
 
   const [connectors, setConnectors] = useState<Connector[]>([])
-  
+
   const [showComparison, setShowComparison] = useState(false)
   const [showPickerDropdown, setShowPickerDropdown] = useState(false)
-   const [showReceipt, setShowReceipt] = useState(false)
+  const [showReceipt, setShowReceipt] = useState(false)
 
   const pickerRef = useRef<HTMLDivElement>(null)
 
@@ -212,10 +212,10 @@ export default function PricingCalculator(data: any) {
                             onClick={() => handlePickConnector(connector)}
                           >
                             <img
-                                src={connector.connectorLogo?.mediaItemUrl}
-                                alt={connector.connectorName}
-                                className="connector-logo"
-                              />
+                              src={connector.connectorLogo?.mediaItemUrl}
+                              alt={connector.connectorName}
+                              className="connector-logo"
+                            />
                             {connector.connectorName}
                           </button>
                         ))}
@@ -242,21 +242,15 @@ export default function PricingCalculator(data: any) {
 
                 <div className="space-y-4">
 
-                  {connectors.map(connector => {
-  const costData = connectorCosts.find(
-    cc => cc.name === connector.name
-  )
-
-  return (
-    <ConnectorCard
-      key={connector.id}
-      connector={connector}
-      connectorCost={costData}
-      onRemove={removeConnector}
-      onUpdate={updateConnector}
-    />
-  )
-})}
+                  {connectors.map((connector, index) => (
+                    <ConnectorCard
+                      key={connector.id}
+                      connector={connector}
+                      connectorCost={connectorCosts[index]}
+                      onRemove={removeConnector}
+                      onUpdate={updateConnector}
+                    />
+                  ))}
 
                 </div>
 
@@ -310,32 +304,32 @@ export default function PricingCalculator(data: any) {
               competitorTotal={competitorTotal}
               savings={totalSavings}
             />
-             <button
-          type="button"
-          className="btn-open-receipt"
-          onClick={() => setShowReceipt(true)}
-          style={{
-            marginTop: '1rem',
-            padding: '8px 16px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            borderRadius: '6px',
-            border: '1px solid #0070f3',
-            backgroundColor: '#0070f3',
-            color: 'white',
-          }}
-        >
-          Show Email Receipt
-        </button>
-             <ReceiptModal
-        open={showReceipt}
-        onClose={() => setShowReceipt(false)}
-        connectors={connectors}
-        connectorCosts={connectorCosts}
-        totalCost={totalCost}
-        competitorTotal={competitorTotal}
-        savings={totalSavings}
-      />
+            <button
+              type="button"
+              className="btn-open-receipt"
+              onClick={() => setShowReceipt(true)}
+              style={{
+                marginTop: '1rem',
+                padding: '8px 16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                borderRadius: '6px',
+                border: '1px solid #0070f3',
+                backgroundColor: '#0070f3',
+                color: 'white',
+              }}
+            >
+              Show Email Receipt
+            </button>
+            <ReceiptModal
+              open={showReceipt}
+              onClose={() => setShowReceipt(false)}
+              connectors={connectors}
+              connectorCosts={connectorCosts}
+              totalCost={totalCost}
+              competitorTotal={competitorTotal}
+              savings={totalSavings}
+            />
 
           </div>
 
