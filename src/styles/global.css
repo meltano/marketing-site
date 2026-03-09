@@ -8172,14 +8172,6 @@ input.tgg-title {
   transition: all 1.5s ease;
 }
 
-.blog-content-grid .blog-content-grid-item:hover picture img {
-  transform: scale(1.5);
-  -webkit-transition: all 10s ease;
-  -moz-transition: all 10s ease;
-  -ms-transition: all 10s ease;
-  transition: all 10s ease;
-}
-
 @media all and (max-width: 768px) {
   .blog-tags {
     display: none;
@@ -10618,7 +10610,7 @@ html {
 
 .calcSection .leftSide .leftSideTitle {
   display: flex;
-
+  padding-bottom: 27px;
 }
 
 .calcSection .leftSide .leftSideTitle h5 {
@@ -10627,25 +10619,69 @@ html {
   font-weight: 500;
 }
 
-.calcSection .leftSide .leftSideTitle button {
-margin: 0 0 0 auto;
+.calcSection .leftSide .leftSideTitle .topAddConnection {
+  margin: 0 0 0 auto;
+  position: relative;
+  display: inline-block;
+}
+.calcSection .leftSide .leftSideTitle .topAddConnection .connectorList {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  background: #1a1a2e;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 50;
+  min-width: 180px;
+  padding: 4px;
+}
+.calcSection .leftSide .leftSideTitle .topAddConnection .connectorList button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--foreground, #fff);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.calcSection .leftSide .leftSideTitle .topAddConnection .connectorList button img {
+height: 24px;
+  width: 40px;
+  object-fit: contain;
+  object-position: left center;
+}
+.calcSection .leftSide .leftSideTitle button, .selectFirstConnector button {
   background: #211936;
   color: #fff;
-  padding: 4px 15px;
+  padding: 5px 15px;
   display: flex;
   align-items: center;
   gap: 15px;
   font-size: 12px;
   line-height: 1;
 }
-.calcSection .leftSide .leftSideTitle button svg {
+.calcSection .leftSide .leftSideTitle button:hover, .selectFirstConnector button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.calcSection .leftSide .leftSideTitle button svg, .selectFirstConnector button svg {
   width: 18px;
   height: auto;
   background-color: #37304a;
   border-radius: 50%;
 }
-.calcSection .leftSide .leftSideTitle button svg path {
+.calcSection .leftSide .leftSideTitle button svg path, .selectFirstConnector button svg path {
   stroke: rgba(255, 255, 255, 0.7);
+}
+.calcSection .leftSide .leftSideTitle button:hover svg path, .selectFirstConnector button:hover svg path {
+  stroke: rgba(255, 255, 255, 1);
 }
 
 .calcSection .rightSide>div {
@@ -10701,18 +10737,71 @@ margin: 0 0 0 auto;
   background: #fff;
   z-index: 3 !important;
 }
+.selectFirstConnector {
+  text-align: center;
+  padding: 0 0 15px;
+}
+.selectFirstConnector p {
+  margin: 0 0 10px;
+}
 .connectorBoxes {
   border-radius: 4px;
   background-color: #150F22;
-  padding: 18px 14px 48px 14px;
+  padding: 18px 14px 32px 14px;
 }
 .connectorBox {
   background: #211936;
   border-radius: 4px;
   padding: 11px 20px;
   margin-bottom: 1.5rem;
+  position: relative;
 }
-
+.connectorBox .deleteCard {
+  position: absolute;
+  right: 20px;
+  top: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0;
+  background: transparent;
+  height: 16px;
+  width: auto;
+  padding: 1px;
+}
+.connectorBox .deleteCard svg {
+  width: auto;
+  height: 100%;
+}
+.connectorBox .deleteCard:hover {
+  color: rgba(255, 255, 255, 1);
+}
+.connectorBox .connectorName {
+  position: relative;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+.connectorBox .arrowIcon {
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  margin-right: 13px;
+  padding: 1px;
+}
+.connectorBox .arrowIcon path {
+  stroke-width: 2.5px;
+  stroke: rgba(255, 255, 255, 0.7);
+}
+.connectorBox .connectorName:hover .arrowIcon path {
+  stroke: rgba(255, 255, 255, 1);
+}
+.connectorBox .connectorName .connectorLogo {
+  width: auto;
+  height: 20px;
+  margin-right: 15px;
+}
 .connectorBoxInner > button {
   width: 100%;
 }
@@ -10721,9 +10810,22 @@ margin: 0 0 0 auto;
   line-height: 20px;
   width: 190px;
   padding-right: 15px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.connectorBox .textLabel svg {
+  height: 12px;
+  width: 12px;
+  cursor: pointer;
+}
+.connectorContent {
+  padding-top: 20px;
 }
 .timeTabs {
   display: flex;
+  padding-bottom: 14px;
 }
 
 .timeTabs * {
@@ -10738,6 +10840,7 @@ margin: 0 0 0 auto;
   align-items: center;
   gap: 8px;
   margin-right: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
 } 
 .timeTabs .btn span {
   display: inline-block;
@@ -10750,15 +10853,17 @@ margin: 0 0 0 auto;
 .timeTabs .btn span::after {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 2.25px;
+  top: 2.25px;
   display: inline-block;
-  width: 60%;
-  height: 60%;
+  width: 55%;
+  height: 55%;
   background: #3A64FA;
   border-radius: 50%;
   opacity: 0;
+}
+.timeTabs .btn[class*="shadow-none"] {
+  border: 1px solid #37304a;
 }
 .timeTabs .btn[class*="shadow-none"] span{
   box-shadow: 0px 0px 0px 1.5px #ffffff;
@@ -10790,12 +10895,23 @@ btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(
 }
 .priceRangeBox > div {
   flex: 1;
+  display: flex;
+  gap: 15px;
 }
 
 .priceRangeBoxTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.priceRangeBoxTop > span:first-child {
+  display: inline-block;
+  min-width: 75px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 5px 6px;
+  font-size: 12px;
+  text-align: center;
 }
 
 .priceRangeSlider {
@@ -10813,46 +10929,44 @@ btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(
 
 .priceRangeSliderTop {
   --tw-bg-opacity: 1;
-  background-color: red;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
   overflow: hidden;
   flex-grow: 1;
   width: 100%;
-  height: 0.5rem;
+  height: 6px;
   position: relative;
   --tw-border-opacity: 1;
-  border-color: orange;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .priceRangeSliderTop span {
   --tw-bg-opacity: 1;
-  background-color: blue;
+  background-color: #3A64FA;
   height: 100%;
   position: absolute;
   --tw-border-opacity: 1;
   border-color: black;
 }
 
-.priceRangeSliderTop+span {
+.priceRangeSliderTop + span {
   --tw-border-opacity: 1;
   border-color: white;
-  top: -0.35rem;
+  top: -3px;
+  cursor: pointer;
 }
 
 .priceRangeSliderBottom {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  --tw-ring-offset-color: blue;
-  --tw-bg-opacity: 1;
-  background-color: grey;
-  --tw-border-opacity: 1;
-  border-color: white;
-  border-width: 2px;
+  background: #3A64FA;
+  background: radial-gradient(circle,rgba(155, 152, 165, 1) 48%, #3A64FA 40%);
+  border: none;
   border-radius: 9999px;
   display: block;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 15px;
+  height: 15px;
 }
 
 .compareSolution {
@@ -10922,4 +11036,107 @@ btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(
   border-radius: 4.6px;
   padding: 24px;
   margin-bottom: 1.5rem;
+}
+
+
+/* Modal backdrop */
+.receipt-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+/* Modal container */
+.receipt-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  max-width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  padding: 20px 24px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+/* Close button */
+.receipt-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.receipt-close-btn:hover {
+  color: #222;
+}
+
+/* Receipt container */
+.receipt-container {
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.receipt-title {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.receipt-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #444;
+}
+
+.receipt-breakdown {
+  border-top: 1px solid #ccc;
+}
+
+.receipt-header,
+.receipt-row {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr 1.5fr 1.5fr;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.receipt-header {
+  font-weight: 700;
+  border-bottom: 1px solid #ccc;
+  color: #555;
+}
+
+.receipt-row {
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #333;
+}
+
+.receipt-connector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.receipt-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
 }

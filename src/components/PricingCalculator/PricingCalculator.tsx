@@ -7,12 +7,14 @@ import ConnectorCard, { type Connector } from './ConnectorCard'
 import PricingSummary from './PricingSummary'
 import ComparisonChart from './ComparisonChart'
 import EmbedCode from './EmbedCode'
-
+import ReceiptModal from './ReceiptModal'
 export default function PricingCalculator(data: any) {
 
   const [connectors, setConnectors] = useState<Connector[]>([])
+  
   const [showComparison, setShowComparison] = useState(false)
   const [showPickerDropdown, setShowPickerDropdown] = useState(false)
+   const [showReceipt, setShowReceipt] = useState(false)
 
   const pickerRef = useRef<HTMLDivElement>(null)
 
@@ -46,6 +48,7 @@ export default function PricingCalculator(data: any) {
     const newConnector: Connector = {
       id: Date.now().toString(),
       name: connector.connectorName,
+      logo: connector.connectorLogo?.mediaItemUrl || "",
       pricePerMinute: Number(connector.pricePerMinute) || 0.05,
       competitorPricePerMinute: Number(connector.competitorPricePerMinute) || 0.12,
       frequency: 'hourly',
@@ -192,8 +195,7 @@ export default function PricingCalculator(data: any) {
 
                 {connectors.length < 10 && (
 
-                  <div ref={pickerRef} style={{ position: 'relative', display: 'inline-block' }}>
-
+                  <div className='topAddConnection' ref={pickerRef}>
                     <Button
                       onClick={handleAddConnectorClick}
                       size="sm"
@@ -202,70 +204,31 @@ export default function PricingCalculator(data: any) {
                       <Plus className="h-4 w-4 mr-2" />
                       Add Connector
                     </Button>
-
-
                     {showPickerDropdown && (
-
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: '100%',
-                          right: 0,
-                          marginTop: '4px',
-                          background: 'var(--popover, #1a1a2e)',
-                          border: '1px solid var(--border, rgba(255,255,255,0.1))',
-                          borderRadius: '8px',
-                          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-                          zIndex: 50,
-                          minWidth: '180px',
-                          padding: '4px',
-                        }}
-                      >
-
+                      <div className='connectorList' >
                         {CONNECTORS.map((connector: any) => (
-
                           <button
                             key={connector.connectorName}
                             onClick={() => handlePickConnector(connector)}
-                            style={{
-                              display: 'block',
-                              width: '100%',
-                              textAlign: 'left',
-                              padding: '8px 12px',
-                              fontSize: '14px',
-                              background: 'transparent',
-                              border: 'none',
-                              borderRadius: '4px',
-                              cursor: 'pointer',
-                              color: 'var(--foreground, #fff)',
-                            }}
                           >
-
+                            <img
+                                src={connector.connectorLogo?.mediaItemUrl}
+                                alt={connector.connectorName}
+                                className="connector-logo"
+                              />
                             {connector.connectorName}
-
                           </button>
-
                         ))}
-
                       </div>
-
                     )}
-
                   </div>
-
                 )}
-
               </div>
-
-
               {connectors.length === 0 ? (
-
-                <div className="text-center py-12 border-2 border-dashed rounded-lg">
-
+                <div className="selectFirstConnector">
                   <p className="text-muted-foreground mb-4">
                     Add your first connector to get started
                   </p>
-
                   <Button
                     onClick={handleAddConnectorClick}
                     data-testid="button-add-first-connector"
@@ -273,21 +236,27 @@ export default function PricingCalculator(data: any) {
                     <Plus className="h-4 w-4 mr-2" />
                     Add Connector
                   </Button>
-
                 </div>
 
               ) : (
 
                 <div className="space-y-4">
 
-                  {connectors.map(connector => (
-                    <ConnectorCard
-                      key={connector.id}
-                      connector={connector}
-                      onRemove={removeConnector}
-                      onUpdate={updateConnector}
-                    />
-                  ))}
+                  {connectors.map(connector => {
+  const costData = connectorCosts.find(
+    cc => cc.name === connector.name
+  )
+
+  return (
+    <ConnectorCard
+      key={connector.id}
+      connector={connector}
+      connectorCost={costData}
+      onRemove={removeConnector}
+      onUpdate={updateConnector}
+    />
+  )
+})}
 
                 </div>
 
@@ -341,6 +310,32 @@ export default function PricingCalculator(data: any) {
               competitorTotal={competitorTotal}
               savings={totalSavings}
             />
+             <button
+          type="button"
+          className="btn-open-receipt"
+          onClick={() => setShowReceipt(true)}
+          style={{
+            marginTop: '1rem',
+            padding: '8px 16px',
+            fontWeight: '600',
+            cursor: 'pointer',
+            borderRadius: '6px',
+            border: '1px solid #0070f3',
+            backgroundColor: '#0070f3',
+            color: 'white',
+          }}
+        >
+          Show Email Receipt
+        </button>
+             <ReceiptModal
+        open={showReceipt}
+        onClose={() => setShowReceipt(false)}
+        connectors={connectors}
+        connectorCosts={connectorCosts}
+        totalCost={totalCost}
+        competitorTotal={competitorTotal}
+        savings={totalSavings}
+      />
 
           </div>
 

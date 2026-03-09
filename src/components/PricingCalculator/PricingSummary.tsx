@@ -94,6 +94,12 @@ export default function PricingSummary({
                 >
                   ${item.cost.toFixed(2)}
                 </p>
+                <p
+                  className="tabular-nums"
+                  data-testid={`text-cost-${index}`}
+                >
+                  ${(item.cost * 12).toFixed(2)}
+                </p>
 
               </div>
 

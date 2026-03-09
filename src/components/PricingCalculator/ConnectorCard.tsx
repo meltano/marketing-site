@@ -3,11 +3,12 @@ import * as React from 'react'
 import { Button } from './ui/button'
 import { Card } from './ui/card'
 import { Slider } from './ui/slider'
-import { X } from 'lucide-react'
+import { Trash2, ChevronDown, Info  } from 'lucide-react'
 
 export interface Connector {
   id: string
   name: string
+  logo?: string
   frequency: '15min' | 'hourly' | 'daily'
   numberOfRows: number
   pricePerMinute: number
@@ -16,12 +17,18 @@ export interface Connector {
 
 interface ConnectorCardProps {
   connector: Connector
+  connectorCost?: {
+    name: string
+    frequency: string
+    cost: number
+  }
   onRemove: (id: string) => void
   onUpdate: (id: string, updates: Partial<Connector>) => void
 }
 
 export default function ConnectorCard({
   connector,
+  connectorCost,
   onRemove,
   onUpdate,
 }: ConnectorCardProps) {
@@ -91,19 +98,17 @@ export default function ConnectorCard({
     setMounted(true)
   }, [])
  
-
-
+  console.log("connectorCost",connectorCost?.cost);
   return (
     <Card className="p-4">
       <div className="connectorBox">
         {mounted && (
           <div className="connectorBoxInner">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="18" height="18" rx="9" fill="white" fill-opacity="0.1"/>
-              <path d="M12.75 10.5L9 6.75L5.25 10.5" stroke="white" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span className="connectorName">{connector.name}</span>
-
+            <span className="connectorName">
+              <ChevronDown className="arrowIcon" />
+              <img className='connectorLogo' src={connector.logo} alt={connector.name} />
+              <span>{connector.name}</span>
+            </span>
             <div className='connectorContent'>
               <div className="timeTabs">
                 <span className='textLabel'>Run Frequency</span>
@@ -146,15 +151,16 @@ export default function ConnectorCard({
               </div>
 
               <div className="space-y-3 priceRangeBox">
-                <span className='textLabel'>Active Rows/ Month</span>
+                <span className='textLabel'>Active Rows/ Month <Info /></span>
                 <div>
                   <div className="priceRangeBoxTop">
                     <span className="text-sm font-medium">
-                      {connector.numberOfRows.toLocaleString()} active rows/month
+                      {connector.numberOfRows.toLocaleString()}
+                       {/* active rows/month */}
                     </span>
-                    <span className="text-xs text-muted-foreground">
+                    {/* <span className="text-xs text-muted-foreground">
                       Est. {minutesPerSync} min/sync
-                    </span>
+                    </span> */}
                   </div>
 
                   <Slider
@@ -164,26 +170,27 @@ export default function ConnectorCard({
                     step={1}
                     data-testid={`slider-rows-${connector.id}`}
                   />
-                  <div className="flex justify-between text-xs text-muted-foreground font-medium tabular-nums">
+                  {/* <div className="flex justify-between text-xs text-muted-foreground font-medium tabular-nums">
                     <span>1K</span>
                     <span>10K</span>
                     <span>100K</span>
                     <span>1M</span>
                     <span>5M</span>
                     <span>10M</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
           </div>
-        )}
+        )}   
+        <span className="totalCardValue">&pound; {connectorCost?.cost}</span>
         <Button
           variant="ghost"
           size="icon"
+          className='deleteCard'
           onClick={() => onRemove(connector.id)}
           data-testid={`button-remove-${connector.id}`}
-        >
-          <X className="h-4 w-4" />
+        > <Trash2/>
         </Button>
       </div>
     </Card>
