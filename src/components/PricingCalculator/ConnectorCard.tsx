@@ -11,6 +11,7 @@ export interface Connector {
   frequency: '15min' | 'hourly' | 'daily'
   numberOfRows: number
   pricePerMinute: number
+  competitorPricePerMinute: number
 }
 
 interface ConnectorCardProps {

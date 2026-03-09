@@ -41,6 +41,7 @@ query {
         }
         connectorName
         pricePerMinute
+        competitorPricePerMinute
       }
     }
 

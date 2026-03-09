@@ -8,55 +8,70 @@ import PricingSummary from './PricingSummary'
 import ComparisonChart from './ComparisonChart'
 import EmbedCode from './EmbedCode'
 
+export default function PricingCalculator(data: any) {
 
-
-export default function PricingCalculator(data:any) {
   const [connectors, setConnectors] = useState<Connector[]>([])
   const [showComparison, setShowComparison] = useState(false)
   const [showPickerDropdown, setShowPickerDropdown] = useState(false)
+
   const pickerRef = useRef<HTMLDivElement>(null)
-console.log("Data in the pricing calculator component", data) 
+
+  // console.log("Data in the pricing calculator component", data)
+
   const CONNECTORS = data?.data || []
+
   useEffect(() => {
     if (!showPickerDropdown) return
+
     const handleClickOutside = (e: MouseEvent) => {
       if (pickerRef.current && !pickerRef.current.contains(e.target as Node)) {
         setShowPickerDropdown(false)
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
+
   }, [showPickerDropdown])
+
 
   const handleAddConnectorClick = () => {
     if (connectors.length >= 10) return
     setShowPickerDropdown(true)
   }
 
+
   const handlePickConnector = (connector: any) => {
+
     const newConnector: Connector = {
       id: Date.now().toString(),
       name: connector.connectorName,
       pricePerMinute: Number(connector.pricePerMinute) || 0.05,
+      competitorPricePerMinute: Number(connector.competitorPricePerMinute) || 0.12,
       frequency: 'hourly',
       numberOfRows: 1000000,
     }
 
     setConnectors(prev => [...prev, newConnector])
     setShowPickerDropdown(false)
+
   }
+
 
   const removeConnector = (id: string) => {
     setConnectors(connectors.filter(c => c.id !== id))
   }
 
+
   const updateConnector = (id: string, updates: Partial<Connector>) => {
     setConnectors(connectors.map(c => (c.id === id ? { ...c, ...updates } : c)))
   }
 
+
   const calculateMinutesPerSync = (rows: number): number => {
     return Math.max(1, Math.round(rows / 10000))
   }
+
 
   const calculateMonthlyCost = (
     frequency: Connector['frequency'],
@@ -77,7 +92,9 @@ console.log("Data in the pricing calculator component", data)
     return totalMinutes * pricePerMinute
   }
 
+
   const connectorCosts = connectors.map(connector => {
+
     const minutesPerSync = calculateMinutesPerSync(connector.numberOfRows)
 
     return {
@@ -88,44 +105,95 @@ console.log("Data in the pricing calculator component", data)
           : connector.frequency === 'hourly'
             ? 'Hourly'
             : 'Daily',
+
       cost: calculateMonthlyCost(
         connector.frequency,
         minutesPerSync,
         connector.pricePerMinute
       ),
     }
+
   })
+
+
+  const competitorConnectorCosts = connectors.map(connector => {
+
+    const minutesPerSync = calculateMinutesPerSync(connector.numberOfRows)
+
+    return {
+      name: connector.name,
+      cost: calculateMonthlyCost(
+        connector.frequency,
+        minutesPerSync,
+        connector.competitorPricePerMinute
+      ),
+    }
+
+  })
+
 
   const totalCost = connectorCosts.reduce((sum, item) => sum + item.cost, 0)
 
-  const apiConnectors = ['Salesforce', 'HubSpot', 'SAP', 'NetSuite', 'Zendesk', 'Jira']
+
+  const competitorTotal = competitorConnectorCosts.reduce(
+    (sum, item) => sum + item.cost,
+    0
+  )
+
+
+  const totalSavings = competitorTotal - totalCost
+
+
+  const apiConnectors = [
+    'Salesforce',
+    'HubSpot',
+    'SAP',
+    'NetSuite',
+    'Zendesk',
+    'Jira'
+  ]
+
 
   const rowBasedPrice = connectors.reduce((sum, connector) => {
+
     const connectorCost =
       connectorCosts.find(cc => cc.name === connector.name)?.cost || 0
+
     const isApiConnector = apiConnectors.includes(connector.name)
+
     const multiplier = isApiConnector ? 5 : 3
+
     return sum + connectorCost * multiplier
+
   }, 0)
+
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-6 lg:p-8 pricingCalc">
+
       <div className="container">
+
         <div className="row calcSection">
+
           <div className="leftSide">
+
             <div className="heading">
-              <h2 className="title-inline">
-                Pricing Calculator
-              </h2>
+              <h2 className="title-inline">Pricing Calculator</h2>
               <p className="heading-description p2">
                 Calculate your monthly cost based on connector usage time
               </p>
             </div>
+
             <div className="connectorBoxes">
+
               <div className="leftSideTitle">
+
                 <h5>Connectors</h5>
+
                 {connectors.length < 10 && (
+
                   <div ref={pickerRef} style={{ position: 'relative', display: 'inline-block' }}>
+
                     <Button
                       onClick={handleAddConnectorClick}
                       size="sm"
@@ -134,7 +202,10 @@ console.log("Data in the pricing calculator component", data)
                       <Plus className="h-4 w-4 mr-2" />
                       Add Connector
                     </Button>
+
+
                     {showPickerDropdown && (
+
                       <div
                         style={{
                           position: 'absolute',
@@ -150,7 +221,9 @@ console.log("Data in the pricing calculator component", data)
                           padding: '4px',
                         }}
                       >
+
                         {CONNECTORS.map((connector: any) => (
+
                           <button
                             key={connector.connectorName}
                             onClick={() => handlePickConnector(connector)}
@@ -167,19 +240,32 @@ console.log("Data in the pricing calculator component", data)
                               color: 'var(--foreground, #fff)',
                             }}
                           >
+
                             {connector.connectorName}
+
                           </button>
+
                         ))}
+
                       </div>
+
                     )}
+
                   </div>
+
                 )}
+
               </div>
+
+
               {connectors.length === 0 ? (
+
                 <div className="text-center py-12 border-2 border-dashed rounded-lg">
+
                   <p className="text-muted-foreground mb-4">
                     Add your first connector to get started
                   </p>
+
                   <Button
                     onClick={handleAddConnectorClick}
                     data-testid="button-add-first-connector"
@@ -187,9 +273,13 @@ console.log("Data in the pricing calculator component", data)
                     <Plus className="h-4 w-4 mr-2" />
                     Add Connector
                   </Button>
+
                 </div>
+
               ) : (
+
                 <div className="space-y-4">
+
                   {connectors.map(connector => (
                     <ConnectorCard
                       key={connector.id}
@@ -198,56 +288,66 @@ console.log("Data in the pricing calculator component", data)
                       onUpdate={updateConnector}
                     />
                   ))}
-                  {connectors.length >= 10 && (
-                    <p className="text-sm text-muted-foreground text-center">
-                      Maximum 10 connectors reached
-                    </p>
-                  )}
+
                 </div>
+
               )}
 
-            <div className="compareSolution">
-              <div>
-                <Label
-                  htmlFor="comparison-toggle"
-                  className="text-base font-medium cursor-pointer"
-                >
-                  Compare with existing solutions
-                </Label>
-                <p className="text-sm text-muted-foreground mt-1">
-                  See how we compare to traditional row-based pricing
-                </p>
+
+              <div className="compareSolution">
+
+                <div>
+                  <Label htmlFor="comparison-toggle" className="text-base font-medium cursor-pointer">
+                    Compare with existing solutions
+                  </Label>
+
+                  <p className="text-sm text-muted-foreground mt-1">
+                    See how we compare to traditional row-based pricing
+                  </p>
+                </div>
+
+                <Switch
+                  id="comparison-toggle"
+                  checked={showComparison}
+                  onCheckedChange={setShowComparison}
+                />
+
               </div>
-              <Switch
-                id="comparison-toggle"
-                checked={showComparison}
-                onCheckedChange={setShowComparison}
-                data-testid="switch-comparison"
-              />
-            </div>
 
-            {showComparison && (
-              <ComparisonChart
-                timeBasedPrice={totalCost}
-                rowBasedPrice={rowBasedPrice}
-                numberOfRows={connectors.reduce(
-                  (sum, c) => sum + c.numberOfRows,
-                  0
-                )}
-              />
-            )}
+
+              {showComparison && (
+
+                <ComparisonChart
+                  timeBasedPrice={totalCost}
+                  rowBasedPrice={rowBasedPrice}
+                  numberOfRows={connectors.reduce(
+                    (sum, c) => sum + c.numberOfRows,
+                    0
+                  )}
+                />
+
+              )}
 
             </div>
-            {/* <EmbedCode /> */}
+
           </div>
+
+
           <div className="rightSide">
+
             <PricingSummary
               connectorCosts={connectorCosts}
               totalCost={totalCost}
+              competitorTotal={competitorTotal}
+              savings={totalSavings}
             />
+
           </div>
+
         </div>
+
       </div>
+
     </div>
   )
 }
