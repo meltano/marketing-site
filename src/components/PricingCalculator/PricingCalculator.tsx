@@ -312,34 +312,8 @@ export default function PricingCalculator(data: any) {
               totalCost={totalCost}
               competitorTotal={competitorTotal}
               savings={totalSavings}
+              onShowReceipt={() => setShowReceipt(true)}
             />
-            <div className='priceSummaryBtns'>
-            {/* <button
-              type="button"
-              className="btn-open-receipt btn colorful-btn"
-              onClick={() => setShowReceipt(true)}
-            >
-              <span />
-              Show Email Receipt
-            </button> */}
-
-            
-            <a
-                href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
-              className="btn alt-blue-btn"
-              target=""
-            >Book A Call
-            </a>
-            {/* <a
-              href="#"
-              className="btn colorful-btn"
-              target=""
-              onClick={() => setShowReceipt(true)}
-            >
-              <span />
-              Show Email Receipt
-            </a> */}
-            </div>
             <ReceiptModal
               open={showReceipt}
               onClose={() => setShowReceipt(false)}
