@@ -14,10 +14,10 @@ import vieveLogo from '../../assets/img/clientlogo/VIEVE_logo.svg'
 import woomLogo from '../../assets/img/clientlogo/Woom_logo.svg'
 
 const logos = [
-  { img: cityprient, link: "#testimonials", alt: "CitySprint", type: "anchor"},
-  { img: logo300, link: "/blog/little-bike-company", alt: "Little Bike", type: "anchor" },
-  { img: ra, link: "/blog/resident-advisor", alt: "Resident Advisor", type: "anchor" },
-  { img: mvf, link: "/blog/mvf", alt: "MVF", type: "anchor" },
+  { img: cityprient, link: "#testimonials", alt: "CitySprint", type: "anchor" },
+  { img: logo300, link: "blog/the-little-bike-company-boosts-monthly-productivity-by-20-with-meltanos-streamlined-solution/", alt: "Little Bike", type: "anchor" },
+  { img: ra, link: "/blog/how-resident-advisor-escaped-year-long-etl-firefighting/", alt: "Resident Advisor", type: "anchor" },
+  { img: mvf, link: "/blog/mvf-makes-etl-7x-cheaper-while-migrating-1b-rows-across-60-sources/", alt: "MVF", type: "anchor" },
   { img: fiveXLogo, link: "/blog/", alt: "5X", type: "anchor" },
   { img: consilLogo, link: "/blog/", alt: "Consil", type: "anchor" },
   { img: ifgLogo, link: "/blog/", alt: "IFG", type: "anchor" },
