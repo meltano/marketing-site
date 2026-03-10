@@ -15,6 +15,7 @@ import MeltanoEdkIcon from '../assets/img/footermeltanoedkicon.svg'
 import PartnersIcon from '../assets/img/footerpartnersicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
 import FooterImg from '../assets/img/footer.svg'
+import contact from '../assets/img/contacticon.svg'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
 Modal.defaultStyles.overlay.zIndex = '99999'
@@ -110,7 +111,7 @@ const footerData = [
         id: 1,
         title: 'Contact',
         url: '/contact/',
-        icon: AboutIcon,
+        icon: contact,
         desc: 'The Meltano team is here to help. Ask us anything, or give us your feedback!',
       },
     ],
@@ -426,7 +427,7 @@ const Footer = () => {
                 <div className="portal-image" />
               </div>
               <div className="portal-logo">
-                <span style={{color:"white"}}>
+                <span style={{ color: "white" }}>
                   OPEN
                 </span>
                 <svg

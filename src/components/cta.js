@@ -20,13 +20,13 @@ export const CtaIntrigued = () => (
               Book a demo
             </a>
             <a
-              href="/pricing/"
+              href="/pricingcalculator/"
               className="btn colorful-btn"
               target="_blank"
               rel="noreferrer"
             >
               <span />
-              Calculate TCO
+              Get My Estimate
             </a>
           </div>
         </div>
