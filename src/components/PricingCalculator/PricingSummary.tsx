@@ -2,6 +2,14 @@ import { Card } from './ui/card'
 import { Separator } from './ui/separator'
 import * as React from 'react'
 
+import coffeeIcon from '../../assets/img/coffee-icon.png'
+import { Swiper, SwiperSlide } from "swiper/react"
+import SwiperCore, { Autoplay, Pagination } from "swiper"
+
+import "swiper/css"
+import "swiper/css/pagination"
+
+SwiperCore.use([Autoplay, Pagination])
 
 interface ConnectorCost {
   name: string
@@ -25,6 +33,14 @@ export default function PricingSummary({
 
   const [comparison, setComparison] = React.useState("none")
   const [isAnnual, setIsAnnual] = React.useState(false)
+
+    const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   return (
     <Card className="p-6 space-y-6">
@@ -138,6 +154,52 @@ export default function PricingSummary({
               <span>Total Saved</span>
               <span className="tabular-nums"><span>${savings.toFixed(2)}</span> / month</span>
             </p>
+            <div className='equivalentItems'>
+                <p>That's equivalent to</p>
+<Swiper
+      slidesPerView={1}
+      spaceBetween={20}
+      speed={1000}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+    el: ".customPag",
+    clickable: true,
+    bulletClass: "custom-bullet",
+    bulletActiveClass: "active",
+  }}
+      loop={true}
+      style={{ width: "100%", padding: "40px 0" }}
+    >
+      <SwiperSlide>
+        <div className='info'>
+          <p className='value'> 1540 <img src={coffeeIcon} alt="" /><span>/ month</span></p>
+          <p className='text'>That's your team's coffee budget covered</p>
+        </div>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <div className='info'>
+          <p className='value'> 1540 <img src={coffeeIcon} alt="" /><span>/ month</span></p>
+          <p className='text'>That's your team's coffee budget covered</p>
+        </div>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <div className='info'>
+          <p className='value'> 1540 <img src={coffeeIcon} alt="" /><span>/ month</span></p>
+          <p className='text'>That's your team's coffee budget covered</p>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+    <div className="customPag">
+  <span className="custom-bullet"></span>
+  <span className="custom-bullet active"></span>
+  <span className="custom-bullet"></span>
+</div>
+            </div>
           </div>
       )}
 
