@@ -258,9 +258,7 @@ export const pageQuery = graphql`
       }
     }
     stickyPosts: allWpPost(
-      sort: { date: DESC }
-      filter: { status: { eq: "publish" } }
-      limit: 3
+     filter: { databaseId: { in: [6058, 6054, 6043] } }
     ) {
       edges {
         node {
