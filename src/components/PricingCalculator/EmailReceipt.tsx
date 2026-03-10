@@ -64,16 +64,19 @@ export default function EmailReceipt({
     setLoading(true)
 
     try {
-      const res = await fetch("/api/send-receipt", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email,
-          receipt: emailPayload
-        })
-      })
+      const res = await fetch(
+        "https://pune:city@laserdigital.cskills.me/wp-json/api/v1/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            ...emailPayload,
+            toEmail: email
+          })
+        }
+      )
 
       const data = await res.json()
 
