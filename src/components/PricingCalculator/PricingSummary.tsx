@@ -72,7 +72,7 @@ export default function PricingSummary({
         >
           
                   <>
-                    ${isAnnual ? (totalCost * 12).toFixed(2) : totalCost.toFixed(2)}
+                    £{isAnnual ? (totalCost * 12).toFixed(2) : totalCost.toFixed(2)}
                     <span>
                       {isAnnual ? " / Annual" : " / Monthly"}
                     </span>
@@ -84,8 +84,6 @@ export default function PricingSummary({
       {/* Competitor Comparison */}
       {connectorCosts.length > 0 && (
         <>
-          <Separator />
-
           <div>
             <h6 className="breakdownTitle mb-3">
               Cost Summary
@@ -116,17 +114,17 @@ export default function PricingSummary({
                 </div>
 
                 <p className="tabular-nums">
-                  $
-                  {isAnnual
-                    ? (item.cost * 12).toFixed(2)
-                    : item.cost.toFixed(2)}
+                  £ {isAnnual ? (item.cost * 12).toFixed(2) : item.cost.toFixed(2)}
+                    <span>
+                      {isAnnual ? " / Annual" : " / Monthly"}
+                    </span>
                 </p>
               </div>
             ))}
           </div>
+          <Separator />
         </>
       )}
-      <Separator />
 
       
       {comparison === "fivetran" && (

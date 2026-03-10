@@ -172,11 +172,11 @@ export default function PricingCalculator(data: any) {
 
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-6 lg:p-8 pricingCalc">
+    <div className="glow-bg min-h-screen bg-background p-4 md:p-6 lg:p-8 pricingCalc">
 
       <div className="container">
 
-        <div className="row calcSection">
+        <div className="row calcSection ml-margins">
 
           <div className="leftSide">
 
@@ -185,6 +185,8 @@ export default function PricingCalculator(data: any) {
               <p className="heading-description p2">
                 Calculate your monthly cost based on connector usage time
               </p>
+              <h6>Calculate Your Data Pipeline Costs</h6>
+              <p className='heading-description p2'>Select your data sources and configure sync settings to see transparent pricing</p>
             </div>
 
             <div className="connectorBoxes">
@@ -304,23 +306,33 @@ export default function PricingCalculator(data: any) {
               competitorTotal={competitorTotal}
               savings={totalSavings}
             />
-            <button
+            <div className='priceSummaryBtns'>
+            {/* <button
               type="button"
-              className="btn-open-receipt"
+              className="btn-open-receipt btn colorful-btn"
               onClick={() => setShowReceipt(true)}
-              style={{
-                marginTop: '1rem',
-                padding: '8px 16px',
-                fontWeight: '600',
-                cursor: 'pointer',
-                borderRadius: '6px',
-                border: '1px solid #0070f3',
-                backgroundColor: '#0070f3',
-                color: 'white',
-              }}
             >
+              <span />
               Show Email Receipt
-            </button>
+            </button> */}
+
+            
+            <a
+              href=""
+              className="btn alt-blue-btn"
+              target=""
+            >Book A Call
+            </a>
+            <a
+              href="#"
+              className="btn colorful-btn"
+              target=""
+              onClick={() => setShowReceipt(true)}
+            >
+              <span />
+              Show Email Receipt
+            </a>
+            </div>
             <ReceiptModal
               open={showReceipt}
               onClose={() => setShowReceipt(false)}

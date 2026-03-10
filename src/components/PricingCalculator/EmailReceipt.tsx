@@ -49,38 +49,45 @@ export default function EmailReceipt({
         }))
     }
 
-    const sendEmailReceipt = async () => {
-        if (!email) {
-            alert("Please enter email")
-            return
-        }
-        setLoading(true)
-        try {
-            const res = await fetch("/api/send-receipt", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    email,
-                    receipt: emailPayload
-                })
-            })
-
-            const data = await res.json()
-
-            console.log("Email sent", data)
-
-            alert("Receipt sent successfully!")
-
-        } catch (error) {
-
-            console.error(error)
-            alert("Failed to send email")
-
-        }
-        setLoading(false)
+  const sendEmailReceipt = async () => {
+    if (!email) {
+      alert("Please enter email")
+      return
     }
+
+    const emailRegex = /\S+@\S+\.\S+/
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email")
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const res = await fetch("/api/send-receipt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email,
+          receipt: emailPayload
+        })
+      })
+
+      const data = await res.json()
+
+      console.log("Email sent", data)
+
+      alert("Receipt sent successfully!")
+
+    } catch (error) {
+      console.error(error)
+      alert("Failed to send email")
+    }
+
+    setLoading(false)
+  }
 
   return (
     <div className="receipt-container">

@@ -14,8 +14,6 @@ const Pricingcalculator = ({ data }) => {
 
     return (
         <Layout>
-            <h1>{pricingcalculatordata?.pricingCalculatorTitle}</h1>
-            <p>{pricingcalculatordata?.pricingCalculatorSmallText}</p>
         <PricingCalculator data={connectorPricing} />
         </Layout>
     )

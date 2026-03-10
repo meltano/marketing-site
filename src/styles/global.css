@@ -10472,102 +10472,6 @@ html {
 .costComparison .row .titleBlock {
   flex: 1;
 }
-@media (max-width : 1180px) {
-  .tabsToggle .toggleContent .toggleContentInner {
-    padding: 25px 20px;
-  }
-  .costComparison .row {
-    gap: 30px;
-  }
-  .costComparison .row .tabsToggle {
-    width: 600px;
-  }
-  .costComparison .row .titleBlock h2 {
-    margin-bottom: 30px;
-  }
-}
-@media (max-width : 1023px) {
-  .workflow {
-    padding-bottom: 65px;
-  }
-  .workflow-fr >div:last-child .workflow-separator{
-  display: none;
-  }
-  .workflow-fr >div:last-child .workflow-terminal {
-    height: 100%;
-  }
-  .costComparison .row {
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-  .costComparison .row .tabsToggle {
-    width: 100%;
-  }
-  .costComparison .row .titleBlock h2 {
-    margin-bottom: 0;
-  }
-  .costComparison .row .titleBlock {
-    order: -1;
-    text-align: center;
-  }
-  .costComparison .row .titleBlock h2 {
-    text-align: center;
-  }
-  
-  .costComparison .row .tabsToggle .btnBox {
-    display: block;
-    text-align: center;
-    padding-top: 20px;
-  }
-  .costComparison .row .titleBlock a {
-    display: none;
-  }
-}
-@media (max-width : 768px) {
-    .workflow {
-    padding-bottom: 0;
-  }
-  .costComparison {
-    margin-bottom: 75px;
-  }
-  .tabsToggle .toggle-btn.smBtn {
-    font-size: 12px;
-    padding: 6px 12px 6px 6px;
-  }
-}
-@media (max-width : 600px) {
-  .tabsToggle .toggleContent .bottomText {
-    flex-wrap: wrap;
-    margin-top: 15px;
-  }
-  .tabsToggle .toggleContent .bottomText .leftText {
-    min-width: 100%;
-    order: 1;
-  }
-}
-@media (max-width : 480px) {
-    .tabsToggle .toggleContent .toggleContentInner {
-    padding: 25px 10px;
-  }
-  .tabsToggle .toggleContent table th {
-  padding: 0 8px 8px 10px;
-}
-  .tabsToggle .toggleContent table td {
-  padding: 8px 8px 8px 10px;
-  }
-  .centerLarge .tabsToggle .toggle-btn {
-  padding: 6px 4px;
-  font-size: 12px;
-  }
-}
-@media (max-width : 375px) {
-  .costComparison {
-    margin-bottom: 75px;
-  }
-  .tabsToggle .toggle-btn.smBtn {
-    font-size: 10px;
-  }
-}
 
 
 .pricingCalc {
@@ -10575,6 +10479,11 @@ html {
   position: relative;
   background-color: #211936;
   color: #fff;
+}
+.pricingCalc >  .container {
+  position: relative;
+  z-index: 1;
+  padding: 120px 0 80px;
 }
 
 .calcSection {
@@ -10598,16 +10507,31 @@ html {
   font-family: 'Plus Jakarta Sans', Arial, sans-serif;
   font-style: normal;
   font-weight: 700;
+  line-height: 1;
+  margin: 0 0 20px;
 }
 .calcSection .leftSide .heading .heading-description {
-  margin: 0 0 30px 0;
+  margin: 0 0 56px 0;
   text-align: left;
+}
+.calcSection .leftSide .heading h6 {
+  margin: 0 0 8px;
 }
 
 .calcSection .rightSide {
   width: 40%;
 }
-
+.priceSummaryBtns {
+  display: flex;
+  gap: 10px;
+}
+.priceSummaryBtns .btn {
+  padding: 16px 12px;
+  flex: auto;
+}
+.priceSummaryBtns .colorful-btn {
+  color: #fff;text-align: center;
+}
 .calcSection .leftSide .leftSideTitle {
   display: flex;
   padding-bottom: 27px;
@@ -10641,7 +10565,7 @@ html {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 8px 12px;
+  padding: 4px 8px;
   font-size: 14px;
   background: transparent;
   border: none;
@@ -10684,18 +10608,18 @@ height: 24px;
   stroke: rgba(255, 255, 255, 1);
 }
 
-.calcSection .rightSide>div {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  -webkit-backdrop-filter: blur(13px);
-  backdrop-filter: blur(13px);
-  border-radius: 4.6px;
-  padding: 30px;
+.calcSection .rightSide > div {
+  background: #150F22;
+  border-radius: 4px;
+  padding: 18px;
 }
 
 .calcSection .rightSide .bg-border {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-  margin: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px 0;
+  width: calc(100% + 24px);
+  left: -12px;
+  position: relative;
 }
 
 .calcSection .rightSide .breakdownItem {
@@ -10723,15 +10647,19 @@ height: 24px;
 }
 
 .calcSection .rightSide .breakdownItem .tabular-nums {
-  flex: 0;
-  font-size: 120%;
+  flex: 1;
+  font-size: 14px;
   font-weight: 700;
+  text-align: right;
+}
+.calcSection .rightSide .breakdownItem .tabular-nums span {
+  font-weight: 400;
 }
 
 .calcSection .rightSide .breakdownTitle {
   font-size: 22px;
   font-weight: 600;
-  margin: 0 0 .75rem;
+  margin: 0 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10874,6 +10802,10 @@ height: 24px;
 .comparisonPrice p.compareComp {
   background: rgba(255, 255, 255, 0.1);
   font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.comparisonPrice p.totalSave {
+  padding-top: 15px;
 }
 .comparisonPrice p.totalSave span span {
   font-weight: 600;
@@ -10881,6 +10813,7 @@ height: 24px;
 .totalCost {
   text-align: center;
   font-weight: 700;
+  padding: 40px 0;
 }
 .totalCost span {
   font-weight: 400;
@@ -10926,6 +10859,7 @@ height: 24px;
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 50%;
   position: relative;
+  min-width: 10px;
 }
 
 .compareCheck .radioCard input:checked + .radioContent {
@@ -10962,13 +10896,13 @@ height: 24px;
 .connectorBoxes {
   border-radius: 4px;
   background-color: #150F22;
-  padding: 18px 14px 32px 14px;
+  padding: 18px 14px 26px 14px;
 }
 .connectorBox {
   background: #211936;
   border-radius: 4px;
   padding: 11px 20px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 14px;
   position: relative;
 }
 .connectorBox .totalCardValue {
@@ -11001,6 +10935,7 @@ height: 24px;
   display: inline-flex;
   align-items: center;
   text-transform: capitalize;
+  cursor: pointer;
 }
 .connectorBox .arrowIcon {
   width: 16px;
@@ -11009,6 +10944,10 @@ height: 24px;
   border-radius: 50%;
   margin-right: 13px;
   padding: 1px;
+  transition: transform 0.3s ease;
+}
+.arrowIcon.rotate {
+  transform: rotate(180deg);
 }
 .connectorBox .arrowIcon path {
   stroke-width: 2.5px;
@@ -11045,6 +10984,7 @@ height: 24px;
 }
 .timeTabs {
   display: flex;
+  align-items: center;
   padding-bottom: 14px;
 }
 
@@ -11062,6 +11002,8 @@ height: 24px;
   margin-right: 12px;
   border: 1px solid rgba(255, 255, 255, 0.5);
 } 
+
+.timeTabs .btn:last-child {margin-right: 0;}
 .timeTabs .btn span {
   display: inline-block;
   width: 10px;
@@ -11097,21 +11039,10 @@ height: 24px;
 .timeTabs .btn span::after {
   opacity: 1;
 }
-/* 
-btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex-1
-
-btn alt-blue-btn middle hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-8 rounded-md px-3 text-xs flex-1
-btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex-1
-btn alt-blue-btn middle hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-8 rounded-md px-3 text-xs flex-1
-
-
-btn alt-blue-btn middle hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-8 rounded-md px-3 text-xs flex-1
-
-btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-8 rounded-md px-3 text-xs flex-1
-*/
 .priceRangeBox {
  display: flex;
   margin: 0;
+  align-items: center;
 }
 .priceRangeBox > div {
   flex: 1;
@@ -11139,8 +11070,8 @@ btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(
   -moz-user-select: none;
   user-select: none;
   --tw-space-y-reverse: 0;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-top: 8px;
+  margin-bottom: 0;
   --radix-slider-thumb-transform: translateX(-50%);
   display: flex;
   position: relative;
@@ -11303,10 +11234,6 @@ btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(
 }
 
 /* Receipt container */
-.receipt-container {
-  font-family: Arial, sans-serif;
-  color: #222;
-}
 
 .receipt-title {
   margin: 0 0 12px;
@@ -11359,4 +11286,214 @@ btn alt-blue-btn middle hover-elevate active-elevate-2 border [border-color:var(
   height: 24px;
   object-fit: contain;
   border-radius: 4px;
+}
+
+
+@media (max-width : 1330px) {
+  .connectorBox .textLabel {
+    width: 150px;
+  }
+  .calcSection .heading {
+  padding: 0;
+}
+}
+@media (max-width : 1180px) {
+  .tabsToggle .toggleContent .toggleContentInner {
+    padding: 25px 20px;
+  }
+  .costComparison .row {
+    gap: 30px;
+  }
+  .costComparison .row .tabsToggle {
+    width: 600px;
+  }
+  .costComparison .row .titleBlock h2 {
+    margin-bottom: 30px;
+  }
+  .calcSection .leftSide .heading .heading-description {
+  margin: 0 0 40px 0;
+  }
+  .compareWrapper {
+  padding: 10px;
+  }
+}
+@media (max-width : 1023px) {
+  .workflow {
+    padding-bottom: 65px;
+  }
+  .workflow-fr >div:last-child .workflow-separator{
+  display: none;
+  }
+  .workflow-fr >div:last-child .workflow-terminal {
+    height: 100%;
+  }
+  .costComparison .row {
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  .costComparison .row .tabsToggle {
+    width: 100%;
+  }
+  .costComparison .row .titleBlock h2 {
+    margin-bottom: 0;
+  }
+  .costComparison .row .titleBlock {
+    order: -1;
+    text-align: center;
+  }
+  .costComparison .row .titleBlock h2 {
+    text-align: center;
+  }
+  
+  .costComparison .row .tabsToggle .btnBox {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+  }
+  .costComparison .row .titleBlock a {
+    display: none;
+  }
+  .calcSection {
+  gap: 1rem;
+}
+.connectorBox {
+  padding: 10px 12px;
+}
+  .connectorBox .textLabel {
+    width: 145px;
+  }
+.timeTabs .btn:not(:last-child) {
+  margin-right: 10px;
+}
+.connectorBox .deleteCard {
+  right: 10px;
+  top: 10px;
+}
+.connectorBox .totalCardValue {
+  right: 35px;
+  top: 10px;
+}
+.priceRangeBox > div {
+  gap: 10px;
+}
+  .calcSection .rightSide {
+  width: 340px;
+}
+
+  .calcSection .rightSide > div {
+    padding: 10px;
+  }
+  .totalCost {
+    padding: 30px 0;
+    font-size: 26px;
+  }
+  .calcSection .rightSide .breakdownTitle {
+    font-size: 20px;
+  }
+  .calcSection .rightSide .bg-border {
+    width: 100%;
+    left: 0;
+  }
+  .compareWrapper {
+    gap: 8px;
+  }
+  .totalCost {
+    padding: 30px 0;
+  }
+  .compareCheck .radioGroup {
+    display: flex;
+    gap: 8px;
+  }
+  .selectFirstConnector {
+    padding: 0;
+  }
+
+}
+@media (max-width : 940px) { 
+  .calcSection .leftSide .heading h2,
+  .calcSection .leftSide .heading h6,
+  .calcSection .leftSide .heading .heading-description {
+    text-align: center;
+  }
+  .calcSection .leftSide .heading .heading-description {
+    margin: 0 auto 30px;
+  }
+.calcSection .leftSide {
+  min-width: 100%;
+}
+  .calcSection .rightSide {
+    width: 100%;
+    max-width: 425px;
+    margin: 0 auto;
+  }
+}
+@media (max-width : 768px) {
+    .workflow {
+    padding-bottom: 0;
+  }
+  .costComparison {
+    margin-bottom: 75px;
+  }
+  .tabsToggle .toggle-btn.smBtn {
+    font-size: 12px;
+    padding: 6px 12px 6px 6px;
+  }
+}
+@media (max-width : 600px) {
+  .tabsToggle .toggleContent .bottomText {
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .tabsToggle .toggleContent .bottomText .leftText {
+    min-width: 100%;
+    order: 1;
+  }
+  .calcSection .rightSide {
+    max-width: 100%;
+  }
+}
+@media (max-width : 525px) { 
+  .timeTabs, .priceRangeBox {
+    flex-wrap: wrap;
+  }
+    .connectorBox .textLabel {
+    width: 100%;
+    padding-bottom: 4px;
+  }
+}
+@media (max-width : 480px) {
+    .tabsToggle .toggleContent .toggleContentInner {
+    padding: 25px 10px;
+  }
+  .tabsToggle .toggleContent table th {
+  padding: 0 8px 8px 10px;
+}
+  .tabsToggle .toggleContent table td {
+  padding: 8px 8px 8px 10px;
+  }
+  .centerLarge .tabsToggle .toggle-btn {
+  padding: 6px 4px;
+  font-size: 12px;
+  }
+  .connectorBoxes {
+  padding: 15px 8px 18px 10px;
+}
+    .calcSection .rightSide > div {
+    padding: 8px;
+  }
+}
+@media (max-width : 375px) {
+  .costComparison {
+    margin-bottom: 75px;
+  }
+  .tabsToggle .toggle-btn.smBtn {
+    font-size: 10px;
+  }
+  .compareWrapper {
+    padding: 10px 6px;
+    gap: 4px;
+  }
+    .compareCheck .radioGroup {
+    gap: 4px;
+  }
 }

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Button } from './ui/button'
 import { Card } from './ui/card'
 import { Slider } from './ui/slider'
-import { Trash2, ChevronDown, Info  } from 'lucide-react'
+import { Trash2, ChevronDown, Info } from 'lucide-react'
 
 export interface Connector {
   id: string
@@ -97,21 +97,26 @@ export default function ConnectorCard({
   React.useEffect(() => {
     setMounted(true)
   }, [])
- 
-  console.log("connectorCost", connectorCost);
+  const [connectorOpen, connectorSetOpen] = React.useState(false)
+  console.log('connectorCost', connectorCost)
   return (
     <Card className="p-4">
       <div className="connectorBox">
         {mounted && (
           <div className="connectorBoxInner">
-            <span className="connectorName">
-              <ChevronDown className="arrowIcon" />
-              <img className='connectorLogo' src={connector.logo} alt={connector.name} />
+            <span className="connectorName" onClick={() => connectorSetOpen(!connectorOpen)}>
+              <ChevronDown  className={`arrowIcon ${connectorOpen ? "rotate" : ""}`} />
+              <img
+                className="connectorLogo"
+                src={connector.logo}
+                alt={connector.name}
+              />
               <span>{connector.name}</span>
             </span>
-            <div className='connectorContent'>
+            {connectorOpen && (
+            <div className="connectorContent">
               <div className="timeTabs">
-                <span className='textLabel'>Run Frequency</span>
+                <span className="textLabel">Run Frequency</span>
                 <Button
                   variant={
                     connector.frequency === '15min' ? 'default' : 'outline'
@@ -129,7 +134,9 @@ export default function ConnectorCard({
                     connector.frequency === 'hourly' ? 'default' : 'outline'
                   }
                   size="sm"
-                  onClick={() => onUpdate(connector.id, { frequency: 'hourly' })}
+                  onClick={() =>
+                    onUpdate(connector.id, { frequency: 'hourly' })
+                  }
                   data-testid={`button-frequency-hourly-${connector.id}`}
                   className="flex-1"
                 >
@@ -151,12 +158,14 @@ export default function ConnectorCard({
               </div>
 
               <div className="space-y-3 priceRangeBox">
-                <span className='textLabel'>Active Rows/ Month <Info /></span>
+                <span className="textLabel">
+                  Active Rows/ Month <Info />
+                </span>
                 <div>
                   <div className="priceRangeBoxTop">
                     <span className="text-sm font-medium">
                       {connector.numberOfRows.toLocaleString()}
-                       {/* active rows/month */}
+                      {/* active rows/month */}
                     </span>
                     {/* <span className="text-xs text-muted-foreground">
                       Est. {minutesPerSync} min/sync
@@ -181,18 +190,21 @@ export default function ConnectorCard({
                 </div>
               </div>
             </div>
+            )}
           </div>
-        )}   
+        )}
         <span className="totalCardValue">
-          £{connectorCost?.cost?.toFixed(2) || "0.00"}
+          £{connectorCost?.cost?.toFixed(2) || '0.00'}
         </span>
         <Button
           variant="ghost"
           size="icon"
-          className='deleteCard'
+          className="deleteCard"
           onClick={() => onRemove(connector.id)}
           data-testid={`button-remove-${connector.id}`}
-        > <Trash2/>
+        >
+          {' '}
+          <Trash2 />
         </Button>
       </div>
     </Card>
