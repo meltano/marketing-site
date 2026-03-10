@@ -777,13 +777,13 @@ const Header = () => {
           </nav>
           <div className="menu-extras">
             <a
-              href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
+              href="https://meltano.com/get-started"
               target="_blank"
               id="get-started-btn"
               className="btn clear-btn"
               rel="noreferrer"
             >
-              Book a demo
+              Get started
             </a>
             <a
               href="https://github.com/meltano/meltano"
