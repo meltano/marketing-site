@@ -33,6 +33,7 @@ export default function EmailReceipt({
 }: EmailReceiptProps) {
     const [email, setEmail] = useState("")
     const [loading, setLoading] = useState(false)
+  const emailApiUrl ="https://laserdigital.cskills.me/wp-json/api/v1/send-email"
     
     const emailPayload = {
         totalPrice: totalCost,
@@ -64,12 +65,17 @@ export default function EmailReceipt({
     setLoading(true)
 
     try {
+      if (!emailApiUrl) {
+        throw new Error("Missing GATSBY_EMAIL_API_URL")
+      }
+
       const res = await fetch(
-        "https://pune:city@laserdigital.cskills.me/wp-json/api/v1/send-email",
+        emailApiUrl,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-API-KEY":"b9f7c1a8e4d3f92a6c7e5d1b8a3f0c9d"
           },
           body: JSON.stringify({
             ...emailPayload,

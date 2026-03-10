@@ -22,6 +22,8 @@ interface ConnectorCardProps {
     frequency: string
     cost: number
   }
+  isOpen: boolean
+  onToggle: (id: string) => void
   onRemove: (id: string) => void
   onUpdate: (id: string, updates: Partial<Connector>) => void
 }
@@ -29,6 +31,8 @@ interface ConnectorCardProps {
 export default function ConnectorCard({
   connector,
   connectorCost,
+  isOpen,
+  onToggle,
   onRemove,
   onUpdate,
 }: ConnectorCardProps) {
@@ -97,15 +101,13 @@ export default function ConnectorCard({
   React.useEffect(() => {
     setMounted(true)
   }, [])
-  const [connectorOpen, connectorSetOpen] = React.useState(false)
-  console.log('connectorCost', connectorCost)
   return (
     <Card className="p-4">
       <div className="connectorBox">
         {mounted && (
           <div className="connectorBoxInner">
-            <span className="connectorName" onClick={() => connectorSetOpen(!connectorOpen)}>
-              <ChevronDown  className={`arrowIcon ${connectorOpen ? "rotate" : ""}`} />
+            <span className="connectorName" onClick={() => onToggle(connector.id)}>
+              <ChevronDown className={`arrowIcon ${isOpen ? "rotate" : ""}`} />
               <img
                 className="connectorLogo"
                 src={connector.logo}
@@ -113,7 +115,10 @@ export default function ConnectorCard({
               />
               <span>{connector.name}</span>
             </span>
-            {connectorOpen && (
+            <div
+              className={`connectorContentWrapper ${isOpen ? "open" : ""}`}
+              aria-hidden={!isOpen}
+            >
             <div className="connectorContent">
               <div className="timeTabs">
                 <span className="textLabel">Run Frequency</span>
@@ -190,7 +195,7 @@ export default function ConnectorCard({
                 </div>
               </div>
             </div>
-            )}
+            </div>
           </div>
         )}
         <span className="totalCardValue">

@@ -22,6 +22,7 @@ interface PricingSummaryProps {
   totalCost: number
   competitorTotal: number
   savings: number
+  onShowReceipt: () => void
 }
 
 export default function PricingSummary({
@@ -29,6 +30,7 @@ export default function PricingSummary({
   totalCost,
   competitorTotal,
   savings,
+  onShowReceipt,
 }: PricingSummaryProps) {
 
   const [comparison, setComparison] = React.useState("none")
@@ -90,7 +92,7 @@ export default function PricingSummary({
                   <>
                     £{isAnnual ? (totalCost * 12).toFixed(2) : totalCost.toFixed(2)}
                     <span>
-                      {isAnnual ? " / Annual" : " / Monthly"}
+                      {isAnnual ? " / annual" : " / month"}
                     </span>
                   </>
                 
@@ -111,7 +113,7 @@ export default function PricingSummary({
                 />
                 <a></a>
                 <span>
-                  <span className="left-span">Monthly</span>
+                  <span className="left-span">Month</span>
                   <span className="right-span">Annual</span>
                 </span>
               </label>
@@ -132,7 +134,7 @@ export default function PricingSummary({
                 <p className="tabular-nums">
                   £ {isAnnual ? (item.cost * 12).toFixed(2) : item.cost.toFixed(2)}
                     <span>
-                      {isAnnual ? " / Annual" : " / Monthly"}
+                      {isAnnual ? " / annual" : " / Month"}
                     </span>
                 </p>
               </div>
@@ -147,12 +149,18 @@ export default function PricingSummary({
           <div className="comparisonPrice">
             <p className="compareComp">
               <span className="text-muted-foreground">Fivetran Charges</span>
-              <span className="tabular-nums"><span>${competitorTotal.toFixed(2)}</span> / month</span>
+              <span className="tabular-nums">
+                <span>${isAnnual ? (competitorTotal * 12).toFixed(2) : competitorTotal.toFixed(2)}</span>
+                {isAnnual ? " / annual" : " / month"}
+              </span>
             </p>
 
             <p className="totalSave">
               <span>Total Saved</span>
-              <span className="tabular-nums"><span>${savings.toFixed(2)}</span> / month</span>
+              <span className="tabular-nums">
+                <span>${isAnnual ? (savings * 12).toFixed(2) : savings.toFixed(2)}</span>
+                {isAnnual ? " / annual" : " / month"}
+              </span>
             </p>
             <div className='equivalentItems'>
                 <p>That's equivalent to</p>
@@ -173,26 +181,33 @@ export default function PricingSummary({
       loop={true}
       style={{ width: "100%", padding: "40px 0" }}
     >
-      <SwiperSlide>
-        <div className='info'>
-          <p className='value'> 1540 <img src={coffeeIcon} alt="" /><span>/ month</span></p>
-          <p className='text'>That's your team's coffee budget covered</p>
-        </div>
-      </SwiperSlide>
+    <SwiperSlide>
+      <div className='info'>
+        <p className='value'>
+          {Math.round((isAnnual ? savings * 12 : savings) / 3.3)} <img src={coffeeIcon} alt="" />
+          <span>{isAnnual ? " / annual" : " / month"}</span>
+        </p>
+        <p className='text'>That's your team's coffee budget covered</p>
+      </div>
+    </SwiperSlide>
 
-      <SwiperSlide>
-        <div className='info'>
-          <p className='value'> 1540 <img src={coffeeIcon} alt="" /><span>/ month</span></p>
-          <p className='text'>That's your team's coffee budget covered</p>
-        </div>
-      </SwiperSlide>
+    <SwiperSlide>
+      <div className='info'>
+        <p className='value'>
+          {Math.round((isAnnual ? savings * 12 : savings) / 800)} <span>flights {isAnnual ? "/ annual" : "/ month"}</span>
+        </p>
+        <p className='text'>That's your London–New York round trips</p>
+      </div>
+    </SwiperSlide>
 
-      <SwiperSlide>
-        <div className='info'>
-          <p className='value'> 1540 <img src={coffeeIcon} alt="" /><span>/ month</span></p>
-          <p className='text'>That's your team's coffee budget covered</p>
-        </div>
-      </SwiperSlide>
+    <SwiperSlide>
+      <div className='info'>
+        <p className='value'>
+          {Math.round((isAnnual ? savings * 12 : savings) / 13)} <span>movies {isAnnual ? "/ annual" : "/ month"}</span>
+        </p>
+        <p className='text'>That's movie tickets covered</p>
+      </div>
+    </SwiperSlide>
     </Swiper>
     <div className="customPag">
   <span className="custom-bullet"></span>
@@ -202,6 +217,24 @@ export default function PricingSummary({
             </div>
           </div>
       )}
+
+      <div className='priceSummaryBtns'>
+        <a
+          href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
+          className="btn alt-blue-btn"
+          target=""
+        >
+          Book A Call
+        </a>
+        <a
+          href="javascript:void(0)"
+          className="btn-open-receipt btn colorful-btn"
+          onClick={onShowReceipt}
+        >
+          <span />
+          Show Email Receipt
+        </a>
+      </div>
 
     </Card>
   )
