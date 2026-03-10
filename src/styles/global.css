@@ -11057,6 +11057,20 @@ height: 24px;
 .connectorContent {
   padding-top: 20px;
 }
+.connectorContentWrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.2s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+.connectorContentWrapper.open {
+  max-height: 600px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 .timeTabs {
   display: flex;
   align-items: center;

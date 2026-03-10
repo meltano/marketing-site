@@ -11,6 +11,7 @@ import ReceiptModal from './ReceiptModal'
 export default function PricingCalculator(data: any) {
 
   const [connectors, setConnectors] = useState<Connector[]>([])
+  const [openConnectorId, setOpenConnectorId] = useState<string | null>(null)
 
   const [showComparison, setShowComparison] = useState(false)
   const [showPickerDropdown, setShowPickerDropdown] = useState(false)
@@ -44,9 +45,9 @@ export default function PricingCalculator(data: any) {
 
 
   const handlePickConnector = (connector: any) => {
-
+    const newId = Date.now().toString()
     const newConnector: Connector = {
-      id: Date.now().toString(),
+      id: newId,
       name: connector.connectorName,
       logo: connector.connectorLogo?.mediaItemUrl || "",
       pricePerMinute: Number(connector.pricePerMinute) || 0.05,
@@ -56,6 +57,7 @@ export default function PricingCalculator(data: any) {
     }
 
     setConnectors(prev => [...prev, newConnector])
+    setOpenConnectorId(newId)
     setShowPickerDropdown(false)
 
   }
@@ -63,6 +65,7 @@ export default function PricingCalculator(data: any) {
 
   const removeConnector = (id: string) => {
     setConnectors(connectors.filter(c => c.id !== id))
+    setOpenConnectorId(prev => (prev === id ? null : prev))
   }
 
 
@@ -249,6 +252,10 @@ export default function PricingCalculator(data: any) {
                       key={connector.id}
                       connector={connector}
                       connectorCost={connectorCosts[index]}
+                      isOpen={connector.id === openConnectorId}
+                      onToggle={(id) =>
+                        setOpenConnectorId(prev => (prev === id ? null : id))
+                      }
                       onRemove={removeConnector}
                       onUpdate={updateConnector}
                     />
