@@ -318,12 +318,12 @@ export default function PricingCalculator(data: any) {
 
             
             <a
-              href=""
+                href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
               className="btn alt-blue-btn"
               target=""
             >Book A Call
             </a>
-            <a
+            {/* <a
               href="#"
               className="btn colorful-btn"
               target=""
@@ -331,7 +331,7 @@ export default function PricingCalculator(data: any) {
             >
               <span />
               Show Email Receipt
-            </a>
+            </a> */}
             </div>
             <ReceiptModal
               open={showReceipt}
