@@ -12,7 +12,7 @@ require('prismjs/components/prism-bash')
 const Workflow = ({ data }) => {
   const [terminalView, setTerminalView] = useState({});
   const colors = ['pink', 'blue', 'yellow', 'green', 'pink']
-  const separators = [DashBreak1, DashBreak2, DashBreak3, DashBreak2]
+  const separators = [DashBreak1, DashBreak2, DashBreak3, DashBreak2, DashBreak1, DashBreak2, DashBreak3, DashBreak2]
 
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
