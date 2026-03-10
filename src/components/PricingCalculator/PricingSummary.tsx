@@ -92,7 +92,7 @@ export default function PricingSummary({
                   <>
                     £{isAnnual ? (totalCost * 12).toFixed(2) : totalCost.toFixed(2)}
                     <span>
-                      {isAnnual ? " / Annual" : " / Monthly"}
+                      {isAnnual ? " / annual" : " / month"}
                     </span>
                   </>
                 
@@ -113,7 +113,7 @@ export default function PricingSummary({
                 />
                 <a></a>
                 <span>
-                  <span className="left-span">Monthly</span>
+                  <span className="left-span">Month</span>
                   <span className="right-span">Annual</span>
                 </span>
               </label>
@@ -134,7 +134,7 @@ export default function PricingSummary({
                 <p className="tabular-nums">
                   £ {isAnnual ? (item.cost * 12).toFixed(2) : item.cost.toFixed(2)}
                     <span>
-                      {isAnnual ? " / Annual" : " / Monthly"}
+                      {isAnnual ? " / annual" : " / Month"}
                     </span>
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function PricingSummary({
               <span className="text-muted-foreground">Fivetran Charges</span>
               <span className="tabular-nums">
                 <span>${isAnnual ? (competitorTotal * 12).toFixed(2) : competitorTotal.toFixed(2)}</span>
-                {isAnnual ? " / year" : " / month"}
+                {isAnnual ? " / annual" : " / month"}
               </span>
             </p>
 
@@ -159,7 +159,7 @@ export default function PricingSummary({
               <span>Total Saved</span>
               <span className="tabular-nums">
                 <span>${isAnnual ? (savings * 12).toFixed(2) : savings.toFixed(2)}</span>
-                {isAnnual ? " / year" : " / month"}
+                {isAnnual ? " / annual" : " / month"}
               </span>
             </p>
             <div className='equivalentItems'>
@@ -185,7 +185,7 @@ export default function PricingSummary({
       <div className='info'>
         <p className='value'>
           {Math.round((isAnnual ? savings * 12 : savings) / 3.3)} <img src={coffeeIcon} alt="" />
-          <span>{isAnnual ? " / year" : " / month"}</span>
+          <span>{isAnnual ? " / annual" : " / month"}</span>
         </p>
         <p className='text'>That's your team's coffee budget covered</p>
       </div>
@@ -194,16 +194,16 @@ export default function PricingSummary({
     <SwiperSlide>
       <div className='info'>
         <p className='value'>
-          {Math.round((isAnnual ? savings * 12 : savings) / 800)} <span>flights {isAnnual ? "/ year" : "/ month"}</span>
+          {Math.round((isAnnual ? savings * 12 : savings) / 800)} <span>flights {isAnnual ? "/ annual" : "/ month"}</span>
         </p>
-        <p className='text'>That's London–New York round trips covered</p>
+        <p className='text'>That's your London–New York round trips</p>
       </div>
     </SwiperSlide>
 
     <SwiperSlide>
       <div className='info'>
         <p className='value'>
-          {Math.round((isAnnual ? savings * 12 : savings) / 13)} <span>movies {isAnnual ? "/ year" : "/ month"}</span>
+          {Math.round((isAnnual ? savings * 12 : savings) / 13)} <span>movies {isAnnual ? "/ annual" : "/ month"}</span>
         </p>
         <p className='text'>That's movie tickets covered</p>
       </div>
@@ -219,15 +219,6 @@ export default function PricingSummary({
       )}
 
       <div className='priceSummaryBtns'>
-        <button
-          type="button"
-          className="btn-open-receipt btn colorful-btn"
-          onClick={onShowReceipt}
-        >
-          <span />
-          Show Email Receipt
-        </button>
-
         <a
           href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
           className="btn alt-blue-btn"
@@ -235,15 +226,14 @@ export default function PricingSummary({
         >
           Book A Call
         </a>
-        {/* <a
-          href="#"
-          className="btn colorful-btn"
-          target=""
-          onClick={() => setShowReceipt(true)}
+        <a
+          href="javascript:void(0)"
+          className="btn-open-receipt btn colorful-btn"
+          onClick={onShowReceipt}
         >
           <span />
           Show Email Receipt
-        </a> */}
+        </a>
       </div>
 
     </Card>

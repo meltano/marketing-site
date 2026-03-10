@@ -10208,6 +10208,9 @@ html {
   transition: all 0.2s ease;
   text-align: left;
 }
+.tabsToggle .toggle-btn:hover {
+  color: #fff;
+}
 .centerLarge .tabsToggle .toggle-btn {
   flex: 1;
   border: 0;
@@ -10289,12 +10292,13 @@ html {
 
 .workflow-terminal .video-wrapper {
   position: relative;
-  width: 100%;
+  width: calc(100% - 30px);
   border-radius: 4px;
   overflow: hidden;
-  background: #15111F;
+  background: #c6b7e6;
   position: relative;
-  height: 100%;
+  height: calc(100% - 30px);
+  padding: 15PX;
 }
 .tabsToggle .toggleContent {
   border-radius: 0 4px 4px 4px;
@@ -10341,6 +10345,9 @@ html {
   padding-top: 56.25%;
   position: relative;
   width: 100%;
+  box-shadow: 0px 0px 20px 3px #0000001a;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .workflow-terminal .video-wrapper.imgBox {
@@ -10479,6 +10486,7 @@ html {
   position: relative;
   background-color: #211936;
   color: #fff;
+  overflow-x: hidden;
 }
 .pricingCalc >  .container {
   position: relative;
@@ -10524,6 +10532,7 @@ html {
 .priceSummaryBtns {
   display: flex;
   gap: 10px;
+  padding-top: 20px;
 }
 .priceSummaryBtns .btn {
   padding: 16px 12px;
@@ -10654,6 +10663,7 @@ height: 24px;
 }
 .calcSection .rightSide .breakdownItem .tabular-nums span {
   font-weight: 400;
+  text-transform: lowercase;
 }
 
 .calcSection .rightSide .breakdownTitle {
@@ -10676,8 +10686,8 @@ height: 24px;
     padding: 0;
     cursor: pointer;
     width: 115px;
-    background-color: #211936;
-    border: 1px solid #211936;
+    background-color: #332e42;
+    border: 1px solid #332e42;
     border-radius: 5px;
     height: 18px;
 }
@@ -10732,7 +10742,8 @@ height: 24px;
 	opacity: 1;
 	width:40%;
 	text-align: center;
-  line-height: 1.6;
+  line-height: 1.5;
+  padding-top: 1px;
 }
 .breakdownTitle .toggleSwitch a {
   position: absolute;
@@ -11056,20 +11067,6 @@ height: 24px;
 }
 .connectorContent {
   padding-top: 20px;
-}
-.connectorContentWrapper {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-4px);
-  overflow: hidden;
-  pointer-events: none;
-  transition: max-height 0.2s ease, opacity 0.15s ease, transform 0.15s ease;
-}
-.connectorContentWrapper.open {
-  max-height: 600px;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 .timeTabs {
   display: flex;
