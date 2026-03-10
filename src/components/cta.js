@@ -12,21 +12,21 @@ export const CtaIntrigued = () => (
           <p className="p2">You haven’t seen nothing yet!</p>
           <div className="cta-banner-buttons">
             <a
-              href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
+              href="https://meltano.com/demo"
               target="_blank"
               className="btn alt-blue-btn"
               rel="noreferrer"
             >
-              Book a demo
+              Try live demo
             </a>
             <a
-              href="/pricingcalculator/"
+              href="https://meltano.com/get-started"
               className="btn colorful-btn"
               target="_blank"
               rel="noreferrer"
             >
               <span />
-              Get My Estimate
+              Install open source
             </a>
           </div>
         </div>

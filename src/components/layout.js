@@ -5,7 +5,7 @@ import Preheader from './preheader'
 
 const Layout = ({ children }) => (
   <>
-    {/* <Preheader /> */}
+    <Preheader />
     <Header />
     <main>{children}</main>
     <Footer />
