@@ -185,7 +185,7 @@ const IndexHero = ({ data }) => {
         </div>
         <div className='portal-logo'>
           <span>
-            OPEN SOURCE
+            OPEN
           </span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" className="portal-out">
             <g clipPath="url(#clip0_486_2561)">

@@ -15,6 +15,7 @@ import MeltanoEdkIcon from '../assets/img/footermeltanoedkicon.svg'
 import PartnersIcon from '../assets/img/footerpartnersicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
 import FooterImg from '../assets/img/footer.svg'
+import contact from '../assets/img/contacticon.svg'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
 Modal.defaultStyles.overlay.zIndex = '99999'
@@ -86,13 +87,13 @@ const footerData = [
         icon: BlogIcon,
         desc: 'Stay up to date on Meltano & data engineering',
       },
-      {
-        id: 3,
-        title: 'Partners',
-        url: '/partners/',
-        icon: PartnersIcon,
-        desc: 'Bring in help to build connectors and take Meltano into production',
-      },
+      // {
+      //   id: 3,
+      //   title: 'Partners',
+      //   url: '/partners/',
+      //   icon: PartnersIcon,
+      //   desc: 'Bring in help to build connectors and take Meltano into production',
+      // },
     ],
   },
   {
@@ -105,6 +106,13 @@ const footerData = [
         url: '/about/',
         icon: AboutIcon,
         desc: 'Meltano is an open source project by Matatika',
+      },
+      {
+        id: 1,
+        title: 'Contact',
+        url: '/contact/',
+        icon: contact,
+        desc: 'The Meltano team is here to help. Ask us anything, or give us your feedback!',
       },
     ],
   },
@@ -410,7 +418,7 @@ const Footer = () => {
               <Link to="/">{`© Matatika ${new Date().getFullYear()}`}</Link>
             </div>
             <a
-              href="https://www.matatika.com"
+              href="https://docs.meltano.com/"
               target="_blank"
               className="portal-bottom portal-meltano"
               rel="noreferrer"
@@ -419,50 +427,9 @@ const Footer = () => {
                 <div className="portal-image" />
               </div>
               <div className="portal-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="134.8" height="20" viewBox="0 0 134.8 20" fill="none" className="portal-logo-arch">
-                  <g
-                    id="g4592"
-                    transform="matrix(1.0668094,0,0,1.0668094,-34.788946,-5.0830586)">
-                    <path
-                      fill="#ffffff"
-                      id="path2"
-                      d="M 33.507765,5.9553284 H 38.47379 L 42.945334,16.409061 47.418058,5.9553284 h 4.85509 V 22.417182 h -3.922781 v -8.971466 c 0,-0.383548 0.08261,-1.646303 0.109751,-1.756057 l -0.60423,1.756057 -3.704453,8.971466 h -2.63289 l -3.704453,-8.971466 c -0.165221,-0.383548 -0.548768,-1.563693 -0.603051,-1.756057 0,0.109754 0.109753,1.372509 0.109753,1.756057 v 8.971466 h -3.813029 z" />
-                    <path
-                      fill="#ffffff"
-                      id="path4"
-                      d="m 64.976188,16.025514 -1.974385,-5.18556 -1.975564,5.18556 z M 61.190279,5.9553284 h 3.758764 l 6.914475,16.4618536 h -4.417286 l -1.398474,-3.512113 h -6.09191 l -1.371323,3.512113 H 54.27702 Z" />
-                    <polygon
-                      transform="matrix(1.1801455,0,0,1.1801455,-22.777942,-12.806625)"
-                      fill="#ffffff"
-                      id="polygon6"
-                      points="83.381,18.735 78.895,18.735 78.895,15.898 91.633,15.898 91.633,18.735 87.147,18.735 87.147,29.848 83.381,29.848 " />
-                    <path
-                      fill="#ffffff"
-                      id="path8"
-                      d="m 94.525851,16.025514 -1.975563,-5.18556 -1.975566,5.18556 z M 90.739943,5.9553284 h 3.758765 l 6.914472,16.4618536 h -4.418465 l -1.398472,-3.512113 h -6.090732 l -1.371331,3.512113 h -4.30753 z" />
-                    <polygon
-                      transform="matrix(1.1801455,0,0,1.1801455,-22.777942,-12.806625)"
-                      fill="#ffffff"
-                      id="polygon10"
-                      points="108.42,18.735 103.933,18.735 103.933,15.898 116.672,15.898 116.672,18.735 112.186,18.735 112.186,29.848 108.42,29.848 " />
-                    <rect
-                      fill="#ffffff"
-                      id="rect12"
-                      height="16.461851"
-                      width="4.4467883"
-                      y="5.9553332"
-                      x="116.96955" />
-                    <polygon
-                      transform="matrix(1.1801455,0,0,1.1801455,-22.777942,-12.806625)"
-                      fill="#ffffff"
-                      id="polygon14"
-                      points="132.459,22.548 138.806,29.848 134.271,29.848 128.971,23.548 128.971,29.848 125.205,29.848 125.205,15.898 128.971,15.898 128.971,22.06 133.83,15.898 137.875,15.898 " />
-                    <path
-                      fill="#ffffff"
-                      id="path16"
-                      d="m 151.62247,16.025514 -1.97438,-5.18556 -1.97557,5.18556 z M 147.83656,5.9553284 h 3.75877 l 6.91447,16.4618536 h -4.4161 l -1.40084,-3.512113 h -6.09073 l -1.37132,3.512113 h -4.30754 z" />
-                  </g>
-                </svg>
+                <span style={{ color: "white" }}>
+                  OPEN
+                </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
