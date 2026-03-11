@@ -221,7 +221,7 @@ const IndexHero = ({ data }) => {
               {data.heroButton1.title}
             </a>
 
-            <a
+            {/* <a
               href={data.heroButton2.url}
               className="btn colorful-btn"
               target={data.heroButton2.target}
@@ -229,7 +229,7 @@ const IndexHero = ({ data }) => {
             >
               <span />
               {data.heroButton2.title}
-            </a>
+            </a> */}
           </div>
         </div>
 

@@ -31,14 +31,14 @@ const PriceTable = ({ data }) => (
                   </div>
                 </div>
                 <div className="cloud-table-header-wrap">
-                  <div className="cloud-table-header-labels">
+                  {/* <div className="cloud-table-header-labels">
                     <div className="blue-label-btn">
                       <a href="/contact">
                         <div className="blue-label-btn-title">
                           <h3>{table.pricingTableItemTier}</h3>
                         </div>
                       </a>
-                    </div>
+                    </div> */}
                     {/* <div className="blue-label-btn">
                       <div className="blue-label-btn-title">
                         <div>½ credit</div>
@@ -47,8 +47,8 @@ const PriceTable = ({ data }) => (
                         per hourly run
                       </div>
                     </div> */}
-                  </div>
-                  <p className="p2">{table.pricingTableItemDescription}</p>
+                  {/* </div> */}
+                  {/* <p className="p2">{table.pricingTableItemDescription}</p> */}
                   {/* <a
                     href="https://meltano.com/cost-calculator "
                     className="calculate-link"
@@ -70,7 +70,7 @@ const PriceTable = ({ data }) => (
                     </svg>
                   </a> */}
                 </div>
-                <div
+                {/* <div
                   className={
                     i === 0 ? `open-source-btn` : `open-source-btn coming-soon`
                   }
@@ -80,8 +80,8 @@ const PriceTable = ({ data }) => (
                       <h3>{table.pricingTableItemTier}</h3>
                     </div>
                   </div>
-                </div>
-                <p className="p2">{table.pricingTableItemDescription}</p>
+                </div> */}
+                {/* <p className="p2">{table.pricingTableItemDescription}</p> */}
               </div>
               <ul className="prices-list">
                 {table.pricingTableItemList.map(item => (

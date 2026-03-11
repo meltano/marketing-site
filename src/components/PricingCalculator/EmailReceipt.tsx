@@ -33,8 +33,8 @@ export default function EmailReceipt({
 }: EmailReceiptProps) {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
-  const emailApiUrl =
-    'https://meltanogatsdev.wpengine.com/wp-json/api/v1/send-email'
+  const emailApiUrl = process.env.GATSBY_EMAIL_API_URL || "https://meltanogatsdev.wpengine.com/wp-json/api/v1/send-email"
+
   const emailPayload = {
     totalPrice: totalCost,
     competitorTotal: competitorTotal || 0,
@@ -63,6 +63,11 @@ export default function EmailReceipt({
     const emailRegex = /\S+@\S+\.\S+/
     if (!emailRegex.test(email)) {
       alert('Please enter a valid email')
+      return
+    }
+
+    if (!emailApiUrl) {
+      alert('Email service is not configured')
       return
     }
 

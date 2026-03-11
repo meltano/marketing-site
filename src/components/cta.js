@@ -19,7 +19,7 @@ export const CtaIntrigued = () => (
             >
               Try live demo
             </a>
-            <a
+            {/* <a
               href="https://meltano.com/get-started"
               className="btn colorful-btn"
               target="_blank"
@@ -27,7 +27,7 @@ export const CtaIntrigued = () => (
             >
               <span />
               Install open source
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
