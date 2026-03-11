@@ -79,7 +79,7 @@ const CostComparison = ({ data }) => {
                             {/* Footer */}
                             <div className="bottomText">
                                 <p className="leftText">
-                                    All estimates are based on our standard plan and estimated with a
+                                    All estimates are based on our standard plan and <br/>estimated with a
                                     company with 1-200 employees.
                                 </p>
                                 <p className="rightText">
@@ -105,7 +105,7 @@ const CostComparison = ({ data }) => {
                 {/* RIGHT SIDE */}
                 <div className="titleBlock">
                     <h2>
-                        Know your cost
+                            The same <em>connectors</em> <br></br>30 to 40% less.
                     </h2>
                     <Link
                             to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
