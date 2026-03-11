@@ -19,7 +19,7 @@ export const CtaIntrigued = () => (
             >
               Book a demo
             </a>
-            <a
+            {/* <a
               href="/pricingcalculator/"
               className="btn colorful-btn"
               target="_blank"
@@ -27,7 +27,7 @@ export const CtaIntrigued = () => (
             >
               <span />
               Get My Estimate
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
