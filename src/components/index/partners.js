@@ -19,7 +19,7 @@ import ZapierIcon from '../../assets/img/zapier.svg'
 import RemoteIcon from '../../assets/img/remote.svg'
 
 const logos = [
-  { img: cityprient, link: "#testimonials", alt: "CitySprint", type: "anchor" },
+  { img: cityprient, link: "/blog/", alt: "CitySprint", type: "anchor" },
   { img: logo300, link: "blog/the-little-bike-company-boosts-monthly-productivity-by-20-with-meltanos-streamlined-solution/", alt: "Little Bike", type: "anchor" },
   { img: ra, link: "/blog/how-resident-advisor-escaped-year-long-etl-firefighting/", alt: "Resident Advisor", type: "anchor" },
   { img: mvf, link: "/blog/mvf-makes-etl-7x-cheaper-while-migrating-1b-rows-across-60-sources/", alt: "MVF", type: "anchor" },
