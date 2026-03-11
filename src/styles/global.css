@@ -2830,9 +2830,9 @@ ol.contact-form-sidebar-list li:before {
     gap: 38px;
     padding: 24px 18px;
   }
-
-  .logos a {
-    width: 24%;
+  .logos.logo-item {
+    flex: 0 0 auto;
+    margin-right: 40px;
   }
 
   .logos-diamond-bg {
@@ -10497,6 +10497,9 @@ html {
 .centerLarge.costComparison .row .tabsToggle .btnBox a{
   background-color: #3a64fa;
 }
+.centerLarge.costComparison .row .tabsToggle .btnBox a:hover {
+  background-color: #311772;
+}
 .costComparison .row {
   display: flex;
   align-items: center;
@@ -10602,6 +10605,10 @@ html {
 .priceSummaryBtns .btn.alt-blue-btn{
 background-color: #3a64fa;
 color: #fff;
+}
+
+.priceSummaryBtns .btn.alt-blue-btn:hover{
+  background-color: #311772;
 }
 .priceSummaryBtns .colorful-btn {
   color: #fff;text-align: center;
