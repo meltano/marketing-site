@@ -4,7 +4,12 @@ import { Button } from './ui/button'
 import { Card } from './ui/card'
 import { Slider } from './ui/slider'
 import { Trash2, ChevronDown, Info } from 'lucide-react'
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip"
 export interface Connector {
   id: string
   name: string
@@ -164,7 +169,18 @@ export default function ConnectorCard({
 
               <div className="space-y-3 priceRangeBox">
                 <span className="textLabel">
-                  Active Rows/ Month <Info />
+                  Active Rows/ Month <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="infoIcon">
+                        <Info size={16} />
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="tooltipBox">
+                      Rows synced or updated across all connectors in a billing period
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
                 </span>
                 <div>
                   <div className="priceRangeBoxTop">

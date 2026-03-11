@@ -11130,6 +11130,27 @@ height: 24px;
   width: 12px;
   cursor: pointer;
 }
+.connectorBox .infoIcon {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  cursor: pointer;
+}
+.connectorBox [data-radix-popper-content-wrapper] {
+  background: transparent;
+}
+.connectorBox .tooltipBox {
+    max-width: 180px;
+    font-size: 12px;
+    background-color: #060111;
+    color: #fff;
+    line-height: 1.15;
+    padding: 6px 8px;
+    border: 1px solid #3A64FA;
+    margin: 28px 0 0 4px;
+    position: relative;
+}
+
 .connectorContent {
   padding-top: 20px;
 }
@@ -11741,7 +11762,6 @@ height: 24px;
   max-height: 0;
   opacity: 0;
   transform: translateY(-6px);
-  overflow: hidden;
   pointer-events: none;
   transition: max-height 0.32s ease, opacity 0.2s ease, transform 0.28s ease;
   will-change: max-height, opacity, transform;
