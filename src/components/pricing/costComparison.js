@@ -23,7 +23,7 @@ const CostComparison = ({ data }) => {
             <div className="heading">
               <h2 className="title-inline">Pricing grounded in reality.</h2>
               <p className="heading-description p2">
-                Usage-based pricing means cost follows data volume. See median monthly usage and per-connector costs from actual customer workloads.
+                Usage-based pricing means cost follows data volume. See median monthly usage and per-connector costs from <br></br>actual customer workloads.
               </p>
             </div>
             <div className='btnGroup'>
