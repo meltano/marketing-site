@@ -10494,6 +10494,9 @@ html {
   text-align: center;
 }
 
+.centerLarge.costComparison .row .tabsToggle .btnBox a{
+  background-color: #3a64fa;
+}
 .costComparison .row {
   display: flex;
   align-items: center;
@@ -10595,6 +10598,10 @@ html {
 .priceSummaryBtns .btn {
   padding: 16px 12px;
   flex: auto;
+}
+.priceSummaryBtns .btn.alt-blue-btn{
+background-color: #3a64fa;
+color: #fff;
 }
 .priceSummaryBtns .colorful-btn {
   color: #fff;text-align: center;
