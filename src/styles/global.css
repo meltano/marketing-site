@@ -11679,3 +11679,19 @@ height: 24px;
     gap: 4px;
   }
 }
+.connectorContentWrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.32s ease, opacity 0.2s ease, transform 0.28s ease;
+  will-change: max-height, opacity, transform;
+}
+
+.connectorContentWrapper.open {
+  max-height: 600px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
