@@ -21,7 +21,7 @@ const Workflow = ({ data }) => {
     setTitle(data.workflowHeading)
     setDesc(data.workflowDescription)
   }, [])
-  
+
 
   return (
     <ParallaxProvider>
@@ -48,7 +48,7 @@ const Workflow = ({ data }) => {
                   className={`workflow-info ${index % 2 ? 'workflow-left' : ''
                     }`}
                 >
-                  <h3 className="brackets">{workflow.workflowTitle}</h3>
+                  <h3 className="" dangerouslySetInnerHTML={{ __html: workflow.workflowTitle }} />{workflow.workflowTitle}
                   <h5>{workflow.workflowSubtitle}</h5>
                   <ul className="workflow-list">
                     {workflow.workflowTextArray.map(text => (
@@ -70,47 +70,47 @@ const Workflow = ({ data }) => {
                   </div>
                 </div>
                 <div className="workflow-terminal tabsToggle">
-                  { workflow.workflowWindowContent && ( workflow.workflowUiVideo?.mediaItemUrl || workflow.workflowUiImage?.mediaItemUrl ) &&
-                  (
-                  <div className="toggle-container">
-                    <button
-                      className={`toggle-btn ${(terminalView[index] || "ui") === "ui" || !terminalView[index]
-                        ? "active"
-                        : ""
-                        }`}
-                      onClick={() =>
-                        setTerminalView(prev => ({
-                          ...prev,
-                          [index]: "ui",
-                        }))
-                      }
-                    >
-                      UI VIEW
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
-                        <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
-                      </svg>
-                    </button>
+                  {workflow.workflowWindowContent && (workflow.workflowUiVideo?.mediaItemUrl || workflow.workflowUiImage?.mediaItemUrl) &&
+                    (
+                      <div className="toggle-container">
+                        <button
+                          className={`toggle-btn ${(terminalView[index] || "ui") === "ui" || !terminalView[index]
+                            ? "active"
+                            : ""
+                            }`}
+                          onClick={() =>
+                            setTerminalView(prev => ({
+                              ...prev,
+                              [index]: "ui",
+                            }))
+                          }
+                        >
+                          UI VIEW
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
+                            <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
+                          </svg>
+                        </button>
 
-                    <button
-                      className={`toggle-btn ${terminalView[index] === "local" ? "active" : ""
-                        }`}
-                      onClick={() =>
-                        setTerminalView(prev => ({
-                          ...prev,
-                          [index]: "local",
-                        }))
-                      }
-                    >
-                      TERMINAL
-                      <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
-                        <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
-                      </svg>
-                    </button>
-                  </div>
-                  )
-          }
+                        <button
+                          className={`toggle-btn ${terminalView[index] === "local" ? "active" : ""
+                            }`}
+                          onClick={() =>
+                            setTerminalView(prev => ({
+                              ...prev,
+                              [index]: "local",
+                            }))
+                          }
+                        >
+                          TERMINAL
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
+                            <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
+                          </svg>
+                        </button>
+                      </div>
+                    )
+                  }
                   {
-                    terminalView[index] === "local" || ( !workflow.workflowUiVideo?.mediaItemUrl && !workflow.workflowUiImage?.mediaItemUrl )? (
+                    terminalView[index] === "local" || (!workflow.workflowUiVideo?.mediaItemUrl && !workflow.workflowUiImage?.mediaItemUrl) ? (
                       <div className="tab-terminal">
                         {
                           workflow?.workflowWindowTitle && (
@@ -169,20 +169,19 @@ const Workflow = ({ data }) => {
                     ) : (
                       <div className="video-ui-tab">
                         <div
-                          className={`video-wrapper ${
-                            workflow.workflowVideoOrImage === "ui_image" && "imgBox"
-                          }`}
+                          className={`video-wrapper ${workflow.workflowVideoOrImage === "ui_image" && "imgBox"
+                            }`}
                         >
                           {workflow.workflowVideoOrImage === "ui_video" &&
                             workflow.workflowUiVideo?.mediaItemUrl && (
                               <div>
-                              <video
-                                src={workflow.workflowUiVideo.mediaItemUrl}
-                                controls
-                                playsInline
-                                width="100%"
-                                height="100%"
-                              />
+                                <video
+                                  src={workflow.workflowUiVideo.mediaItemUrl}
+                                  controls
+                                  playsInline
+                                  width="100%"
+                                  height="100%"
+                                />
                               </div>
                             )}
 

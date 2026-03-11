@@ -34,7 +34,7 @@ export default function ReceiptModal({
 
   return (
     <>
-      <div className="receipt-backdrop" onClick={onClose} />
+      <div className="receipt-backdrop glow-bg" onClick={onClose} />
       <div className="receipt-modal" role="dialog" aria-modal="true">
         <button className="receipt-close-btn" onClick={onClose} aria-label="Close receipt">
           ×

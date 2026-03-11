@@ -108,10 +108,10 @@ const CostComparison = ({ data }) => {
                         Know your cost
                     </h2>
                     <Link
-                        to={`/${data?.costCompareLink || "#"}/`}
+                            to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
                         className="colorful-btn btn"
                     ><span></span>
-                        Try the pricing calculator
+                       Book a demo
                     </Link>
                 </div>
                 </div>

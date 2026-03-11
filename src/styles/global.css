@@ -10680,7 +10680,12 @@ height: 24px;
   border-radius: 4px;
   padding: 18px;
 }
-
+.calcSection .rightSide > div.receipt-backdrop {
+  background: #080216;
+}
+.calcSection .rightSide > div.receipt-modal {
+  background: transparent;
+}
 .calcSection .rightSide .bg-border {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 20px 0;
@@ -10958,6 +10963,7 @@ height: 24px;
   text-align: center;
   font-weight: 700;
   padding: 40px 0;
+  letter-spacing: 0;
 }
 .totalCost span {
   font-weight: 400;
@@ -11041,6 +11047,7 @@ height: 24px;
   border-radius: 4px;
   background-color: #150F22;
   padding: 18px 14px 26px 14px;
+  margin-top: 60px;
 }
 .connectorBox {
   background: #211936;
@@ -11126,6 +11133,7 @@ height: 24px;
 .connectorContent {
   padding-top: 20px;
 }
+
 .timeTabs {
   display: flex;
   align-items: center;
@@ -11355,7 +11363,6 @@ height: 24px;
   border-radius: 10px;
   transform: translate(-50%, -50%);
   padding: 20px 24px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   z-index: 1000;
 }
 
@@ -11363,29 +11370,49 @@ height: 24px;
 .receipt-close-btn {
   position: absolute;
   top: 10px;
-  right: 14px;
+  right: 10px;
   border: none;
   background: transparent;
-  font-size: 24px;
+  font-size: 35px;
   line-height: 1;
   cursor: pointer;
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
   transition: color 0.2s ease;
 }
 
 .receipt-close-btn:hover {
-  color: #222;
+  color: #fff;
 }
 
 /* Receipt container */
-
-.receipt-title {
-  margin: 0 0 12px;
-  font-size: 22px;
-  font-weight: 700;
-  text-align: center;
+.receipt-container {
+  padding-top: 20px;
 }
-
+.receiptMainHeader {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 10px 10px 30px;
+  gap: 10px;
+}
+.receiptMainHeader svg {
+  margin-right: auto;
+  width: auto;
+  height: 36px;
+}
+.receiptMainHeader div,
+.receiptMainHeader div {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.receiptMainHeader div span {
+  display: block;
+}
+.receiptMainHeader div .text {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+}
 .receipt-summary {
   display: flex;
   justify-content: space-around;
@@ -11394,31 +11421,99 @@ height: 24px;
   color: #444;
 }
 
-.receipt-breakdown {
-  border-top: 1px solid #ccc;
+.receiptBreakdown {
+  background: #150F22;
+  padding: 16px 10px;
+  border-radius: 4px;
 }
-
-.receipt-header,
-.receipt-row {
+.receiptBreakdown > p {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.receiptHeader,
+.receiptRow {
   display: grid;
-  grid-template-columns: 2.5fr 1.5fr 1.5fr 1.5fr;
+  grid-template-columns: 2fr 1.5fr 2fr 1.125fr;
   gap: 8px;
   align-items: center;
   padding: 8px 0;
+  font-size: 12px;
+  color: #fff;
 }
 
-.receipt-header {
+.receiptHeader {
   font-weight: 700;
-  border-bottom: 1px solid #ccc;
-  color: #555;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 7px;
+  margin-bottom: 15px;
 }
 
-.receipt-row {
-  border-bottom: 1px solid #eee;
+.receiptRow {
+  padding: 10px 7px;
+}
+.receiptHeader > *,.receiptRow > * {
+  text-align: center;
+}
+.receiptHeader > *:first-child,
+.receiptRow > *:first-child{
+  text-align: left;
+}
+
+.receiptHeader > *:last-child,
+.receiptRow > *:last-child {
+  text-align: right;
+}
+.receiptTotal {
+  border-radius: 4px;
+  padding: 15px 7px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 25px;
+}
+.receiptTotal > div{
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+.receiptTotal .total {
+  margin-right: auto;
+  font-weight: 700;
   font-size: 14px;
-  color: #333;
 }
-
+.receiptTotal .monthYear {
+  text-align: right;
+  font-weight: 400;
+  font-size: 12px;
+  padding-right: 22px;
+}
+.receiptTotal span span {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+} 
+.receiptTotal .price {
+  font-weight: 700;
+  font-size: 20px;
+}
+.email-send-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 20px;
+}
+.email-send-box input {
+  padding: 10px;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  flex: 1;
+}
+.email-send-box input:focus {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
 .receipt-connector {
   display: flex;
   align-items: center;
@@ -11621,6 +11716,7 @@ height: 24px;
   }
   .connectorBoxes {
   padding: 15px 8px 18px 10px;
+  margin-top: 40px;
 }
     .calcSection .rightSide > div {
     padding: 8px;
@@ -11641,14 +11737,14 @@ height: 24px;
     gap: 4px;
   }
 }
-
 .connectorContentWrapper {
   max-height: 0;
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   overflow: hidden;
   pointer-events: none;
-  transition: max-height 0.2s ease, opacity 0.15s ease, transform 0.15s ease;
+  transition: max-height 0.32s ease, opacity 0.2s ease, transform 0.28s ease;
+  will-change: max-height, opacity, transform;
 }
 
 .connectorContentWrapper.open {

@@ -15,11 +15,11 @@ const ManageConnector = ({ table }) => (
         <div className="price-table-second-col"
         style={{ backgroundImage: `url(${table.pricingTableItemIcon.localFile.publicURL})` }}>
             <a
-              href={table.pricingTableItemLink.url}
+            href={"https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"}
               target={table.pricingTableItemLink.target}
               className="btn alt-blue-btn"
             >
-              {/* {table.pricingTableItemLink.title} */}Check out Matatika
+              {/* {table.pricingTableItemLink.title} */}Book a demo
             </a>
         </div>
       </div>
