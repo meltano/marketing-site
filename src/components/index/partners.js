@@ -12,6 +12,11 @@ import sessionLogo from '../../assets/img/clientlogo/session-climbing_logo.png'
 import vertexLogo from '../../assets/img/clientlogo/Vertex_logo.svg'
 import vieveLogo from '../../assets/img/clientlogo/VIEVE_logo.svg'
 import woomLogo from '../../assets/img/clientlogo/Woom_logo.svg'
+import NetlifyIcon from '../../assets/img/netify.svg'
+import HackeroneIcon from '../../assets/img/hackerone.svg'
+import GitlabIcon from '../../assets/img/gitlub.svg'
+import ZapierIcon from '../../assets/img/zapier.svg'
+import RemoteIcon from '../../assets/img/remote.svg'
 
 const logos = [
   { img: cityprient, link: "#testimonials", alt: "CitySprint", type: "anchor" },
@@ -26,6 +31,11 @@ const logos = [
   { img: vertexLogo, link: "/blog/", alt: "Vertex", type: "anchor" },
   { img: vieveLogo, link: "/blog/", alt: "VIEVE", type: "anchor" },
   { img: woomLogo, link: "/blog/", alt: "Woom", type: "anchor" },
+  { img: NetlifyIcon, link: "/blog/", alt: "Woom", type: "anchor" },
+  { img: HackeroneIcon, link: "/blog/", alt: "Woom", type: "anchor" },
+  { img: GitlabIcon, link: "/blog/", alt: "Woom", type: "anchor" },
+  { img: ZapierIcon, link: "/blog/", alt: "Woom", type: "anchor" },
+  { img: RemoteIcon, link: "/blog/", alt: "Woom", type: "anchor" },
 ]
 
 
