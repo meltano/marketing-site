@@ -2830,9 +2830,9 @@ ol.contact-form-sidebar-list li:before {
     gap: 38px;
     padding: 24px 18px;
   }
-
-  .logos a {
-    width: 24%;
+  .logos.logo-item {
+    flex: 0 0 auto;
+    margin-right: 40px;
   }
 
   .logos-diamond-bg {
