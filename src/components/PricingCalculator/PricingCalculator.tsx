@@ -185,11 +185,11 @@ export default function PricingCalculator(data: any) {
 
             <div className="heading">
               <h2 className="title-inline">Pricing Calculator</h2>
-              <p className="heading-description p2">
+              {/* <p className="heading-description p2">
                 Calculate your monthly cost based on connector usage time
               </p>
               <h6>Calculate Your Data Pipeline Costs</h6>
-              <p className='heading-description p2'>Select your data sources and configure sync settings to see transparent pricing</p>
+              <p className='heading-description p2'>Select your data sources and configure sync settings to see transparent pricing</p> */}
             </div>
 
             <div className="connectorBoxes">

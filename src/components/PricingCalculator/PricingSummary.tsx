@@ -3,6 +3,10 @@ import { Separator } from './ui/separator'
 import * as React from 'react'
 
 import coffeeIcon from '../../assets/img/coffee-icon.png'
+import movieIcon from '../../assets/img/movie-icon.png'
+import flightIcon from '../../assets/img/flight-icon.png'
+import gymIcon from '../../assets/img/gym-icon.png'
+import pizzaIcon from '../../assets/img/pizza-icon.png'
 import { Swiper, SwiperSlide } from "swiper/react"
 import SwiperCore, { Autoplay, Pagination } from "swiper"
 
@@ -150,7 +154,7 @@ export default function PricingSummary({
             <p className="compareComp">
               <span className="text-muted-foreground">Fivetran Charges</span>
               <span className="tabular-nums">
-                <span>${isAnnual ? (competitorTotal * 12).toFixed(2) : competitorTotal.toFixed(2)}</span>
+                <span>£{isAnnual ? (competitorTotal * 12).toFixed(2) : competitorTotal.toFixed(2)}</span>
                 {isAnnual ? " / annual" : " / month"}
               </span>
             </p>
@@ -158,7 +162,7 @@ export default function PricingSummary({
             <p className="totalSave">
               <span>Total Saved</span>
               <span className="tabular-nums">
-                <span>${isAnnual ? (savings * 12).toFixed(2) : savings.toFixed(2)}</span>
+                <span>£{isAnnual ? (savings * 12).toFixed(2) : savings.toFixed(2)}</span>
                 {isAnnual ? " / annual" : " / month"}
               </span>
             </p>
@@ -194,7 +198,8 @@ export default function PricingSummary({
     <SwiperSlide>
       <div className='info'>
         <p className='value'>
-          {Math.round((isAnnual ? savings * 12 : savings) / 800)} <span>flights {isAnnual ? "/ annual" : "/ month"}</span>
+          {Math.round((isAnnual ? savings * 12 : savings) / 800)} <img src={flightIcon} alt="" />
+          <span>{isAnnual ? "/ annual" : "/ month"}</span>
         </p>
         <p className='text'>That's your London–New York round trips</p>
       </div>
@@ -203,15 +208,36 @@ export default function PricingSummary({
     <SwiperSlide>
       <div className='info'>
         <p className='value'>
-          {Math.round((isAnnual ? savings * 12 : savings) / 13)} <span>movies {isAnnual ? "/ annual" : "/ month"}</span>
+          {Math.round((isAnnual ? savings * 12 : savings) / 13)} <img src={movieIcon} alt="" />
+          <span>{isAnnual ? "/ annual" : "/ month"}</span>
         </p>
         <p className='text'>That's movie tickets covered</p>
+      </div>
+    </SwiperSlide>
+    <SwiperSlide>
+      <div className='info'>
+        <p className='value'>
+          {Math.round((isAnnual ? savings * 12 : savings) / 20)} <img src={pizzaIcon} alt="" />
+          <span>{isAnnual ? "/ annual" : "/ month"}</span>
+        </p>
+        <p className='text'>That's your Friday all-hands lunch covered</p>
+      </div>
+    </SwiperSlide>
+    <SwiperSlide>
+      <div className='info'>
+        <p className='value'>
+          {Math.round((isAnnual ? savings * 12 : savings) / 15)} <img src={gymIcon} alt="" />
+          <span>{isAnnual ? "/ annual" : "/ month"}</span>
+        </p>
+        <p className='text'>That's your whole team's wellness perks covered</p>
       </div>
     </SwiperSlide>
     </Swiper>
     <div className="customPag">
   <span className="custom-bullet"></span>
   <span className="custom-bullet active"></span>
+  <span className="custom-bullet"></span>
+  <span className="custom-bullet"></span>
   <span className="custom-bullet"></span>
 </div>
             </div>
