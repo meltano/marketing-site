@@ -94,12 +94,12 @@ const CostComparison = ({ data }) => {
                         </div>
                     </div>
                     <div className="btnBox">
-                        {/* <Link
-                            to={`/${data?.costCompareLink || "#"}/`}
+                        <Link
+                                to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
                             className="colorful-btn btn"
                         ><span></span>
-                            Try the pricing calculator
-                        </Link> */}
+                                Book a demo
+                        </Link>
                     </div>
                 </div>
                 {/* RIGHT SIDE */}

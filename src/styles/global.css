@@ -2047,7 +2047,9 @@ nav li:hover>a>.header-list-icon {
   max-width: 850px;
   margin: 24px auto;
 }
-
+.hero-title-section.pricing .hero-description br{
+display: none;
+}
 .hero-title-section .colorful-btn {
   color: #fff;
 }
@@ -11722,7 +11724,21 @@ html {
   object-fit: contain;
   border-radius: 4px;
 }
+.connectorContentWrapper {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: max-height 0.32s ease, opacity 0.2s ease, transform 0.28s ease;
+  will-change: max-height, opacity, transform;
+}
 
+.connectorContentWrapper.open {
+  max-height: 600px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 
 @media (max-width : 1330px) {
   .connectorBox .textLabel {
@@ -11900,6 +11916,10 @@ html {
 }
 
 @media (max-width : 768px) {
+  .meltano-mission-headeing h2 {
+    margin-top: 0;
+  }
+
   .workflow {
     padding-bottom: 0;
   }
@@ -11912,6 +11932,18 @@ html {
     font-size: 12px;
     padding: 6px 12px 6px 6px;
   }
+    .tabsToggle .toggleContent .bottomText .leftText,
+    .centerLarge .tabsToggle .toggleContent .bottomText p {
+      font-size: 9px;
+    }
+  
+    .centerLarge .tabsToggle .toggleContent .bottomText .rightText {
+      font-size: 10px;
+    }
+  
+    .centerLarge .tabsToggle .toggleContent .bottomText .rightText span:first-child {
+      font-size: 12px;
+    }
 }
 
 @media (max-width : 600px) {
@@ -11927,6 +11959,8 @@ html {
 
   .calcSection .rightSide {
     max-width: 100%;
+  }.hero-title-section.pricing .hero-description br {
+    display: block;
   }
 }
 
@@ -11976,7 +12010,16 @@ html {
     padding: 8px;
   }
 }
-
+@media (max-width: 460px) {
+  .hero-description br {
+    display: none;
+  }
+}
+@media (max-width: 376px) {
+  .hero-title br {
+    display: none;
+  }
+}
 @media (max-width : 375px) {
   .costComparison {
     margin-bottom: 75px;
@@ -11996,30 +12039,5 @@ html {
   }
 }
 
-.connectorContentWrapper {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-6px);
-  pointer-events: none;
-  transition: max-height 0.32s ease, opacity 0.2s ease, transform 0.28s ease;
-  will-change: max-height, opacity, transform;
-}
 
-.connectorContentWrapper.open {
-  max-height: 600px;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
 
-@media (max-width: 460px) {
-  .hero-description br {
-    display: none;
-  }
-}
-
-@media (max-width: 376px) {
-  .hero-title br {
-    display: none;
-  }
-}
