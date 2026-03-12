@@ -487,7 +487,7 @@ const Header = () => {
                           <span className="brackets">Pricing</span>
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Meltano is an open source project by Arch
+                          Meltano is an open source project by Matatika
                         </p>
                       </div>
                       <Link to="/pricing/">
@@ -716,12 +716,12 @@ const Header = () => {
                           <span className="brackets">About</span> Meltano
                         </p>
                         <p className="submenu-subtitle title-inline">
-                          Meltano is an open source project by Arch
+                          Meltano is an open source project by Matatika
                         </p>
                       </div>
                       <a
-                        href="https://www.matatika.com/about-us/"
-                        target="_blank"
+                        href="/about/"
+                        target="_self"
                         rel="noreferrer"
                       >
                         <svg
@@ -752,7 +752,7 @@ const Header = () => {
                         <div className="header-list-item">
                           <p className="header-list-title">About</p>
                           <p className="header-list-info">
-                            Meltano is an open source project by Arch
+                            Meltano is an open source project by Matatika
                           </p>
                         </div>
                       </a>
