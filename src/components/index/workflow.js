@@ -145,7 +145,7 @@ const Workflow = ({ data }) => {
                             }))
                           }}
                         >
-                          TERMINAL
+                        CLI
                           <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
                             <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
                           </svg>
