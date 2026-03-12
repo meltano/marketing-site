@@ -11,6 +11,7 @@ require('prismjs/components/prism-bash')
 
 const Workflow = ({ data }) => {
   const [terminalView, setTerminalView] = useState({});
+  const [controlsVisible, setControlsVisible] = useState({});
   const videoRefs = useRef([])
   const colors = ['pink', 'blue', 'yellow', 'green', 'pink']
   const separators = [DashBreak1, DashBreak2, DashBreak3, DashBreak2, DashBreak1, DashBreak2, DashBreak3, DashBreak2]
@@ -138,6 +139,10 @@ const Workflow = ({ data }) => {
                               video.dataset.autoplayDisabled = 'true'
                               video.pause()
                             }
+                            setControlsVisible(prev => ({
+                              ...prev,
+                              [index]: false,
+                            }))
                           }}
                         >
                           TERMINAL
@@ -227,6 +232,30 @@ const Workflow = ({ data }) => {
                           <div
                             className={`video-wrapper ${workflow.workflowVideoOrImage === "ui_image" && "imgBox"
                               }`}
+                            onMouseEnter={() =>
+                              setControlsVisible(prev => ({
+                                ...prev,
+                                [index]: true,
+                              }))
+                            }
+                            onMouseLeave={() =>
+                              setControlsVisible(prev => ({
+                                ...prev,
+                                [index]: false,
+                              }))
+                            }
+                            onClick={() =>
+                              setControlsVisible(prev => ({
+                                ...prev,
+                                [index]: true,
+                              }))
+                            }
+                            onTouchStart={() =>
+                              setControlsVisible(prev => ({
+                                ...prev,
+                                [index]: true,
+                              }))
+                            }
                           >
                             {workflow.workflowVideoOrImage === "ui_video" &&
                               workflow.workflowUiVideo?.mediaItemUrl && (
@@ -239,7 +268,7 @@ const Workflow = ({ data }) => {
                                     autoPlay
                                     loop
                                     muted
-                                    controls
+                                    controls={!!controlsVisible[index]}
                                     playsInline
                                     preload="auto"
                                     width="100%"
