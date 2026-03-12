@@ -2761,8 +2761,10 @@ ol.contact-form-sidebar-list li:before {
   -webkit-backdrop-filter: blur(13px);
   backdrop-filter: blur(13px);
   border-radius: 4.6px;
-  margin: 24px auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
+
 .logo-marquee {
   overflow: hidden;
   width: 100%;
@@ -2801,6 +2803,7 @@ ol.contact-form-sidebar-list li:before {
     transform: translateX(-50%);
   }
 }
+
 .logos a img {
   max-width: 260px;
   max-height: 60px;
@@ -2826,10 +2829,11 @@ ol.contact-form-sidebar-list li:before {
 
 @media all and (max-width: 768px) {
   .logos {
-    margin: 24px 30px;
+    margin-bottom: 25px;
     gap: 38px;
     padding: 24px 18px;
   }
+
   .logos.logo-item {
     flex: 0 0 auto;
     margin-right: 40px;
@@ -4375,6 +4379,7 @@ ol.contact-form-sidebar-list li:before {
 .testimonials-grid-item-info img {
   filter: brightness(0) invert(1);
 }
+
 .testimonials-grid-quote {
   color: #ffffff;
 }
@@ -10220,17 +10225,20 @@ html {
   margin-bottom: 0;
   width: calc(100% - 10px);
 }
+
 .centerLarge .tabsToggle .btnGroup {
   border-radius: 4px 4px 0 0;
   border: none;
   padding: 6px 6px 0 6px;
   background: #2a1f47;
 }
+
 .centerLarge .tabsToggle .toggle-container {
   width: calc(100% - 12px);
   background: #15111F !important;
   padding: 6px;
 }
+
 .tabsToggle .toggle-btn {
   position: relative;
   padding: 10px 40px 10px 20px;
@@ -10247,9 +10255,11 @@ html {
   transition: all 0.2s ease;
   text-align: left;
 }
+
 .tabsToggle .toggle-btn:hover {
   color: #fff;
 }
+
 .centerLarge .tabsToggle .toggle-btn {
   flex: 1;
   border: 0;
@@ -10258,10 +10268,11 @@ html {
   padding: 8px;
   text-align: center;
 }
+
 .centerLarge .tabsToggle .toggle-btn.active {
-  background: #332C46  !important;
-  border: 1px solid #342B4D;
+  background: #332C46 !important;
 }
+
 .tabsToggle .toggle-btn.smBtn {
   font-size: 12px;
   padding: 6px 16px 6px 8px;
@@ -10279,41 +10290,49 @@ html {
 .tabsToggle .toggle-btn svg path {
   fill: #221937;
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(1) {
   z-index: 3;
   background: linear-gradient(90deg, #261c40 calc(100% - 15px), transparent calc(100% - 15px));
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(1) svg path {
   fill: #261c40;
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(2) {
   z-index: 2;
   background: linear-gradient(90deg, #221937 calc(100% - 15px), transparent calc(100% - 15px));
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(2) svg path {
   fill: #221937;
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(3) {
   z-index: 1;
   background: linear-gradient(90deg, #1d152f calc(100% - 15px), transparent calc(100% - 15px));
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(3) svg path {
   fill: #1d152f;
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(4) {
   background: linear-gradient(90deg, #171023 calc(100% - 15px), transparent calc(100% - 15px));
 }
+
 .tabsToggle .toggle-btn:not(.active):nth-child(4) svg path {
   fill: #171023;
 }
 
 .tabsToggle .toggle-btn.active {
-  background: linear-gradient(90deg, #332C46  calc(100% - 15px), transparent calc(100% - 15px));
+  background: linear-gradient(90deg, #332C46 calc(100% - 15px), transparent calc(100% - 15px));
   z-index: 4;
 }
 
 .tabsToggle .toggle-btn.active svg path {
-  fill: #332C46 ;
+  fill: #332C46;
 }
 
 /* === Workflow Video UI Frame === */
@@ -10339,6 +10358,7 @@ html {
   height: calc(100% - 30px);
   padding: 15PX;
 }
+
 .tabsToggle .toggleContent {
   border-radius: 0 4px 4px 4px;
   border: none;
@@ -10351,37 +10371,43 @@ html {
   position: relative;
   z-index: 1;
 }
+
 .tabsToggle .toggleContent .toggleContentInner {
   background: #15111F;
   border-radius: 4px;
   padding: 35px 30px;
 }
+
 .tabsToggle .toggleContent table {
   font-size: 12px;
   width: 100%;
   border-collapse: collapse;
   line-height: 1;
 }
+
 .centerLarge .tabsToggle .toggleContent table {
   font-size: 14px;
 }
+
 .tabsToggle .toggleContent table th {
   padding: 0 8px 10px 14px;
   border-bottom: 2px solid #2D2248;
   font-weight: normal;
- }
+}
+
 .tabsToggle .toggleContent table td {
   padding: 10px 8px 10px 14px;
   border-bottom: 1px solid #2D224899;
   font-weight: normal;
- }
+}
+
 .workflow-terminal .video-wrapper:not(.imgBox) {
   display: flex;
   align-items: center;
 }
 
 .workflow-terminal .video-wrapper:not(.imgBox)>div {
-  padding-top: 56.25%;
+  padding-top: 54%;
   position: relative;
   width: 100%;
   box-shadow: 0px 0px 20px 3px #0000001a;
@@ -10395,10 +10421,12 @@ html {
 
 .workflow-terminal .video-wrapper video {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .workflow-terminal .video-wrapper iframe {
@@ -10409,7 +10437,7 @@ html {
   border: 0;
 }
 
-.tabsToggle .toggle-container +.tab-terminal {
+.tabsToggle .toggle-container+.tab-terminal {
   border-radius: 0 4px 4px 4px;
   border: none;
   padding: 6px;
@@ -10420,11 +10448,11 @@ html {
   margin-top: -1px;
 }
 
-.tabsToggle .toggle-container + .tab-terminal .terminal-header {
+.tabsToggle .toggle-container+.tab-terminal .terminal-header {
   border-radius: 4px 4px 0 0;
 }
 
-.tabsToggle .toggle-container + .tab-terminal .terminal-content {
+.tabsToggle .toggle-container+.tab-terminal .terminal-content {
   flex: 1;
   background: #15111F;
   border-radius: 0 0 4px 4px;
@@ -10434,54 +10462,65 @@ html {
   color: #fff;
 }
 
-.tabsToggle .toggleContent table td > .company {
+.tabsToggle .toggleContent table td>.company {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .tabsToggle .toggleContent table td .logoIcon {
   width: 20px;
   height: 20px;
   display: inline-block;
 }
+
 .tabsToggle .toggleContent table td .logoIcon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: left center;
 }
+
 .tabsToggle .toggleContent .bottomText {
   margin-top: 25px;
   display: flex;
   gap: 20px;
 }
+
 .tabsToggle .toggleContent .bottomText p {
   margin: 0;
   font-size: 10px;
   line-height: 16px;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-weight: normal;
-} 
+}
+
 .centerLarge .tabsToggle .toggleContent .bottomText p {
   font-size: 12px;
   max-width: 400px;
 }
+
 .tabsToggle .toggleContent .bottomText .leftText {
   flex: 1;
 }
+
 .tabsToggle .toggleContent .bottomText .rightText {
   margin-left: auto;
   text-align: right;
 }
+
 .tabsToggle .toggleContent .bottomText .rightText span {
   display: block;
 }
+
 .tabsToggle .toggleContent .bottomText .rightText span:first-child {
   font-size: 12px;
 }
+
 .centerLarge .tabsToggle .toggleContent .bottomText .rightText span:first-child {
   font-size: 14px;
 }
+
 .costComparison .row .titleBlock h2 {
   font-size: 32px;
   text-align: left;
@@ -10494,33 +10533,40 @@ html {
   text-align: center;
 }
 
-.centerLarge.costComparison .row .tabsToggle .btnBox a{
+.centerLarge.costComparison .row .tabsToggle .btnBox a {
   background-color: #3a64fa;
 }
+
 .centerLarge.costComparison .row .tabsToggle .btnBox a:hover {
   background-color: #311772;
 }
+
 .costComparison .row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 45px;
 }
+
 .costComparison .row .tabsToggle {
   width: 60%;
 }
+
 .costComparison.centerLarge .row .tabsToggle {
   width: 100%;
   max-width: 840px
 }
+
 .costComparison .row .tabsToggle .btnBox {
   display: none;
 }
+
 .centerLarge.costComparison .row .tabsToggle .btnBox {
   padding-top: 40px;
   display: block;
   text-align: center;
 }
+
 .costComparison .row .titleBlock {
   flex: 1;
 }
@@ -10533,7 +10579,8 @@ html {
   color: #fff;
   overflow-x: hidden;
 }
-.pricingCalc >  .container {
+
+.pricingCalc>.container {
   position: relative;
   z-index: 1;
   padding: 120px 0 80px;
@@ -10551,6 +10598,7 @@ html {
   font-weight: 400;
   line-height: 1.25;
 }
+
 @media (max-width : 600px) {
   .tabsToggle .toggleContent .bottomText {
     flex-wrap: wrap;
@@ -10569,11 +10617,13 @@ html {
   .logos a img {
     max-width: 180px;
     max-height: 40px;
-  }}
+  }
+}
 
 .calcSection .leftSide {
   flex: 1;
 }
+
 .calcSection .leftSide .heading h2 {
   text-align: left;
   font-family: 'Plus Jakarta Sans', Arial, sans-serif;
@@ -10582,10 +10632,12 @@ html {
   line-height: 1;
   margin: 0 0 20px;
 }
+
 .calcSection .leftSide .heading .heading-description {
   margin: 0 0 56px 0;
   text-align: left;
 }
+
 .calcSection .leftSide .heading h6 {
   margin: 0 0 8px;
 }
@@ -10593,26 +10645,32 @@ html {
 .calcSection .rightSide {
   width: 40%;
 }
+
 .priceSummaryBtns {
   display: flex;
   gap: 10px;
   padding-top: 20px;
 }
+
 .priceSummaryBtns .btn {
   padding: 16px 12px;
   flex: auto;
 }
-.priceSummaryBtns .btn.alt-blue-btn{
-background-color: #3a64fa;
-color: #fff;
+
+.priceSummaryBtns .btn.alt-blue-btn {
+  background-color: #3a64fa;
+  color: #fff;
 }
 
-.priceSummaryBtns .btn.alt-blue-btn:hover{
+.priceSummaryBtns .btn.alt-blue-btn:hover {
   background-color: #311772;
 }
+
 .priceSummaryBtns .colorful-btn {
-  color: #fff;text-align: center;
+  color: #fff;
+  text-align: center;
 }
+
 .calcSection .leftSide .leftSideTitle {
   display: flex;
   padding-bottom: 27px;
@@ -10629,19 +10687,21 @@ color: #fff;
   position: relative;
   display: inline-block;
 }
+
 .calcSection .leftSide .leftSideTitle .topAddConnection .connectorList {
   position: absolute;
   top: 100%;
   right: 0;
   margin-top: 4px;
   background: #1a1a2e;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 50;
   min-width: 180px;
   padding: 4px;
 }
+
 .calcSection .leftSide .leftSideTitle .topAddConnection .connectorList button {
   display: block;
   width: 100%;
@@ -10657,13 +10717,16 @@ color: #fff;
   align-items: center;
   gap: 8px;
 }
+
 .calcSection .leftSide .leftSideTitle .topAddConnection .connectorList button img {
-height: 24px;
+  height: 24px;
   width: 40px;
   object-fit: contain;
   object-position: left center;
 }
-.calcSection .leftSide .leftSideTitle button, .selectFirstConnector button {
+
+.calcSection .leftSide .leftSideTitle button,
+.selectFirstConnector button {
   background: #211936;
   color: #fff;
   padding: 5px 15px;
@@ -10673,33 +10736,44 @@ height: 24px;
   font-size: 12px;
   line-height: 1;
 }
-.calcSection .leftSide .leftSideTitle button:hover, .selectFirstConnector button:hover {
+
+.calcSection .leftSide .leftSideTitle button:hover,
+.selectFirstConnector button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.calcSection .leftSide .leftSideTitle button svg, .selectFirstConnector button svg {
+
+.calcSection .leftSide .leftSideTitle button svg,
+.selectFirstConnector button svg {
   width: 18px;
   height: auto;
   background-color: #37304a;
   border-radius: 50%;
 }
-.calcSection .leftSide .leftSideTitle button svg path, .selectFirstConnector button svg path {
+
+.calcSection .leftSide .leftSideTitle button svg path,
+.selectFirstConnector button svg path {
   stroke: rgba(255, 255, 255, 0.7);
 }
-.calcSection .leftSide .leftSideTitle button:hover svg path, .selectFirstConnector button:hover svg path {
+
+.calcSection .leftSide .leftSideTitle button:hover svg path,
+.selectFirstConnector button:hover svg path {
   stroke: rgba(255, 255, 255, 1);
 }
 
-.calcSection .rightSide > div {
+.calcSection .rightSide>div {
   background: #150F22;
   border-radius: 4px;
   padding: 18px;
 }
-.calcSection .rightSide > div.receipt-backdrop {
+
+.calcSection .rightSide>div.receipt-backdrop {
   background: #080216;
 }
-.calcSection .rightSide > div.receipt-modal {
+
+.calcSection .rightSide>div.receipt-modal {
   background: transparent;
 }
+
 .calcSection .rightSide .bg-border {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 20px 0;
@@ -10738,6 +10812,7 @@ height: 24px;
   font-weight: 700;
   text-align: right;
 }
+
 .calcSection .rightSide .breakdownItem .tabular-nums span {
   font-weight: 400;
   text-transform: lowercase;
@@ -10752,76 +10827,85 @@ height: 24px;
   align-items: center;
   gap: 15px 20px;
 }
+
 .breakdownTitle .toggleSwitch span span {
-	display: none;
-}  
-  
+  display: none;
+}
+
 .breakdownTitle .toggleSwitch {
-    display: inline-block;
-    position: relative;
-    overflow: visible;
-    padding: 0;
-    cursor: pointer;
-    width: 115px;
-    background-color: #332e42;
-    border: 1px solid #332e42;
-    border-radius: 5px;
-    height: 18px;
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+  padding: 0;
+  cursor: pointer;
+  width: 115px;
+  background-color: #332e42;
+  border: 1px solid #332e42;
+  border-radius: 5px;
+  height: 18px;
 }
+
 .breakdownTitle .toggleSwitch * {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .breakdownTitle .toggleSwitch label,
-.toggleSwitch > span {
-	line-height: 20px;
-	height: 20px;
-	vertical-align: middle;
+.toggleSwitch>span {
+  line-height: 20px;
+  height: 20px;
+  vertical-align: middle;
 }
-.breakdownTitle .toggleSwitch input:focus ~ a,
-.breakdownTitle .toggleSwitch input:focus + label {
-	outline: none;
+
+.breakdownTitle .toggleSwitch input:focus~a,
+.breakdownTitle .toggleSwitch input:focus+label {
+  outline: none;
 }
+
 .breakdownTitle .toggleSwitch label {
-	position: relative;
-	z-index: 3;
-	display: block;
-	width: 100%;
+  position: relative;
+  z-index: 3;
+  display: block;
+  width: 100%;
 }
+
 .breakdownTitle .toggleSwitch input {
-	position: absolute;
-	opacity: 0;
-	z-index: 5;
+  position: absolute;
+  opacity: 0;
+  z-index: 5;
 }
-.breakdownTitle .toggleSwitch > span {
-	position: absolute;
-	left: 0;
-	width: calc(100% - 6px);
-	margin: 0;
-	text-align: left;
-	white-space: nowrap;
-  margin:0 3px;
+
+.breakdownTitle .toggleSwitch>span {
+  position: absolute;
+  left: 0;
+  width: calc(100% - 6px);
+  margin: 0;
+  text-align: left;
+  white-space: nowrap;
+  margin: 0 3px;
 }
-.breakdownTitle .toggleSwitch > span span {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 5;
-	display: block;
-	width: 50%;
-	margin-left: 50px;
-	text-align: left;
-	font-size: 12px;
-	width: auto;
-	left: 0;
-	top: -1px;
-	opacity: 1;
-	width:40%;
-	text-align: center;
+
+.breakdownTitle .toggleSwitch>span span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: block;
+  width: 50%;
+  margin-left: 50px;
+  text-align: left;
+  font-size: 12px;
+  width: auto;
+  left: 0;
+  top: -1px;
+  opacity: 1;
+  width: 40%;
+  text-align: center;
   line-height: 1.5;
   padding-top: 1px;
 }
+
 .breakdownTitle .toggleSwitch a {
   position: absolute;
   right: 50%;
@@ -10836,42 +10920,48 @@ height: 24px;
   border-radius: 4px;
   transition: all 0.2s ease-out;
 }
-.breakdownTitle .toggleSwitch > span span:first-of-type {
-	color: #FFF;
-	opacity: 1;
-	left: 0;
-	margin: 0;
-    width: 50%;
+
+.breakdownTitle .toggleSwitch>span span:first-of-type {
+  color: #FFF;
+  opacity: 1;
+  left: 0;
+  margin: 0;
+  width: 50%;
 }
-.breakdownTitle .toggleSwitch > span span:last-of-type {
-	left:auto;
-	right:0;
-	color: rgba(255, 255, 255, 0.7);
-	margin: 0;
-    width: 50%;
+
+.breakdownTitle .toggleSwitch>span span:last-of-type {
+  left: auto;
+  right: 0;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  width: 50%;
 }
-.breakdownTitle .toggleSwitch > span:before {
-	content: '';
-	display: block;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: -2px;
-	border-radius: 30px;
-	-webkit-transition: all 0.2s ease-out;
-	-moz-transition: all 0.2s ease-out;
-	transition: all 0.2s ease-out;
+
+.breakdownTitle .toggleSwitch>span:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  border-radius: 30px;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
-.breakdownTitle .toggleSwitch input:checked ~ a {
-	left: calc(50% - 1px);
+
+.breakdownTitle .toggleSwitch input:checked~a {
+  left: calc(50% - 1px);
 }
-.breakdownTitle .toggleSwitch input:checked ~ span span:first-of-type {
-	left:0;
-	color:rgba(255, 255, 255, 0.7);
+
+.breakdownTitle .toggleSwitch input:checked~span span:first-of-type {
+  left: 0;
+  color: rgba(255, 255, 255, 0.7);
 }
-.breakdownTitle .toggleSwitch input:checked ~ span span:last-of-type {
-	color:#FFF;
+
+.breakdownTitle .toggleSwitch input:checked~span span:last-of-type {
+  color: #FFF;
   text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.7);
 }
 
@@ -10880,6 +10970,7 @@ height: 24px;
   border-radius: 4px;
   padding: 11px 7px 14px;
 }
+
 .comparisonPrice p {
   display: flex;
   justify-content: space-between;
@@ -10887,25 +10978,31 @@ height: 24px;
   margin: 0;
   font-size: 18px;
 }
+
 .comparisonPrice p.compareComp {
   background: rgba(255, 255, 255, 0.1);
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
 }
+
 .comparisonPrice p.totalSave {
   padding-top: 15px;
 }
+
 .comparisonPrice p.totalSave span span {
   font-weight: 600;
 }
+
 .comparisonPrice .equivalentItems {
   padding: 30px 0 0;
 }
-.comparisonPrice .equivalentItems > p{ 
+
+.comparisonPrice .equivalentItems>p {
   text-align: center;
   display: block;
   margin: 0 0 12px;
 }
+
 .comparisonPrice .equivalentItems .swiper {
   background: linear-gradient(90deg, rgba(90, 73, 143, 0.4) 0%, #716695 100%);
   padding: 0 !important;
@@ -10914,6 +11011,7 @@ height: 24px;
   border: 2px solid #54447D;
   border-radius: 4px;
 }
+
 .comparisonPrice .equivalentItems .swiper::after {
   content: "";
   display: block;
@@ -10927,9 +11025,11 @@ height: 24px;
   background-position: 0% 43%;
   opacity: 0.5;
 }
+
 .comparisonPrice .equivalentItems .info {
   padding: 12px;
 }
+
 .comparisonPrice .equivalentItems .info p {
   justify-content: center;
   gap: 8px;
@@ -10937,22 +11037,26 @@ height: 24px;
   padding: 0;
   margin: 0;
 }
+
 .comparisonPrice .equivalentItems .info .value {
   font-size: 20px;
   font-weight: 600;
   text-align: center;
   margin: 0 0 8px 0;
 }
+
 .comparisonPrice .equivalentItems .info img {
- height: auto;
- width: 24px; 
+  height: auto;
+  width: 24px;
 }
+
 .comparisonPrice .equivalentItems .text {
   font-size: 10px;
   display: block;
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
 }
+
 .comparisonPrice .equivalentItems .customPag {
   display: flex;
   justify-content: center;
@@ -10973,15 +11077,18 @@ height: 24px;
   background: #3A64FA;
   width: 10px;
 }
+
 .totalCost {
   text-align: center;
   font-weight: 700;
   padding: 40px 0;
   letter-spacing: 0;
 }
+
 .totalCost span {
   font-weight: 400;
 }
+
 .compareWrapper {
   display: flex;
   align-items: center;
@@ -11026,15 +11133,15 @@ height: 24px;
   min-width: 10px;
 }
 
-.compareCheck .radioCard input:checked + .radioContent {
+.compareCheck .radioCard input:checked+.radioContent {
   background: #3A64FA;
 }
 
-.compareCheck .radioCard input:checked + .radioContent .radioCircle {
+.compareCheck .radioCard input:checked+.radioContent .radioCircle {
   border-color: white;
 }
 
-.compareCheck .radioCard input:checked + .radioContent .radioCircle::after {
+.compareCheck .radioCard input:checked+.radioContent .radioCircle::after {
   content: "";
   width: 6px;
   height: 6px;
@@ -11045,24 +11152,28 @@ height: 24px;
   border-radius: 50%;
 }
 
-  /*  End Toggle Switch  */
+/*  End Toggle Switch  */
 [data-radix-popper-content-wrapper] {
   background: #fff;
   z-index: 3 !important;
 }
+
 .selectFirstConnector {
   text-align: center;
   padding: 0 0 15px;
 }
+
 .selectFirstConnector p {
   margin: 0 0 10px;
 }
+
 .connectorBoxes {
   border-radius: 4px;
   background-color: #150F22;
   padding: 18px 14px 26px 14px;
   margin-top: 60px;
 }
+
 .connectorBox {
   background: #211936;
   border-radius: 4px;
@@ -11070,11 +11181,13 @@ height: 24px;
   margin-bottom: 14px;
   position: relative;
 }
+
 .connectorBox .totalCardValue {
   position: absolute;
   right: 44px;
   top: 11px;
 }
+
 .connectorBox .deleteCard {
   position: absolute;
   right: 20px;
@@ -11086,13 +11199,16 @@ height: 24px;
   width: auto;
   padding: 1px;
 }
+
 .connectorBox .deleteCard svg {
   width: auto;
   height: 100%;
 }
+
 .connectorBox .deleteCard:hover {
   color: rgba(255, 255, 255, 1);
 }
+
 .connectorBox .connectorName {
   position: relative;
   font-weight: 600;
@@ -11102,6 +11218,7 @@ height: 24px;
   text-transform: capitalize;
   cursor: pointer;
 }
+
 .connectorBox .arrowIcon {
   width: 16px;
   height: 16px;
@@ -11111,24 +11228,30 @@ height: 24px;
   padding: 1px;
   transition: transform 0.3s ease;
 }
+
 .arrowIcon.rotate {
   transform: rotate(180deg);
 }
+
 .connectorBox .arrowIcon path {
   stroke-width: 2.5px;
   stroke: rgba(255, 255, 255, 0.7);
 }
+
 .connectorBox .connectorName:hover .arrowIcon path {
   stroke: rgba(255, 255, 255, 1);
 }
+
 .connectorBox .connectorName .connectorLogo {
   width: auto;
   height: 20px;
   margin-right: 15px;
 }
-.connectorBoxInner > button {
+
+.connectorBoxInner>button {
   width: 100%;
 }
+
 .connectorBox .textLabel {
   font-size: 14px;
   line-height: 20px;
@@ -11139,30 +11262,34 @@ height: 24px;
   align-items: center;
   gap: 6px;
 }
+
 .connectorBox .textLabel svg {
   height: 12px;
   width: 12px;
   cursor: pointer;
 }
+
 .connectorBox .infoIcon {
   display: inline-flex;
   align-items: center;
   margin-left: 6px;
   cursor: pointer;
 }
+
 .connectorBox [data-radix-popper-content-wrapper] {
   background: transparent;
 }
+
 .connectorBox .tooltipBox {
-    max-width: 180px;
-    font-size: 12px;
-    background-color: #060111;
-    color: #fff;
-    line-height: 1.15;
-    padding: 6px 8px;
-    border: 1px solid #3A64FA;
-    margin: 28px 0 0 4px;
-    position: relative;
+  max-width: 180px;
+  font-size: 12px;
+  background-color: #060111;
+  color: #fff;
+  line-height: 1.15;
+  padding: 6px 8px;
+  border: 1px solid #3A64FA;
+  margin: 28px 0 0 4px;
+  position: relative;
 }
 
 .connectorContent {
@@ -11178,6 +11305,7 @@ height: 24px;
 .timeTabs * {
   margin: 0;
 }
+
 .timeTabs .btn {
   font-size: 12px;
   padding: 4px 7px 4px 8px;
@@ -11188,9 +11316,12 @@ height: 24px;
   gap: 8px;
   margin-right: 12px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-} 
+}
 
-.timeTabs .btn:last-child {margin-right: 0;}
+.timeTabs .btn:last-child {
+  margin-right: 0;
+}
+
 .timeTabs .btn span {
   display: inline-block;
   width: 10px;
@@ -11199,6 +11330,7 @@ height: 24px;
   position: relative;
   box-shadow: 0px 0px 0px 1.5px #3A64FA;
 }
+
 .timeTabs .btn span::after {
   content: "";
   position: absolute;
@@ -11211,27 +11343,34 @@ height: 24px;
   border-radius: 50%;
   opacity: 0;
 }
+
 .timeTabs .btn[class*="shadow-none"] {
   border: 1px solid #37304a;
 }
-.timeTabs .btn[class*="shadow-none"] span{
+
+.timeTabs .btn[class*="shadow-none"] span {
   box-shadow: 0px 0px 0px 1.5px #ffffff;
 }
+
 .timeTabs .btn[class*="shadow-none"] span::after {
   opacity: 0;
 }
-.timeTabs .btn span{
+
+.timeTabs .btn span {
   box-shadow: 0px 0px 0px 1.5px #3A64FA;
 }
+
 .timeTabs .btn span::after {
   opacity: 1;
 }
+
 .priceRangeBox {
- display: flex;
+  display: flex;
   margin: 0;
   align-items: center;
 }
-.priceRangeBox > div {
+
+.priceRangeBox>div {
   flex: 1;
   display: flex;
   gap: 15px;
@@ -11242,7 +11381,8 @@ height: 24px;
   justify-content: space-between;
   align-items: center;
 }
-.priceRangeBoxTop > span:first-child {
+
+.priceRangeBoxTop>span:first-child {
   display: inline-block;
   min-width: 75px;
   background: rgba(255, 255, 255, 0.1);
@@ -11287,7 +11427,7 @@ height: 24px;
   border-color: black;
 }
 
-.priceRangeSliderTop + span {
+.priceRangeSliderTop+span {
   --tw-border-opacity: 1;
   border-color: white;
   top: -3px;
@@ -11299,7 +11439,7 @@ height: 24px;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
   background: #3A64FA;
-  background: radial-gradient(circle,rgba(155, 152, 165, 1) 48%, #3A64FA 40%);
+  background: radial-gradient(circle, rgba(155, 152, 165, 1) 48%, #3A64FA 40%);
   border: none;
   border-radius: 9999px;
   display: block;
@@ -11381,7 +11521,7 @@ height: 24px;
 .receipt-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 999;
 }
 
@@ -11423,6 +11563,7 @@ height: 24px;
 .receipt-container {
   padding-top: 20px;
 }
+
 .receiptMainHeader {
   display: flex;
   align-items: center;
@@ -11431,23 +11572,28 @@ height: 24px;
   padding: 10px 10px 30px;
   gap: 10px;
 }
+
 .receiptMainHeader svg {
   margin-right: auto;
   width: auto;
   height: 36px;
 }
+
 .receiptMainHeader div,
 .receiptMainHeader div {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.7);
 }
+
 .receiptMainHeader div span {
   display: block;
 }
+
 .receiptMainHeader div .text {
   font-weight: 600;
   color: rgba(255, 255, 255, 1);
 }
+
 .receipt-summary {
   display: flex;
   justify-content: space-around;
@@ -11461,11 +11607,13 @@ height: 24px;
   padding: 16px 10px;
   border-radius: 4px;
 }
-.receiptBreakdown > p {
+
+.receiptBreakdown>p {
   font-size: 14px;
   font-weight: 700;
   margin: 0 0 12px;
 }
+
 .receiptHeader,
 .receiptRow {
   display: grid;
@@ -11488,54 +11636,65 @@ height: 24px;
 .receiptRow {
   padding: 10px 7px;
 }
-.receiptHeader > *,.receiptRow > * {
+
+.receiptHeader>*,
+.receiptRow>* {
   text-align: center;
 }
-.receiptHeader > *:first-child,
-.receiptRow > *:first-child{
+
+.receiptHeader>*:first-child,
+.receiptRow>*:first-child {
   text-align: left;
 }
 
-.receiptHeader > *:last-child,
-.receiptRow > *:last-child {
+.receiptHeader>*:last-child,
+.receiptRow>*:last-child {
   text-align: right;
 }
+
 .receiptTotal {
   border-radius: 4px;
   padding: 15px 7px;
   background: rgba(255, 255, 255, 0.1);
   margin-top: 25px;
 }
-.receiptTotal > div{
+
+.receiptTotal>div {
   display: flex;
   align-items: center;
   text-transform: uppercase;
 }
+
 .receiptTotal .total {
   margin-right: auto;
   font-weight: 700;
   font-size: 14px;
 }
+
 .receiptTotal .monthYear {
   text-align: right;
   font-weight: 400;
   font-size: 12px;
   padding-right: 22px;
 }
+
 .receiptTotal span span {
   display: block;
   color: rgba(255, 255, 255, 0.7);
-} 
+}
+
 .receiptTotal .price {
   font-weight: 700;
   font-size: 20px;
 }
+
 .email-send-box {
   display: flex;
   justify-content: center;
   gap: 10px;
   padding-top: 20px;
 }
+
 .email-send-box input {
   padding: 10px;
   outline: none;
@@ -11546,9 +11705,11 @@ height: 24px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   flex: 1;
 }
+
 .email-send-box input:focus {
   border: 1px solid rgba(255, 255, 255, 1);
 }
+
 .receipt-connector {
   display: flex;
   align-items: center;
@@ -11567,211 +11728,274 @@ height: 24px;
   .connectorBox .textLabel {
     width: 150px;
   }
+
   .calcSection .heading {
-  padding: 0;
+    padding: 0;
+  }
 }
-}
+
 @media (max-width : 1180px) {
   .tabsToggle .toggleContent .toggleContentInner {
     padding: 25px 20px;
   }
+
   .costComparison .row {
     gap: 30px;
   }
+
   .costComparison .row .tabsToggle {
     width: 600px;
   }
+
   .costComparison .row .titleBlock h2 {
     margin-bottom: 30px;
   }
+
   .calcSection .leftSide .heading .heading-description {
-  margin: 0 0 40px 0;
+    margin: 0 0 40px 0;
   }
+
   .compareWrapper {
-  padding: 10px;
+    padding: 10px;
   }
 }
+
 @media (max-width : 1023px) {
   .workflow {
     padding-bottom: 65px;
   }
-  .workflow-fr >div:last-child .workflow-separator{
-  display: none;
+
+  .workflow-fr>div:last-child .workflow-separator {
+    display: none;
   }
-  .workflow-fr >div:last-child .workflow-terminal {
+
+  .workflow-fr>div:last-child .workflow-terminal {
     height: 100%;
   }
+
   .costComparison .row {
     flex-wrap: wrap;
     gap: 25px;
   }
+
   .costComparison .row .tabsToggle {
     width: 100%;
   }
+
   .costComparison .row .titleBlock h2 {
     margin-bottom: 0;
   }
+
   .costComparison .row .titleBlock {
     order: -1;
     text-align: center;
   }
+
   .costComparison .row .titleBlock h2 {
     text-align: center;
   }
-  
+
   .costComparison .row .tabsToggle .btnBox {
     display: block;
     text-align: center;
     padding-top: 20px;
   }
+
   .costComparison .row .titleBlock a {
     display: none;
   }
+
   .calcSection {
-  gap: 1rem;
-}
-.connectorBox {
-  padding: 10px 12px;
-}
+    gap: 1rem;
+  }
+
+  .connectorBox {
+    padding: 10px 12px;
+  }
+
   .connectorBox .textLabel {
     width: 145px;
   }
-.timeTabs .btn:not(:last-child) {
-  margin-right: 10px;
-}
-.connectorBox .deleteCard {
-  right: 10px;
-  top: 10px;
-}
-.connectorBox .totalCardValue {
-  right: 35px;
-  top: 10px;
-}
-.priceRangeBox > div {
-  gap: 10px;
-}
-  .calcSection .rightSide {
-  width: 340px;
-}
 
-  .calcSection .rightSide > div {
+  .timeTabs .btn:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .connectorBox .deleteCard {
+    right: 10px;
+    top: 10px;
+  }
+
+  .connectorBox .totalCardValue {
+    right: 35px;
+    top: 10px;
+  }
+
+  .priceRangeBox>div {
+    gap: 10px;
+  }
+
+  .calcSection .rightSide {
+    width: 340px;
+  }
+
+  .calcSection .rightSide>div {
     padding: 10px;
   }
+
   .totalCost {
     padding: 30px 0;
     font-size: 26px;
   }
+
   .calcSection .rightSide .breakdownTitle {
     font-size: 20px;
   }
+
   .calcSection .rightSide .bg-border {
     width: 100%;
     left: 0;
   }
+
   .compareWrapper {
     gap: 8px;
   }
+
   .totalCost {
     padding: 30px 0;
   }
+
   .compareCheck .radioGroup {
     display: flex;
     gap: 8px;
   }
+
   .selectFirstConnector {
     padding: 0;
   }
 
 }
-@media (max-width : 940px) { 
+
+@media (max-width : 940px) {
+
   .calcSection .leftSide .heading h2,
   .calcSection .leftSide .heading h6,
   .calcSection .leftSide .heading .heading-description {
     text-align: center;
   }
+
   .calcSection .leftSide .heading .heading-description {
     margin: 0 auto 30px;
   }
-.calcSection .leftSide {
-  min-width: 100%;
-}
+
+  .calcSection .leftSide {
+    min-width: 100%;
+  }
+
   .calcSection .rightSide {
     width: 100%;
     max-width: 425px;
     margin: 0 auto;
   }
 }
+
 @media (max-width : 768px) {
-    .workflow {
+  .workflow {
     padding-bottom: 0;
   }
+
   .costComparison {
     margin-bottom: 75px;
   }
+
   .tabsToggle .toggle-btn.smBtn {
     font-size: 12px;
     padding: 6px 12px 6px 6px;
   }
 }
+
 @media (max-width : 600px) {
   .tabsToggle .toggleContent .bottomText {
     flex-wrap: wrap;
     margin-top: 15px;
   }
+
   .tabsToggle .toggleContent .bottomText .leftText {
     min-width: 100%;
     order: 1;
   }
+
   .calcSection .rightSide {
     max-width: 100%;
   }
 }
-@media (max-width : 525px) { 
-  .timeTabs, .priceRangeBox {
+
+@media (max-width : 525px) {
+
+  .timeTabs,
+  .priceRangeBox {
     flex-wrap: wrap;
   }
-    .connectorBox .textLabel {
+
+  .connectorBox .textLabel {
     width: 100%;
     padding-bottom: 4px;
   }
 }
+
 @media (max-width : 480px) {
-    .tabsToggle .toggleContent .toggleContentInner {
+  .workflow-terminal .video-wrapper {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    padding: 10PX;
+  }
+
+  .tabsToggle .toggleContent .toggleContentInner {
     padding: 25px 10px;
   }
+
   .tabsToggle .toggleContent table th {
-  padding: 0 8px 8px 10px;
-}
+    padding: 0 8px 8px 10px;
+  }
+
   .tabsToggle .toggleContent table td {
-  padding: 8px 8px 8px 10px;
+    padding: 8px 8px 8px 10px;
   }
+
   .centerLarge .tabsToggle .toggle-btn {
-  padding: 6px 4px;
-  font-size: 12px;
+    padding: 6px 4px;
+    font-size: 12px;
   }
+
   .connectorBoxes {
-  padding: 15px 8px 18px 10px;
-  margin-top: 40px;
-}
-    .calcSection .rightSide > div {
+    padding: 15px 8px 18px 10px;
+    margin-top: 40px;
+  }
+
+  .calcSection .rightSide>div {
     padding: 8px;
   }
 }
+
 @media (max-width : 375px) {
   .costComparison {
     margin-bottom: 75px;
   }
+
   .tabsToggle .toggle-btn.smBtn {
     font-size: 10px;
   }
+
   .compareWrapper {
     padding: 10px 6px;
     gap: 4px;
   }
-    .compareCheck .radioGroup {
+
+  .compareCheck .radioGroup {
     gap: 4px;
   }
 }
+
 .connectorContentWrapper {
   max-height: 0;
   opacity: 0;
@@ -11786,4 +12010,16 @@ height: 24px;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+@media (max-width: 460px) {
+  .hero-description br {
+    display: none;
+  }
+}
+
+@media (max-width: 376px) {
+  .hero-title br {
+    display: none;
+  }
 }

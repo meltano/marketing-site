@@ -94,12 +94,12 @@ const CostComparison = ({ data }) => {
                         </div>
                     </div>
                     <div className="btnBox">
-                        <Link
+                        {/* <Link
                             to={`/${data?.costCompareLink || "#"}/`}
                             className="colorful-btn btn"
                         ><span></span>
                             Try the pricing calculator
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
                 {/* RIGHT SIDE */}
