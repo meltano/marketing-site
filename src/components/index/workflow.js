@@ -11,6 +11,7 @@ require('prismjs/components/prism-bash')
 
 const Workflow = ({ data }) => {
   const [terminalView, setTerminalView] = useState({});
+  const videoRefs = useRef([])
   const colors = ['pink', 'blue', 'yellow', 'green', 'pink']
   const separators = [DashBreak1, DashBreak2, DashBreak3, DashBreak2, DashBreak1, DashBreak2, DashBreak3, DashBreak2]
 
@@ -21,6 +22,32 @@ const Workflow = ({ data }) => {
     setTitle(data.workflowHeading)
     setDesc(data.workflowDescription)
   }, [])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const video = entry.target
+          if (!video || video.tagName !== 'VIDEO') return
+          if (entry.isIntersecting) {
+            if (video.dataset.autoplayDisabled === 'true') return
+            video.play().catch(() => {})
+          } else {
+            video.pause()
+          }
+        })
+      },
+      { threshold: 0.35 }
+    )
+
+    videoRefs.current.forEach(video => {
+      if (video) observer.observe(video)
+    })
+
+    return () => observer.disconnect()
+  }, [data.workflowArray?.length])
 
 
   return (
@@ -79,13 +106,20 @@ const Workflow = ({ data }) => {
                             : ""
                             }`}
                           onClick={() =>
-                            setTerminalView(prev => ({
-                              ...prev,
-                              [index]: "ui",
-                            }))
+                            {
+                              setTerminalView(prev => ({
+                                ...prev,
+                                [index]: "ui",
+                              }))
+                              const video = videoRefs.current[index]
+                              if (video) {
+                                video.dataset.autoplayDisabled = 'false'
+                                video.play().catch(() => {})
+                              }
+                            }
                           }
                         >
-                          UI VIEW
+                          UI 
                           <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
                             <path id="Path_5" data-name="Path 5" d="M88.136,29.6h32.052a8,8,0,0,1-7.367-4.88l-8.4-19.835A8,8,0,0,0,97.055,0H88.136Z" transform="translate(-88.136)" fill="#221937" />
                           </svg>
@@ -94,12 +128,17 @@ const Workflow = ({ data }) => {
                         <button
                           className={`toggle-btn ${terminalView[index] === "local" ? "active" : ""
                             }`}
-                          onClick={() =>
+                          onClick={() => {
                             setTerminalView(prev => ({
                               ...prev,
                               [index]: "local",
                             }))
-                          }
+                            const video = videoRefs.current[index]
+                            if (video) {
+                              video.dataset.autoplayDisabled = 'true'
+                              video.pause()
+                            }
+                          }}
                         >
                           TERMINAL
                           <svg xmlns="http://www.w3.org/2000/svg" width="32.052" height="29.595" viewBox="0 0 32.052 29.595">
@@ -110,8 +149,18 @@ const Workflow = ({ data }) => {
                     )
                   }
                   {
-                    terminalView[index] === "local" || (!workflow.workflowUiVideo?.mediaItemUrl && !workflow.workflowUiImage?.mediaItemUrl) ? (
-                      <div className="tab-terminal">
+                    <>
+                      <div
+                        className="tab-terminal"
+                        style={{
+                          display:
+                            terminalView[index] === "local" ||
+                            (!workflow.workflowUiVideo?.mediaItemUrl &&
+                              !workflow.workflowUiImage?.mediaItemUrl)
+                              ? "block"
+                              : "none",
+                        }}
+                      >
                         {
                           workflow?.workflowWindowTitle && (
                             <div className="terminal-header">
@@ -166,36 +215,51 @@ const Workflow = ({ data }) => {
                           </Highlight>
                         </div>
                       </div>
-                    ) : (
-                      <div className="video-ui-tab">
-                        <div
-                          className={`video-wrapper ${workflow.workflowVideoOrImage === "ui_image" && "imgBox"
-                            }`}
-                        >
-                          {workflow.workflowVideoOrImage === "ui_video" &&
-                            workflow.workflowUiVideo?.mediaItemUrl && (
-                              <div>
-                                <video
-                                  src={workflow.workflowUiVideo.mediaItemUrl}
-                                  controls
-                                  playsInline
-                                  width="100%"
-                                  height="100%"
-                                />
-                              </div>
-                            )}
 
-                          {workflow.workflowVideoOrImage === "ui_image" &&
-                            workflow.workflowUiImage?.mediaItemUrl && (
-                              <img
-                                src={workflow.workflowUiImage.mediaItemUrl}
-                                alt={workflow.workflowTitle}
-                                style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                              />
-                            )}
+                      {(workflow.workflowUiVideo?.mediaItemUrl ||
+                        workflow.workflowUiImage?.mediaItemUrl) && (
+                        <div
+                          className="video-ui-tab"
+                          style={{
+                            display: terminalView[index] === "local" ? "none" : "block",
+                          }}
+                        >
+                          <div
+                            className={`video-wrapper ${workflow.workflowVideoOrImage === "ui_image" && "imgBox"
+                              }`}
+                          >
+                            {workflow.workflowVideoOrImage === "ui_video" &&
+                              workflow.workflowUiVideo?.mediaItemUrl && (
+                                <div>
+                                  <video
+                                    ref={el => {
+                                      videoRefs.current[index] = el
+                                    }}
+                                    src={workflow.workflowUiVideo.mediaItemUrl}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    controls
+                                    playsInline
+                                    preload="auto"
+                                    width="100%"
+                                    height="100%"
+                                  />
+                                </div>
+                              )}
+
+                            {workflow.workflowVideoOrImage === "ui_image" &&
+                              workflow.workflowUiImage?.mediaItemUrl && (
+                                <img
+                                  src={workflow.workflowUiImage.mediaItemUrl}
+                                  alt={workflow.workflowTitle}
+                                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                                />
+                              )}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </>}
                 </div>
               </div>
 

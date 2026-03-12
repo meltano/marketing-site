@@ -45,7 +45,7 @@ const IndexPartners = () => (
     <div className="logos-section loved-by-data-teams section">
       <div className="container">
         <p className="logos-title">Loved by data teams</p>
-        <div className="logos">
+        <div className="logos ml-margins">
           <div className="logo-marquee">
             <div className="logo-track">
               {[...logos, ...logos].map((logo, i) => {
