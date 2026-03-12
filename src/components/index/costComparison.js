@@ -105,7 +105,7 @@ const CostComparison = ({ data }) => {
                 {/* RIGHT SIDE */}
                 <div className="titleBlock">
                     <h2>
-                            The same <em>connectors</em> <br></br>30 to 40% less.
+                            The same <em>connectors</em> <br></br>30 to 40% less cost.
                     </h2>
                     <Link
                             to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
