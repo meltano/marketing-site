@@ -1,0 +1,766 @@
+import { format, parseISO } from "date-fns";
+
+import {
+  isWpGraphqlFetchEnabled,
+  mapFeaturedImageField,
+  mapMediaToGatsby,
+  wpFetch,
+} from "@/lib/wordpress";
+import * as Q from "@/lib/wp/page-queries";
+import { mediaToLocalChildSharp } from "@/lib/wp/wp-map";
+
+function formatWpDate(iso: string | null | undefined, fmt: string): string {
+  if (!iso) return "";
+  try {
+    return format(parseISO(iso.replace(" ", "T")), fmt);
+  } catch {
+    return "";
+  }
+}
+
+function extFromUrl(url: string): string {
+  const m = url.match(/(\.[a-zA-Z0-9]+)(\?|$)/);
+  return m ? m[1].toLowerCase() : "";
+}
+
+function normalizePostNode(node: Record<string, unknown>) {
+  const n = node as {
+    id?: string;
+    uri?: string;
+    title?: string;
+    excerpt?: string;
+    date?: string;
+    categories?: { nodes?: { name?: string; uri?: string }[] };
+    author?: unknown;
+    featuredImage?: unknown;
+  };
+  return {
+    id: n.id,
+    link: n.uri || "",
+    title: n.title,
+    excerpt: n.excerpt,
+    date: formatWpDate(n.date, "MM/dd/yyyy"),
+    categories: n.categories
+      ? {
+          nodes: (n.categories.nodes || []).map((c) => ({
+            ...c,
+            link: c.uri || "",
+          })),
+        }
+      : { nodes: [] },
+    author: n.author,
+    featuredImage: mapFeaturedImageField(
+      n.featuredImage as Parameters<typeof mapFeaturedImageField>[0]
+    ),
+  };
+}
+
+function normalizePostNodeLatestDate(node: Record<string, unknown>) {
+  const base = normalizePostNode(node);
+  return {
+    ...base,
+    date: formatWpDate((node as { date?: string }).date, "MMMM dd yyyy"),
+  };
+}
+
+function stickyEdgesFromNodes(nodes: Record<string, unknown>[]) {
+  return nodes.map((node) => ({ node: normalizePostNode(node) }));
+}
+
+function sortPostsByDateDesc(nodes: Record<string, unknown>[]) {
+  return [...nodes].sort((a, b) => {
+    const da = (a as { date?: string }).date || "";
+    const db = (b as { date?: string }).date || "";
+    return db.localeCompare(da);
+  });
+}
+
+function pageNodeFeatured<T extends { featuredImage?: unknown }>(node: T) {
+  return {
+    ...node,
+    featuredImage: mapFeaturedImageField(
+      node.featuredImage as Parameters<typeof mapFeaturedImageField>[0]
+    ),
+  };
+}
+
+function normalizeAboutNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw) as Record<string, unknown>;
+  const aq = n.aboutQuote as Record<string, unknown> | undefined;
+  if (aq?.aboutQuoteImage) {
+    aq.aboutQuoteImage = mediaToLocalChildSharp(
+      aq.aboutQuoteImage as Parameters<typeof mediaToLocalChildSharp>[0]
+    );
+  }
+  const av = n.aboutValues as { aboutValuesList?: Record<string, unknown>[] } | undefined;
+  if (av?.aboutValuesList) {
+    av.aboutValuesList = av.aboutValuesList.map((item) => {
+      const icon = item.aboutValuesItemIcon as { sourceUrl?: string } | undefined;
+      return {
+        ...item,
+        aboutValuesItemIcon: icon?.sourceUrl
+          ? { localFile: { publicURL: icon.sourceUrl } }
+          : item.aboutValuesItemIcon,
+      };
+    });
+  }
+  const ac = n.aboutContributors as { aboutContributorsTeam?: Record<string, unknown>[] } | undefined;
+  if (ac?.aboutContributorsTeam) {
+    ac.aboutContributorsTeam = ac.aboutContributorsTeam.map((m) => {
+      const img = m.aboutContributorsTeamMemberImage as Parameters<
+        typeof mapMediaToGatsby
+      >[0];
+      const shaped = mediaToLocalChildSharp(img);
+      return {
+        ...m,
+        aboutContributorsTeamMemberImage: shaped,
+      };
+    });
+  }
+  const ai = n.aboutInvestors as { aboutInvestorsList?: Record<string, unknown>[] } | undefined;
+  if (ai?.aboutInvestorsList) {
+    ai.aboutInvestorsList = ai.aboutInvestorsList.map((row) => {
+      const img = row.aboutInvestorsListImage as Parameters<typeof mapMediaToGatsby>[0];
+      return {
+        ...row,
+        aboutInvestorsListImage: mediaToLocalChildSharp(img),
+      };
+    });
+  }
+  return n;
+}
+
+function normalizeContactNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const cf = n.contactForm as { contactFormLinks?: Record<string, unknown>[] } | undefined;
+  if (cf?.contactFormLinks) {
+    cf.contactFormLinks = cf.contactFormLinks.map((row) => {
+      const icon = row.contactFormLinksIcon as { sourceUrl?: string } | undefined;
+      return {
+        ...row,
+        contactFormLinksIcon: icon?.sourceUrl
+          ? { localFile: { publicURL: icon.sourceUrl } }
+          : row.contactFormLinksIcon,
+      };
+    });
+  }
+  return n;
+}
+
+function normalizeCommunityNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const b = n.communityBuild as { communityBuildBoxes?: Record<string, unknown>[] } | undefined;
+  if (b?.communityBuildBoxes) {
+    b.communityBuildBoxes = b.communityBuildBoxes.map((row) => {
+      const icon = row.communityBuildBoxesIcon as { sourceUrl?: string } | undefined;
+      return {
+        ...row,
+        communityBuildBoxesIcon: icon?.sourceUrl
+          ? { localFile: { publicURL: icon.sourceUrl } }
+          : row.communityBuildBoxesIcon,
+      };
+    });
+  }
+  const ev = n.communityEvents as
+    | { communityEventsIcon?: { sourceUrl?: string } | { localFile?: { publicURL?: string } } }
+    | undefined;
+  if (ev?.communityEventsIcon && "sourceUrl" in (ev.communityEventsIcon as object)) {
+    const url = (ev.communityEventsIcon as { sourceUrl?: string }).sourceUrl;
+    if (url) {
+      (ev as { communityEventsIcon?: unknown }).communityEventsIcon = {
+        localFile: { publicURL: url },
+      };
+    }
+  }
+  const g = n.communityGear as { communityGearType?: { communityGearTypeItems?: Record<string, unknown>[] }[] } | undefined;
+  if (g?.communityGearType) {
+    g.communityGearType = g.communityGearType.map((t) => {
+      const items = t.communityGearTypeItems;
+      if (!items) return t;
+      return {
+        ...t,
+        communityGearTypeItems: items.map((row) => {
+          const icon = row.communityGearTypeItemsIcon as { sourceUrl?: string } | undefined;
+          return {
+            ...row,
+            communityGearTypeItemsIcon: icon?.sourceUrl
+              ? { localFile: { publicURL: icon.sourceUrl } }
+              : row.communityGearTypeItemsIcon,
+          };
+        }),
+      };
+    });
+  }
+  return n;
+}
+
+function normalizePricingTable(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const pt = n.pricingTable as { pricingTableItem?: Record<string, unknown>[] } | undefined;
+  if (pt?.pricingTableItem) {
+    pt.pricingTableItem = pt.pricingTableItem.map((row) => {
+      const icon = row.pricingTableItemIcon as { sourceUrl?: string } | undefined;
+      return {
+        ...row,
+        pricingTableItemIcon: icon?.sourceUrl
+          ? { localFile: { publicURL: icon.sourceUrl } }
+          : row.pricingTableItemIcon,
+      };
+    });
+  }
+  return n;
+}
+
+function normalizeProductNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const tabs = n.productTabs as { productTab?: Record<string, unknown>[] } | undefined;
+  if (tabs?.productTab) {
+    tabs.productTab = tabs.productTab.map((tab) => {
+      const ben = tab.productTabBenefits as { productTabBenefitsItems?: Record<string, unknown>[] } | undefined;
+      if (!ben?.productTabBenefitsItems) return tab;
+      return {
+        ...tab,
+        productTabBenefits: {
+          ...ben,
+          productTabBenefitsItems: ben.productTabBenefitsItems.map((it) => {
+            const img = it.productTabBenefitsItemImage as {
+              sourceUrl?: string;
+              mediaDetails?: { width?: number; height?: number };
+            } | undefined;
+            return {
+              ...it,
+              productTabBenefitsItemImage: img?.sourceUrl
+                ? {
+                    width: img.mediaDetails?.width || 1,
+                    height: img.mediaDetails?.height || 1,
+                    localFile: { publicURL: img.sourceUrl },
+                  }
+                : it.productTabBenefitsItemImage,
+            };
+          }),
+        },
+      };
+    });
+  }
+  return n;
+}
+
+function normalizePressNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const pt = n.pressTabs as { pressTabsTab?: Record<string, unknown>[] } | undefined;
+  if (pt?.pressTabsTab) {
+    pt.pressTabsTab = pt.pressTabsTab.map((tab) => {
+      const logos = tab.pressTabsTabContentLogos as Record<string, unknown> | undefined;
+      if (logos?.pressTabsTabContentLogosList) {
+        const list = logos.pressTabsTabContentLogosList as Record<string, unknown>[];
+        logos.pressTabsTabContentLogosList = list.map((item) => {
+          const img = item.pressTabsTabContentLogosListImage as {
+            mediaItemUrl?: string;
+            sourceUrl?: string;
+            mediaDetails?: { width?: number; height?: number };
+          };
+          const url = img?.mediaItemUrl || img?.sourceUrl || "";
+          const w = img?.mediaDetails?.width || 1;
+          const h = img?.mediaDetails?.height || 1;
+          const links = item.pressTabsTabContentLogosListLinks as Record<string, unknown>[] | undefined;
+          const mappedLinks =
+            links?.map((link) => {
+              const li = link.pressTabsTabContentLogosListLinksItem as {
+                mediaItemUrl?: string;
+                sourceUrl?: string;
+              };
+              const u = li?.mediaItemUrl || li?.sourceUrl || "";
+              return {
+                pressTabsTabContentLogosListLinksItem: u
+                  ? {
+                      localFile: {
+                        publicURL: u,
+                        ext: extFromUrl(u),
+                      },
+                    }
+                  : null,
+              };
+            }) || [];
+          return {
+            ...item,
+            pressTabsTabContentLogosListImage: {
+              width: w,
+              height: h,
+              localFile: { publicURL: url },
+            },
+            pressTabsTabContentLogosListLinks: mappedLinks,
+          };
+        });
+      }
+      const contents = tab.pressTabsTabContent as Record<string, unknown>[] | undefined;
+      if (contents) {
+        tab.pressTabsTabContent = contents.map((c) => {
+          const img = c.pressTabsTabContentImage as Parameters<typeof mapMediaToGatsby>[0];
+          const shaped = mediaToLocalChildSharp(img);
+          return {
+            ...c,
+            pressTabsTabContentImage: shaped,
+          };
+        });
+      }
+      return tab;
+    });
+  }
+  return n;
+}
+
+function normalizePartnersNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const pm = n.partnersMeet as { partnersMeetGroup?: Record<string, unknown>[] } | undefined;
+  if (pm?.partnersMeetGroup) {
+    pm.partnersMeetGroup = pm.partnersMeetGroup.map((g) => {
+      const img = g.partnersMeetGroupImage as Parameters<typeof mapMediaToGatsby>[0];
+      return {
+        ...g,
+        partnersMeetGroupImage: mediaToLocalChildSharp(img),
+      };
+    });
+  }
+  return n;
+}
+
+function normalizeLegalNode(raw: Record<string, unknown>) {
+  const n = pageNodeFeatured(raw);
+  const c = n.content;
+  if (typeof c === "string") return n;
+  if (c && typeof c === "object" && "rendered" in (c as object)) {
+    return { ...n, content: (c as { rendered?: string }).rendered || "" };
+  }
+  return { ...n, content: (c as string) || "" };
+}
+
+export async function getAboutData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_ABOUT;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.ABOUT_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "About"');
+  return { about: { nodes: [normalizeAboutNode(node)] } };
+}
+
+export async function getContactData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_CONTACT;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.CONTACT_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Contact"');
+  return { contact: { nodes: [normalizeContactNode(node)] } };
+}
+
+export async function getCommunityData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_COMMUNITY;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.COMMUNITY_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Community"');
+  return { community: { nodes: [normalizeCommunityNode(node)] } };
+}
+
+export async function getPricingData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PRICING;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.PRICING_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Pricing"');
+  return { pricing: { nodes: [normalizePricingTable(node)] } };
+}
+
+export async function getProductData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PRODUCT;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+    latestPosts?: { nodes: Record<string, unknown>[] };
+  }>(Q.PRODUCT_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Product"');
+  const sorted = sortPostsByDateDesc(raw.latestPosts?.nodes || []);
+  const stickyPosts = { edges: stickyEdgesFromNodes(sorted.slice(0, 3)) };
+  return {
+    product: { nodes: [normalizeProductNode(node)] },
+    stickyPosts,
+  };
+}
+
+export async function getPressData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PRESS;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.PRESS_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Press"');
+  return { press: { nodes: [normalizePressNode(node)] } };
+}
+
+export async function getPartnersData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PARTNERS;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.PARTNERS_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Partners"');
+  return { partners: { nodes: [normalizePartnersNode(node)] } };
+}
+
+export async function getPricingCalculatorData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PRICING_CALC;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.PRICING_CALCULATOR_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) return MOCK_PRICING_CALC;
+  return { pricingcalculator: { nodes: [node] } };
+}
+
+export async function getTermsData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_TERMS;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.TERMS_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Terms of service"');
+  return { tos: { nodes: [normalizeLegalNode(node)] } };
+}
+
+export async function getPrivacyData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PRIVACY;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.PRIVACY_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Privacy policy"');
+  return { privacy: { nodes: [normalizeLegalNode(node)] } };
+}
+
+export async function getDpaData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_DPA;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.DPA_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Data Processing Addendum"');
+  return { dpa: { nodes: [normalizeLegalNode(node)] } };
+}
+
+export async function getThankYouData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_THANK_YOU;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.THANK_YOU_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "Thank you"');
+  return { thankyou: { nodes: [pageNodeFeatured(node)] } };
+}
+
+export async function getNotFoundData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_NOT_FOUND;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+  }>(Q.NOT_FOUND_PAGE);
+  const node = raw.pages?.nodes?.[0];
+  if (!node) throw new Error('No WordPress page with title "404"');
+  return { notfound: { nodes: [pageNodeFeatured(node)] } };
+}
+
+export async function getBlogData() {
+  if (!isWpGraphqlFetchEnabled()) return MOCK_BLOG;
+  const raw = await wpFetch<{
+    pages?: { nodes: Record<string, unknown>[] };
+    posts?: { nodes: Record<string, unknown>[] };
+    categories?: { nodes: { name?: string }[] };
+  }>(Q.BLOG_PAGE);
+  const blogNode = raw.pages?.nodes?.[0];
+  if (!blogNode) throw new Error('No WordPress page with title "Blog"');
+  const normalizedBlog = { ...blogNode } as Record<string, unknown>;
+  const fi = normalizedBlog.featuredBlogImage as Parameters<typeof mapFeaturedImageField>[0];
+  normalizedBlog.featuredBlogImage = mapFeaturedImageField(fi);
+
+  const sortedPosts = sortPostsByDateDesc(raw.posts?.nodes || []);
+  const latestNode = sortedPosts[0];
+  const latestPost = {
+    edges: latestNode
+      ? [{ node: normalizePostNodeLatestDate(latestNode as Record<string, unknown>) }]
+      : [],
+  };
+  const allPosts = sortedPosts.map((p) => normalizePostNode(p as Record<string, unknown>));
+  const allWpPost = {
+    edges: allPosts.map((post) => ({ post })),
+  };
+  const cats = (raw.categories?.nodes || [])
+    .map((c) => c.name)
+    .filter((n): n is string => Boolean(n && n !== "Uncategorized"));
+  const allWpCategory = {
+    nodes: [...new Set(cats)].map((name) => ({ name })),
+  };
+
+  return {
+    blog: { nodes: [normalizedBlog] },
+    latestPost,
+    allWpPost,
+    allWpCategory,
+  };
+}
+
+const MOCK_ABOUT = {
+  about: {
+    nodes: [
+      normalizeAboutNode({
+        title: "About",
+        metadata: { metaTitle: "About", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        aboutHero: {
+          aboutHeroTitle: "",
+          aboutHeroText: "",
+          aboutHeroLink: { title: "", url: "/", target: "_self" },
+        },
+        aboutMission: { aboutMissionTitle: "", aboutMissionText: "" },
+        aboutQuote: {
+          aboutQuoteImage: {
+            sourceUrl: "/assets/img/about-illustration.webp",
+            altText: "",
+            mediaDetails: { width: 800, height: 600 },
+          },
+          aboutQuoteText: "",
+          aboutQuoteAuthor: "",
+        },
+        aboutStory: { aboutStoryTitle: "", aboutStoryList: [] },
+        aboutValues: { aboutValuesTitle: "", aboutValuesList: [] },
+        aboutSmallCta: { aboutSmallCtaTitle: "", aboutSmallCtaLink: null },
+        aboutContributors: { aboutContributorsTitle: "", aboutContributorsText: "", aboutContributorsTeam: [] },
+        aboutInvestors: { aboutInvestorsTitle: "", aboutInvestorsText: "", aboutInvestorsList: [] },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_CONTACT = {
+  contact: {
+    nodes: [
+      normalizeContactNode({
+        title: "Contact",
+        metadata: { metaTitle: "Contact", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        contactHero: { contactHeroTitle: "", contactHeroText: "" },
+        contactForm: {
+          contactFormTitle: "",
+          contactFormText: "",
+          contactFormHubspot: {
+            contactFormHubspotPortalId: "",
+            contactFormHubspotFormId: "",
+          },
+          contactFormLinks: [],
+        },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_COMMUNITY = {
+  community: {
+    nodes: [
+      normalizeCommunityNode({
+        title: "Community",
+        metadata: { metaTitle: "Community", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        communityHero: { communityHeroTitle: "", communityHeroText: "" },
+        communityBuild: { communityBuildTitle: "", communityBuildText: "", communityBuildBoxes: [] },
+        communityEvents: {
+          communityEventsTitle: "",
+          communityEventsIcon: { sourceUrl: "/assets/img/meltano-logo.svg" },
+          communityEventsText: "",
+          communityEventsLink: { title: "", url: "/", target: "_self" },
+        },
+        communityGear: { communityGearTitle: "", communityGearText: "", communityGearType: [] },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_PRICING = {
+  pricing: {
+    nodes: [
+      normalizePricingTable({
+        title: "Pricing",
+        metadata: { metaTitle: "Pricing", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        pricingHero: { pricingHeroTitle: "", pricingHeroText: "" },
+        pricingTable: { pricingTableItem: [] },
+        costComparison: { costCompareLink: "", costCompareTitle: "", costCategoryTabs: [] },
+        contactFaq: null,
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_PRODUCT = {
+  product: {
+    nodes: [
+      normalizeProductNode({
+        title: "Product",
+        metadata: { metaTitle: "Product", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        productHero: {
+          productHeroTitle: "",
+          productHeroText: "",
+          productHeroButton1: { title: "", url: "/", target: "_self" },
+          productHeroButton2: { title: "", url: "/", target: "_self" },
+          productHeroBox: [],
+        },
+        productTabs: { productTabsTitle: "", productTab: [] },
+        productDifference: null,
+        latest: { latestTitle: "", latestLink: null },
+      } as Record<string, unknown>),
+    ],
+  },
+  stickyPosts: { edges: [] },
+};
+
+const MOCK_PRESS = {
+  press: {
+    nodes: [
+      normalizePressNode({
+        title: "Press",
+        metadata: { metaTitle: "Press", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        pressHero: { pressHeroTitle: "", pressHeroText: "" },
+        pressTabs: { pressTabsTab: [] },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_PARTNERS = {
+  partners: {
+    nodes: [
+      normalizePartnersNode({
+        title: "Partners",
+        metadata: { metaTitle: "Partners", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        partnersHero: { partnersHeroTitle: "", partnersHeroText: "" },
+        partnersMeet: { partnersMeetGroup: [] },
+        partnersForm: {
+          partnersFormTitle: "",
+          partnersFormText: "",
+          partnersFormHubspot: {
+            partnersFormHubspotPortalId: "",
+            partnersFormHubspotFormId: "",
+          },
+        },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_PRICING_CALC = {
+  pricingcalculator: {
+    nodes: [
+      {
+        title: "pricingcalculator",
+        themePicker: { themePicker: "" },
+        pricingCalculator: null,
+        connectorPricing: { connectors: [] },
+      },
+    ],
+  },
+};
+
+const MOCK_TERMS = {
+  tos: {
+    nodes: [
+      normalizeLegalNode({
+        title: "Terms of service",
+        metadata: { metaTitle: "Terms", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        content: "<p>Terms content is loaded from WordPress when WPGRAPHQL_URL is set.</p>",
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_PRIVACY = {
+  privacy: {
+    nodes: [
+      normalizeLegalNode({
+        title: "Privacy policy",
+        metadata: { metaTitle: "Privacy", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        content: "<p>Privacy content is loaded from WordPress when WPGRAPHQL_URL is set.</p>",
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_DPA = {
+  dpa: {
+    nodes: [
+      normalizeLegalNode({
+        title: "Data Processing Addendum",
+        metadata: { metaTitle: "DPA", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        content: "<p>DPA content is loaded from WordPress when WPGRAPHQL_URL is set.</p>",
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_THANK_YOU = {
+  thankyou: {
+    nodes: [
+      pageNodeFeatured({
+        title: "Thank you",
+        metadata: { metaTitle: "Thank you", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+        thankYouHero: { thankYouHeroTitle: "Thank you", thankYouHeroText: "" },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_NOT_FOUND = {
+  notfound: {
+    nodes: [
+      pageNodeFeatured({
+        title: "404",
+        metadata: { metaTitle: "404", metaDescription: "" },
+        featuredImage: null,
+        themePicker: { themePicker: "" },
+      } as Record<string, unknown>),
+    ],
+  },
+};
+
+const MOCK_BLOG = {
+  blog: {
+    nodes: [
+      {
+        title: "Blog",
+        metadata: { metaTitle: "Blog", metaDescription: "" },
+        featuredBlogImage: null,
+        themePicker: { themePicker: "" },
+        blogHero: { blogHeroTitle: "Blog", blogHeroDescription: "" },
+      },
+    ],
+  },
+  latestPost: { edges: [] },
+  allWpPost: { edges: [] },
+  allWpCategory: { nodes: [] },
+};
