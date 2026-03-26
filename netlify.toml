@@ -1,2 +1,12 @@
 [build.environment]
   NODE_VERSION = "20.19.0"
+
+[build]
+  command = "npm run build"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[context.production.environment]
+  NODE_OPTIONS = "--max-old-space-size=4096"
+  NEXT_PRIVATE_BUILD_WORKER = "1"
