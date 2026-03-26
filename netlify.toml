@@ -3,7 +3,6 @@
 
 [build]
   command = "npm run build"
-  publish = ".netlify/build"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
