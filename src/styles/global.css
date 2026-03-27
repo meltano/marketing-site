@@ -1483,6 +1483,7 @@ nav>ul>li {
 .sub>li {
   display: flex;
   gap: 7px;
+  padding: 6px;
 }
 
 .sub>li>a {
@@ -1503,7 +1504,7 @@ nav>ul>li {
   background: linear-gradient(180deg, #dad1fe 0%, #eae5fc 100%);
   border-radius: 4px;
   padding: 16px;
-  width: 168px;
+  width: 180px;
   height: 194px;
   position: absolute;
   top: 6px;
