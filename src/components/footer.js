@@ -286,6 +286,7 @@ const Footer = () => {
                 href="https://github.com/meltano/meltano"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Meltano on GitHub"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -311,6 +312,7 @@ const Footer = () => {
                 href="https://meltano.com/slack"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Meltano community on Slack"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -329,6 +331,7 @@ const Footer = () => {
                 href="https://twitter.com/meltanodata"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Meltano on X"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -347,6 +350,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/meltano/ "
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Meltano on LinkedIn"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -373,6 +377,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@matatika"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Matatika on YouTube"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -407,6 +412,7 @@ const Footer = () => {
                 href="https://www.crunchbase.com/organization/matatika"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Matatika on Crunchbase"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -432,6 +438,7 @@ const Footer = () => {
               target="_blank"
               className="portal-bottom portal-meltano"
               rel="noreferrer"
+              aria-label="Open Meltano documentation"
             >
               <div className="portal-wrap">
                 <div className="portal-image" />

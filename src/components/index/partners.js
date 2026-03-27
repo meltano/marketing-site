@@ -31,11 +31,11 @@ const logos = [
   { img: vertexLogo, link: "/blog/", alt: "Vertex", type: "anchor" },
   { img: vieveLogo, link: "/blog/", alt: "VIEVE", type: "anchor" },
   { img: woomLogo, link: "/blog/", alt: "Woom", type: "anchor" },
-  { img: NetlifyIcon, link: "/blog/", alt: "Woom", type: "anchor" },
-  { img: HackeroneIcon, link: "/blog/", alt: "Woom", type: "anchor" },
-  { img: GitlabIcon, link: "/blog/", alt: "Woom", type: "anchor" },
-  { img: ZapierIcon, link: "/blog/", alt: "Woom", type: "anchor" },
-  { img: RemoteIcon, link: "/blog/", alt: "Woom", type: "anchor" },
+  { img: NetlifyIcon, link: "/blog/", alt: "Netlify", type: "anchor" },
+  { img: HackeroneIcon, link: "/blog/", alt: "HackerOne", type: "anchor" },
+  { img: GitlabIcon, link: "/blog/", alt: "GitLab", type: "anchor" },
+  { img: ZapierIcon, link: "/blog/", alt: "Zapier", type: "anchor" },
+  { img: RemoteIcon, link: "/blog/", alt: "Remote", type: "anchor" },
 ]
 
 
@@ -54,7 +54,7 @@ const IndexPartners = () => (
               {[...logos, ...logos].map((logo, i) => {
                 const Wrapper =
                   logo.type === "anchor" ? (
-                    <a href={logo.link}>
+                    <a href={logo.link} aria-label={`${logo.alt} customer story`}>
                       <img
                         src={imgSrc(logo.img)}
                         alt={logo.alt}
@@ -63,7 +63,7 @@ const IndexPartners = () => (
                       />
                     </a>
                   ) : (
-                    <Link to={logo.link}>
+                    <Link to={logo.link} aria-label={`${logo.alt} customer story`}>
                       <img
                         src={imgSrc(logo.img)}
                         alt={logo.alt}

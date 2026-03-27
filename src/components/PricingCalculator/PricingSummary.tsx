@@ -257,14 +257,14 @@ export default function PricingSummary({
         >
           Book A Call
         </a>
-        <a
-          href="javascript:void(0)"
+        <button
+          type="button"
           className="btn-open-receipt btn colorful-btn"
           onClick={onShowReceipt}
         >
           <span />
           Show Email Receipt
-        </a>
+        </button>
       </div>
 
     </Card>
