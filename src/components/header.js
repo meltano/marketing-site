@@ -244,7 +244,7 @@ const Header = () => {
     <header className={shrinkMenu ? "shrink-menu" : ""}>
       <div className="container">
         <div className="menu ml-margins">
-          <Link to="/">
+          <Link to="/" aria-label="Go to Meltano homepage">
             <svg
               className="menu-logo"
               xmlns="http://www.w3.org/2000/svg"
@@ -480,7 +480,7 @@ const Header = () => {
               </li>
 
               <li className="has-sub hide-d has-one-sub">
-                <a>Pricing</a>
+                <span>Pricing</span>
                 <div className="hop">
                   <ul className="sub">
                     <li className="menu-item--active">
@@ -793,6 +793,7 @@ const Header = () => {
               data-tooltip="View code and issue tracker"
               rel="noreferrer"
               className="cup"
+              aria-label="View code and issue tracker on GitHub"
             >
               <svg viewBox="0 0 26 24" fill="none">
                 <path
@@ -807,6 +808,7 @@ const Header = () => {
               data-tooltip="Join our 5,500+ community"
               rel="noreferrer"
               className="cup"
+              aria-label="Join the Meltano community on Slack"
             >
               <svg viewBox="0 0 22 22" fill="none" target="_blank">
                 <path

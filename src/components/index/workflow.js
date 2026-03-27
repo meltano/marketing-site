@@ -76,7 +76,10 @@ const Workflow = ({ data }) => {
                   className={`workflow-info ${index % 2 ? 'workflow-left' : ''
                     }`}
                 >
-                  <h3 className="" dangerouslySetInnerHTML={{ __html: workflow.workflowTitle }} />{workflow.workflowTitle}
+                  <h3
+                    className=""
+                    dangerouslySetInnerHTML={{ __html: workflow.workflowTitle }}
+                  />
                   <h4>{workflow.workflowSubtitle}</h4>
                   <ul className="workflow-list">
                     {workflow.workflowTextArray.map(text => (
