@@ -80,7 +80,7 @@ const Workflow = ({ data }) => {
                     className=""
                     dangerouslySetInnerHTML={{ __html: workflow.workflowTitle }}
                   />
-                  <h4>{workflow.workflowSubtitle}</h4>
+                  <h5>{workflow.workflowSubtitle}</h5>
                   <ul className="workflow-list">
                     {workflow.workflowTextArray.map(text => (
                       <li key={text.workflowText}>{text.workflowText}</li>

@@ -509,6 +509,129 @@ export async function getBlogData() {
   };
 }
 
+function normalizeBlogPostFull(raw: Record<string, unknown>) {
+  const contentRaw = raw.content;
+  const content =
+    typeof contentRaw === "string"
+      ? contentRaw
+      : (contentRaw as { rendered?: string })?.rendered || "";
+  const excerptRaw = raw.excerpt;
+  const excerpt =
+    typeof excerptRaw === "string"
+      ? excerptRaw
+      : (excerptRaw as { rendered?: string })?.rendered || "";
+  const n = raw as {
+    id?: string;
+    uri?: string;
+    title?: string;
+    date?: string;
+    categories?: { nodes?: { name?: string; uri?: string }[] };
+    author?: unknown;
+    featuredImage?: unknown;
+  };
+  return {
+    id: n.id,
+    link: n.uri || "",
+    title: n.title ?? "",
+    excerpt,
+    content,
+    date: formatWpDate(n.date, "MMMM dd yyyy"),
+    categories: n.categories
+      ? {
+          nodes: (n.categories.nodes || []).map((c) => ({
+            ...c,
+            link: c.uri || "",
+          })),
+        }
+      : { nodes: [] },
+    author: n.author,
+    featuredImage: mapFeaturedImageField(
+      n.featuredImage as Parameters<typeof mapFeaturedImageField>[0]
+    ),
+  };
+}
+
+function adjacentNavPosts(
+  sorted: { slug?: string; uri?: string; title?: string }[],
+  currentSlug: string
+): {
+  previous: { uri: string; title: string } | null;
+  next: { uri: string; title: string } | null;
+} {
+  const idx = sorted.findIndex((p) => p.slug === currentSlug);
+  if (idx === -1) return { previous: null, next: null };
+  const newer = idx > 0 ? sorted[idx - 1] : null;
+  const older = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+  return {
+    previous: older
+      ? { uri: older.uri || "", title: older.title || "" }
+      : null,
+    next: newer ? { uri: newer.uri || "", title: newer.title || "" } : null,
+  };
+}
+
+export type BlogPostPageData = {
+  post: ReturnType<typeof normalizeBlogPostFull>;
+  previous: { uri: string; title: string } | null;
+  next: { uri: string; title: string } | null;
+};
+
+const MOCK_BLOG_POST: BlogPostPageData = {
+  post: normalizeBlogPostFull({
+    id: "mock",
+    uri: "/sample-post/",
+    title: "Sample blog post",
+    excerpt: "<p>Excerpt</p>",
+    content:
+      "<p>WordPress content loads here when <code>WPGRAPHQL_URL</code> is set.</p>",
+    date: "2026-01-01T12:00:00",
+    categories: { nodes: [{ name: "News", uri: "/category/news/" }] },
+    author: { node: { name: "Author", avatar: { url: "/assets/img/ogimg.png" } } },
+    featuredImage: null,
+  }),
+  previous: null,
+  next: null,
+};
+
+export async function getBlogPostSlugs(): Promise<string[]> {
+  if (!isWpGraphqlFetchEnabled()) return [];
+  const raw = await wpFetch<{
+    posts?: { nodes: { slug?: string }[] };
+  }>(Q.BLOG_POST_SLUGS);
+  return (raw.posts?.nodes || [])
+    .map((n) => n.slug)
+    .filter((s): s is string => Boolean(s));
+}
+
+export async function getBlogPostData(slug: string): Promise<BlogPostPageData | null> {
+  const slugClean = decodeURIComponent(slug.replace(/^\/+|\/+$/g, "").split("/").pop() || slug);
+
+  if (!isWpGraphqlFetchEnabled()) {
+    return MOCK_BLOG_POST;
+  }
+
+  const raw = await wpFetch<{
+    post?: Record<string, unknown> | null;
+    posts?: { nodes: Record<string, unknown>[] };
+  }>(Q.BLOG_POST_PAGE, { slug: slugClean });
+
+  if (!raw.post) return null;
+
+  const post = normalizeBlogPostFull(raw.post);
+  const sorted = sortPostsByDateDesc(raw.posts?.nodes || []);
+  const currentSlug = (raw.post as { slug?: string }).slug || slugClean;
+  const { previous, next } = adjacentNavPosts(
+    sorted.map((p) => ({
+      slug: (p as { slug?: string }).slug,
+      uri: (p as { uri?: string }).uri,
+      title: (p as { title?: string }).title,
+    })),
+    currentSlug
+  );
+
+  return { post, previous, next };
+}
+
 const MOCK_ABOUT = {
   about: {
     nodes: [

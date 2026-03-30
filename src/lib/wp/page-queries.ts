@@ -448,3 +448,42 @@ export const BLOG_PAGE = `
     }
   }
 `;
+
+export const BLOG_POST_SLUGS = `
+  query BlogPostSlugs {
+    posts(first: 200, where: { status: PUBLISH }) {
+      nodes {
+        slug
+      }
+    }
+  }
+`;
+
+export const BLOG_POST_PAGE = `
+  query BlogPostPage($slug: ID!) {
+    post(id: $slug, idType: SLUG) {
+      id
+      databaseId
+      uri
+      slug
+      title
+      excerpt
+      content(format: RENDERED)
+      date
+      categories { nodes { name uri } }
+      author { node { name avatar { url } } }
+      featuredImage {
+        node { sourceUrl altText mediaDetails { width height } }
+      }
+    }
+    posts(first: 200, where: { status: PUBLISH }) {
+      nodes {
+        id
+        uri
+        slug
+        date
+        title
+      }
+    }
+  }
+`;

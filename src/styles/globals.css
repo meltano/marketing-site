@@ -4,3 +4,7 @@
 
 @import "./fonts.css";
 @import "./global.css";
+
+/* Gutenberg block styles (blog post content) */
+@import "./@wordpress/block-library/build-style/style.css";
+@import "./@wordpress/block-library/build-style/theme.css";
