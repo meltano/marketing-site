@@ -3003,8 +3003,8 @@ ol.contact-form-sidebar-list li:before {
   justify-content: space-between;
 }
 
-.workflow-section h4 {
-  margin: 15px 0 0 0;
+.workflow-section h5 {
+  margin: 15px 0;
 }
 
 .workflow-info {
@@ -3051,6 +3051,7 @@ ol.contact-form-sidebar-list li:before {
 
 .workflow-list li {
   margin-bottom: 15px;
+  margin-left: 40px;
 }
 
 .workflow-separator img {
