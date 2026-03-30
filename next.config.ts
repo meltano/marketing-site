@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: process.env.NETLIFY !== "true",
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "meltano.com" },
