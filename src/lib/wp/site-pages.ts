@@ -412,12 +412,18 @@ export async function getPartnersData() {
 
 export async function getPricingCalculatorData() {
   if (!isWpGraphqlFetchEnabled()) return MOCK_PRICING_CALC;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.PRICING_CALCULATOR_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) return MOCK_PRICING_CALC;
-  return { pricingcalculator: { nodes: [node] } };
+  try {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.PRICING_CALCULATOR_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) return MOCK_PRICING_CALC;
+    return { pricingcalculator: { nodes: [node] } };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL pricingcalculator failed, using mock:", msg);
+    return MOCK_PRICING_CALC;
+  }
 }
 
 export async function getTermsData() {
