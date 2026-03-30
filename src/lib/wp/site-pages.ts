@@ -334,49 +334,64 @@ function normalizeLegalNode(raw: Record<string, unknown>) {
   return { ...n, content: (c as string) || "" };
 }
 
+/** On WPGraphQL errors (504, timeout, etc.), return `mock` so static generation can finish. */
+async function withWpFallback<T>(label: string, mock: T, fetchFn: () => Promise<T>): Promise<T> {
+  if (!isWpGraphqlFetchEnabled()) return mock;
+  try {
+    return await fetchFn();
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn(`WPGraphQL ${label} failed, using mock:`, msg);
+    return mock;
+  }
+}
+
 export async function getAboutData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_ABOUT;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.ABOUT_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "About"');
-  return { about: { nodes: [normalizeAboutNode(node)] } };
+  return withWpFallback("about page", MOCK_ABOUT, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.ABOUT_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "About"');
+    return { about: { nodes: [normalizeAboutNode(node)] } };
+  });
 }
 
 export async function getContactData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_CONTACT;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.CONTACT_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Contact"');
-  return { contact: { nodes: [normalizeContactNode(node)] } };
+  return withWpFallback("contact page", MOCK_CONTACT, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.CONTACT_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Contact"');
+    return { contact: { nodes: [normalizeContactNode(node)] } };
+  });
 }
 
 export async function getCommunityData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_COMMUNITY;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.COMMUNITY_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Community"');
-  return { community: { nodes: [normalizeCommunityNode(node)] } };
+  return withWpFallback("community page", MOCK_COMMUNITY, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.COMMUNITY_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Community"');
+    return { community: { nodes: [normalizeCommunityNode(node)] } };
+  });
 }
 
 export async function getPricingData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_PRICING;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.PRICING_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Pricing"');
-  return { pricing: { nodes: [normalizePricingTable(node)] } };
+  return withWpFallback("pricing page", MOCK_PRICING, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.PRICING_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Pricing"');
+    return { pricing: { nodes: [normalizePricingTable(node)] } };
+  });
 }
 
 export async function getProductData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_PRODUCT;
-  try {
+  return withWpFallback("product page", MOCK_PRODUCT, async () => {
     const raw = await wpFetch<{
       pages?: { nodes: Record<string, unknown>[] };
       latestPosts?: { nodes: Record<string, unknown>[] };
@@ -389,136 +404,135 @@ export async function getProductData() {
       product: { nodes: [normalizeProductNode(node)] },
       stickyPosts,
     };
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.warn("WPGraphQL product page failed, using mock:", msg);
-    return MOCK_PRODUCT;
-  }
+  });
 }
 
 export async function getPressData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_PRESS;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.PRESS_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Press"');
-  return { press: { nodes: [normalizePressNode(node)] } };
+  return withWpFallback("press page", MOCK_PRESS, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.PRESS_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Press"');
+    return { press: { nodes: [normalizePressNode(node)] } };
+  });
 }
 
 export async function getPartnersData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_PARTNERS;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.PARTNERS_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Partners"');
-  return { partners: { nodes: [normalizePartnersNode(node)] } };
+  return withWpFallback("partners page", MOCK_PARTNERS, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.PARTNERS_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Partners"');
+    return { partners: { nodes: [normalizePartnersNode(node)] } };
+  });
 }
 
 export async function getPricingCalculatorData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_PRICING_CALC;
-  try {
+  return withWpFallback("pricingcalculator page", MOCK_PRICING_CALC, async () => {
     const raw = await wpFetch<{
       pages?: { nodes: Record<string, unknown>[] };
     }>(Q.PRICING_CALCULATOR_PAGE);
     const node = raw.pages?.nodes?.[0];
     if (!node) return MOCK_PRICING_CALC;
     return { pricingcalculator: { nodes: [node] } };
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
-    console.warn("WPGraphQL pricingcalculator failed, using mock:", msg);
-    return MOCK_PRICING_CALC;
-  }
+  });
 }
 
 export async function getTermsData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_TERMS;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.TERMS_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Terms of service"');
-  return { tos: { nodes: [normalizeLegalNode(node)] } };
+  return withWpFallback("terms page", MOCK_TERMS, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.TERMS_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Terms of service"');
+    return { tos: { nodes: [normalizeLegalNode(node)] } };
+  });
 }
 
 export async function getPrivacyData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_PRIVACY;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.PRIVACY_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Privacy policy"');
-  return { privacy: { nodes: [normalizeLegalNode(node)] } };
+  return withWpFallback("privacy page", MOCK_PRIVACY, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.PRIVACY_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Privacy policy"');
+    return { privacy: { nodes: [normalizeLegalNode(node)] } };
+  });
 }
 
 export async function getDpaData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_DPA;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.DPA_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Data Processing Addendum"');
-  return { dpa: { nodes: [normalizeLegalNode(node)] } };
+  return withWpFallback("dpa page", MOCK_DPA, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.DPA_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Data Processing Addendum"');
+    return { dpa: { nodes: [normalizeLegalNode(node)] } };
+  });
 }
 
 export async function getThankYouData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_THANK_YOU;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.THANK_YOU_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Thank you"');
-  return { thankyou: { nodes: [pageNodeFeatured(node)] } };
+  return withWpFallback("thank you page", MOCK_THANK_YOU, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.THANK_YOU_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Thank you"');
+    return { thankyou: { nodes: [pageNodeFeatured(node)] } };
+  });
 }
 
 export async function getNotFoundData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_NOT_FOUND;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-  }>(Q.NOT_FOUND_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "404"');
-  return { notfound: { nodes: [pageNodeFeatured(node)] } };
+  return withWpFallback("404 page", MOCK_NOT_FOUND, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+    }>(Q.NOT_FOUND_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "404"');
+    return { notfound: { nodes: [pageNodeFeatured(node)] } };
+  });
 }
 
 export async function getBlogData() {
-  if (!isWpGraphqlFetchEnabled()) return MOCK_BLOG;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-    posts?: { nodes: Record<string, unknown>[] };
-    categories?: { nodes: { name?: string }[] };
-  }>(Q.BLOG_PAGE);
-  const blogNode = raw.pages?.nodes?.[0];
-  if (!blogNode) throw new Error('No WordPress page with title "Blog"');
-  const normalizedBlog = { ...blogNode } as Record<string, unknown>;
-  const fi = normalizedBlog.featuredBlogImage as Parameters<typeof mapFeaturedImageField>[0];
-  normalizedBlog.featuredBlogImage = mapFeaturedImageField(fi);
+  return withWpFallback("blog index", MOCK_BLOG, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+      posts?: { nodes: Record<string, unknown>[] };
+      categories?: { nodes: { name?: string }[] };
+    }>(Q.BLOG_PAGE);
+    const blogNode = raw.pages?.nodes?.[0];
+    if (!blogNode) throw new Error('No WordPress page with title "Blog"');
+    const normalizedBlog = { ...blogNode } as Record<string, unknown>;
+    const fi = normalizedBlog.featuredBlogImage as Parameters<typeof mapFeaturedImageField>[0];
+    normalizedBlog.featuredBlogImage = mapFeaturedImageField(fi);
 
-  const sortedPosts = sortPostsByDateDesc(raw.posts?.nodes || []);
-  const latestNode = sortedPosts[0];
-  const latestPost = {
-    edges: latestNode
-      ? [{ node: normalizePostNodeLatestDate(latestNode as Record<string, unknown>) }]
-      : [],
-  };
-  const allPosts = sortedPosts.map((p) => normalizePostNode(p as Record<string, unknown>));
-  const allWpPost = {
-    edges: allPosts.map((post) => ({ post })),
-  };
-  const cats = (raw.categories?.nodes || [])
-    .map((c) => c.name)
-    .filter((n): n is string => Boolean(n && n !== "Uncategorized"));
-  const allWpCategory = {
-    nodes: [...new Set(cats)].map((name) => ({ name })),
-  };
+    const sortedPosts = sortPostsByDateDesc(raw.posts?.nodes || []);
+    const latestNode = sortedPosts[0];
+    const latestPost = {
+      edges: latestNode
+        ? [{ node: normalizePostNodeLatestDate(latestNode as Record<string, unknown>) }]
+        : [],
+    };
+    const allPosts = sortedPosts.map((p) => normalizePostNode(p as Record<string, unknown>));
+    const allWpPost = {
+      edges: allPosts.map((post) => ({ post })),
+    };
+    const cats = (raw.categories?.nodes || [])
+      .map((c) => c.name)
+      .filter((n): n is string => Boolean(n && n !== "Uncategorized"));
+    const allWpCategory = {
+      nodes: [...new Set(cats)].map((name) => ({ name })),
+    };
 
-  return {
-    blog: { nodes: [normalizedBlog] },
-    latestPost,
-    allWpPost,
-    allWpCategory,
-  };
+    return {
+      blog: { nodes: [normalizedBlog] },
+      latestPost,
+      allWpPost,
+      allWpCategory,
+    };
+  });
 }
 
 function normalizeBlogPostFull(raw: Record<string, unknown>) {
@@ -607,12 +621,18 @@ const MOCK_BLOG_POST: BlogPostPageData = {
 
 export async function getBlogPostSlugs(): Promise<string[]> {
   if (!isWpGraphqlFetchEnabled()) return [];
-  const raw = await wpFetch<{
-    posts?: { nodes: { slug?: string }[] };
-  }>(Q.BLOG_POST_SLUGS);
-  return (raw.posts?.nodes || [])
-    .map((n) => n.slug)
-    .filter((s): s is string => Boolean(s));
+  try {
+    const raw = await wpFetch<{
+      posts?: { nodes: { slug?: string }[] };
+    }>(Q.BLOG_POST_SLUGS);
+    return (raw.posts?.nodes || [])
+      .map((n) => n.slug)
+      .filter((s): s is string => Boolean(s));
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL blog post slugs failed, returning no paths:", msg);
+    return [];
+  }
 }
 
 export async function getBlogPostData(slug: string): Promise<BlogPostPageData | null> {
@@ -622,26 +642,32 @@ export async function getBlogPostData(slug: string): Promise<BlogPostPageData | 
     return MOCK_BLOG_POST;
   }
 
-  const raw = await wpFetch<{
-    post?: Record<string, unknown> | null;
-    posts?: { nodes: Record<string, unknown>[] };
-  }>(Q.BLOG_POST_PAGE, { slug: slugClean });
+  try {
+    const raw = await wpFetch<{
+      post?: Record<string, unknown> | null;
+      posts?: { nodes: Record<string, unknown>[] };
+    }>(Q.BLOG_POST_PAGE, { slug: slugClean });
 
-  if (!raw.post) return null;
+    if (!raw.post) return null;
 
-  const post = normalizeBlogPostFull(raw.post);
-  const sorted = sortPostsByDateDesc(raw.posts?.nodes || []);
-  const currentSlug = (raw.post as { slug?: string }).slug || slugClean;
-  const { previous, next } = adjacentNavPosts(
-    sorted.map((p) => ({
-      slug: (p as { slug?: string }).slug,
-      uri: (p as { uri?: string }).uri,
-      title: (p as { title?: string }).title,
-    })),
-    currentSlug
-  );
+    const post = normalizeBlogPostFull(raw.post);
+    const sorted = sortPostsByDateDesc(raw.posts?.nodes || []);
+    const currentSlug = (raw.post as { slug?: string }).slug || slugClean;
+    const { previous, next } = adjacentNavPosts(
+      sorted.map((p) => ({
+        slug: (p as { slug?: string }).slug,
+        uri: (p as { uri?: string }).uri,
+        title: (p as { title?: string }).title,
+      })),
+      currentSlug
+    );
 
-  return { post, previous, next };
+    return { post, previous, next };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL blog post failed, using mock:", msg);
+    return MOCK_BLOG_POST;
+  }
 }
 
 const MOCK_ABOUT = {

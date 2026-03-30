@@ -161,5 +161,11 @@ export async function getHomeData() {
   if (!isWpGraphqlFetchEnabled()) {
     return MOCK_HOME_DATA;
   }
-  return loadHomeDataFromWp();
+  try {
+    return await loadHomeDataFromWp();
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL home page failed, using mock:", msg);
+    return MOCK_HOME_DATA;
+  }
 }
