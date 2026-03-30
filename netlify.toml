@@ -1,5 +1,8 @@
 [build.environment]
   NODE_VERSION = "20.19.0"
+  # Reduce Next.js build memory use (Netlify OOM / exit 137)
+  NEXT_DISABLE_MEMORY_CACHE = "1"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 [build]
   command = "npm run build"
@@ -9,5 +12,4 @@
   package = "@netlify/plugin-nextjs"
 
 [context.production.environment]
-  NODE_OPTIONS = "--max-old-space-size=4096"
   NEXT_PRIVATE_BUILD_WORKER = "1"
