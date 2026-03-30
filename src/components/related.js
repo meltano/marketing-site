@@ -54,7 +54,7 @@ const Related = ({ data, posts }) => {
                   to={`/blog${post.link}`}
                   aria-label={`Read blog post: ${post.title}`}
                 >
-                  <h3>{post.title}</h3>
+                  <h5>{post.title}</h5>
                 </Link>
               </div>
             ))}
