@@ -376,18 +376,24 @@ export async function getPricingData() {
 
 export async function getProductData() {
   if (!isWpGraphqlFetchEnabled()) return MOCK_PRODUCT;
-  const raw = await wpFetch<{
-    pages?: { nodes: Record<string, unknown>[] };
-    latestPosts?: { nodes: Record<string, unknown>[] };
-  }>(Q.PRODUCT_PAGE);
-  const node = raw.pages?.nodes?.[0];
-  if (!node) throw new Error('No WordPress page with title "Product"');
-  const sorted = sortPostsByDateDesc(raw.latestPosts?.nodes || []);
-  const stickyPosts = { edges: stickyEdgesFromNodes(sorted.slice(0, 3)) };
-  return {
-    product: { nodes: [normalizeProductNode(node)] },
-    stickyPosts,
-  };
+  try {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+      latestPosts?: { nodes: Record<string, unknown>[] };
+    }>(Q.PRODUCT_PAGE);
+    const node = raw.pages?.nodes?.[0];
+    if (!node) throw new Error('No WordPress page with title "Product"');
+    const sorted = sortPostsByDateDesc(raw.latestPosts?.nodes || []);
+    const stickyPosts = { edges: stickyEdgesFromNodes(sorted.slice(0, 3)) };
+    return {
+      product: { nodes: [normalizeProductNode(node)] },
+      stickyPosts,
+    };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL product page failed, using mock:", msg);
+    return MOCK_PRODUCT;
+  }
 }
 
 export async function getPressData() {

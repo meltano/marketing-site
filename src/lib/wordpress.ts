@@ -26,10 +26,22 @@ function authHeader(): Record<string, string> {
   return { Authorization: `Basic ${token}` };
 }
 
+function wpFetchTimeoutMs(init?: { timeoutMs?: number }): number | null {
+  if (init?.timeoutMs !== undefined) {
+    return init.timeoutMs > 0 ? init.timeoutMs : null;
+  }
+  const fromEnv = process.env.WPGRAPHQL_FETCH_TIMEOUT_MS;
+  if (fromEnv !== undefined && fromEnv !== "") {
+    const n = Number(fromEnv);
+    return Number.isFinite(n) && n > 0 ? n : null;
+  }
+  return 30_000;
+}
+
 export async function wpFetch<T>(
   query: string,
   variables?: Record<string, unknown>,
-  init?: { revalidate?: number | false }
+  init?: { revalidate?: number | false; timeoutMs?: number }
 ): Promise<T> {
   if (process.env.SKIP_WP_GRAPHQL === "1") {
     throw new Error("SKIP_WP_GRAPHQL is set");
@@ -39,28 +51,39 @@ export async function wpFetch<T>(
     throw new Error("Missing WPGRAPHQL_URL (or NEXT_PUBLIC_WPGRAPHQL_URL)");
   }
   const revalidate = init?.revalidate ?? 3600;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...authHeader(),
-    },
-    body: JSON.stringify({ query, variables }),
-    ...(revalidate === false
-      ? { cache: "no-store" as const }
-      : { next: { revalidate } }),
-  });
-  if (!res.ok) {
-    throw new Error(`WPGraphQL HTTP ${res.status}: ${await res.text()}`);
+  const timeoutMs = wpFetchTimeoutMs(init);
+  const controller = timeoutMs ? new AbortController() : null;
+  const timeoutId =
+    controller && timeoutMs
+      ? setTimeout(() => controller.abort(), timeoutMs)
+      : null;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...authHeader(),
+      },
+      body: JSON.stringify({ query, variables }),
+      ...(controller ? { signal: controller.signal } : {}),
+      ...(revalidate === false
+        ? { cache: "no-store" as const }
+        : { next: { revalidate } }),
+    });
+    if (!res.ok) {
+      throw new Error(`WPGraphQL HTTP ${res.status}: ${await res.text()}`);
+    }
+    const json = (await res.json()) as WpGraphqlResponse<T>;
+    if (json.errors?.length) {
+      throw new Error(json.errors.map((e) => e.message).join("; "));
+    }
+    if (!json.data) {
+      throw new Error("WPGraphQL returned no data");
+    }
+    return json.data;
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId);
   }
-  const json = (await res.json()) as WpGraphqlResponse<T>;
-  if (json.errors?.length) {
-    throw new Error(json.errors.map((e) => e.message).join("; "));
-  }
-  if (!json.data) {
-    throw new Error("WPGraphQL returned no data");
-  }
-  return json.data;
 }
 
 /** Map WP MediaItem to the Gatsby localFile + childImageSharp shape used by components. */
