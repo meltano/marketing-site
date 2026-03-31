@@ -1,15 +1,17 @@
 import React from 'react'
 import StaticImage from '@/components/compat/StaticImage'
 
+const asText = value => (typeof value === 'string' || typeof value === 'number' ? String(value) : '')
+
 const PartnersHero = ({ data }) => (
   <div className="hero hero-title-section hero-light section">
     <div className="container">
       <div className="hero-info ml-margins">
         <h1
           className="hero-title title-inline"
-          dangerouslySetInnerHTML={{ __html: data.partnersHeroTitle }}
+          dangerouslySetInnerHTML={{ __html: asText(data?.partnersHeroTitle) }}
         />
-        <p className="hero-description p1">{data.partnersHeroText}</p>
+        <p className="hero-description p1">{asText(data?.partnersHeroText)}</p>
         <StaticImage
           src="../../assets/img/melty-flying.webp"
           className="melty-flyng"

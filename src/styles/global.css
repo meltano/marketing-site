@@ -4777,6 +4777,7 @@ ol.contact-form-sidebar-list li:before {
   font-size: 16px;
   font-weight: 400;
   text-align: left;
+  max-width: calc(100% - 20px);
 }
 
 .tab-title-nav {
