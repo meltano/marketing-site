@@ -1,28 +1,30 @@
 import React from 'react'
 import { GatsbyImage } from '@/components/compat/GatsbyImage'
 
+const asText = value => (typeof value === 'string' || typeof value === 'number' ? String(value) : '')
+
 const Meet = ({ data }) => (
   <div className="data-partners section">
     <div className="container">
       <div className="data-partners-grid ml-margins">
-        {data.partnersMeetGroup.map(group => (
+        {(Array.isArray(data?.partnersMeetGroup) ? data.partnersMeetGroup : []).map((group, idx) => (
           <div
             className="data-partners-grid-item"
-            key={group.partnersMeetGroupLink.title}
+            key={`${asText(group?.partnersMeetGroupLink?.title)}-${idx}`}
           >
             <a
-              href={group.partnersMeetGroupLink.url}
-              target={group.partnersMeetGroupLink.target}
+              href={asText(group?.partnersMeetGroupLink?.url) || '#'}
+              target={asText(group?.partnersMeetGroupLink?.target) || '_self'}
               rel="noopener noreferrer"
             >
               <GatsbyImage
                 image={
-                  group.partnersMeetGroupImage.localFile.childImageSharp
-                    .gatsbyImageData
+                  group?.partnersMeetGroupImage?.localFile?.childImageSharp
+                    ?.gatsbyImageData
                 }
-                alt={group.partnersMeetGroupLink.title}
+                alt={asText(group?.partnersMeetGroupLink?.title)}
               />
-              <p className="p3">{group.partnersMeetGroupLink.title}</p>
+              <p className="p3">{asText(group?.partnersMeetGroupLink?.title)}</p>
             </a>
           </div>
         ))}

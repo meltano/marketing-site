@@ -171,7 +171,7 @@ const ProductTabs = ({ data }) => {
                                         loading="lazy"
                                         decoding="async"
                                       />
-                                      <h4>{item.productTabBenefitsItemText}</h4>
+                                      <h6>{item.productTabBenefitsItemText}</h6>
                                     </li>
                                   )
                                 }
