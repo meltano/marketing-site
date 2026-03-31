@@ -1,6 +1,13 @@
 import React from 'react'
 import StaticImage from '@/components/compat/StaticImage'
-import HubspotForm from 'react-hubspot-form'
+import dynamic from 'next/dynamic'
+
+const HubspotForm = dynamic(() => import('react-hubspot-form'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>,
+})
+
+const asText = value => (typeof value === 'string' || typeof value === 'number' ? String(value) : '')
 
 const Join = ({ data }) => (
   <div className="join-our-community contact-form">
@@ -8,8 +15,8 @@ const Join = ({ data }) => (
       <div className="contact-form-container">
         <div className="contact-form-row">
           <div className="contact-form-sidebar">
-            <h2>{data.partnersFormTitle}</h2>
-            <p className="p2">{data.partnersFormText}</p>
+            <h2>{asText(data?.partnersFormTitle)}</h2>
+            <p className="p2">{asText(data?.partnersFormText)}</p>
             <StaticImage
               className="join-our-community-img"
               src="../../assets/img/join-our-community-bg.webp"
@@ -18,11 +25,10 @@ const Join = ({ data }) => (
           </div>
           <div className="form light-form">
             <HubspotForm
-              portalId={data.partnersFormHubspot.partnersFormHubspotPortalId}
-              formId={data.partnersFormHubspot.partnersFormHubspotFormId}
+              portalId={asText(data?.partnersFormHubspot?.partnersFormHubspotPortalId)}
+              formId={asText(data?.partnersFormHubspot?.partnersFormHubspotFormId)}
               onSubmit={() => console.log('Submit!')}
               onReady={form => console.log('Form ready!')}
-              loading={<div>Loading...</div>}
             />
           </div>
         </div>

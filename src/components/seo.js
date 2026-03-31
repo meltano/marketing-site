@@ -6,16 +6,22 @@ import Head from "next/head";
  * keep this as a fallback for the pages router component trees.
  */
 const Seo = ({ title, description, image, article, summary, date }) => {
+  const asText = value =>
+    typeof value === "string" || typeof value === "number" ? String(value) : "";
+  const safeTitle = asText(title);
+  const safeDescription = asText(description);
+  const safeSummary = asText(summary);
+  const safeDate = asText(date);
   const metaImage = `https://meltano.com${image || "/assets/img/ogimg.png"}`;
 
   return (
     <Head>
-      {title ? <title>{title}</title> : null}
-      {description ? <meta name="description" content={description} /> : null}
+      {safeTitle ? <title>{safeTitle}</title> : null}
+      {safeDescription ? <meta name="description" content={safeDescription} /> : null}
 
       {/* Open Graph */}
-      {title ? <meta property="og:title" content={title} /> : null}
-      {description ? <meta property="og:description" content={description} /> : null}
+      {safeTitle ? <meta property="og:title" content={safeTitle} /> : null}
+      {safeDescription ? <meta property="og:description" content={safeDescription} /> : null}
       <meta property="og:image" content={metaImage} />
       {article ? <meta property="og:type" content="article" /> : null}
 
@@ -23,8 +29,8 @@ const Seo = ({ title, description, image, article, summary, date }) => {
       <meta name="twitter:image" content={metaImage} />
 
       {/* Extra legacy fields */}
-      {summary ? <meta name="summary" content={summary} /> : null}
-      {date ? <meta name="article:published_time" content={date} /> : null}
+      {safeSummary ? <meta name="summary" content={safeSummary} /> : null}
+      {safeDate ? <meta name="article:published_time" content={safeDate} /> : null}
     </Head>
   );
 };

@@ -1,18 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import StaticImage from '@/components/compat/StaticImage'
 
-const Sources = ({ data }) => (
-  <div className="sources glow-bg section">
-    <div className="container">
-      <div className="heading">
-        <h2 dangerouslySetInnerHTML={{ __html: data.sourcesTitle }} />
-        <p
-          className="heading-description p2"
-          dangerouslySetInnerHTML={{ __html: data.sourcesText }}
-        />
-      </div>
+const Sources = ({ data }) => {
+  const [isVisible, setIsVisible] = useState(false)
 
-      <div className="source-logos-grid ml-margins">
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsVisible(true)
+    }, 10)
+
+    return () => clearTimeout(timeoutId)
+  }, [])
+
+  if (!isVisible) return null
+
+  return (
+    <div className="sources glow-bg section">
+      <div className="container">
+        <div className="heading">
+          <h2 dangerouslySetInnerHTML={{ __html: data.sourcesTitle }} />
+          <p
+            className="heading-description p2"
+            dangerouslySetInnerHTML={{ __html: data.sourcesText }}
+          />
+        </div>
+
+        <div className="source-logos-grid ml-margins">
         <a
           href="https://hub.meltano.com/extractors/tap-athena"
           className="logo-grid-item"
@@ -617,17 +630,18 @@ const Sources = ({ data }) => (
         </div>
       </div>
 
-      <div className="sources-buttons">
-        <a
-          href={data.sourcesLink.url}
-          target={data.sourcesLink.target}
-          className="btn alt-blue-btn middle"
-        >
-          {data.sourcesLink.title}
-        </a>
+        <div className="sources-buttons">
+          <a
+            href={data.sourcesLink.url}
+            target={data.sourcesLink.target}
+            className="btn alt-blue-btn middle"
+          >
+            {data.sourcesLink.title}
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default Sources
