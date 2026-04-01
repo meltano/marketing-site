@@ -24,6 +24,7 @@ const Seo = ({ title, description, image, article, summary, date }) => {
       {safeDescription ? <meta property="og:description" content={safeDescription} /> : null}
       <meta property="og:image" content={metaImage} />
       {article ? <meta property="og:type" content="article" /> : null}
+      <meta property="og:url" content="https://meltano.com" />
 
       {/* Twitter */}
       <meta name="twitter:image" content={metaImage} />
