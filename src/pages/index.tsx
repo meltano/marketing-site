@@ -30,6 +30,8 @@ export default function Home({ data }: PageProps) {
         ) : null}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
+        <meta property="og:url" content="https://meltano.com" />
+        <meta property="og:type" content="website" />
       </Head>
       <HomeView data={data} />
     </>
