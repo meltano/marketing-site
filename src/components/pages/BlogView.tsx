@@ -197,6 +197,7 @@ export default function BlogView({ data }: BlogViewProps) {
                     <Link
                       href={`/blog${latestPost.link}`}
                       className="spotlight-title"
+                      rel="canonical"
                     >
                       <h3>{latestPost.title}</h3>
                     </Link>
@@ -271,7 +272,7 @@ export default function BlogView({ data }: BlogViewProps) {
                           </span>
                         ))}
                       </div>
-                      <Link href={`/blog${post.link}`}>
+                      <Link href={`/blog${post.link}`} rel="canonical">
                         {imgData ? (
                           <GatsbyImage image={imgData} alt={post.title || ""} />
                         ) : (
@@ -283,7 +284,7 @@ export default function BlogView({ data }: BlogViewProps) {
                         )}
                       </Link>
                     </div>
-                    <Link href={`/blog${post.link}`}>
+                    <Link href={`/blog${post.link}`} rel="canonical">
                       <h5>{post.title}</h5>
                     </Link>
                   </div>
