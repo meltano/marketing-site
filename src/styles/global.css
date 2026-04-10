@@ -2057,6 +2057,11 @@ display: none;
 .hero-title-section .colorful-btn {
   color: #fff;
 }
+.hero-group {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
 
 .hero-buttons {
   display: flex;
