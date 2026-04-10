@@ -210,7 +210,7 @@ const IndexHero = ({ data }) => {
       </a>
 
       <div className="container">
-        <div className="hero-info ml-margins">
+        <div className="hero-info ml-margins hero-group">
           <h1
             ref={titleRef}
             className={`hero-title align-${data.heroAlign}`}
