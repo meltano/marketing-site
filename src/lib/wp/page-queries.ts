@@ -475,7 +475,7 @@ export const BLOG_POST_PAGE = `
       categories { nodes { name uri } }
       author { node { name avatar { url } } }
       featuredImage {
-        node { sourceUrl mediaItemUrl altText mediaDetails { width height } }
+        node { sourceUrl altText mediaDetails { width height } }
       }
     }
     posts(first: 200, where: { status: PUBLISH }) {
