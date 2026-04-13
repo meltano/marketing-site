@@ -7766,23 +7766,31 @@ input.tgg-title {
 .single-blog h1 {
   margin: 46px 0;
   font-size: 70px;
+  margin-bottom: 8px;
 }
 
 .single-blog h4,
-.single-blog h5 {
+.single-blog h5,
+.single-blog h6 {
   text-align: left;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 .single-blog h2 {
   text-align: left;
   font-size: 48px;
   letter-spacing: -0.015em;
+  margin-top: 40px;
+  margin-bottom: 8px;
 }
 
 .single-blog h3 {
   text-align: left;
   font-size: 38px;
   letter-spacing: -0.01em;
+  margin-top: 32px;
+  margin-bottom: 8px;
 }
 
 .blog-content code,
