@@ -18,7 +18,10 @@ require("prismjs/components/prism-python");
 require("prismjs/components/prism-bash");
 
 function stripHtml(html: string) {
-  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function separateTOCFromContent(content: string): [string, string] {
@@ -94,7 +97,9 @@ function buildParserOptions() {
 }
 
 function wpAuthor(author: unknown) {
-  return author as { node?: { name?: string; avatar?: { url?: string } } } | undefined;
+  return author as
+    | { node?: { name?: string; avatar?: { url?: string } } }
+    | undefined;
 }
 
 type BlogPageViewProps = {
@@ -129,7 +134,8 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
   const [remainingContent, divContent] = separateTOCFromContent(post.content);
 
   const startIndex = divContent.indexOf("<ul");
-  const toc = startIndex >= 0 ? divContent.substring(startIndex).slice(0, -12) : "";
+  const toc =
+    startIndex >= 0 ? divContent.substring(startIndex).slice(0, -12) : "";
 
   const [isOpen, setIsOpen] = useState(true);
   const tocContentRef = useRef<HTMLDivElement>(null);
@@ -147,7 +153,7 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
 
   const router = useRouter();
   const shouldHideCta = router.asPath.includes(
-    "/were-bringing-powerful-data-engineering-capabilities-to-software-teams-with-arch/"
+    "/were-bringing-powerful-data-engineering-capabilities-to-software-teams-with-arch/",
   );
 
   const parserOptions = buildParserOptions();
@@ -293,7 +299,9 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
             <div
               className="blog-featured-image"
               style={{
-                backgroundImage: featuredImage.data ? `url(${featuredImage.data})` : undefined,
+                backgroundImage: featuredImage.data
+                  ? `url(${featuredImage.data})`
+                  : undefined,
               }}
             />
           </div>
@@ -313,7 +321,10 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
               />
               <div className="blog-metadata-info">
                 <p className="blog-author-name">
-                  by <span className="bold">{wpAuthor(post.author)?.node?.name}</span>
+                  by{" "}
+                  <span className="bold">
+                    {wpAuthor(post.author)?.node?.name}
+                  </span>
                 </p>
                 <p className="blog-author-date">
                   on <span className="bold">{post.date}</span>
@@ -322,17 +333,6 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
             </div>
           </div>
           <div className={`${divContent ? "blog-d-flex" : ""}`}>
-            <div className={`${divContent ? "container-narrow margin-unset" : ""}`}>
-              <div>
-                {!!post.content && (
-                  <div className="blog-content" itemProp="articleBody">
-                    {parse(remainingContent, parserOptions)}
-                  </div>
-                )}
-              </div>
-
-              {!shouldHideCta && <CtaIntrigued />}
-            </div>
             {divContent ? (
               <div className="toc-wrapper">
                 <div className="container-small">
@@ -376,7 +376,11 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
                     <p>Stay current with all things Meltano</p>
 
                     <form className="mainling-list-widget-form">
-                      <input type="email" placeholder="Enter your email" required />
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                      />
                       <button type="submit" className="btn alt-blue-btn">
                         Subscribe
                       </button>
@@ -385,6 +389,19 @@ export default function BlogPageView({ data }: BlogPageViewProps) {
                 </div>
               </div>
             ) : null}
+            <div
+              className={`${divContent ? "container-narrow margin-unset" : ""}`}
+            >
+              <div>
+                {!!post.content && (
+                  <div className="blog-content" itemProp="articleBody">
+                    {parse(remainingContent, parserOptions)}
+                  </div>
+                )}
+              </div>
+
+              {!shouldHideCta && <CtaIntrigued />}
+            </div>
           </div>
         </div>
       </div>
