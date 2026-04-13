@@ -430,12 +430,13 @@ export const BLOG_PAGE = `
           node { sourceUrl altText mediaDetails { width height } }
         }
         themePicker { themePicker }
-        blogHero { blogHeroTitle blogHeroDescription }
+        blogHero { blogHeroTitle blogHeroDescription blogHeroSubDescription }
       }
     }
     posts(first: 200, where: { status: PUBLISH }) {
       nodes {
         id databaseId uri title excerpt date
+        posts { shortDescription longDescription }
         categories { nodes { name uri } }
         author { node { name avatar { url } } }
         featuredImage {
@@ -469,11 +470,12 @@ export const BLOG_POST_PAGE = `
       title
       excerpt
       content(format: RENDERED)
+      posts { shortDescription longDescription }
       date
       categories { nodes { name uri } }
       author { node { name avatar { url } } }
       featuredImage {
-        node { sourceUrl altText mediaDetails { width height } }
+        node { sourceUrl mediaItemUrl altText mediaDetails { width height } }
       }
     }
     posts(first: 200, where: { status: PUBLISH }) {
