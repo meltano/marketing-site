@@ -671,8 +671,8 @@ export async function getBlogPostData(slug: string): Promise<BlogPostPageData | 
     return { post, previous, next };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.warn("WPGraphQL blog post failed, using mock:", msg);
-    return MOCK_BLOG_POST;
+    console.error("WPGraphQL blog post query failed:", msg);
+    throw err;
   }
 }
 
