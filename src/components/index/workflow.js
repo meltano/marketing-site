@@ -219,7 +219,7 @@ const Workflow = ({ data }) => {
                                 {tokens.map((line, i) => (
                                   <div {...getLineProps({ line, key: i })}>
                                     {line.map((token, key) => (
-                                      <span {...getTokenProps({ token, key })} />
+                                      <span key={key} {...getTokenProps({ token, key })} />
                                     ))}
                                   </div>
                                 ))}

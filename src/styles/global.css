@@ -1450,7 +1450,7 @@ nav>ul>li {
   position: absolute;
   top: 54px;
   max-width: 100%;
-  height: 230px;
+  height: fit-content;
   border-radius: 10px;
   border: 6px solid rgba(255, 255, 255, 0.3);
 }
@@ -2047,6 +2047,9 @@ nav li:hover>a>.header-list-icon {
   text-align: center;
 }
 
+.hero-description span {
+  display: block;
+}
 .hero-title-section .hero-description {
   max-width: 850px;
   margin: 24px auto;
@@ -7249,11 +7252,259 @@ input.tgg-title {
   border-radius: 12px;
 }
 
+.case-studies-list {
+  margin-top: 55px;
+}
+
+.case-studies-list-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  width: 100%;
+}
+
+.case-studies-list-item {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  padding: 32px 32px;
+  transition: background-color 0.2s ease;
+}
+
+.case-studies-list-item:hover {
+  background-color: #23193C;
+}
+
+.case-studies-list-item-image {
+  flex-shrink: 0;
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: block;
+  background: #1a1032;
+}
+
+.case-studies-list-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.case-studies-list-item-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case-studies-list-item-title {
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 130%;
+  text-decoration: none;
+}
+
+.case-studies-list-item-title:hover {
+  text-decoration: underline;
+}
+
+.case-studies-list-item-excerpt {
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.case-studies-pagination {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.case-studies-pagination-arrow,
+.case-studies-pagination-page {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s;
+}
+
+.case-studies-pagination-arrow {
+  font-size: 22px;
+}
+
+.case-studies-pagination-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.case-studies-pagination-arrow:not(:disabled):hover,
+.case-studies-pagination-page:not(.active):hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+}
+
+.case-studies-pagination-page.active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.case-studies-hero .hero-title {
+  text-align: left;
+  max-width: 580px;
+  font-size: 36px;
+  margin: 0;
+}
+
+.case-studies-hero .hero-description {
+  text-align: left;
+  max-width: 580px;
+  margin: 16px 0 0;
+}
+
 .blog-content .colorful-btn {
   color: #ffffff;
   margin: auto;
   display: table;
   margin-top: 30px;
+}
+
+/* Blog vertical list layout */
+
+.blog-list {
+  margin-top: 55px;
+}
+
+.blog-list-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  width: 100%;
+}
+
+.blog-list-item {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.blog-list-item-image {
+  flex-shrink: 0;
+  width: 400px;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  background: #1a1032;
+}
+
+.blog-list-item.featured .blog-list-item-image {
+  width: 700px;
+  height: 438px;
+}
+
+.blog-list-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.blog-list-item-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.blog-list-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.blog-list-item-date {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.blog-list-item-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.blog-list-item-excerpt {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.blog-list-read-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #3a64fa;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 37px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+.blog-list-read-more:hover {
+  background: #2550e0;
+  color: #ffffff;
+}
+
+@media all and (max-width: 1024px) {
+  .blog-list-item.featured .blog-list-item-image {
+    width: 500px;
+    height: 320px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .blog-list-item {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .blog-list-item-image,
+  .blog-list-item.featured .blog-list-item-image {
+    width: 100%;
+    height: 220px;
+  }
 }
 
 .blog-filters {
@@ -7515,23 +7766,31 @@ input.tgg-title {
 .single-blog h1 {
   margin: 46px 0;
   font-size: 70px;
+  margin-bottom: 8px;
 }
 
 .single-blog h4,
-.single-blog h5 {
+.single-blog h5,
+.single-blog h6 {
   text-align: left;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 .single-blog h2 {
   text-align: left;
   font-size: 48px;
   letter-spacing: -0.015em;
+  margin-top: 40px;
+  margin-bottom: 8px;
 }
 
 .single-blog h3 {
   text-align: left;
   font-size: 38px;
   letter-spacing: -0.01em;
+  margin-top: 32px;
+  margin-bottom: 8px;
 }
 
 .blog-content code,
@@ -8253,6 +8512,16 @@ input.tgg-title {
 
   .blog-content-grid-item-image img {
     width: 100%;
+  }
+
+  .case-studies-list-item {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px 0;
+  }
+
+  .case-studies-list-item-image {
+    max-width: 280px;
   }
 
   /* .blog-content .btn {

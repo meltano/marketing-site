@@ -36,6 +36,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
     }
     return { props: { data }, revalidate: 3600 };
   } catch {
-    return { notFound: true };
+    // WPGraphQL was temporarily unavailable — retry via ISR shortly
+    return { notFound: true, revalidate: 60 };
   }
 };

@@ -30,6 +30,7 @@ function normalizePostNode(node: Record<string, unknown>) {
     title?: string;
     excerpt?: string;
     date?: string;
+    posts?: { shortDescription?: string, longDescription?: string };
     categories?: { nodes?: { name?: string; uri?: string }[] };
     author?: unknown;
     featuredImage?: unknown;
@@ -39,14 +40,16 @@ function normalizePostNode(node: Record<string, unknown>) {
     link: n.uri || "",
     title: n.title,
     excerpt: n.excerpt,
-    date: formatWpDate(n.date, "MM/dd/yyyy"),
+    shortDescription: n.posts?.shortDescription ?? null,
+    longDescription: n.posts?.longDescription ?? null,
+    date: formatWpDate(n.date, "dd MMM yyyy"),
     categories: n.categories
       ? {
-          nodes: (n.categories.nodes || []).map((c) => ({
-            ...c,
-            link: c.uri || "",
-          })),
-        }
+        nodes: (n.categories.nodes || []).map((c) => ({
+          ...c,
+          link: c.uri || "",
+        })),
+      }
       : { nodes: [] },
     author: n.author,
     featuredImage: mapFeaturedImageField(
@@ -231,10 +234,10 @@ function normalizeProductNode(raw: Record<string, unknown>) {
               ...it,
               productTabBenefitsItemImage: img?.sourceUrl
                 ? {
-                    width: img.mediaDetails?.width || 1,
-                    height: img.mediaDetails?.height || 1,
-                    localFile: { publicURL: img.sourceUrl },
-                  }
+                  width: img.mediaDetails?.width || 1,
+                  height: img.mediaDetails?.height || 1,
+                  localFile: { publicURL: img.sourceUrl },
+                }
                 : it.productTabBenefitsItemImage,
             };
           }),
@@ -273,11 +276,11 @@ function normalizePressNode(raw: Record<string, unknown>) {
               return {
                 pressTabsTabContentLogosListLinksItem: u
                   ? {
-                      localFile: {
-                        publicURL: u,
-                        ext: extFromUrl(u),
-                      },
-                    }
+                    localFile: {
+                      publicURL: u,
+                      ext: extFromUrl(u),
+                    },
+                  }
                   : null,
               };
             }) || [];
@@ -551,6 +554,7 @@ function normalizeBlogPostFull(raw: Record<string, unknown>) {
     uri?: string;
     title?: string;
     date?: string;
+    posts?: { shortDescription?: string, longDescription?: string };
     categories?: { nodes?: { name?: string; uri?: string }[] };
     author?: unknown;
     featuredImage?: unknown;
@@ -561,14 +565,16 @@ function normalizeBlogPostFull(raw: Record<string, unknown>) {
     title: n.title ?? "",
     excerpt,
     content,
+    shortDescription: n.posts?.shortDescription ?? null,
+    longDescription: n.posts?.longDescription ?? null,
     date: formatWpDate(n.date, "MMMM dd yyyy"),
     categories: n.categories
       ? {
-          nodes: (n.categories.nodes || []).map((c) => ({
-            ...c,
-            link: c.uri || "",
-          })),
-        }
+        nodes: (n.categories.nodes || []).map((c) => ({
+          ...c,
+          link: c.uri || "",
+        })),
+      }
       : { nodes: [] },
     author: n.author,
     featuredImage: mapFeaturedImageField(
@@ -665,8 +671,8 @@ export async function getBlogPostData(slug: string): Promise<BlogPostPageData | 
     return { post, previous, next };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.warn("WPGraphQL blog post failed, using mock:", msg);
-    return MOCK_BLOG_POST;
+    console.error("WPGraphQL blog post query failed:", msg);
+    throw err;
   }
 }
 

@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { GatsbyImage } from "@/components/compat/GatsbyImage";
 import StaticImage from "@/components/compat/StaticImage";
 import BodyClass from "@/components/BodyClass";
 import Seo from "@/components/seo";
@@ -13,11 +12,11 @@ import SearchBar from "@/components/search";
 import MailingListBanner from "@/components/mailingListBanner";
 
 function stripHtml(html: string) {
-  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-}
-
-function wpAuthor(author: unknown) {
-  return author as { node?: { name?: string; avatar?: { url?: string } } } | undefined;
+  let txt = html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return txt.length > 300 ? txt.slice(0, 300) + "…" : txt;
 }
 
 type BlogViewProps = {
@@ -25,13 +24,12 @@ type BlogViewProps = {
     blog: {
       nodes: {
         metadata?: { metaTitle?: string; metaDescription?: string };
-        featuredBlogImage?:
-          | {
-              node?: { localFile?: { publicURL?: string } };
-            }
-          | null;
+        featuredBlogImage?: {
+          node?: { localFile?: { publicURL?: string } };
+        } | null;
+        posts?: { shortDescription?: string | null; longDescription?: string | null };
         themePicker?: { themePicker?: string };
-        blogHero?: { blogHeroTitle?: string; blogHeroDescription?: string };
+        blogHero?: { blogHeroTitle?: string; blogHeroDescription?: string; blogHeroSubDescription?: string };
       }[];
     };
     allWpPost: {
@@ -41,19 +39,22 @@ type BlogViewProps = {
           link: string;
           title?: string;
           excerpt?: string;
+          shortDescription?: string | null;
+          longDescription?: string | null;
+          date?: string;
           author?: unknown;
-          categories: { nodes: { name?: string; link?: string; uri?: string }[] };
-          featuredImage?:
-            | {
-                node?: {
-                  localFile?: {
-                    publicURL?: string;
-                    childImageSharp?: { gatsbyImageData?: unknown };
-                  };
-                  childImageSharp?: { gatsbyImageData?: unknown };
-                };
-              }
-            | null;
+          categories: {
+            nodes: { name?: string; link?: string; uri?: string }[];
+          };
+          featuredImage?: {
+            node?: {
+              localFile?: {
+                publicURL?: string;
+                childImageSharp?: { gatsbyImageData?: unknown };
+              };
+              childImageSharp?: { gatsbyImageData?: unknown };
+            };
+          } | null;
         };
       }[];
     };
@@ -64,20 +65,21 @@ type BlogViewProps = {
           link: string;
           title?: string;
           excerpt?: string;
+          posts?: { shortDescription?: string | null; longDescription?: string | null };
           date?: string;
-          categories: { nodes: { name?: string; link?: string; uri?: string }[] };
+          categories: {
+            nodes: { name?: string; link?: string; uri?: string }[];
+          };
           author?: unknown;
-          featuredImage?:
-            | {
-                node?: {
-                  localFile?: {
-                    publicURL?: string;
-                    childImageSharp?: { gatsbyImageData?: unknown };
-                  };
-                  childImageSharp?: { gatsbyImageData?: unknown };
-                };
-              }
-            | null;
+          featuredImage?: {
+            node?: {
+              localFile?: {
+                publicURL?: string;
+                childImageSharp?: { gatsbyImageData?: unknown };
+              };
+              childImageSharp?: { gatsbyImageData?: unknown };
+            };
+          } | null;
         };
       }[];
     };
@@ -88,7 +90,11 @@ type BlogViewProps = {
 const Hero = ({
   data,
 }: {
-  data: { blogHeroTitle?: string; blogHeroDescription?: string };
+  data: {
+    blogHeroTitle?: string;
+    blogHeroDescription?: string;
+    blogHeroSubDescription?: string;
+  };
 }) => (
   <div className="hero hero-title-section glow-bg section">
     <div className="container">
@@ -97,57 +103,85 @@ const Hero = ({
           className="hero-title title-inline"
           dangerouslySetInnerHTML={{ __html: data.blogHeroTitle || "" }}
         />
-        <p className="hero-description p1">{data.blogHeroDescription}</p>
+        <p className="hero-description p1 ">
+          <span>{data.blogHeroDescription}</span>
+          <span>{data.blogHeroSubDescription}</span>
+        </p>
       </div>
     </div>
   </div>
 );
 
-function gatsbyImgData(post: BlogViewProps["data"]["allWpPost"]["edges"][0]["post"]) {
-  const n = post.featuredImage?.node;
-  if (!n) return null;
-  return (
-    n.localFile?.childImageSharp?.gatsbyImageData ||
-    (n as { childImageSharp?: { gatsbyImageData?: unknown } }).childImageSharp
-      ?.gatsbyImageData
-  );
-}
-
 export default function BlogView({ data }: BlogViewProps) {
   const router = useRouter();
-  const { metadata, featuredBlogImage, themePicker, blogHero } = data.blog.nodes[0];
+  const { metadata, featuredBlogImage, themePicker, blogHero } =
+    data.blog.nodes[0];
   const metaImage = featuredBlogImage?.node?.localFile?.publicURL;
 
   const posts = data.allWpPost.edges.map((edge) => edge.post);
-  const latestPost = data.latestPost.edges[0]?.node;
   const allCategories = data.allWpCategory.nodes;
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [numPosts, setNumPosts] = useState(9);
-
-  const qFromUrl =
-    typeof router.query.s === "string" ? router.query.s : "";
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Guard: don't write to URL before we've read from it (avoids wiping params on first render)
+  const initialized = useRef(false);
+  // Always-current values for use inside debounce callbacks (avoids stale closures)
+  const stateRef = useRef({ searchQuery: "", selectedCategory: null as string | null, numPosts: 9 });
+  stateRef.current = { searchQuery, selectedCategory, numPosts };
+
+  // Restore filter state from URL on mount — this is what makes back-navigation work
   useEffect(() => {
-    setSearchQuery(qFromUrl || "");
-  }, [qFromUrl]);
+    if (!router.isReady || initialized.current) return;
+    initialized.current = true;
+
+    const q = typeof router.query.s === "string" ? router.query.s : "";
+    const cat = typeof router.query.category === "string" ? router.query.category : null;
+    const p = typeof router.query.posts === "string" ? parseInt(router.query.posts, 10) : NaN;
+
+    setSearchQuery(q);
+    setSelectedCategory(cat);
+    if (!isNaN(p) && p > 0) setNumPosts(p);
+  }, [router.isReady, router.query]);
+
+  // Write filter state to URL without reloading the page so the browser history preserves it
+  const pushToUrl = (s: string, category: string | null, posts: number) => {
+    const query: Record<string, string> = {};
+    if (s) query.s = s;
+    if (category) query.category = category;
+    if (posts > 9) query.posts = String(posts);
+    router.replace({ pathname: router.pathname, query }, undefined, { shallow: true });
+  };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const category = e.target.value;
-    setSelectedCategory(category === "show all" ? null : category);
+    const category = e.target.value === "show all" ? null : e.target.value;
+    setSelectedCategory(category);
     setNumPosts(9);
+    pushToUrl(searchQuery, category, 9);
   };
 
   const handleLoadMoreClick = () => {
-    setNumPosts((n) => n + 9);
+    const n = numPosts + 9;
+    setNumPosts(n);
+    pushToUrl(searchQuery, selectedCategory, n);
   };
 
+  // Debounce search → URL: waits 500 ms after the user stops typing before updating the URL
+  useEffect(() => {
+    if (!initialized.current) return;
+    const t = setTimeout(() => {
+      const { searchQuery: s, selectedCategory: cat, numPosts: posts } = stateRef.current;
+      pushToUrl(s, cat, posts);
+    }, 500);
+    return () => clearTimeout(t);
+  }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const pool = useMemo(() => {
-    let base = posts.filter((p) => p.id !== latestPost?.id);
+    let base = posts;
     if (selectedCategory) {
       base = base.filter((p) =>
-        p.categories.nodes.some((c) => c.name === selectedCategory)
+        p.categories.nodes.some((c) => c.name === selectedCategory),
       );
     }
     if (!searchQuery.trim()) return base;
@@ -156,7 +190,7 @@ export default function BlogView({ data }: BlogViewProps) {
       const text = `${p.title} ${stripHtml(p.excerpt || "")}`.toLowerCase();
       return text.includes(q);
     });
-  }, [posts, selectedCategory, latestPost?.id, searchQuery]);
+  }, [posts, selectedCategory, searchQuery]);
 
   const visiblePosts = pool.slice(0, numPosts);
 
@@ -171,66 +205,6 @@ export default function BlogView({ data }: BlogViewProps) {
       <Hero data={blogHero || {}} />
       <div className="resources section ml-margins">
         <div className="container">
-          {latestPost ? (
-            <div className="spotlight">
-              <div
-                className="spotlight-item"
-                style={{
-                  backgroundImage: `url(${
-                    latestPost.featuredImage?.node?.localFile?.publicURL ||
-                    metaImage ||
-                    ""
-                  })`,
-                }}
-              >
-                <div className="spotlight-info">
-                  <div className="spotlight-item-heading">
-                    <div className="spotlight-tags">
-                      {latestPost.categories.nodes.map((cat) => (
-                        <span key={cat.link ?? cat.name}>
-                          <p className="spotlight-tag" key={cat.name}>
-                            {cat.name}
-                          </p>
-                        </span>
-                      ))}
-                    </div>
-                    <Link
-                      href={`/blog${latestPost.link}`}
-                      className="spotlight-title"
-                      rel="canonical"
-                    >
-                      <h3>{latestPost.title}</h3>
-                    </Link>
-                    <p
-                      className="p2 spotlight-description"
-                      dangerouslySetInnerHTML={{
-                        __html: latestPost.excerpt || "",
-                      }}
-                    />
-                  </div>
-                  <div className="spotlight-metadata">
-                    <img
-                      className="spotlight-author-image"
-                      src={wpAuthor(latestPost.author)?.node?.avatar?.url || ""}
-                      alt={wpAuthor(latestPost.author)?.node?.name || ""}
-                    />
-                    <div className="spotlight-metadata-info">
-                      <p className="spotlight-author-name">
-                        by{" "}
-                        <span className="bold">
-                          {wpAuthor(latestPost.author)?.node?.name}
-                        </span>
-                      </p>
-                      <p className="spotlight-author-date">
-                        on <span className="bold">{latestPost.date}</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : null}
-
           <div className="blog-content">
             <div className="blog-filters">
               <div className="blog-filters-title">
@@ -259,22 +233,25 @@ export default function BlogView({ data }: BlogViewProps) {
                 />
               </div>
             </div>
-            <div id="blog-results" className="blog-content-grid">
-              {visiblePosts.map((post) => {
-                const imgData = gatsbyImgData(post);
+
+            <div id="blog-results" className="blog-list">
+              {visiblePosts.map((post, index) => {
+                const imgUrl = post.featuredImage?.node?.localFile?.publicURL;
+                const isFeatured = index === 0;
                 return (
-                  <div className="blog-content-grid-item" key={post.id}>
-                    <div className="blog-content-grid-item-image">
-                      <div className="blog-tags">
-                        {post.categories.nodes.map((cat) => (
-                          <span key={cat.link ?? cat.name}>
-                            <p className="blog-tag">{cat.name}</p>
-                          </span>
-                        ))}
-                      </div>
-                      <Link href={`/blog${post.link}`} rel="canonical">
-                        {imgData ? (
-                          <GatsbyImage image={imgData} alt={post.title || ""} />
+                  <React.Fragment key={post.id ?? post.link}>
+                    {index > 0 && <div className="blog-list-divider" />}
+                    <article
+                      className={`blog-list-item${isFeatured ? " featured" : ""}`}
+                    >
+                      <Link
+                        href={`/blog${post.link}`}
+                        className="blog-list-item-image"
+                        rel="canonical"
+                        aria-label={post.title || "Read post"}
+                      >
+                        {imgUrl ? (
+                          <img src={imgUrl} alt={post.title || ""} />
                         ) : (
                           <StaticImage
                             src="../assets/img/ogimg.png"
@@ -283,11 +260,33 @@ export default function BlogView({ data }: BlogViewProps) {
                           />
                         )}
                       </Link>
-                    </div>
-                    <Link href={`/blog${post.link}`} rel="canonical">
-                      <h5>{post.title}</h5>
-                    </Link>
-                  </div>
+
+                      <div className="blog-list-item-content">
+                        <div className="blog-list-item-text">
+                          {post.date && (
+                            <p className="blog-list-item-date">{post.date}</p>
+                          )}
+                          <Link href={`/blog${post.link}`} rel="canonical">
+                            <h5 className="blog-list-item-title">
+                              {post.title}
+                            </h5>
+                          </Link>
+                          {post.excerpt && (
+                            <p className="blog-list-item-excerpt">
+                              {stripHtml(post?.shortDescription || "")}
+                            </p>
+                          )}
+                        </div>
+                        <Link
+                          href={`/blog${post.link}`}
+                          className="blog-list-read-more"
+                          rel="canonical"
+                        >
+                          Read more
+                        </Link>
+                      </div>
+                    </article>
+                  </React.Fragment>
                 );
               })}
             </div>
