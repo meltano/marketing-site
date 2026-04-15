@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   try {
     const data = await getBlogPostData(id);
     if (!data?.post) {
-      return { notFound: true };
+      return { notFound: true, revalidate: 60 };
     }
     return { props: { data }, revalidate: 3600 };
   } catch {
