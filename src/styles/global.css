@@ -8132,6 +8132,7 @@ input.tgg-title {
   padding: 12px 16px;
   box-sizing: border-box;
   border: none;
+  background-color: #fff;
 }
 
 .mainling-list-banner-form input:focus {
