@@ -226,11 +226,20 @@ export default function BlogView({ data }: BlogViewProps) {
                 </select>
               </div>
 
-              <div className="blog-search">
+              <div className={`blog-search${searchQuery ? ' blog-search--active' : ''}`}>
                 <SearchBar
                   searchQuery={searchQuery}
                   setSearchQuery={setSearchQuery}
                 />
+                {searchQuery && (
+                  <button
+                    className="blog-search__clear"
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Clear search"
+                  >
+                    &#x2715;
+                  </button>
+                )}
               </div>
             </div>
 

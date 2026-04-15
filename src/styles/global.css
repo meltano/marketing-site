@@ -7535,6 +7535,27 @@ input.tgg-title {
   pointer-events: none;
 }
 
+.blog-search--active::after {
+  display: none;
+}
+
+.blog-search__clear {
+  position: absolute;
+  right: 16px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
 #blog-searchbar {
   width: 100%;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
@@ -7803,6 +7824,140 @@ input.tgg-title {
   font-size: 18px;
   line-height: 170%;
   letter-spacing: 0;
+}
+
+/* Tailwind v4 preflight resets list-style to none and margin/padding to 0
+   for all elements — restore sensible defaults inside blog article content. */
+.blog-content p {
+  margin-bottom: 1em;
+}
+
+.blog-content ul {
+  list-style: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.blog-content ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.blog-content ul ul {
+  list-style: circle;
+  margin-bottom: 0;
+}
+
+.blog-content ul ul ul {
+  list-style: square;
+}
+
+.blog-content li {
+  margin-bottom: 0.3em;
+}
+
+/* Links — add underline for readability in article body */
+.blog-content a {
+  text-decoration: underline;
+}
+
+/* Horizontal rule */
+.blog-content hr {
+  margin: 2em 0;
+  border-top-width: 1px;
+}
+
+/* Blockquote */
+.blog-content blockquote {
+  border-left: 4px solid;
+  margin: 1.5em 0;
+  padding: 0.5em 1.25em;
+  font-style: italic;
+}
+
+.blog-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Figures and images (WordPress wraps images in <figure class="wp-block-image">) */
+.blog-content figure {
+  margin: 1.5em 0;
+  max-width: 100%;
+}
+
+.blog-content figcaption {
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+.blog-content img {
+  border-radius: 8px;
+  margin: 1em 0;
+}
+
+/* Standalone <pre> blocks (not .wp-block-code which is handled separately) */
+.blog-content pre:not(.wp-block-code):not(.tab-terminal *) {
+  overflow-x: auto;
+  padding: 1em;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  white-space: pre;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Reset inline-code styles when <code> is a direct child of <pre> */
+.blog-content pre code {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  vertical-align: unset !important;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.blog-content th,
+.blog-content td {
+  padding: 0.6em 1em;
+  border: 1px solid;
+  text-align: left;
+}
+
+.blog-content thead th {
+  font-weight: 700;
+}
+
+/* Inline text elements */
+.blog-content mark {
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.blog-content kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-size: 13px;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.blog-content del,
+.blog-content s {
+  opacity: 0.6;
 }
 
 .blog-featured-image {
@@ -8165,7 +8320,8 @@ input.tgg-title {
 .dark-blog .blog-content code,
 .dark-blog .blog-content p,
 .dark-blog .blog-content ul,
-.dark-blog .blog-content ol {
+.dark-blog .blog-content ol,
+.dark-blog .blog-content li {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -8188,6 +8344,47 @@ input.tgg-title {
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 6px;
   padding: 2px;
+}
+
+.dark-blog .blog-content hr {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-blog .blog-content blockquote {
+  border-color: #18c3fa;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-blog .blog-content pre:not(.wp-block-code) {
+  background-color: rgb(255 255 255 / 5%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark-blog .blog-content th,
+.dark-blog .blog-content td {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-blog .blog-content thead th {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.dark-blog .blog-content mark {
+  background-color: rgba(251, 204, 84, 0.3);
+  color: #ffffff;
+}
+
+.dark-blog .blog-content kbd {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark-blog .blog-content figcaption {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dark-blog .blog-metadata:before,
@@ -8292,7 +8489,8 @@ input.tgg-title {
 .light-blog .blog-content code,
 .light-blog .blog-content p,
 .light-blog .blog-content ul,
-.light-blog .blog-content ol {
+.light-blog .blog-content ol,
+.light-blog .blog-content li {
   color: rgba(8, 2, 22, 0.75);
 }
 
@@ -8316,6 +8514,52 @@ input.tgg-title {
   border: 1px solid rgba(49, 23, 114, 0.15) !important;
   border-radius: 6px;
   padding: 2px;
+}
+
+.light-blog .blog-content a,
+.light-blog .blog-content a:visited {
+  color: #311772;
+}
+
+.light-blog .blog-content hr {
+  border-color: rgba(8, 2, 22, 0.15);
+}
+
+.light-blog .blog-content blockquote {
+  border-color: #311772;
+  color: rgba(8, 2, 22, 0.75);
+}
+
+.light-blog .blog-content pre:not(.wp-block-code) {
+  background-color: rgba(8, 2, 22, 0.05);
+  border: 1px solid rgba(8, 2, 22, 0.15);
+  color: rgba(8, 2, 22, 0.85);
+}
+
+.light-blog .blog-content th,
+.light-blog .blog-content td {
+  border-color: rgba(8, 2, 22, 0.15);
+  color: rgba(8, 2, 22, 0.75);
+}
+
+.light-blog .blog-content thead th {
+  background-color: rgba(8, 2, 22, 0.05);
+  color: #080216;
+}
+
+.light-blog .blog-content mark {
+  background-color: rgba(251, 204, 84, 0.45);
+  color: rgba(8, 2, 22, 0.9);
+}
+
+.light-blog .blog-content kbd {
+  background-color: rgba(8, 2, 22, 0.06);
+  border-color: rgba(8, 2, 22, 0.25);
+  color: rgba(8, 2, 22, 0.8);
+}
+
+.light-blog .blog-content figcaption {
+  color: rgba(8, 2, 22, 0.5);
 }
 
 .light-blog .blog-metadata:before,
