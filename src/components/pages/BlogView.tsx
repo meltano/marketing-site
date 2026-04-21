@@ -260,7 +260,7 @@ export default function BlogView({ data }: BlogViewProps) {
                         aria-label={post.title || "Read post"}
                       >
                         {imgUrl ? (
-                          <img src={imgUrl} alt={post.title || ""} />
+                          <img src={imgUrl} alt={post.title || ""} loading="lazy" decoding="async" />
                         ) : (
                           <StaticImage
                             src="../assets/img/ogimg.png"

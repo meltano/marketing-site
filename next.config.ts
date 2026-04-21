@@ -422,6 +422,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "www.meltano.com" },
       { protocol: "https", hostname: "**.meltano.com" },
       { protocol: "https", hostname: "secure.gravatar.com" },
+      { protocol: "https", hostname: "matatika.com" },
+      { protocol: "https", hostname: "**.matatika.com" },
     ],
   },
   webpack(config) {
