@@ -29,43 +29,19 @@ function CaretLeftIcon() {
   );
 }
 
-function CheckIcon() {
+function SupportCheckIcon() {
   return (
     <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="shrink-0"
     >
       <path
-        d="M4.5 9L7.5 12L13.5 6"
-        stroke="#4A64F5"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function CheckIconPurple() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="shrink-0"
-    >
-      <path
-        d="M4.5 9L7.5 12L13.5 6"
-        stroke="#BC7AFF"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M19.5 3.75H4.5C4.10218 3.75 3.72064 3.90804 3.43934 4.18934C3.15804 4.47064 3 4.85218 3 5.25V10.5C3 15.4425 5.3925 18.4378 7.39969 20.0803C9.56156 21.8484 11.7122 22.4484 11.8059 22.4738C11.9348 22.5088 12.0708 22.5088 12.1997 22.4738C12.2934 22.4484 14.4413 21.8484 16.6059 20.0803C18.6075 18.4378 21 15.4425 21 10.5V5.25C21 4.85218 20.842 4.47064 20.5607 4.18934C20.2794 3.90804 19.8978 3.75 19.5 3.75ZM16.2825 10.2806L11.0325 15.5306C10.9628 15.6004 10.8801 15.6557 10.7891 15.6934C10.698 15.7312 10.6004 15.7506 10.5019 15.7506C10.4033 15.7506 10.3057 15.7312 10.2147 15.6934C10.1236 15.6557 10.0409 15.6004 9.97125 15.5306L7.72125 13.2806C7.58052 13.1399 7.50146 12.949 7.50146 12.75C7.50146 12.551 7.58052 12.3601 7.72125 12.2194C7.86198 12.0786 8.05285 11.9996 8.25187 11.9996C8.4509 11.9996 8.64177 12.0786 8.7825 12.2194L10.5 13.9397L15.2194 9.21937C15.2891 9.14969 15.3718 9.09442 15.4628 9.0567C15.5539 9.01899 15.6515 8.99958 15.75 8.99958C15.8485 8.99958 15.9461 9.01899 16.0372 9.0567C16.1282 9.09442 16.2109 9.14969 16.2806 9.21937C16.3503 9.28906 16.4056 9.37178 16.4433 9.46283C16.481 9.55387 16.5004 9.65145 16.5004 9.75C16.5004 9.84855 16.481 9.94613 16.4433 10.0372C16.4056 10.1282 16.3503 10.2109 16.2806 10.2806H16.2825Z"
+        fill="#6081FB"
       />
     </svg>
   );
@@ -140,26 +116,16 @@ function CloudShieldIcon() {
 function CommunityPeopleIcon() {
   return (
     <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="shrink-0"
     >
-      <circle cx="6" cy="5" r="2" stroke="#BC7AFF" strokeWidth="1.2" />
       <path
-        d="M2 13.5C2 11.015 3.791 9 6 9C8.209 9 10 11.015 10 13.5"
-        stroke="#BC7AFF"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-      />
-      <circle cx="11.5" cy="5.5" r="1.5" stroke="#BC7AFF" strokeWidth="1.2" />
-      <path
-        d="M13 13.5C13 11.567 12.052 9.916 10.629 9.186"
-        stroke="#BC7AFF"
-        strokeWidth="1.2"
-        strokeLinecap="round"
+        d="M15.4189 18.3403C15.4927 18.4534 15.5346 18.5844 15.5401 18.7194C15.5456 18.8544 15.5145 18.9884 15.4502 19.1072C15.3858 19.226 15.2906 19.3252 15.1745 19.3943C15.0585 19.4634 14.9259 19.4999 14.7908 19.5H0.958893C0.823795 19.4999 0.69121 19.4634 0.575146 19.3943C0.459082 19.3252 0.363848 19.226 0.299506 19.1072C0.235165 18.9884 0.204104 18.8544 0.209607 18.7194C0.21511 18.5844 0.256971 18.4534 0.330768 18.3403C1.38649 16.7152 2.93935 15.4751 4.75764 14.805C3.75245 14.1358 2.9893 13.1609 2.58105 12.0244C2.17279 10.8879 2.1411 9.65024 2.49067 8.49437C2.84023 7.3385 3.55249 6.32581 4.52212 5.60605C5.49174 4.88629 6.66726 4.49768 7.87483 4.49768C9.0824 4.49768 10.2579 4.88629 11.2275 5.60605C12.1972 6.32581 12.9094 7.3385 13.259 8.49437C13.6086 9.65024 13.5769 10.8879 13.1686 12.0244C12.7604 13.1609 11.9972 14.1358 10.992 14.805C12.8103 15.4751 14.3632 16.7152 15.4189 18.3403ZM23.6605 18.3262C22.6044 16.708 21.0551 15.4732 19.242 14.805C20.4287 14.0056 21.2662 12.7841 21.5839 11.389C21.9017 9.99398 21.676 8.53026 20.9526 7.2958C20.2292 6.06134 19.0626 5.14894 17.6902 4.7443C16.3178 4.33967 14.8428 4.47322 13.5655 5.11778C13.5166 5.143 13.4739 5.17865 13.4404 5.2222C13.4068 5.26576 13.3833 5.31616 13.3714 5.36983C13.3595 5.4235 13.3595 5.47912 13.3715 5.53277C13.3835 5.58642 13.4072 5.63678 13.4408 5.68028C14.3906 6.8651 14.9361 8.32294 14.9973 9.84026C15.0586 11.3576 14.6324 12.8546 13.7811 14.1122C13.7261 14.1943 13.7057 14.2949 13.7245 14.392C13.7433 14.4891 13.7997 14.5749 13.8814 14.6306C14.9913 15.4052 15.9414 16.3866 16.6798 17.5209C16.9776 17.977 17.0993 18.5258 17.022 19.065C17.0133 19.1186 17.0164 19.1735 17.031 19.2258C17.0456 19.2781 17.0714 19.3267 17.1066 19.368C17.1419 19.4094 17.1857 19.4426 17.235 19.4654C17.2843 19.4882 17.338 19.5 17.3923 19.5H23.0455C23.2106 19.5 23.3712 19.4456 23.5022 19.345C23.6332 19.2445 23.7274 19.1036 23.7701 18.944C23.7962 18.8391 23.7999 18.7299 23.781 18.6234C23.7621 18.517 23.7211 18.4157 23.6605 18.3262Z"
+        fill="#BC7AFF"
       />
     </svg>
   );
@@ -335,7 +301,7 @@ function RichMarkdownBlock({ text }: { text: string }) {
           {items.map((item, j) => (
             <li
               key={j}
-              className="flex gap-2 text-[15px] text-white/70 leading-relaxed"
+              className="flex gap-2 text-[15px] text-white leading-relaxed"
               style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
             >
               <span className="text-[#7B96FF] shrink-0 font-medium min-w-[20px]">
@@ -361,7 +327,7 @@ function RichMarkdownBlock({ text }: { text: string }) {
           {items.map((item, j) => (
             <li
               key={j}
-              className="flex gap-2 text-[15px] text-white/70 leading-relaxed"
+              className="flex gap-2 text-[15px] text-white leading-relaxed"
               style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
             >
               <span className="text-[#9C5FE0] mt-1 shrink-0">•</span>
@@ -384,7 +350,7 @@ function RichMarkdownBlock({ text }: { text: string }) {
       elements.push(
         <p
           key={i}
-          className="text-[14px] text-white/50 italic leading-relaxed"
+          className="text-[14px] text-white italic leading-relaxed"
           style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
         >
           {line.replace(/^\*/, "").replace(/\*$/, "")}
@@ -414,7 +380,7 @@ function RichMarkdownBlock({ text }: { text: string }) {
     elements.push(
       <p
         key={i}
-        className="text-[15px] text-white/70 leading-relaxed"
+        className="text-[15px] text-white leading-relaxed"
         style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
       >
         {renderInline(line)}
@@ -434,6 +400,39 @@ function Skeleton({ className }: { className?: string }) {
   );
 }
 
+// ─── Shared CTA buttons ───────────────────────────────────────────────────────
+
+function SidebarCTAButtons() {
+  return (
+    <div className="flex gap-2">
+      <a
+        href="/contact"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg w-full text-[15px] font-semibold transition-opacity hover:opacity-90"
+        style={{
+          background: "#FFFFFF",
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          color: "#1D2939",
+        }}
+      >
+        Get Started
+      </a>
+      <a
+        href="https://meetings.hubspot.com/kyle-john"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg w-full text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+        style={{
+          background: "#3A64FA",
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+        }}
+      >
+        Book a demo
+      </a>
+    </div>
+  );
+}
+
 // ─── Sidebar: Meltano Cloud connector card ───────────────────────────────────
 
 function CloudSidebarCard({ label }: { label: string }) {
@@ -441,18 +440,18 @@ function CloudSidebarCard({ label }: { label: string }) {
     <div
       className="flex flex-col gap-4 p-5 rounded-lg"
       style={{
-        background: "rgba(58,100,250,0.07)",
-        border: "1px solid rgba(58,100,250,0.2)",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(156,95,224,0.15)",
       }}
     >
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          <CloudShieldIcon />
+          <SupportCheckIcon />
           <span
             className="text-[15px] font-semibold text-white tracking-tight"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            Meltano Connector
+            Meltano Cloud Connector
           </span>
         </div>
         <p
@@ -463,20 +462,7 @@ function CloudSidebarCard({ label }: { label: string }) {
           supported, and tested by Meltano.
         </p>
       </div>
-
-      <a
-        href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
-        style={{
-          background: "#3A64FA",
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-        }}
-      >
-        <CalendarIcon />
-        Book a demo
-      </a>
+      <SidebarCTAButtons />
     </div>
   );
 }
@@ -488,8 +474,8 @@ function CommunitySidebarCard({ label }: { label: string }) {
     <div
       className="flex flex-col gap-4 p-5 rounded-lg"
       style={{
-        background: "rgba(188,122,255,0.07)",
-        border: "1px solid rgba(188,122,255,0.25)",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(156,95,224,0.15)",
       }}
     >
       <div className="flex flex-col gap-2">
@@ -511,9 +497,41 @@ function CommunitySidebarCard({ label }: { label: string }) {
           section below to verify the readiness of this connector.
         </p>
       </div>
+      <SidebarCTAButtons />
     </div>
   );
 }
+
+// ─── Support content ──────────────────────────────────────────────────────────
+
+const CLOUD_SUPPORT_ITEMS = [
+  {
+    title: "Expert support",
+    description:
+      "Direct access to the team that built and maintains Meltano Cloud. Same-day responses during UK business hours. When something breaks, we fix it fast because we know exactly how it works.",
+  },
+  {
+    title: "Rigorously tested",
+    description:
+      "Every connector goes through comprehensive testing and quality checks before production. Daily monitoring catches issues before they hit your pipelines. We don't just wrap open-source taps and hope for the best. We validate, we test, we maintain.",
+  },
+  {
+    title: "No maintenance overhead",
+    description:
+      "API changes. Connector updates. Schema drift. Breaking changes from upstream sources. We handle it all. Your team focuses on using data. Our team focuses on making sure it's there when you need it.",
+  },
+  {
+    title: "Access to Meltano Slack community",
+    description:
+      "Join 5,500+ data engineers and analytics practitioners. The community is active, helpful, and always on. Good for quick questions, sharing patterns, and learning what others are building.",
+  },
+] as const;
+
+const COMMUNITY_SUPPORT_ITEM = {
+  title: "Access to Meltano Slack community",
+  description:
+    "Join 5,500+ data engineers and analytics practitioners. The community is active, helpful, and always on. Good for quick questions, sharing patterns, and learning what others are building.",
+} as const;
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -579,60 +597,12 @@ export default function ConnectorDetailPage() {
             style={{
               fontFamily: "'Hanken Grotesk', sans-serif",
               cursor: "pointer",
+              marginBottom: "16px",
             }}
           >
             <CaretLeftIcon />
             Back to all connectors
           </button>
-
-          {/* ── Header card ────────────────────────────────────────────────── */}
-          <div
-            className="flex gap-4 items-start p-6 md:p-8 rounded-lg mb-8 mt-2 shrink-0 w-full"
-            style={{
-              background: connector ? headerBg : "rgba(255,255,255,0.04)",
-              border: `1px solid ${connector ? headerBorder : "rgba(255,255,255,0.1)"}`,
-            }}
-          >
-            {connector ? (
-              <ConnectorLogo url={connector.logoUrl} label={label} size={46} />
-            ) : (
-              <Skeleton className="w-[46px] h-[46px] rounded shrink-0" />
-            )}
-
-            <div className="flex flex-col gap-2 min-w-0">
-              {/* Name + badge */}
-              <div className="flex flex-col gap-1.5">
-                {connector ? (
-                  <h5
-                    className="text-[24px] font-semibold text-white leading-tight m-0 truncate"
-                    style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
-                  >
-                    {label}
-                  </h5>
-                ) : (
-                  <Skeleton className="h-6 w-36" />
-                )}
-
-                {connector ? (
-                  <TypeBadge isCloud={isCloud} />
-                ) : (
-                  <Skeleton className="h-5 w-24 rounded-full" />
-                )}
-              </div>
-
-              {/* Technical name / variant */}
-              {connector ? (
-                <p
-                  className="text-[14px] text-white/50 leading-normal"
-                  style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
-                >
-                  {connector.name} ({variant} variant)
-                </p>
-              ) : (
-                <Skeleton className="h-4 w-52" />
-              )}
-            </div>
-          </div>
 
           {/* ── Two-column layout ──────────────────────────────────────────── */}
           <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -645,6 +615,45 @@ export default function ConnectorDetailPage() {
                 backdropFilter: "blur(6px)",
               }}
             >
+              <div className="flex gap-4 items-start mb-8  rounded-lg  shrink-0 w-full">
+                {connector ? (
+                  <ConnectorLogo
+                    url={connector.logoUrl}
+                    label={label}
+                    size={46}
+                  />
+                ) : (
+                  <Skeleton className="w-[46px] h-[46px] rounded shrink-0" />
+                )}
+
+                <div className="flex flex-col min-w-0">
+                  {/* Name + badge */}
+                  <div className="flex flex-col gap-1.5">
+                    {connector ? (
+                      <h5
+                        className="text-[24px] font-semibold text-white leading-tight m-0 truncate"
+                        style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
+                      >
+                        {label}
+                      </h5>
+                    ) : (
+                      <Skeleton className="h-6 w-36" />
+                    )}
+                  </div>
+
+                  {/* Technical name / variant */}
+                  {connector ? (
+                    <p
+                      className="text-[14px] text-white leading-normal"
+                      style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
+                    >
+                      {connector.name} ({variant} variant)
+                    </p>
+                  ) : (
+                    <Skeleton className="h-4 w-52" />
+                  )}
+                </div>
+              </div>
               {loading ? (
                 <div className="flex flex-col gap-3">
                   <Skeleton className="h-4 w-full" />
@@ -684,51 +693,70 @@ export default function ConnectorDetailPage() {
                 className="flex flex-col gap-4 p-5 rounded-lg"
                 style={{
                   background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(156,95,224,0.15)",
                 }}
               >
                 <span
-                  className="text-[15px] font-semibold text-white tracking-tight"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
+                  className="text-[20px] font-semibold text-white"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    letterSpacing: "-0.4px",
+                    lineHeight: 1.2,
+                  }}
                 >
                   Support
                 </span>
 
                 {isCloud ? (
-                  <div className="flex flex-col gap-2.5">
-                    {[
-                      "Premium support with issue logging",
-                      "99.99% uptime",
-                      "Slack community",
-                    ].map((item) => (
-                      <div key={item} className="flex items-center gap-2.5">
-                        <CheckIcon />
-                        <span
-                          className="text-[13px] text-white/60"
-                          style={{ fontFamily: "'Inter', sans-serif" }}
-                        >
-                          {item}
-                        </span>
+                  <div className="flex flex-col gap-4">
+                    {CLOUD_SUPPORT_ITEMS.map((item) => (
+                      <div
+                        key={item.title}
+                        className="flex gap-2.5 items-start"
+                      >
+                        <div>
+                          <SupportCheckIcon />
+                        </div>
+                        <div className="flex flex-col gap-1 mt-0.5">
+                          <span
+                            className="text-[16px] font-semibold text-white"
+                            style={{
+                              fontFamily: "'Hanken Grotesk', sans-serif",
+                            }}
+                          >
+                            {item.title}
+                          </span>
+                          <span
+                            className="text-[14px] text-white/80 leading-relaxed"
+                            style={{
+                              fontFamily: "'Hanken Grotesk', sans-serif",
+                            }}
+                          >
+                            {item.description}
+                          </span>
+                        </div>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-2.5">
-                    {[
-                      "Open source & free to use",
-                      "Community supported",
-                      "Slack community",
-                    ].map((item) => (
-                      <div key={item} className="flex items-center gap-2.5">
-                        <CheckIconPurple />
-                        <span
-                          className="text-[13px] text-white/60"
-                          style={{ fontFamily: "'Inter', sans-serif" }}
-                        >
-                          {item}
-                        </span>
-                      </div>
-                    ))}
+                  <div className="flex gap-2.5 items-start">
+                    <div className="pt-0.5">
+                      <CommunityPeopleIcon />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <span
+                        className="text-[16px] font-semibold text-white"
+                        style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
+                      >
+                        {COMMUNITY_SUPPORT_ITEM.title}
+                      </span>
+                      <span
+                        className="text-[14px] text-white/80 leading-relaxed"
+                        style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
+                      >
+                        {COMMUNITY_SUPPORT_ITEM.description}
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>
@@ -739,7 +767,7 @@ export default function ConnectorDetailPage() {
                   className="flex flex-col gap-3 p-5 rounded-lg"
                   style={{
                     background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(156,95,224,0.15)",
                   }}
                 >
                   <span

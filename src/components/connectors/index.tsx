@@ -16,19 +16,15 @@ export type Connector = {
 function CloudIcon() {
   return (
     <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="shrink-0"
     >
       <path
-        d="M11.0833 5.83333C10.7986 4.24479 9.41667 3.08333 7.875 3.08333C6.69792 3.08333 5.66667 3.70833 5.10417 4.66667C3.79167 4.8125 2.77083 5.9375 2.77083 7.29167C2.77083 8.75 3.9375 9.91667 5.39583 9.91667H10.7917C11.9583 9.91667 12.9167 8.95833 12.9167 7.79167C12.9167 6.66667 12.0417 5.75 11.0833 5.83333Z"
-        stroke="#4A64F5"
-        strokeWidth="0.875"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M13 2.5H3C2.73478 2.5 2.48043 2.60536 2.29289 2.79289C2.10536 2.98043 2 3.23478 2 3.5V7C2 10.295 3.595 12.2919 4.93313 13.3869C6.37437 14.5656 7.80813 14.9656 7.87063 14.9825C7.95656 15.0059 8.04719 15.0059 8.13313 14.9825C8.19563 14.9656 9.6275 14.5656 11.0706 13.3869C12.405 12.2919 14 10.295 14 7V3.5C14 3.23478 13.8946 2.98043 13.7071 2.79289C13.5196 2.60536 13.2652 2.5 13 2.5ZM10.855 6.85375L7.355 10.3538C7.30856 10.4002 7.25342 10.4371 7.19272 10.4623C7.13202 10.4874 7.06696 10.5004 7.00125 10.5004C6.93554 10.5004 6.87048 10.4874 6.80978 10.4623C6.74908 10.4371 6.69394 10.4002 6.6475 10.3538L5.1475 8.85375C5.05368 8.75993 5.00097 8.63268 5.00097 8.5C5.00097 8.36732 5.05368 8.24007 5.1475 8.14625C5.24132 8.05243 5.36857 7.99972 5.50125 7.99972C5.63393 7.99972 5.76118 8.05243 5.855 8.14625L7 9.29313L10.1462 6.14625C10.1927 6.09979 10.2479 6.06294 10.3086 6.0378C10.3692 6.01266 10.4343 5.99972 10.5 5.99972C10.5657 5.99972 10.6308 6.01266 10.6914 6.0378C10.7521 6.06294 10.8073 6.09979 10.8538 6.14625C10.9002 6.1927 10.9371 6.24786 10.9622 6.30855C10.9873 6.36925 11.0003 6.4343 11.0003 6.5C11.0003 6.5657 10.9873 6.63075 10.9622 6.69145C10.9371 6.75214 10.9002 6.8073 10.8538 6.85375H10.855Z"
+        fill="white"
       />
     </svg>
   );
@@ -37,19 +33,16 @@ function CloudIcon() {
 function CommunityIcon() {
   return (
     <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="shrink-0"
     >
-      <circle cx="7" cy="4.5" r="2" stroke="#9C5FE0" strokeWidth="0.875" />
       <path
-        d="M3 11C3 9.34315 4.79086 8 7 8C9.20914 8 11 9.34315 11 11"
-        stroke="#9C5FE0"
-        strokeWidth="0.875"
-        strokeLinecap="round"
+        d="M10.2786 12.2269C10.3278 12.3024 10.3557 12.3897 10.3594 12.4797C10.3631 12.5697 10.3423 12.659 10.2995 12.7382C10.2566 12.8174 10.1931 12.8835 10.1157 12.9296C10.0383 12.9757 9.94993 13 9.85986 13.0001H0.638611C0.548546 13 0.460156 12.9757 0.38278 12.9296C0.305403 12.8835 0.241914 12.8174 0.19902 12.7382C0.156125 12.659 0.135418 12.5697 0.139087 12.4797C0.142755 12.3897 0.170663 12.3024 0.219861 12.2269C0.923677 11.1436 1.95892 10.3168 3.17111 9.87006C2.50098 9.42393 1.99222 8.77398 1.72005 8.01634C1.44788 7.2587 1.42675 6.43358 1.65979 5.663C1.89284 4.89242 2.36768 4.21729 3.01409 3.73745C3.66051 3.25761 4.44419 2.99854 5.24924 2.99854C6.05428 2.99854 6.83796 3.25761 7.48438 3.73745C8.1308 4.21729 8.60564 4.89242 8.83868 5.663C9.07172 6.43358 9.0506 7.2587 8.77843 8.01634C8.50625 8.77398 7.99749 9.42393 7.32736 9.87006C8.53955 10.3168 9.57479 11.1436 10.2786 12.2269ZM15.773 12.2176C15.069 11.1388 14.0361 10.3156 12.8274 9.87006C13.6185 9.33716 14.1768 8.52281 14.3886 7.59277C14.6005 6.66274 14.45 5.68692 13.9677 4.86395C13.4855 4.04098 12.7078 3.43271 11.7928 3.16295C10.8779 2.89319 9.89458 2.98223 9.04299 3.41193C9.01042 3.42875 8.98195 3.45251 8.9596 3.48155C8.93724 3.51059 8.92154 3.54419 8.91361 3.57997C8.90568 3.61575 8.90571 3.65283 8.9137 3.6886C8.92169 3.72436 8.93745 3.75793 8.95986 3.78693C9.59309 4.57681 9.95675 5.54871 9.99758 6.56025C10.0384 7.5718 9.75425 8.56984 9.18674 9.40818C9.15005 9.46297 9.1365 9.53003 9.14903 9.59476C9.16155 9.65949 9.19914 9.71666 9.25361 9.75381C9.99354 10.2702 10.627 10.9245 11.1192 11.6807C11.3178 11.9847 11.3989 12.3506 11.3474 12.7101C11.3416 12.7458 11.3436 12.7824 11.3533 12.8173C11.3631 12.8522 11.3803 12.8845 11.4038 12.9121C11.4273 12.9397 11.4565 12.9618 11.4893 12.977C11.5222 12.9922 11.558 13.0001 11.5942 13.0001H15.363C15.4731 13.0001 15.5801 12.9638 15.6675 12.8968C15.7548 12.8298 15.8176 12.7358 15.8461 12.6294C15.8635 12.5595 15.866 12.4867 15.8534 12.4157C15.8408 12.3448 15.8134 12.2772 15.773 12.2176Z"
+        fill="white"
+        fill-opacity="0.7"
       />
     </svg>
   );
@@ -218,16 +211,17 @@ function ConnectorCard({ connector }: { connector: Connector }) {
     <Link
       href={href}
       onClick={handleClick}
-      className="flex items-center gap-2 p-3 border border-white/10 rounded-lg w-full sm:w-[288px] shrink-0 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
+      className="flex items-center gap-3 p-3 rounded-lg w-full sm:w-[270px] shrink-0 hover:brightness-110 transition-all"
+      style={{ background: "rgba(255,255,255,0.11)" }}
     >
-      <div className="bg-white rounded shrink-0 w-[46px] h-[46px] flex items-center justify-center overflow-hidden border border-white/10">
+      <div className="bg-white rounded shrink-0 w-[46px] h-[46px] flex items-center justify-center overflow-hidden">
         {connector.logoUrl ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={connector.logoUrl}
               alt={displayName}
-              className="w-[30px] h-[30px] object-contain"
+              className="w-[24px] h-[24px] object-contain"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 img.style.display = "none";
@@ -252,10 +246,9 @@ function ConnectorCard({ connector }: { connector: Connector }) {
         </p>
         {isCloud ? (
           <span
-            className="inline-flex items-center gap-1 px-1.5 py-1 rounded text-[12px] text-white/80 self-start"
+            className="inline-flex items-center gap-1 px-1.5 py-1 rounded text-[14px] text-white/80 self-start"
             style={{
               fontFamily: "'Hanken Grotesk', sans-serif",
-              background: "rgba(74, 100, 245, 0.2)",
             }}
           >
             <CloudIcon />
@@ -263,14 +256,13 @@ function ConnectorCard({ connector }: { connector: Connector }) {
           </span>
         ) : (
           <span
-            className="inline-flex items-center gap-1 px-1.5 py-1 rounded text-[12px] text-white/80 self-start"
+            className="inline-flex items-center gap-1 px-1.5 py-1 rounded text-[14px] text-white/80 self-start"
             style={{
               fontFamily: "'Hanken Grotesk', sans-serif",
-              background: "rgba(188, 122, 255, 0.15)",
             }}
           >
             <CommunityIcon />
-            Meltano Community
+            Meltano community
           </span>
         )}
       </div>
