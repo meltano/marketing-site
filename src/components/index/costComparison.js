@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Link from "@/components/compat/GatsbyLink"
+import { HubspotMeetingLink } from "@/lib/utils"
 
 const CostComparison = ({ data }) => {
 
@@ -95,7 +96,7 @@ const CostComparison = ({ data }) => {
                     </div>
                     <div className="btnBox">
                         <Link
-                                to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
+                                to={HubspotMeetingLink}
                             className="colorful-btn btn"
                         ><span></span>
                                 Book a demo
@@ -108,7 +109,7 @@ const CostComparison = ({ data }) => {
                             The same <em>connectors</em> <br></br>30 to 40% less cost.
                     </h2>
                     <Link
-                            to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
+                            to={HubspotMeetingLink}
                         className="colorful-btn btn"
                     ><span></span>
                        Book a demo

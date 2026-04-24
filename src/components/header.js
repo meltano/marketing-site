@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Link from "@/components/compat/GatsbyLink";
+import { HubspotMeetingLink } from "@/lib/utils";
 
 const Header = () => {
   const [shrinkMenu, setShrinkMenu] = useState(false);
@@ -779,7 +780,7 @@ const Header = () => {
           </nav>
           <div className="menu-extras">
             <a
-              href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
+              href={HubspotMeetingLink}
               target="_blank"
               id="get-started-btn"
               className="btn clear-btn"

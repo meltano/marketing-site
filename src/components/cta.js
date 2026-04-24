@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from '@/components/compat/GatsbyLink'
+import { HubspotMeetingLink } from '@/lib/utils'
 
 export const CtaIntrigued = () => (
   <div className="cta section">
@@ -12,7 +13,7 @@ export const CtaIntrigued = () => (
           <p className="p2">You haven’t seen nothing yet!</p>
           <div className="cta-banner-buttons">
             <a
-              href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
+              href={HubspotMeetingLink}
               target="_blank"
               className="btn alt-blue-btn"
               rel="noreferrer"
