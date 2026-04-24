@@ -134,7 +134,7 @@ export const HOME_PAGE = `
         }
       }
     }
-    stickyPosts: posts(where: { in: [6058, 6054, 6043] }) {
+    stickyPosts: posts(where: { in: [13086, 27779, 27777] }) {
       nodes {
         id
         databaseId
