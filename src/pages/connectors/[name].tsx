@@ -519,23 +519,23 @@ function CommunitySidebarCard({ label }: { label: string }) {
 
 export default function ConnectorDetailPage() {
   const router = useRouter();
-  const id = router.query.id as string | undefined;
+  const name = router.query.name as string | undefined;
 
   const [connector, setConnector] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!id) return;
+    if (!name) return;
 
     const raw = sessionStorage.getItem("selectedConnector");
     if (raw) {
       const base: Connector = JSON.parse(raw);
-      if (base.id === id) {
+      if (base.name === name) {
         setConnector(base);
         setLoading(false);
       }
     }
-  }, [id]);
+  }, [name]);
 
   const label = connector?.label ?? connector?.name ?? "Connector";
   const variant = connector?.variant ?? connector?.name ?? "";
@@ -557,7 +557,7 @@ export default function ConnectorDetailPage() {
       />
 
       <div
-        className="min-h-screen"
+        className="container"
         style={{ paddingTop: "var(--navbar-height, 80px)" }}
       >
         {/* ── Subtle top gradient ──────────────────────────────────────────── */}
@@ -570,7 +570,7 @@ export default function ConnectorDetailPage() {
           }}
         />
 
-        <div className="relative px-6 md:px-16 lg:px-[120px] pt-10 pb-20">
+        <div className="relative pt-10 pb-20">
           {/* ── Back link ──────────────────────────────────────────────────── */}
           <button
             type="button"
@@ -749,18 +749,6 @@ export default function ConnectorDetailPage() {
                     Resources
                   </span>
                   <div className="flex flex-col gap-2">
-                    {connector.docs && (
-                      <a
-                        href={connector.docs}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-[13px] text-white/60 hover:text-white transition-colors"
-                        style={{ fontFamily: "'Inter', sans-serif" }}
-                      >
-                        <ExternalLinkIcon />
-                        Documentation
-                      </a>
-                    )}
                     {connector.repo && (
                       <a
                         href={connector.repo}

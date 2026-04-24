@@ -80,15 +80,14 @@ function SearchIcon() {
 
 function NoConnectorsFound({ onReset }: { onReset: () => void }) {
   return (
-    <div
-      className="flex items-center justify-center py-10"
-    >
+    <div className="flex items-center justify-center py-10">
       <div
         className="flex flex-col items-center gap-5 px-12 py-10 rounded-xl text-center"
         style={{
           background: "rgba(10, 12, 30, 0.8)",
           border: "1px solid rgba(59, 100, 255, 0.6)",
-          boxShadow: "0 0 32px rgba(59, 100, 255, 0.2), inset 0 0 32px rgba(59, 100, 255, 0.05)",
+          boxShadow:
+            "0 0 32px rgba(59, 100, 255, 0.2), inset 0 0 32px rgba(59, 100, 255, 0.05)",
           maxWidth: 1200,
           maxHeight: 600,
           width: "100%",
@@ -125,10 +124,33 @@ function NoConnectorsFound({ onReset }: { onReset: () => void }) {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[14px] font-medium text-white border border-white/30 hover:border-white/60 hover:bg-white/5 transition-all cursor-pointer"
             style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2.33325 7C2.33325 4.42267 4.42259 2.33333 6.99992 2.33333C8.57992 2.33333 9.97459 3.108 10.8333 4.29167M11.6666 7C11.6666 9.57733 9.57725 11.6667 6.99992 11.6667C5.41992 11.6667 4.02525 10.892 3.16659 9.70833" stroke="white" strokeWidth="1.1" strokeLinecap="round"/>
-              <path d="M9.91675 4.08333L10.8334 4.29167L11.0834 3.20833" stroke="white" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M4.08325 9.91667L3.16659 9.70833L2.91659 10.7917" stroke="white" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.33325 7C2.33325 4.42267 4.42259 2.33333 6.99992 2.33333C8.57992 2.33333 9.97459 3.108 10.8333 4.29167M11.6666 7C11.6666 9.57733 9.57725 11.6667 6.99992 11.6667C5.41992 11.6667 4.02525 10.892 3.16659 9.70833"
+                stroke="white"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+              />
+              <path
+                d="M9.91675 4.08333L10.8334 4.29167L11.0834 3.20833"
+                stroke="white"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M4.08325 9.91667L3.16659 9.70833L2.91659 10.7917"
+                stroke="white"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
             Reset
           </button>
@@ -142,8 +164,20 @@ function NoConnectorsFound({ onReset }: { onReset: () => void }) {
               boxShadow: "0 2px 12px rgba(59, 84, 244, 0.4)",
             }}
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.25 1.75L6.41667 7.58333M12.25 1.75L8.75 12.25L6.41667 7.58333M12.25 1.75L1.75 5.25L6.41667 7.58333" stroke="white" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.25 1.75L6.41667 7.58333M12.25 1.75L8.75 12.25L6.41667 7.58333M12.25 1.75L1.75 5.25L6.41667 7.58333"
+                stroke="white"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
             Get in touch
           </a>
@@ -174,14 +208,18 @@ function LogoPlaceholder({ name }: { name: string }) {
 function ConnectorCard({ connector }: { connector: Connector }) {
   const isCloud = connector.variant === "matatika";
   const displayName = connector.label ?? connector.name;
-  const href = { pathname: `/connectors/${connector.id}` };
+  const href = { pathname: `/connectors/${connector.name}` };
 
   function handleClick() {
     sessionStorage.setItem("selectedConnector", JSON.stringify(connector));
   }
 
   return (
-    <Link href={href} onClick={handleClick} className="flex items-center gap-2 p-3 border border-white/10 rounded-lg w-full sm:w-[280px] shrink-0 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors">
+    <Link
+      href={href}
+      onClick={handleClick}
+      className="flex items-center gap-2 p-3 border border-white/10 rounded-lg w-full sm:w-[288px] shrink-0 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
+    >
       <div className="bg-white rounded shrink-0 w-[46px] h-[46px] flex items-center justify-center overflow-hidden border border-white/10">
         {connector.logoUrl ? (
           <>
@@ -264,7 +302,7 @@ export default function Connectors({ connectors }: ConnectorsProps) {
   useEffect(() => {
     if (!router.isReady || ready) return;
     const q = (router.query.q as string) ?? "";
-    const tab = router.query.tab as string ?? "";
+    const tab = (router.query.tab as string) ?? "";
     if (q) setSearch(q);
     if (tab === "cloud" || tab === "community") setActiveTab(tab as TabValue);
     setReady(true);
@@ -292,12 +330,14 @@ export default function Connectors({ connectors }: ConnectorsProps) {
     const query: Record<string, string> = {};
     if (search && filtered.length > 0) query.q = search;
     if (activeTab !== "all") query.tab = activeTab;
-    router.replace({ pathname: "/connectors", query }, undefined, { shallow: true });
+    router.replace({ pathname: "/connectors", query }, undefined, {
+      shallow: true,
+    });
   }, [search, activeTab, ready, filtered.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div
-      className="px-6 md:px-16 lg:px-[120px] py-8 flex flex-col gap-16"
+      className="container flex flex-col gap-16"
       style={{
         marginTop: "calc(36px + var(--navbar-height, 80px))",
       }}
@@ -321,7 +361,7 @@ export default function Connectors({ connectors }: ConnectorsProps) {
       {/* Controls + Grid */}
       <div className="flex flex-col gap-8 w-full">
         {/* Search */}
-        <div className="flex items-center gap-3 border border-white/10 rounded-lg px-4 py-[14px] w-full sm:w-[280px] bg-white/5">
+        <div className="flex items-center gap-3 border border-white/10 rounded-lg px-4 py-[14px] w-full bg-white/5">
           <SearchIcon />
           <input
             type="text"
@@ -337,8 +377,19 @@ export default function Connectors({ connectors }: ConnectorsProps) {
               className="shrink-0 text-white/30 hover:text-white/70 transition-colors cursor-pointer"
               aria-label="Clear search"
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.5 3.5L3.5 10.5M3.5 3.5L10.5 10.5"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
               </svg>
             </button>
           )}
@@ -377,7 +428,12 @@ export default function Connectors({ connectors }: ConnectorsProps) {
               ))}
             </div>
           ) : (
-            <NoConnectorsFound onReset={() => { setSearch(""); setActiveTab("all"); }} />
+            <NoConnectorsFound
+              onReset={() => {
+                setSearch("");
+                setActiveTab("all");
+              }}
+            />
           )}
         </div>
       </div>

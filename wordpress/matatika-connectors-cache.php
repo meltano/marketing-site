@@ -125,7 +125,7 @@ function matatika_connectors_handler() {
 	);
 
 	// Cache for 1 hour.
-	set_transient( $cache_key, $connectors, HOUR_IN_SECONDS );
+	set_transient( $cache_key, $connectors, DAY_IN_SECONDS );
 
 	return rest_ensure_response( $connectors );
 }
