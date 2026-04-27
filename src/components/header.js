@@ -195,10 +195,13 @@ const Header = () => {
 
           mobileMenuItems.forEach((item) => {
             item.addEventListener("click", () => {
+              const isActive = item.classList.contains("mobile-menu-item--active");
               mobileMenuItems.forEach((i) => {
                 i.classList.remove("mobile-menu-item--active");
               });
-              item.classList.add("mobile-menu-item--active");
+              if (!isActive) {
+                item.classList.add("mobile-menu-item--active");
+              }
             });
           });
         } else if (window.innerWidth > 1024) {
@@ -216,6 +219,16 @@ const Header = () => {
 
       window.addEventListener("resize", () => {
         activateMobileMenu();
+      });
+
+      // Close mobile menu when any nav link is clicked
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          const hamburgerMenu = hamburgerMenuRef.current;
+          if (hamburgerMenu && hamburgerMenu.classList.contains("menu-opened")) {
+            hamburgerMenu.click();
+          }
+        });
       });
 
       return () => {
@@ -481,7 +494,7 @@ const Header = () => {
               </li>
 
               <li className="has-sub hide-d has-one-sub">
-                <span>Pricing</span>
+                <Link to="/pricing/">Pricing</Link>
                 <div className="hop">
                   <ul className="sub">
                     <li className="menu-item--active">

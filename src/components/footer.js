@@ -374,7 +374,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.youtube.com/@matatika"
+                href="https://www.youtube.com/@meltano"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Matatika on YouTube"
@@ -521,7 +521,7 @@ const Footer = () => {
               onSubmit={() => console.log('Submitted!')}
               onReady={form => console.log('Form ready!')}
               loading={<div>Loading...</div>}
-              cssClass="form-subsribe"
+              cssClass="form-subscribe"
               submitButtonClass="form-subscribe-submit"
             />
           </div>
