@@ -213,6 +213,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/data-pipeline-architecture/",
+        destination:
+          "https://meltano.com/blog/data-pipeline-architecture",
+        permanent: true,
+      },
+      {
         source:
           "/how-duckdb-cuts-development-costs-without-touching-production",
         destination:
@@ -261,7 +267,7 @@ const nextConfig: NextConfig = {
       {
         source: "/build-strategy-first-choose-technology-that-deserves-it",
         destination:
-          "https://meltano.com/blog/build-strategy-first-choose-technology-that-deserves-it",
+          "https://meltano.com/blog/build-strategy-first-choose-technology-that-deserves-it-2-2",
         permanent: true,
       },
       {
@@ -354,7 +360,7 @@ const nextConfig: NextConfig = {
       {
         source: "/baidu-etl-connector",
         destination:
-          "https://meltano.com/blog/baidu-etl-connector",
+          "https://meltano.com/blog/baidu-etl-connector-how-mvf-solved-an-unsupported-data-source",
         permanent: true,
       },
       {
