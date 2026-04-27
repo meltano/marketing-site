@@ -1,11 +1,44 @@
 import React, { useState } from 'react'
 
+const PORTAL_ID = '7921409'
+const FORM_ID = '5beb0e30-412f-442b-8179-2a85a3f81d47'
+
 const MailingListBanner = ({ onClose = () => {} }) => {
   const [isVisible, setIsVisible] = useState(true)
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
 
   const handleClose = () => {
     setIsVisible(false)
-    // onClose()
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const res = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [{ name: 'email', value: email }],
+            context: {
+              pageUri: window.location.href,
+              pageName: document.title,
+            },
+          }),
+        }
+      )
+
+      if (!res.ok) throw new Error('Submission failed')
+
+      setStatus('success')
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
   }
 
   if (!isVisible) {
@@ -20,12 +53,31 @@ const MailingListBanner = ({ onClose = () => {} }) => {
           <p>Stay current with all things Meltano</p>
         </div>
 
-        <form className="mainling-list-banner-form">
-          <input type="email" placeholder="Enter your email" required />
-          <button type="submit" className="btn alt-blue-btn">
-            Subscribe
-          </button>
-        </form>
+        {status === 'success' ? (
+          <p className="mailing-list-banner-success">Thanks for subscribing!</p>
+        ) : (
+          <form className="mailing-list-banner-form" onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              disabled={status === 'loading'}
+            />
+            <button
+              type="submit"
+              className="btn alt-blue-btn"
+              disabled={status === 'loading'}
+            >
+              {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+            </button>
+            {status === 'error' && (
+              <p className="mailing-list-banner-error">Something went wrong. Please try again.</p>
+            )}
+          </form>
+        )}
+
         <button
           type="button"
           className="close-mailing-banner"

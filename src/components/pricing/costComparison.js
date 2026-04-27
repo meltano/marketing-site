@@ -28,7 +28,7 @@ const CostComparison = ({ data }) => {
               </p>
             </div>
             <div className='btnGroup'>
-                <div className="toggle-container">
+                <div className="toggle-container pricing-toggle-container">
                 {tabs.map((tab, index) => (
                     <button
                     key={index}
