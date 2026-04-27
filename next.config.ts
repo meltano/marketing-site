@@ -117,7 +117,7 @@ const nextConfig: NextConfig = {
         source:
           "/7-hours-of-firefighting-what-google-clouds-june-outage-really-cost-data-teams",
         destination:
-          "https://meltano.com/blog/7-hours-of-firefighting-what-google-clouds-june-outage-really-cost-data-teams",
+          "https://meltano.com/blog/7-hours-of-firefighting-what-google-clouds-june-outage-really-cost-data-teams-2",
         permanent: true,
       },
       {
@@ -264,154 +264,152 @@ const nextConfig: NextConfig = {
           "https://meltano.com/blog/build-strategy-first-choose-technology-that-deserves-it",
         permanent: true,
       },
-
-      // Different slugs (Matatika slug -> Meltano slug)
       {
         source: "/why-saas-datapricing-modelsare-costing-morethan-they-should",
         destination:
-          "https://meltano.com/blog/why-saas-data-pricing-models-are-costing-more-than-they-should",
+          "https://meltano.com/blog/why-saas-datapricing-modelsare-costing-morethan-they-should",
         permanent: true,
       },
       {
         source:
           "/transforming-manufacturing-data-management-with-matatikas-etl-solution",
         destination:
-          "https://meltano.com/blog/transforming-manufacturing-data-management-with-meltanos-etl-solution",
+          "https://meltano.com/blog/transforming-manufacturing-data-management-with-matatikas-etl-solution",
         permanent: true,
       },
       {
         source: "/zero-risk-etl-transformation",
         destination:
-          "https://meltano.com/blog/how-to-deliver-a-zero-risk-etl-transformation",
+          "https://meltano.com/blog/zero-risk-etl-transformation",
         permanent: true,
       },
       {
         source: "/crypto-inspired-data-strategy",
         destination:
-          "https://meltano.com/blog/crypto-inspired-data-strategy-what-top-teams-do-differently",
+          "https://meltano.com/blog/crypto-inspired-data-strategy",
         permanent: true,
       },
       {
         source: "/why-data-migration-tools-fail",
         destination:
-          "https://meltano.com/blog/why-data-migration-tools-fail-heres-how-to-make-them-work",
+          "https://meltano.com/blog/why-data-migration-tools-fail",
         permanent: true,
       },
       {
         source: "/data-analytics-strategy-quantum-thinking",
         destination:
-          "https://meltano.com/blog/data-analytics-strategy-how-quantum-thinking-enables-change-without-disruption",
+          "https://meltano.com/blog/data-analytics-strategy-quantum-thinking",
         permanent: true,
       },
       {
         source: "/switch-etl-tools-risk-free-migration",
         destination:
-          "https://meltano.com/blog/trapped-by-your-etl-tool-how-mirror-mode-helps-you-switch-etl-tools-without-risk",
+          "https://meltano.com/blog/switch-etl-tools-risk-free-migration",
         permanent: true,
       },
       {
         source: "/cut-etl-costs-without-disruption",
         destination:
-          "https://meltano.com/blog/how-to-cut-etl-costs-without-disruption-proven-strategies-from-data-leaders",
+          "https://meltano.com/blog/cut-etl-costs-without-disruption",
         permanent: true,
       },
       {
         source:
           "/etl-is-now-a-commodity-so-why-are-you-still-paying-a-premium",
         destination:
-          "https://meltano.com/blog/etl-commodity-why-are-you-still-paying-a-premium",
+          "https://meltano.com/blog/etl-is-now-a-commodity-so-why-are-you-still-paying-a-premium",
         permanent: true,
       },
       {
         source: "/data-migration-framework",
         destination:
-          "https://meltano.com/blog/breaking-free-from-costly-data-migration-framework-cycles",
+          "https://meltano.com/blog/data-migration-framework",
         permanent: true,
       },
       {
         source: "/column-vs-row-etl-pricing",
         destination:
-          "https://meltano.com/blog/column-vs-row-why-its-time-to-rethink-how-you-pay-for-etl",
+          "https://meltano.com/blog/column-vs-row-etl-pricing",
         permanent: true,
       },
       {
         source: "/stop-scaling-what-you-dont-understand",
         destination:
-          "https://meltano.com/blog/stop-scaling-what-you-dont-understand-data-platform-rebuild",
+          "https://meltano.com/blog/stop-scaling-what-you-dont-understand",
         permanent: true,
       },
       {
         source:
           "/the-little-bike-company-boosts-monthly-productivity-by-20-with-matatikas-streamlined-solution",
         destination:
-          "https://meltano.com/blog/the-little-bike-company-boosts-monthly-productivity-by-20-with-meltanos-streamlined-solution",
+          "https://meltano.com/blog/the-little-bike-company-boosts-monthly-productivity-by-20-with-matatikas-streamlined-solution",
         permanent: true,
       },
       {
         source: "/how-to-do-more-with-mixpanel-joined-up-analytics",
         destination:
-          "https://meltano.com/blog/how-to-do-even-more-with-mixpanel-data",
+          "https://meltano.com/blog/how-to-do-more-with-mixpanel-joined-up-analytics",
         permanent: true,
       },
       {
         source: "/baidu-etl-connector",
         destination:
-          "https://meltano.com/blog/baidu-etl-connector-how-mvf-solved-an-unsupported-data-source",
+          "https://meltano.com/blog/baidu-etl-connector",
         permanent: true,
       },
       {
         source: "/economics-of-the-modern-data-stack",
         destination:
-          "https://meltano.com/blog/the-economics-of-the-modern-data-stack",
+          "https://meltano.com/blog/economics-of-the-modern-data-stack",
         permanent: true,
       },
       {
         source: "/google-sheets-stop-manually-uploading-spreadsheets",
         destination:
-          "https://meltano.com/blog/stop-manually-uploading-spreadsheets-5-high-impact-use-cases-and-how-resident-advisor-fixed-it",
+          "https://meltano.com/blog/google-sheets-stop-manually-uploading-spreadsheets",
         permanent: true,
       },
       {
         source: "/smart-way-connect-mixpanel-revenue-data",
         destination:
-          "https://meltano.com/blog/the-smart-way-to-connect-mixpanel-to-your-revenue-data",
+          "https://meltano.com/blog/smart-way-connect-mixpanel-revenue-data",
         permanent: true,
       },
       {
         source: "/ai-adoption-hypebeast",
         destination:
-          "https://meltano.com/blog/how-hypebeast-reached-97-ai-adoption-without-fear-or-layoffs",
+          "https://meltano.com/blog/ai-adoption-hypebeast",
         permanent: true,
       },
       {
         source: "/scale-mixpanel-data-efficiently-without-spiralling-costs",
         destination:
-          "https://meltano.com/blog/how-to-scale-mixpanel-data-efficiently-without-spiralling-costs",
+          "https://meltano.com/blog/scale-mixpanel-data-efficiently-without-spiralling-costs",
         permanent: true,
       },
       {
         source:
           "/three-things-data-leaders-should-kill-before-building-another-dashboard",
         destination:
-          "https://meltano.com/blog/three-things-every-data-leader-should-kill-before-building-another-dashboard",
+          "https://meltano.com/blog/three-things-data-leaders-should-kill-before-building-another-dashboard",
         permanent: true,
       },
       {
         source: "/bi-worst-roi-modern-data-stack-service-trap",
         destination:
-          "https://meltano.com/blog/bi-has-the-worst-roi-in-the-modern-data-stack-how-to-escape-the-service-trap-and-drive-real-decisions",
+          "https://meltano.com/blog/bi-worst-roi-modern-data-stack-service-trap",
         permanent: true,
       },
       {
         source: "/etl-vendor-connectors",
         destination:
-          "https://meltano.com/blog/when-your-etl-vendor-doesnt-support-the-connectors-you-need",
+          "https://meltano.com/blog/etl-vendor-connectors",
         permanent: true,
       },
       {
         source: "/high-performance-data-teams-people-not-tools",
         destination:
-          "https://meltano.com/blog/building-high-performance-data-teams-starts-with-people-not-tools",
+          "https://meltano.com/blog/high-performance-data-teams-people-not-tools",
         permanent: true,
       },
     ];

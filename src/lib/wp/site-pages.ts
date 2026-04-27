@@ -625,15 +625,26 @@ const MOCK_BLOG_POST: BlogPostPageData = {
   next: null,
 };
 
+type SlugPage = {
+  posts?: {
+    nodes: { slug?: string }[];
+    pageInfo: { hasNextPage: boolean; endCursor: string };
+  };
+};
+
 export async function getBlogPostSlugs(): Promise<string[]> {
   if (!isWpGraphqlFetchEnabled()) return [];
   try {
-    const raw = await wpFetch<{
-      posts?: { nodes: { slug?: string }[] };
-    }>(Q.BLOG_POST_SLUGS);
-    return (raw.posts?.nodes || [])
-      .map((n) => n.slug)
-      .filter((s): s is string => Boolean(s));
+    const slugs: string[] = [];
+    let after: string | null = null;
+    do {
+      const raw: SlugPage = await wpFetch<SlugPage>(Q.BLOG_POST_SLUGS, after ? { after } : {});
+      const nodes = raw.posts?.nodes ?? [];
+      slugs.push(...nodes.map((n: { slug?: string }) => n.slug).filter((s: string | undefined): s is string => Boolean(s)));
+      const pageInfo = raw.posts?.pageInfo;
+      after = pageInfo?.hasNextPage ? pageInfo.endCursor : null;
+    } while (after);
+    return slugs;
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.warn("WPGraphQL blog post slugs failed, returning no paths:", msg);
