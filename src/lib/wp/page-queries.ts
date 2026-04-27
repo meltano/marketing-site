@@ -451,14 +451,10 @@ export const BLOG_PAGE = `
 `;
 
 export const BLOG_POST_SLUGS = `
-  query BlogPostSlugs($after: String) {
-    posts(first: 100, after: $after, where: { status: PUBLISH }) {
+  query BlogPostSlugs {
+    posts(first: 200, where: { status: PUBLISH }) {
       nodes {
         slug
-      }
-      pageInfo {
-        hasNextPage
-        endCursor
       }
     }
   }
