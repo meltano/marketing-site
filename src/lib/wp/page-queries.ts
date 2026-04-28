@@ -433,7 +433,16 @@ export const BLOG_PAGE = `
         blogHero { blogHeroTitle blogHeroDescription blogHeroSubDescription }
       }
     }
-    posts(first: 200, where: { status: PUBLISH }) {
+    categories(first: 100, where: { hideEmpty: true }) {
+      nodes { name }
+    }
+  }
+`;
+
+export const BLOG_POSTS_PAGE = `
+  query BlogPostsPage($after: String) {
+    posts(first: 100, after: $after, where: { status: PUBLISH }) {
+      pageInfo { hasNextPage endCursor }
       nodes {
         id databaseId uri title excerpt date
         posts { shortDescription longDescription }
@@ -444,15 +453,13 @@ export const BLOG_PAGE = `
         }
       }
     }
-    categories(first: 100, where: { hideEmpty: true }) {
-      nodes { name }
-    }
   }
 `;
 
 export const BLOG_POST_SLUGS = `
-  query BlogPostSlugs {
-    posts(first: 200, where: { status: PUBLISH }) {
+  query BlogPostSlugs($after: String) {
+    posts(first: 100, after: $after, where: { status: PUBLISH }) {
+      pageInfo { hasNextPage endCursor }
       nodes {
         slug
       }

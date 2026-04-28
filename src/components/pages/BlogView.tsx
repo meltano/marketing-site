@@ -122,13 +122,13 @@ export default function BlogView({ data }: BlogViewProps) {
   const allCategories = data.allWpCategory.nodes;
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [numPosts, setNumPosts] = useState(9);
+  const [numPosts, setNumPosts] = useState(10);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Guard: don't write to URL before we've read from it (avoids wiping params on first render)
   const initialized = useRef(false);
   // Always-current values for use inside debounce callbacks (avoids stale closures)
-  const stateRef = useRef({ searchQuery: "", selectedCategory: null as string | null, numPosts: 9 });
+  const stateRef = useRef({ searchQuery: "", selectedCategory: null as string | null, numPosts: 10 });
   stateRef.current = { searchQuery, selectedCategory, numPosts };
 
   // Restore filter state from URL on mount — this is what makes back-navigation work
@@ -150,19 +150,19 @@ export default function BlogView({ data }: BlogViewProps) {
     const query: Record<string, string> = {};
     if (s) query.s = s;
     if (category) query.category = category;
-    if (posts > 9) query.posts = String(posts);
+    if (posts > 10) query.posts = String(posts);
     router.replace({ pathname: router.pathname, query }, undefined, { shallow: true });
   };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const category = e.target.value === "show all" ? null : e.target.value;
     setSelectedCategory(category);
-    setNumPosts(9);
-    pushToUrl(searchQuery, category, 9);
+    setNumPosts(10);
+    pushToUrl(searchQuery, category, 10);
   };
 
   const handleLoadMoreClick = () => {
-    const n = numPosts + 9;
+    const n = numPosts + 10;
     setNumPosts(n);
     pushToUrl(searchQuery, selectedCategory, n);
   };
