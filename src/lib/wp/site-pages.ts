@@ -498,11 +498,29 @@ export async function getNotFoundData() {
   });
 }
 
+type BlogPostsPageResult = {
+  posts?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: Record<string, unknown>[] };
+};
+
+async function fetchAllBlogPosts(): Promise<Record<string, unknown>[]> {
+  const allNodes: Record<string, unknown>[] = [];
+  let cursor: string | null = null;
+  do {
+    const page: BlogPostsPageResult = await wpFetch<BlogPostsPageResult>(
+      Q.BLOG_POSTS_PAGE,
+      cursor ? { after: cursor } : {}
+    );
+    const nodes = page.posts?.nodes || [];
+    allNodes.push(...nodes);
+    cursor = page.posts?.pageInfo.hasNextPage ? page.posts.pageInfo.endCursor : null;
+  } while (cursor);
+  return allNodes;
+}
+
 export async function getBlogData() {
   return withWpFallback("blog index", MOCK_BLOG, async () => {
     const raw = await wpFetch<{
       pages?: { nodes: Record<string, unknown>[] };
-      posts?: { nodes: Record<string, unknown>[] };
       categories?: { nodes: { name?: string }[] };
     }>(Q.BLOG_PAGE);
     const blogNode = raw.pages?.nodes?.[0];
@@ -511,7 +529,8 @@ export async function getBlogData() {
     const fi = normalizedBlog.featuredBlogImage as Parameters<typeof mapFeaturedImageField>[0];
     normalizedBlog.featuredBlogImage = mapFeaturedImageField(fi);
 
-    const sortedPosts = sortPostsByDateDesc(raw.posts?.nodes || []);
+    const allPostNodes = await fetchAllBlogPosts();
+    const sortedPosts = sortPostsByDateDesc(allPostNodes);
     const latestNode = sortedPosts[0];
     const latestPost = {
       edges: latestNode
@@ -628,12 +647,22 @@ const MOCK_BLOG_POST: BlogPostPageData = {
 export async function getBlogPostSlugs(): Promise<string[]> {
   if (!isWpGraphqlFetchEnabled()) return [];
   try {
-    const raw = await wpFetch<{
-      posts?: { nodes: { slug?: string }[] };
-    }>(Q.BLOG_POST_SLUGS);
-    return (raw.posts?.nodes || [])
-      .map((n) => n.slug)
-      .filter((s): s is string => Boolean(s));
+    type SlugsPageResult = {
+      posts?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: { slug?: string }[] };
+    };
+    const slugs: string[] = [];
+    let cursor: string | null = null;
+    do {
+      const page: SlugsPageResult = await wpFetch<SlugsPageResult>(
+        Q.BLOG_POST_SLUGS,
+        cursor ? { after: cursor } : {}
+      );
+      for (const n of page.posts?.nodes || []) {
+        if (n.slug) slugs.push(n.slug);
+      }
+      cursor = page.posts?.pageInfo.hasNextPage ? page.posts.pageInfo.endCursor : null;
+    } while (cursor);
+    return slugs;
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.warn("WPGraphQL blog post slugs failed, returning no paths:", msg);
