@@ -8357,6 +8357,7 @@ input.tgg-title {
 
 .dark-blog .blog-content code,
 .dark-blog .blog-content p,
+.dark-blog .blog-content details,
 .dark-blog .blog-content ul,
 .dark-blog .blog-content ol,
 .dark-blog .blog-content li {
@@ -8370,7 +8371,9 @@ input.tgg-title {
 
 .dark-blog .blog-content .wp-block-code code {
   border: none;
-  padding: 20px;
+  padding: 20px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  margin-bottom: 8px !important;
 }
 
 .dark-blog .blog-content code {
@@ -8382,6 +8385,14 @@ input.tgg-title {
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   border-radius: 6px;
   padding: 2px;
+}
+
+.dark-blog .blog-content details p {
+  padding-left: 20px;
+}
+
+.dark-blog .blog-content details summary {
+  cursor: pointer;
 }
 
 .dark-blog .blog-content hr {
