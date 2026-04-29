@@ -705,6 +705,101 @@ export async function getBlogPostData(slug: string): Promise<BlogPostPageData | 
   }
 }
 
+export async function getCaseStudiesData() {
+  return withWpFallback("case studies index", MOCK_CASE_STUDIES, async () => {
+    const raw = await wpFetch<{
+      pages?: { nodes: Record<string, unknown>[] };
+      posts?: { nodes: Record<string, unknown>[] };
+    }>(Q.CASE_STUDIES_PAGE);
+
+    const pageNode = raw.pages?.nodes?.[0];
+    if (!pageNode) throw new Error('No WordPress page with title "Case Study"');
+    const normalizedPage = { ...pageNode } as Record<string, unknown>;
+    const fi = normalizedPage.featuredCaseStudyImage as Parameters<typeof mapFeaturedImageField>[0];
+    normalizedPage.featuredCaseStudyImage = mapFeaturedImageField(fi);
+
+    const sortedPosts = sortPostsByDateDesc(raw.posts?.nodes || []);
+    const allPosts = sortedPosts.map((p) => normalizePostNode(p as Record<string, unknown>));
+    const allCaseStudies = {
+      edges: allPosts.map((post) => ({ post })),
+    };
+
+    const latestNode = sortedPosts[0];
+    const latestCaseStudy = {
+      edges: latestNode
+        ? [{ node: normalizePostNodeLatestDate(latestNode as Record<string, unknown>) }]
+        : [],
+    };
+    const allCaseStudyCategory = {
+      nodes: Array.from(
+        new Set(
+          allPosts
+            .flatMap((post) => post.categories.nodes.map((cat) => cat.name))
+            .filter((name): name is string => Boolean(name && name !== "Uncategorized"))
+        )
+      ).map((name) => ({ name })),
+    };
+
+    return {
+      caseStudiesPage: { nodes: [normalizedPage] },
+      latestCaseStudy,
+      allCaseStudies,
+      allCaseStudyCategory,
+    };
+  });
+}
+
+export async function getCaseStudySlugs(): Promise<string[]> {
+  if (!isWpGraphqlFetchEnabled()) return [];
+  try {
+    const raw = await wpFetch<{
+      posts?: { nodes: Record<string, unknown>[] };
+    }>(Q.CASE_STUDY_SLUGS);
+    return (raw.posts?.nodes || [])
+      .map((n) => n.slug)
+      .filter((s): s is string => Boolean(s));
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL case study slugs failed, returning no paths:", msg);
+    return [];
+  }
+}
+
+export async function getCaseStudyData(slug: string): Promise<BlogPostPageData | null> {
+  const slugClean = decodeURIComponent(slug.replace(/^\/+|\/+$/g, "").split("/").pop() || slug);
+  if (!isWpGraphqlFetchEnabled()) {
+    return MOCK_CASE_STUDY_POST;
+  }
+
+  try {
+    const raw = await wpFetch<{
+      post?: Record<string, unknown> | null;
+      posts?: { nodes: Record<string, unknown>[] };
+    }>(Q.CASE_STUDY_PAGE, { slug: slugClean });
+
+
+    if (!raw.post) return null;
+
+    const post = normalizeBlogPostFull(raw.post);
+    const sorted = sortPostsByDateDesc((raw.posts?.nodes || []));
+    const currentSlug = (raw.post as { slug?: string }).slug || slugClean;
+    const { previous, next } = adjacentNavPosts(
+      sorted.map((p) => ({
+        slug: (p as { slug?: string }).slug,
+        uri: (p as { uri?: string }).uri,
+        title: (p as { title?: string }).title,
+      })),
+      currentSlug
+    );
+
+    return { post, previous, next };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL case study failed, using mock:", msg);
+    return MOCK_CASE_STUDY_POST;
+  }
+}
+
 const MOCK_ABOUT = {
   about: {
     nodes: [
@@ -959,4 +1054,41 @@ const MOCK_BLOG = {
   latestPost: { edges: [] },
   allWpPost: { edges: [] },
   allWpCategory: { nodes: [] },
+};
+
+const MOCK_CASE_STUDY_POST: BlogPostPageData = {
+  post: normalizeBlogPostFull({
+    id: "mock-cs",
+    uri: "/sample-case-study/",
+    title: "Sample case study",
+    excerpt: "<p>Excerpt</p>",
+    content:
+      "<p>WordPress content loads here when <code>WPGRAPHQL_URL</code> is set.</p>",
+    date: "2026-01-01T12:00:00",
+    categories: { nodes: [{ name: "Customer story", uri: "/category/customer-story/" }] },
+    author: { node: { name: "Author", avatar: { url: "/assets/img/ogimg.png" } } },
+    featuredImage: null,
+  }),
+  previous: null,
+  next: null,
+};
+
+const MOCK_CASE_STUDIES = {
+  caseStudiesPage: {
+    nodes: [
+      {
+        title: "Case Studies",
+        metadata: { metaTitle: "Case Studies", metaDescription: "" },
+        featuredCaseStudyImage: null,
+        themePicker: { themePicker: "" },
+        caseStudyHero: {
+          caseStudyHeroTitle: "Case Studies",
+          caseStudyHeroDescription: "",
+        },
+      },
+    ],
+  },
+  latestCaseStudy: { edges: [] },
+  allCaseStudies: { edges: [] },
+  allCaseStudyCategory: { nodes: [] },
 };

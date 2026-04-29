@@ -10,6 +10,7 @@ import "@/styles/globals.css";
 const ROUTES_TO_PREFETCH = [
   "/",
   "/blog",
+  "/case-studies",
   "/product",
   "/about",
   "/pricing",

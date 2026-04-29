@@ -18,6 +18,7 @@ import PartnersIcon from '../assets/img/footerpartnersicon.svg'
 import ProductIcon from '../assets/img/footerproducticon.svg'
 import FooterImg from '../assets/img/footer.svg'
 import contact from '../assets/img/contacticon.svg'
+import CaseStudyIcon from '../assets/img/footer-casestudy.svg'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
 Modal.defaultStyles.overlay.zIndex = '99999'
@@ -89,8 +90,16 @@ const footerData = [
         icon: BlogIcon,
         desc: 'Stay up to date on Meltano & data engineering',
       },
+      {
+        id: 3,
+        title: 'Case studies',
+        url: '/case-studies/',
+        icon: CaseStudyIcon,
+        desc: 'Real-world stories from teams building with Meltano',
+   
+      },
       // {
-      //   id: 3,
+      //   id: 4,
       //   title: 'Partners',
       //   url: '/partners/',
       //   icon: PartnersIcon,

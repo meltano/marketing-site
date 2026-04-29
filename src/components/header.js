@@ -679,6 +679,50 @@ const Header = () => {
                     <li>
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
+                          <span className="brackets">Success</span> stories
+                        </p>
+                        <p className="submenu-subtitle title-inline">
+                        Real-world stories from teams building with Meltano
+                        </p>
+                      </div>
+                      <Link to="/case-studies/">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="36"
+                          height="37"
+                          viewBox="0 0 36 37"
+                          fill="none"
+                        >
+                          <rect
+                            y="0.257812"
+                            width="36"
+                            height="36"
+                            rx="18"
+                            fill="#E9E5FB"
+                          />
+                          <path
+                            d="M11 12.2578H25C25.5523 12.2578 26 12.7055 26 13.2578V24.2578C26 24.8101 25.5523 25.2578 25 25.2578H11C10.4477 25.2578 10 24.8101 10 24.2578V13.2578C10 12.7055 10.4477 12.2578 11 12.2578Z"
+                            stroke="#311772"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M14 17.2578H22M14 20.2578H19"
+                            stroke="#311772"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        <div className="header-list-item">
+                          <p className="header-list-title">Case studies</p>
+                          <p className="header-list-info">
+                            See how customers use Matatika in production
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                    <li>
+                      <div className="submenu-info">
+                        <p className="submenu-title title-inline">
                           Meltano <span className="brackets">Partners</span>
                         </p>
                         <p className="submenu-subtitle title-inline">
