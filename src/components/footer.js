@@ -19,6 +19,7 @@ import ProductIcon from '../assets/img/footerproducticon.svg'
 import FooterImg from '../assets/img/footer.svg'
 import contact from '../assets/img/contacticon.svg'
 import CaseStudyIcon from '../assets/img/footer-casestudy.svg'
+import PodcastIcon from '../assets/img/footerpodcasticon.svg'
 
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
 Modal.defaultStyles.overlay.zIndex = '99999'
@@ -96,10 +97,16 @@ const footerData = [
         url: '/case-studies/',
         icon: CaseStudyIcon,
         desc: 'Real-world stories from teams building with Meltano',
-   
+      },
+      {
+        id: 4,
+        title: 'Podcast',
+        url: '/podcasts/',
+        icon: PodcastIcon,
+        desc: 'Conversations with data engineers and practitioners',
       },
       // {
-      //   id: 4,
+      //   id: 5,
       //   title: 'Partners',
       //   url: '/partners/',
       //   icon: PartnersIcon,
