@@ -244,6 +244,15 @@ export default function BlogView({ data }: BlogViewProps) {
             </div>
 
             <div id="blog-results" className="blog-list">
+              {pool.length === 0 && (
+                <div className="blog-no-results">
+                  <p className="blog-no-results__message">
+                    {searchQuery
+                      ? `No results for "${searchQuery}"${selectedCategory ? ` in "${selectedCategory}"` : ""}. Try a different search term or topic.`
+                      : `No posts found${selectedCategory ? ` in "${selectedCategory}"` : ""}. Try selecting a different topic.`}
+                  </p>
+                </div>
+              )}
               {visiblePosts.map((post, index) => {
                 const imgUrl = post.featuredImage?.node?.localFile?.publicURL;
                 const isFeatured = index === 0;

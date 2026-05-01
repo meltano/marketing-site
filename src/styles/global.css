@@ -7434,6 +7434,21 @@ input.tgg-title {
   margin-top: 55px;
 }
 
+.blog-no-results__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-white, #fff);
+}
+
+.blog-no-results__message {
+  font-size: 1rem;
+  opacity: 0.65;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+}
+
 .blog-list-divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.12);
