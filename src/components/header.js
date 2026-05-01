@@ -490,6 +490,9 @@ const Header = () => {
               </li>
 
               <li className="hide-m">
+                <Link to="/connectors/">Connectors</Link>
+              </li>
+              <li className="hide-m">
                 <Link to="/pricing/">Pricing</Link>
               </li>
 
