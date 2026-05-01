@@ -607,7 +607,7 @@ const Header = () => {
                           Join 5,500+ data professionals on Slack and GitHub
                         </p>
                       </div>
-                      <Link to="/community/" target="_blank">
+                      <Link to="/community/">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="36"
