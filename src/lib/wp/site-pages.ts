@@ -4,10 +4,23 @@ import {
   isWpGraphqlFetchEnabled,
   mapFeaturedImageField,
   mapMediaToGatsby,
+  wpCachedFetch,
   wpFetch,
 } from "@/lib/wordpress";
 import * as Q from "@/lib/wp/page-queries";
 import { mediaToLocalChildSharp } from "@/lib/wp/wp-map";
+
+// Module-level process cache — stores the in-flight Promise so all concurrent
+// getStaticProps calls share a single fetch, preventing thundering-herd 504s/429s.
+const _processCache: {
+  posts: Promise<Record<string, unknown>[]> | null;
+  podcasts: Promise<Record<string, unknown>[]> | null;
+  caseStudies: Promise<Record<string, unknown>[]> | null;
+} = {
+  posts: null,
+  podcasts: null,
+  caseStudies: null,
+};
 
 function formatWpDate(iso: string | null | undefined, fmt: string): string {
   if (!iso) return "";
@@ -502,7 +515,17 @@ type BlogPostsPageResult = {
   posts?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: Record<string, unknown>[] };
 };
 
-async function fetchAllBlogPosts(): Promise<Record<string, unknown>[]> {
+async function _doFetchAllBlogPosts(): Promise<Record<string, unknown>[]> {
+  try {
+    const cached = await wpCachedFetch<{ posts?: { nodes: Record<string, unknown>[] } }>('posts');
+    if (cached.posts?.nodes?.length) {
+      console.log(`[cache] HIT: /custom/v1/posts (${cached.posts.nodes.length} posts)`);
+      return cached.posts.nodes;
+    }
+  } catch (err) {
+    console.warn('[cache] MISS: /custom/v1/posts —', err instanceof Error ? err.message : err);
+  }
+
   const allNodes: Record<string, unknown>[] = [];
   let cursor: string | null = null;
   do {
@@ -515,6 +538,11 @@ async function fetchAllBlogPosts(): Promise<Record<string, unknown>[]> {
     cursor = page.posts?.pageInfo.hasNextPage ? page.posts.pageInfo.endCursor : null;
   } while (cursor);
   return allNodes;
+}
+
+function fetchAllBlogPosts(): Promise<Record<string, unknown>[]> {
+  if (!_processCache.posts) _processCache.posts = _doFetchAllBlogPosts();
+  return _processCache.posts;
 }
 
 export async function getBlogData() {
@@ -647,6 +675,13 @@ const MOCK_BLOG_POST: BlogPostPageData = {
 export async function getBlogPostSlugs(): Promise<string[]> {
   if (!isWpGraphqlFetchEnabled()) return [];
   try {
+    const cached = await wpCachedFetch<{ posts?: { nodes: { slug?: string }[] } }>('posts');
+    const slugs = (cached.posts?.nodes || []).map((n) => n.slug).filter((s): s is string => Boolean(s));
+    if (slugs.length) return slugs;
+  } catch {
+    // fall through to WPGraphQL
+  }
+  try {
     type SlugsPageResult = {
       posts?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: { slug?: string }[] };
     };
@@ -673,10 +708,32 @@ export async function getBlogPostSlugs(): Promise<string[]> {
 export async function getBlogPostData(slug: string): Promise<BlogPostPageData | null> {
   const slugClean = decodeURIComponent(slug.replace(/^\/+|\/+$/g, "").split("/").pop() || slug);
 
-  if (!isWpGraphqlFetchEnabled()) {
-    return MOCK_BLOG_POST;
+  if (!isWpGraphqlFetchEnabled()) return MOCK_BLOG_POST;
+
+  try {
+    // Fetch all posts from batch cache (already in _memCache if getStaticPaths ran first).
+    // Find the target post by slug — zero individual slug API calls.
+    const allNodes = await fetchAllBlogPosts();
+    const postNode = allNodes.find((n) => (n as { slug?: string }).slug === slugClean);
+
+    if (postNode) {
+      const post = normalizeBlogPostFull(postNode);
+      const sorted = sortPostsByDateDesc(allNodes);
+      const { previous, next } = adjacentNavPosts(
+        sorted.map((p) => ({
+          slug: (p as { slug?: string }).slug,
+          uri: (p as { uri?: string }).uri,
+          title: (p as { title?: string }).title,
+        })),
+        slugClean
+      );
+      return { post, previous, next };
+    }
+  } catch (err) {
+    console.warn(`[cache] blog batch failed for "${slugClean}", falling back to WPGraphQL —`, err instanceof Error ? err.message : err);
   }
 
+  // WPGraphQL fallback (e.g. new post not yet in plugin cache)
   try {
     const raw = await wpFetch<{
       post?: Record<string, unknown> | null;
@@ -696,7 +753,6 @@ export async function getBlogPostData(slug: string): Promise<BlogPostPageData | 
       })),
       currentSlug
     );
-
     return { post, previous, next };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
@@ -705,12 +761,37 @@ export async function getBlogPostData(slug: string): Promise<BlogPostPageData | 
   }
 }
 
+async function _doFetchAllCaseStudies(): Promise<Record<string, unknown>[]> {
+  try {
+    const cached = await wpCachedFetch<{ posts?: { nodes: Record<string, unknown>[] } }>('case-studies');
+    if (cached.posts?.nodes?.length) {
+      console.log(`[cache] HIT: /custom/v1/case-studies (${cached.posts.nodes.length} posts)`);
+      return cached.posts.nodes;
+    }
+  } catch (err) {
+    console.warn('[cache] MISS: /custom/v1/case-studies —', err instanceof Error ? err.message : err);
+  }
+
+  try {
+    const raw = await wpFetch<{ posts?: { nodes: Record<string, unknown>[] } }>(Q.CASE_STUDY_SLUGS);
+    return raw.posts?.nodes ?? [];
+  } catch (err) {
+    console.error("[case-studies] query failed:", err instanceof Error ? err.message : err);
+    return [];
+  }
+}
+
+function fetchAllCaseStudies(): Promise<Record<string, unknown>[]> {
+  if (!_processCache.caseStudies) _processCache.caseStudies = _doFetchAllCaseStudies();
+  return _processCache.caseStudies;
+}
+
 export async function getCaseStudiesData() {
   return withWpFallback("case studies index", MOCK_CASE_STUDIES, async () => {
-    const raw = await wpFetch<{
-      pages?: { nodes: Record<string, unknown>[] };
-      posts?: { nodes: Record<string, unknown>[] };
-    }>(Q.CASE_STUDIES_PAGE);
+    const [allPostNodes, raw] = await Promise.all([
+      fetchAllCaseStudies(),
+      wpFetch<{ pages?: { nodes: Record<string, unknown>[] } }>(Q.CASE_STUDIES_PAGE),
+    ]);
 
     const pageNode = raw.pages?.nodes?.[0];
     if (!pageNode) throw new Error('No WordPress page with title "Case Study"');
@@ -718,7 +799,7 @@ export async function getCaseStudiesData() {
     const fi = normalizedPage.featuredCaseStudyImage as Parameters<typeof mapFeaturedImageField>[0];
     normalizedPage.featuredCaseStudyImage = mapFeaturedImageField(fi);
 
-    const sortedPosts = sortPostsByDateDesc(raw.posts?.nodes || []);
+    const sortedPosts = sortPostsByDateDesc(allPostNodes);
     const allPosts = sortedPosts.map((p) => normalizePostNode(p as Record<string, unknown>));
     const allCaseStudies = {
       edges: allPosts.map((post) => ({ post })),
@@ -752,31 +833,46 @@ export async function getCaseStudiesData() {
 export async function getCaseStudySlugs(): Promise<string[]> {
   if (!isWpGraphqlFetchEnabled()) return [];
   try {
-    const raw = await wpFetch<{
-      posts?: { nodes: Record<string, unknown>[] };
-    }>(Q.CASE_STUDY_SLUGS);
-    return (raw.posts?.nodes || [])
-      .map((n) => n.slug)
-      .filter((s): s is string => Boolean(s));
+    const nodes = await fetchAllCaseStudies();
+    return nodes.map((n) => (n as { slug?: string }).slug).filter((s): s is string => Boolean(s));
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.warn("WPGraphQL case study slugs failed, returning no paths:", msg);
+    console.warn("Case study slugs failed, returning no paths:", msg);
     return [];
   }
 }
 
 export async function getCaseStudyData(slug: string): Promise<BlogPostPageData | null> {
   const slugClean = decodeURIComponent(slug.replace(/^\/+|\/+$/g, "").split("/").pop() || slug);
-  if (!isWpGraphqlFetchEnabled()) {
-    return MOCK_CASE_STUDY_POST;
+  if (!isWpGraphqlFetchEnabled()) return MOCK_CASE_STUDY_POST;
+
+  try {
+    const allNodes = await fetchAllCaseStudies();
+    const postNode = allNodes.find((n) => (n as { slug?: string }).slug === slugClean);
+
+    if (postNode) {
+      const post = normalizeBlogPostFull(postNode);
+      const sorted = sortPostsByDateDesc(allNodes);
+      const { previous, next } = adjacentNavPosts(
+        sorted.map((p) => ({
+          slug: (p as { slug?: string }).slug,
+          uri: (p as { uri?: string }).uri,
+          title: (p as { title?: string }).title,
+        })),
+        slugClean
+      );
+      return { post, previous, next };
+    }
+  } catch (err) {
+    console.warn(`[cache] case-studies batch failed for "${slugClean}", falling back to WPGraphQL —`, err instanceof Error ? err.message : err);
   }
 
+  // WPGraphQL fallback (new post not yet in plugin cache)
   try {
     const raw = await wpFetch<{
       post?: Record<string, unknown> | null;
       posts?: { nodes: Record<string, unknown>[] };
     }>(Q.CASE_STUDY_PAGE, { slug: slugClean });
-
 
     if (!raw.post) return null;
 
@@ -791,7 +887,6 @@ export async function getCaseStudyData(slug: string): Promise<BlogPostPageData |
       })),
       currentSlug
     );
-
     return { post, previous, next };
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
@@ -1072,6 +1167,373 @@ const MOCK_CASE_STUDY_POST: BlogPostPageData = {
   previous: null,
   next: null,
 };
+
+// ---------------------------------------------------------------------------
+// Podcast — WPGraphQL (podcasts custom post type)
+// ---------------------------------------------------------------------------
+
+type PodcastLink = {
+  podLink?: { target?: string; title?: string; url?: string } | null;
+  rssFeed?: { target?: string; title?: string; url?: string } | null;
+  spotifyPodcast?: { target?: string; title?: string; url?: string } | null;
+  applePodcasts?: { target?: string; title?: string; url?: string } | null;
+};
+
+/** Splits "S3E7 – Actual Title" → { badge: "S3 · E7", displayTitle: "Actual Title" } */
+function parseEpisodeTitle(raw: string): { badge: string | null; displayTitle: string } {
+  const match = raw.match(/^(S\d+E\d+)\s*[–—-]\s*(.+)$/i);
+  if (!match) return { badge: null, displayTitle: raw };
+  const badge = match[1].toUpperCase().replace(/S(\d+)E(\d+)/i, "S$1 · E$2");
+  return { badge, displayTitle: match[2].trim() };
+}
+
+type TaxonomyNode = { id?: string; name?: string; slug?: string; link?: string };
+
+function normalizePodcastEpisode(node: Record<string, unknown>) {
+  const n = node as {
+    id?: string;
+    databaseId?: number;
+    uri?: string;
+    title?: string;
+    date?: string;
+    slug?: string;
+    podcastId?: string | null;
+    content?: string;
+    featuredImage?: unknown;
+    podcastLink?: PodcastLink;
+    seasons?: { nodes?: TaxonomyNode[] };
+    guests?: { nodes?: TaxonomyNode[] };
+    hosts?: { nodes?: TaxonomyNode[] };
+  };
+  const { badge, displayTitle } = parseEpisodeTitle(n.title || "");
+  return {
+    id: n.id,
+    databaseId: n.databaseId,
+    slug: n.slug || "",
+    link: `/podcasts/${n.slug}/`,
+    title: n.title || "",
+    displayTitle,
+    episodeBadge: badge,
+    date: formatWpDate(n.date, "dd MMM yyyy"),
+    podcastId: n.podcastId ?? null,
+    content: n.content || "",
+    featuredImage: mapFeaturedImageField(
+      n.featuredImage as Parameters<typeof mapFeaturedImageField>[0]
+    ),
+    podcastLink: n.podcastLink ?? null,
+    seasons: n.seasons?.nodes ?? [],
+    guests: n.guests?.nodes ?? [],
+    hosts: n.hosts?.nodes ?? [],
+  };
+}
+
+function normalizePodcastEpisodeFull(node: Record<string, unknown>) {
+  return {
+    ...normalizePodcastEpisode(node),
+    date: formatWpDate((node as { date?: string }).date, "MMMM dd yyyy"),
+  };
+}
+
+type PodcastEpisodesResult = {
+  podcasts?: {
+    pageInfo: { hasNextPage: boolean; endCursor: string };
+    nodes: Record<string, unknown>[];
+  };
+};
+
+async function _doFetchAllPodcastEpisodes(): Promise<Record<string, unknown>[]> {
+  try {
+    const cached = await wpCachedFetch<{ podcasts?: { nodes: Record<string, unknown>[] } }>('podcasts');
+    if (cached.podcasts?.nodes?.length) {
+      console.log(`[cache] HIT: /custom/v1/podcasts (${cached.podcasts.nodes.length} episodes)`);
+      return cached.podcasts.nodes;
+    }
+  } catch (err) {
+    console.warn('[cache] MISS: /custom/v1/podcasts —', err instanceof Error ? err.message : err);
+  }
+
+  try {
+    const allNodes: Record<string, unknown>[] = [];
+    let cursor: string | null = null;
+    do {
+      const result: PodcastEpisodesResult = await wpFetch<PodcastEpisodesResult>(
+        Q.PODCAST_EPISODES_PAGE,
+        cursor ? { after: cursor } : {}
+      );
+      const nodes = result.podcasts?.nodes || [];
+      allNodes.push(...nodes);
+      cursor = result.podcasts?.pageInfo.hasNextPage ? result.podcasts.pageInfo.endCursor : null;
+    } while (cursor);
+    return allNodes;
+  } catch (err) {
+    console.error("[podcast] PODCAST_EPISODES_PAGE query failed:", err instanceof Error ? err.message : err);
+    return [];
+  }
+}
+
+function fetchAllPodcastEpisodes(): Promise<Record<string, unknown>[]> {
+  if (!_processCache.podcasts) _processCache.podcasts = _doFetchAllPodcastEpisodes();
+  return _processCache.podcasts;
+}
+
+function adjacentNavPodcasts(
+  sorted: { slug?: string; title?: string }[],
+  currentSlug: string
+): {
+  previous: { slug: string; title: string } | null;
+  next: { slug: string; title: string } | null;
+} {
+  const idx = sorted.findIndex((p) => p.slug === currentSlug);
+  if (idx === -1) return { previous: null, next: null };
+  const newer = idx > 0 ? sorted[idx - 1] : null;
+  const older = idx < sorted.length - 1 ? sorted[idx + 1] : null;
+  return {
+    previous: older ? { slug: older.slug || "", title: older.title || "" } : null,
+    next: newer ? { slug: newer.slug || "", title: newer.title || "" } : null,
+  };
+}
+
+export type RelatedEpisode = {
+  slug: string;
+  link: string;
+  title: string;
+  displayTitle: string;
+  episodeBadge: string | null;
+  date: string;
+  featuredImage: ReturnType<typeof mapFeaturedImageField>;
+};
+
+export type PodcastEpisodePageData = {
+  episode: ReturnType<typeof normalizePodcastEpisodeFull>;
+  previous: { slug: string; title: string } | null;
+  next: { slug: string; title: string } | null;
+  relatedEpisodes: RelatedEpisode[];
+};
+
+export async function getPodcastData() {
+  return withWpFallback("podcast index", MOCK_PODCAST, async () => {
+    // fetchAllPodcastEpisodes never throws — errors are logged inside it
+    const [pageRaw, allEpisodeNodes] = await Promise.all([
+      wpFetch<{ pages?: { nodes: Record<string, unknown>[] } }>(Q.PODCAST_PAGE)
+        .catch((err) => {
+          console.error("[podcast] PODCAST_PAGE query failed:", err instanceof Error ? err.message : err);
+          return { pages: { nodes: [] } };
+        }),
+      fetchAllPodcastEpisodes(),
+    ]);
+
+    console.log("[podcast] pageRaw nodes:", pageRaw.pages?.nodes?.length, "| episodes:", allEpisodeNodes.length);
+
+    const pageNode = pageRaw.pages?.nodes?.[0] ?? MOCK_PODCAST.podcast.nodes[0];
+    const normalizedPage = { ...pageNode } as Record<string, unknown>;
+    const fi = normalizedPage.featuredBlogImage as Parameters<typeof mapFeaturedImageField>[0];
+    normalizedPage.featuredBlogImage = mapFeaturedImageField(fi);
+
+    const allEpisodes = sortPostsByDateDesc(allEpisodeNodes).map(normalizePodcastEpisode);
+
+    return {
+      podcast: { nodes: [normalizedPage] },
+      allPodcastEpisodes: { edges: allEpisodes.map((episode) => ({ episode })) },
+    };
+  });
+}
+
+export async function getPodcastEpisodeSlugs(): Promise<string[]> {
+  if (!isWpGraphqlFetchEnabled()) return [];
+  try {
+    const cached = await wpCachedFetch<{ podcasts?: { nodes: { slug?: string }[] } }>('podcasts');
+    const slugs = (cached.podcasts?.nodes || []).map((n) => n.slug).filter((s): s is string => Boolean(s));
+    if (slugs.length) return slugs;
+  } catch {
+    // fall through to WPGraphQL
+  }
+  try {
+    type SlugsResult = {
+      podcasts?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: { slug?: string }[] };
+    };
+    const allSlugs: string[] = [];
+    let cursor: string | null = null;
+    do {
+      const result: SlugsResult = await wpFetch<SlugsResult>(
+        Q.PODCAST_EPISODE_SLUGS,
+        cursor ? { after: cursor } : {}
+      );
+      const nodes = result.podcasts?.nodes || [];
+      allSlugs.push(...nodes.map((n) => n.slug).filter((s): s is string => Boolean(s)));
+      cursor = result.podcasts?.pageInfo.hasNextPage ? result.podcasts.pageInfo.endCursor : null;
+    } while (cursor);
+    return allSlugs;
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn("WPGraphQL podcast slugs failed:", msg);
+    return [];
+  }
+}
+
+type RawSiblingNode = {
+  slug?: string;
+  title?: string;
+  date?: string;
+  podcastId?: string | null;
+  featuredImage?: { node?: { sourceUrl?: string | null; altText?: string | null } } | null;
+  seasons?: { nodes?: { name?: string; slug?: string }[] };
+};
+
+export async function getPodcastEpisodeData(slug: string): Promise<PodcastEpisodePageData | null> {
+  const slugClean = decodeURIComponent(slug.replace(/^\/+|\/+$/g, "").split("/").pop() || slug);
+  if (!isWpGraphqlFetchEnabled()) return MOCK_PODCAST_EPISODE;
+
+  try {
+    // fetchAllPodcastEpisodes uses the batch cache (_memCache) — already fetched
+    // during getStaticPaths. Find the episode by slug, no individual API call needed.
+    const allEpisodeNodes = await fetchAllPodcastEpisodes();
+    const episodeNode = allEpisodeNodes.find((n) => (n as { slug?: string }).slug === slugClean);
+
+    if (!episodeNode) {
+      // New episode not in cache yet — fall through to WPGraphQL below
+      throw new Error(`Episode "${slugClean}" not found in batch cache`);
+    }
+
+    const episode = normalizePodcastEpisodeFull(episodeNode);
+    const sorted = sortPostsByDateDesc(allEpisodeNodes);
+    const { previous, next } = adjacentNavPodcasts(
+      sorted.map((p) => ({
+        slug: (p as { slug?: string }).slug,
+        title: (p as { title?: string }).title,
+      })),
+      slugClean
+    );
+
+    const episodeSeasonSlugs = new Set(
+      episode.seasons.map((s: { slug?: string }) => s.slug).filter((s): s is string => Boolean(s))
+    );
+
+    // Debug: check if sibling nodes actually have seasons data
+    const sampleSiblingSeasons = allEpisodeNodes
+      .filter((n) => (n as RawSiblingNode).slug !== slugClean)
+      .slice(0, 3)
+      .map((n) => ({ slug: (n as RawSiblingNode).slug, seasons: (n as RawSiblingNode).seasons }));
+    console.log(`[podcast] episode "${slugClean}" — seasons:`, [...episodeSeasonSlugs], `| allEpisodes: ${allEpisodeNodes.length} | sample sibling seasons:`, JSON.stringify(sampleSiblingSeasons));
+
+    const relatedEpisodes: RelatedEpisode[] = sorted
+      .filter((p) => {
+        const node = p as RawSiblingNode;
+        if (!node.slug || node.slug === slugClean) return false;
+        if (episodeSeasonSlugs.size > 0) {
+          const nodeSlugs = node.seasons?.nodes?.map((s) => s.slug) ?? [];
+          return nodeSlugs.some((s) => s && episodeSeasonSlugs.has(s));
+        }
+        return true;
+      })
+      .map((p) => {
+        const node = p as RawSiblingNode;
+        const { badge, displayTitle } = parseEpisodeTitle(node.title || "");
+        return {
+          slug: node.slug || "",
+          link: `/podcasts/${node.slug}/`,
+          title: node.title || "",
+          displayTitle,
+          episodeBadge: badge,
+          date: formatWpDate(node.date, "dd MMM yyyy"),
+          featuredImage: mapFeaturedImageField(
+            node.featuredImage as Parameters<typeof mapFeaturedImageField>[0]
+          ),
+        };
+      });
+
+    return { episode, previous, next, relatedEpisodes };
+  } catch (err) {
+    // Batch cache miss (e.g. new episode) — fall back to individual WPGraphQL query
+    console.warn(`[cache] podcast batch miss for "${slugClean}", falling back to WPGraphQL —`, err instanceof Error ? err.message : err);
+  }
+
+  try {
+    const [raw, allEpisodeNodes] = await Promise.all([
+      wpFetch<{ podcast?: Record<string, unknown> | null }>(Q.PODCAST_EPISODE_PAGE, { slug: slugClean }),
+      fetchAllPodcastEpisodes(),
+    ]);
+
+    if (!raw.podcast) return null;
+
+    const episode = normalizePodcastEpisodeFull(raw.podcast);
+    const sorted = sortPostsByDateDesc(allEpisodeNodes);
+    const { previous, next } = adjacentNavPodcasts(
+      sorted.map((p) => ({ slug: (p as { slug?: string }).slug, title: (p as { title?: string }).title })),
+      slugClean
+    );
+
+    const episodeSeasonSlugs = new Set(
+      episode.seasons.map((s: { slug?: string }) => s.slug).filter((s): s is string => Boolean(s))
+    );
+
+    const relatedEpisodes: RelatedEpisode[] = sorted
+      .filter((p) => {
+        const node = p as RawSiblingNode;
+        if (!node.slug || node.slug === slugClean) return false;
+        if (episodeSeasonSlugs.size > 0) {
+          const nodeSlugs = node.seasons?.nodes?.map((s) => s.slug) ?? [];
+          return nodeSlugs.some((s) => s && episodeSeasonSlugs.has(s));
+        }
+        return true;
+      })
+      .map((p) => {
+        const node = p as RawSiblingNode;
+        const { badge, displayTitle } = parseEpisodeTitle(node.title || "");
+        return {
+          slug: node.slug || "",
+          link: `/podcasts/${node.slug}/`,
+          title: node.title || "",
+          displayTitle,
+          episodeBadge: badge,
+          date: formatWpDate(node.date, "dd MMM yyyy"),
+          featuredImage: mapFeaturedImageField(node.featuredImage as Parameters<typeof mapFeaturedImageField>[0]),
+        };
+      });
+
+    return { episode, previous, next, relatedEpisodes };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("WPGraphQL podcast episode failed:", msg);
+    throw err;
+  }
+}
+
+const MOCK_PODCAST = {
+  podcast: {
+    nodes: [
+      {
+        title: "Podcast",
+        metadata: { metaTitle: "Podcast", metaDescription: "" },
+        featuredBlogImage: null,
+        themePicker: { themePicker: "" },
+        podcastHero: {
+          podcastHeroTitle: "Podcast",
+          podcastHeroDescription: "",
+          podcastHeroSubDescription: "",
+        },
+      },
+    ],
+  },
+  allPodcastEpisodes: { edges: [] },
+};
+
+const MOCK_PODCAST_EPISODE: PodcastEpisodePageData = {
+  episode: normalizePodcastEpisodeFull({
+    id: "mock",
+    date: "2026-01-01T12:00:00",
+    slug: "sample-episode",
+    uri: "/podcasts/sample-episode/",
+    title: "Sample Podcast Episode",
+    content: "<p>Episode content loads when WPGRAPHQL_URL is set.</p>",
+    featuredImage: null,
+    podcastLink: null,
+  }),
+  previous: null,
+  next: null,
+  relatedEpisodes: [],
+};
+
+// ---------------------------------------------------------------------------
 
 const MOCK_CASE_STUDIES = {
   caseStudiesPage: {

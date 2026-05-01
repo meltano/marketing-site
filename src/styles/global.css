@@ -12635,5 +12635,1064 @@ html {
   }
 }
 
+/* ============================================================
+   Podcast page
+   ============================================================ */
+
+/* Hero */
+.podcast-hero {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.podcast-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.podcast-hero-title {
+  font-size: 86px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.podcast-hero-description {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 22px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.podcast-hero-sub {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Search bar row */
+.podcast-search-bar {
+  padding-top: 0;
+  padding-bottom: 32px;
+}
+
+.podcast-search-wrap {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Episode grid */
+.podcast-grid-section {
+  padding-bottom: 80px;
+}
+
+.podcast-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Card */
+.podcast-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Image wrapper */
+.podcast-card-image-wrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.podcast-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.podcast-card-image-wrap:hover .podcast-card-image {
+  transform: scale(1.03);
+}
+
+.podcast-card-image--placeholder {
+  background: linear-gradient(135deg, #1a1a3e 0%, #0d2b45 100%);
+}
+
+/* Gradient overlay with title + play button */
+.podcast-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 55%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  gap: 12px;
+}
+
+.podcast-card-overlay-title {
+  flex: 1;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.podcast-card-play {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.podcast-card-image-wrap:hover .podcast-card-play {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Card metadata below image */
+.podcast-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.podcast-card-meta-top {
+  display: grid;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+
+}
+
+.podcast-card-date {
+  font-size: 16px;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.podcast-card-id {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+
+.podcast-card-taxonomy {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.podcast-episode-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.podcast-episode-people {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.podcast-episode-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.podcast-card-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.4;
+  text-decoration: none;
+  display: block;
+}
+
+.podcast-card-title:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.podcast-card-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.podcast-card-link {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: underline;
+}
+
+.podcast-card-link:hover {
+  color: #fff;
+}
+
+.podcast-card-link--spotify {
+  color: #1DB954;
+}
+
+/* Load more */
+.podcast-load-more {
+  display: block;
+  margin: 48px auto 0;
+}
+
+/* Empty state */
+.podcast-empty {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 60px 0;
+  font-size: 16px;
+}
+
+/* Season tabs */
+.podcast-seasons {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding: 0 16px;
+}
+
+.podcast-seasons-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.podcast-seasons-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.podcast-season-tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 16px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.podcast-season-tab:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+.podcast-season-tab--active {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+.podcast-season-tab--active:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+/* Podcast list — responsive */
+@media (max-width: 1024px) {
+  .podcast-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .podcast-hero {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+
+  .podcast-hero-title {
+    font-size: 48px;
+  }
+
+  .podcast-hero-description {
+    font-size: 18px;
+  }
+
+  .podcast-season-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .podcast-hero {
+    padding-top: 80px;
+    padding-bottom: 32px;
+  }
+
+  .podcast-hero-title {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .podcast-hero-description {
+    font-size: 16px;
+  }
+
+  .podcast-hero-sub {
+    font-size: 13px;
+  }
+
+  .podcast-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .podcast-card-title {
+    font-size: 18px;
+  }
+
+  .podcast-card-id {
+    font-size: 18px;
+  }
+
+  .podcast-load-more {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Podcast Episode Detail Page (ped-*)
+   ========================================================================== */
+
+.podcast-episode-page {
+}
+
+.ped-wrapper {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background: #080216;
+  min-height: 100vh;
+}
+
+/* Back link */
+.ped-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+
+.ped-back-link:hover {
+  opacity: 0.9;
+}
+
+/* Two-column layout */
+.ped-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Main column */
+.ped-main {
+  min-width: 0;
+}
+
+/* Hero image */
+.ped-hero {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #1a1a2e;
+  margin-bottom: 32px;
+}
+
+.ped-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ped-hero-img--placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2d1b69 0%, #1a0633 100%);
+}
+
+/* Gradient overlay with title at bottom */
+.ped-hero-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 60px 24px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+}
+
+.ped-hero-overlay-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Play button centered on image */
+.ped-hero-play-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ped-play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0d0d1a;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ped-play-btn:hover {
+  background: #fff;
+  transform: scale(1.08);
+}
+
+/* Episode title */
+.ped-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0 0 20px;
+}
+
+/* Episode content */
+.ped-content code,
+.ped-content p,
+.ped-content ul,
+.ped-content ol {
+  font-family: 'Hanken Grotesk', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 170%;
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.ped-content iframe {
+  width: 100%;
+  max-width: 850px;
+  height: 500px;
+}
+
+.ped-content p {
+  margin-bottom: 1em;
+}
+
+.ped-content ul {
+  list-style: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.ped-content ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.ped-content ul ul {
+  list-style: circle;
+  margin-bottom: 0;
+}
+
+.ped-content ul ul ul {
+  list-style: square;
+}
+
+.ped-content li {
+  margin-bottom: 0.3em;
+  color: #fff;
+}
+
+.ped-content a {
+  text-decoration: underline;
+  color: #18c3fa;
+}
+
+.ped-content hr {
+  margin: 2em 0;
+  border-top-width: 1px;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ped-content blockquote {
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+  margin: 1.5em 0;
+  padding: 0.5em 1.25em;
+  font-style: italic;
+}
+
+.ped-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.ped-content figure {
+  margin: 1.5em 0;
+  max-width: 100%;
+}
+
+.ped-content figcaption {
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  margin-top: 0.5em;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ped-content img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+}
+
+.ped-content pre:not(.wp-block-code):not(.tab-terminal *) {
+  overflow-x: auto;
+  padding: 1em;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  white-space: pre;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ped-content pre code {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  vertical-align: unset !important;
+}
+
+.ped-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ped-content th,
+.ped-content td {
+  padding: 0.6em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.ped-content thead th {
+  font-weight: 700;
+}
+
+.ped-content mark {
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.ped-content kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.ped-content del,
+.ped-content s {
+  opacity: 0.6;
+}
+
+/* Sidebar */
+.ped-sidebar {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Person card */
+.ped-person-card {
+  background: #23193C;
+  border: 1px solid #23193C;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ped-person-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ped-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ped-avatar-initials {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.ped-person-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 2px;
+}
+
+.ped-person-role {
+  font-size: 14px;
+  color: #fff;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.ped-person-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.ped-person-linkedin:hover {
+  opacity: 0.8;
+}
+
+/* Listen on */
+.ped-listen {
+  padding: 16px 0;
+  border-radius: 12px;
+}
+
+.ped-listen-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+}
+
+.ped-platform-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.ped-platform-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: opacity 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.ped-platform-icon svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.ped-platform-icon:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* Share button */
+.ped-share-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.ped-share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: #3A64FA;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ped-share-btn:hover {
+  background: #3A64FA;
+  opacity: 0.8;
+}
+
+.ped-share-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.ped-share-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  transition: opacity 0.15s;
+}
+
+.ped-share-icon-btn:hover {
+  opacity: 0.85;
+}
+
+.ped-share-icon-btn--linkedin {
+  background: #0a66c2;
+}
+
+.ped-share-icon-btn--twitter {
+  background: #1da1f2;
+}
+
+.ped-share-icon-btn--copy {
+  background: #6b7280;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ped-share-icon-btn--copied {
+  background: transparent;
+}
+
+/* Related episodes */
+/* Season episode carousel */
+.ped-season {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ped-season-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+.ped-season-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card */
+.ped-season-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ped-season-card-img-wrap {
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #1a1a2e;
+  text-decoration: none;
+}
+
+.ped-season-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.ped-season-card-img-wrap:hover .ped-season-card-img {
+  transform: scale(1.04);
+}
+
+.ped-season-card-img--placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2d1b69 0%, #1a0633 100%);
+}
+
+.ped-season-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 55%);
+}
+
+.ped-season-card-overlay-title {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  flex: 1;
+  padding-right: 12px;
+}
+
+.ped-season-card-play {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.ped-season-card-img-wrap:hover .ped-season-card-play {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Card metadata */
+.ped-season-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ped-season-card-date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ped-season-card-badge {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ped-season-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.ped-season-card-title:hover {
+  color: #18c3fa;
+}
+
+/* Pagination dots */
+.ped-season-dots {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.ped-season-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.ped-season-dot--active {
+  background: #3a64fa;
+  transform: scale(1.2);
+}
+
+.ped-season-dot:hover:not(.ped-season-dot--active) {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Podcast detail — responsive */
+@media (max-width: 1024px) {
+  .ped-layout {
+    grid-template-columns: 1fr 260px;
+    gap: 32px;
+  }
+
+  .ped-season-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ped-wrapper {
+    padding: 90px 16px 48px 16px;
+  }
+
+  .ped-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ped-sidebar {
+    position: static;
+  }
+
+  .ped-title {
+    font-size: 24px;
+  }
+
+  .ped-season-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .ped-season {
+    margin-top: 40px;
+    padding-top: 32px;
+  }
+
+  .ped-share-panel {
+    left: auto;
+    right: 0;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ped-wrapper {
+    padding: 72px 16px 32px 16px;
+  }
+
+  .ped-title {
+    font-size: 20px;
+  }
+
+  .ped-back-link {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .ped-content code,
+  .ped-content p,
+  .ped-content ul,
+  .ped-content ol {
+    font-size: 16px;
+  }
+
+  .ped-content iframe {
+    height: 220px;
+  }
+
+  .ped-season-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ped-season-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .ped-share-panel {
+    right: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
 
 
