@@ -567,3 +567,81 @@ export const CASE_STUDY_PAGE = `
     }
   }
 `;
+
+export const PODCAST_PAGE = `
+  query PodcastPage {
+    pages(first: 1, where: { title: "Podcast" }) {
+      nodes {
+        title
+        metadata { metaTitle metaDescription }
+        featuredBlogImage: featuredImage {
+          node { sourceUrl altText mediaDetails { width height } }
+        }
+        themePicker { themePicker }
+        podcastHero { podcastHeroTitle podcastHeroDescription podcastHeroSubDescription }
+      }
+    }
+  }
+`;
+
+export const PODCAST_EPISODES_PAGE = `
+  query PodcastEpisodesPage($after: String) {
+    podcasts(first: 100, after: $after) {
+      pageInfo { hasNextPage endCursor }
+      nodes {
+        id databaseId uri title date slug podcastId
+        content(format: RAW)
+        featuredImage { node { sourceUrl altText } }
+        podcastLink {
+          applePodcasts { target title url }
+          podLink { target title url }
+          rssFeed { target title url }
+          spotifyPodcast { target title url }
+        }
+        seasons {
+          nodes { id name link slug }
+        }
+        guests {
+          nodes { id name slug podcastDetail { linkedinLink { url } catImage { sourceUrl } } }
+        }
+        hosts {
+          nodes { id name slug podcastDetail { linkedinLink { url } catImage { sourceUrl } } }
+        }
+      }
+    }
+  }
+`;
+
+export const PODCAST_EPISODE_SLUGS = `
+  query PodcastEpisodeSlugs($after: String) {
+    podcasts(first: 100, after: $after) {
+      pageInfo { hasNextPage endCursor }
+      nodes { slug }
+    }
+  }
+`;
+
+export const PODCAST_EPISODE_PAGE = `
+  query PodcastEpisodePage($slug: ID!) {
+    podcast(id: $slug, idType: SLUG) {
+      id databaseId uri slug title date podcastId
+      content(format: RENDERED)
+      featuredImage { node { sourceUrl altText } }
+      podcastLink {
+        applePodcasts { target title url }
+        podLink { target title url }
+        rssFeed { target title url }
+        spotifyPodcast { target title url }
+      }
+      seasons {
+        nodes { id name link slug }
+      }
+      guests {
+          nodes { id name slug podcastDetail { linkedinLink { url } catImage { sourceUrl } } }
+      }
+      hosts {
+          nodes { id name slug podcastDetail { linkedinLink { url } catImage { sourceUrl } } }
+      }
+    }
+  }
+`;

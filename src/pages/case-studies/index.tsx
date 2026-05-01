@@ -13,5 +13,5 @@ export default function CaseStudiesPage({ data }: PageProps) {
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const data = await getCaseStudiesData();
-  return { props: { data }, revalidate: 3600 };
+  return { props: { data }, revalidate: 86400 };
 };
