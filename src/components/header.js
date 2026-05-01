@@ -682,7 +682,7 @@ const Header = () => {
                     <li>
                       <div className="submenu-info">
                         <p className="submenu-title title-inline">
-                          The <span className="brackets">Meltano</span> Podcast
+                          Data Matas <span className="brackets">Podcast</span> 
                         </p>
                         <p className="submenu-subtitle title-inline">
                           Conversations with data engineers and practitioners
