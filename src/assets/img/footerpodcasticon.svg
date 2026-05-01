@@ -1,0 +1,29 @@
+<svg
+                      className="footer-list-icon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="36"
+                      height="36"
+                      viewBox="0 0 36 36"
+                      fill="none"
+                    >
+                      <rect
+                        className="footer-icon-frame"
+                        width="36"
+                        height="36"
+                        rx="18"
+                        fill="white"
+                        fillOpacity="0.1"
+                      />
+                      <path
+                        d="M18 10C16.3431 10 15 11.3431 15 13V19C15 20.6569 16.3431 22 18 22C19.6569 22 21 20.6569 21 19V13C21 11.3431 19.6569 10 18 10Z"
+                        fill="#B5B4BA"
+                      />
+                      <path
+                        d="M12 18C12 21.3137 14.6863 24 18 24C21.3137 24 24 21.3137 24 18"
+                        stroke="#B5B4BA"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                      <line x1="18" y1="24" x2="18" y2="27" stroke="#B5B4BA" strokeWidth="1.5" strokeLinecap="round"/>
+                      <line x1="15" y1="27" x2="21" y2="27" stroke="#B5B4BA" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>

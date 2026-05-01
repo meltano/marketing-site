@@ -490,6 +490,9 @@ const Header = () => {
               </li>
 
               <li className="hide-m">
+                <Link to="/connectors/">Connectors</Link>
+              </li>
+              <li className="hide-m">
                 <Link to="/pricing/">Pricing</Link>
               </li>
 
@@ -607,7 +610,7 @@ const Header = () => {
                           Join 5,500+ data professionals on Slack and GitHub
                         </p>
                       </div>
-                      <Link to="/community/" target="_blank">
+                      <Link to="/community/">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="36"
@@ -672,6 +675,45 @@ const Header = () => {
                           <p className="header-list-title">Blog</p>
                           <p className="header-list-info">
                             Stay up to date on Meltano & data engineering
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                    <li>
+                      <div className="submenu-info">
+                        <p className="submenu-title title-inline">
+                          The <span className="brackets">Meltano</span> Podcast
+                        </p>
+                        <p className="submenu-subtitle title-inline">
+                          Conversations with data engineers and practitioners
+                        </p>
+                      </div>
+                      <Link to="/podcasts/">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="36"
+                          height="37"
+                          viewBox="0 0 36 37"
+                          fill="none"
+                        >
+                          <rect y="0.257812" width="36" height="36" rx="18" fill="#E9E5FB" />
+                          <path
+                            d="M18 11.2578C16.3431 11.2578 15 12.601 15 14.2578V20.2578C15 21.9147 16.3431 23.2578 18 23.2578C19.6569 23.2578 21 21.9147 21 20.2578V14.2578C21 12.601 19.6569 11.2578 18 11.2578Z"
+                            fill="#311772"
+                          />
+                          <path
+                            d="M12 19.2578C12 22.5715 14.6863 25.2578 18 25.2578C21.3137 25.2578 24 22.5715 24 19.2578"
+                            stroke="#311772"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                          <line x1="18" y1="25.2578" x2="18" y2="28.2578" stroke="#311772" strokeWidth="1.5" strokeLinecap="round"/>
+                          <line x1="15" y1="28.2578" x2="21" y2="28.2578" stroke="#311772" strokeWidth="1.5" strokeLinecap="round"/>
+                        </svg>
+                        <div className="header-list-item">
+                          <p className="header-list-title">Podcast</p>
+                          <p className="header-list-info">
+                            Conversations with data engineers and practitioners
                           </p>
                         </div>
                       </Link>
