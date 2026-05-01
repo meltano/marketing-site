@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Link from '@/components/compat/GatsbyLink'
+import { HubspotMeetingLink } from '@/lib/utils'
 
 const CostComparison = ({ data }) => {
   const tabs = data?.costCategoryTabs || []
@@ -27,7 +28,7 @@ const CostComparison = ({ data }) => {
               </p>
             </div>
             <div className='btnGroup'>
-                <div className="toggle-container">
+                <div className="toggle-container pricing-toggle-container">
                 {tabs.map((tab, index) => (
                     <button
                     key={index}
@@ -97,7 +98,7 @@ const CostComparison = ({ data }) => {
             </div>
             <div className="btnBox">
               <Link
-                to={`https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8`}
+                to={HubspotMeetingLink}
                 className="btn alt-blue-btn middle"
               >
                 <span></span>

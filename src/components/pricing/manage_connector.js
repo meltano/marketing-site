@@ -1,3 +1,4 @@
+import { HubspotMeetingLink } from '@/lib/utils'
 import React from 'react'
 
 const ManageConnector = ({ table }) => (
@@ -15,7 +16,7 @@ const ManageConnector = ({ table }) => (
         <div className="price-table-second-col"
         style={{ backgroundImage: `url(${table.pricingTableItemIcon.localFile.publicURL})` }}>
             <a
-            href={"https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"}
+            href={HubspotMeetingLink}
               target={table.pricingTableItemLink.target}
               className="btn alt-blue-btn"
             >

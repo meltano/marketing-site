@@ -18,6 +18,7 @@ import { Autoplay, Pagination } from "swiper/modules"
 
 import "swiper/css"
 import "swiper/css/pagination"
+import { HubspotMeetingLink } from '@/lib/utils'
 
 interface ConnectorCost {
   name: string
@@ -251,7 +252,7 @@ export default function PricingSummary({
 
       <div className='priceSummaryBtns'>
         <a
-          href="https://meetings.hubspot.com/kyle-john"
+          href={HubspotMeetingLink}
           className="btn alt-blue-btn"
           target=""
         >

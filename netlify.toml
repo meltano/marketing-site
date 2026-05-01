@@ -1,4 +1,3 @@
-
 # netlify.toml file
 
 # Security Headers - Clickjacking Protection
@@ -24,6 +23,11 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[[redirects]]
+from = "/slack"
+to = "https://join.slack.com/t/meltano/shared_invite/zt-3l3dkwhwj-EQa52wy~ddtp75EDZgt3lg"
+status = 302
+force = false
 
 [[redirects]]
 from = "/overview/"
@@ -1302,51 +1306,3 @@ from = "/resource-meltano-at-a-glance/"
 to = "https://meltano.com/lp/resource-meltano-at-a-glance/"
 status = 301
 force = false
-
-[[redirects]]
-from = "/cloud"
-to = "https://arch.dev/"
-status = 301
-force = false
-
-[[redirects]]
-from = "/slack"
-to = "https://join.slack.com/t/meltano/shared_invite/zt-3l3dkwhwj-EQa52wy~ddtp75EDZgt3lg"
-status = 302
-force = false
-
-[[redirects]]
-from = "/terms-of-service"
-to = "https://arch.dev/terms-of-service"
-status = 301
-force = true
-
-[[redirects]]
-from = "/terms-of-service/"
-to = "https://arch.dev/terms-of-service"
-status = 301
-force = true
-
-[[redirects]]
-from = "/privacy-policy"
-to = "https://arch.dev/privacy-policy"
-status = 301
-force = true
-
-[[redirects]]
-from = "/privacy-policy/"
-to = "https://arch.dev/privacy-policy"
-status = 301
-force = true
-
-[[redirects]]
-from = "/data-processing-addendum"
-to = "https://arch.dev/data-processing-addendum"
-status = 301
-force = true
-
-[[redirects]]
-from = "/data-processing-addendum/"
-to = "https://arch.dev/data-processing-addendum"
-status = 301
-force = true

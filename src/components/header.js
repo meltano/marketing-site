@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Link from "@/components/compat/GatsbyLink";
+import { HubspotMeetingLink } from "@/lib/utils";
 
 const Header = () => {
   const [shrinkMenu, setShrinkMenu] = useState(false);
@@ -194,10 +195,13 @@ const Header = () => {
 
           mobileMenuItems.forEach((item) => {
             item.addEventListener("click", () => {
+              const isActive = item.classList.contains("mobile-menu-item--active");
               mobileMenuItems.forEach((i) => {
                 i.classList.remove("mobile-menu-item--active");
               });
-              item.classList.add("mobile-menu-item--active");
+              if (!isActive) {
+                item.classList.add("mobile-menu-item--active");
+              }
             });
           });
         } else if (window.innerWidth > 1024) {
@@ -215,6 +219,16 @@ const Header = () => {
 
       window.addEventListener("resize", () => {
         activateMobileMenu();
+      });
+
+      // Close mobile menu when any nav link is clicked
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          const hamburgerMenu = hamburgerMenuRef.current;
+          if (hamburgerMenu && hamburgerMenu.classList.contains("menu-opened")) {
+            hamburgerMenu.click();
+          }
+        });
       });
 
       return () => {
@@ -483,7 +497,7 @@ const Header = () => {
               </li>
 
               <li className="has-sub hide-d has-one-sub">
-                <span>Pricing</span>
+                <Link to="/pricing/">Pricing</Link>
                 <div className="hop">
                   <ul className="sub">
                     <li className="menu-item--active">
@@ -596,7 +610,7 @@ const Header = () => {
                           Join 5,500+ data professionals on Slack and GitHub
                         </p>
                       </div>
-                      <Link to="/community/" target="_blank">
+                      <Link to="/community/">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="36"
@@ -661,6 +675,50 @@ const Header = () => {
                           <p className="header-list-title">Blog</p>
                           <p className="header-list-info">
                             Stay up to date on Meltano & data engineering
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                    <li>
+                      <div className="submenu-info">
+                        <p className="submenu-title title-inline">
+                          <span className="brackets">Success</span> stories
+                        </p>
+                        <p className="submenu-subtitle title-inline">
+                        Real-world stories from teams building with Meltano
+                        </p>
+                      </div>
+                      <Link to="/case-studies/">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="36"
+                          height="37"
+                          viewBox="0 0 36 37"
+                          fill="none"
+                        >
+                          <rect
+                            y="0.257812"
+                            width="36"
+                            height="36"
+                            rx="18"
+                            fill="#E9E5FB"
+                          />
+                          <path
+                            d="M11 12.2578H25C25.5523 12.2578 26 12.7055 26 13.2578V24.2578C26 24.8101 25.5523 25.2578 25 25.2578H11C10.4477 25.2578 10 24.8101 10 24.2578V13.2578C10 12.7055 10.4477 12.2578 11 12.2578Z"
+                            stroke="#311772"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M14 17.2578H22M14 20.2578H19"
+                            stroke="#311772"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                        <div className="header-list-item">
+                          <p className="header-list-title">Case studies</p>
+                          <p className="header-list-info">
+                            See how customers use Matatika in production
                           </p>
                         </div>
                       </Link>
@@ -782,7 +840,7 @@ const Header = () => {
           </nav>
           <div className="menu-extras">
             <a
-              href="https://meetings.hubspot.com/aphethean/45-min-demo-meeting?uuid=ff906b81-7e0b-4c2d-ad44-cc654abd18d8"
+              href={HubspotMeetingLink}
               target="_blank"
               id="get-started-btn"
               className="btn clear-btn"

@@ -433,7 +433,16 @@ export const BLOG_PAGE = `
         blogHero { blogHeroTitle blogHeroDescription blogHeroSubDescription }
       }
     }
-    posts(first: 200, where: { status: PUBLISH }) {
+    categories(first: 100, where: { hideEmpty: true }) {
+      nodes { name }
+    }
+  }
+`;
+
+export const BLOG_POSTS_PAGE = `
+  query BlogPostsPage($after: String) {
+    posts(first: 100, after: $after, where: { status: PUBLISH }) {
+      pageInfo { hasNextPage endCursor }
       nodes {
         id databaseId uri title excerpt date
         posts { shortDescription longDescription }
@@ -444,15 +453,13 @@ export const BLOG_PAGE = `
         }
       }
     }
-    categories(first: 100, where: { hideEmpty: true }) {
-      nodes { name }
-    }
   }
 `;
 
 export const BLOG_POST_SLUGS = `
-  query BlogPostSlugs {
-    posts(first: 200, where: { status: PUBLISH }) {
+  query BlogPostSlugs($after: String) {
+    posts(first: 100, after: $after, where: { status: PUBLISH }) {
+      pageInfo { hasNextPage endCursor }
       nodes {
         slug
       }
@@ -485,6 +492,77 @@ export const BLOG_POST_PAGE = `
         slug
         date
         title
+      }
+    }
+  }
+`;
+
+/** WordPress page title must match exactly; ACF mirrors the Blog page (caseStudyHero, etc.). */
+export const CASE_STUDIES_PAGE = `
+  query CaseStudiesPage {
+    pages(first: 1, where: { title: "Case Study" }) {
+      nodes {
+        title
+        metadata { metaTitle metaDescription }
+        featuredCaseStudyImage: featuredImage {
+          node { sourceUrl altText mediaDetails { width height } }
+        }
+        themePicker { themePicker }
+        caseStudyHero: caseStudyHero {
+          caseStudyHeroTitle: caseStudyHeroTitle
+          caseStudyHeroDescription: caseStudyHeroDescription
+        }
+      }
+    }
+    posts(first: 200, where: { status: PUBLISH, categoryName: "case-study" }) {
+      nodes {
+        id databaseId uri title excerpt date
+        categories { nodes { name uri } }
+        author { node { name avatar { url } } }
+        featuredImage {
+          node { sourceUrl altText mediaDetails { width height } }
+        }
+      }
+    }
+  }
+`;
+
+export const CASE_STUDY_SLUGS = `
+  query CaseStudySlugs {
+    posts(first: 200, where: { status: PUBLISH }) {
+      nodes {
+        slug
+        categories { nodes { name uri } }
+      }
+    }
+  }
+`;
+
+export const CASE_STUDY_PAGE = `
+  query CaseStudyPage($slug: ID!) {
+    post(id: $slug, idType: SLUG) {
+      id
+      databaseId
+      uri
+      slug
+      title
+      excerpt
+      content(format: RENDERED)
+      date
+      categories { nodes { name uri } }
+      author { node { name avatar { url } } }
+      featuredImage {
+        node { sourceUrl altText mediaDetails { width height } }
+      }
+    }
+    posts(first: 200, where: { status: PUBLISH, categoryName: "case-study"  }) {
+      nodes {
+        id
+        uri
+        slug
+        date
+        title
+        categories { nodes { name uri } }
       }
     }
   }
