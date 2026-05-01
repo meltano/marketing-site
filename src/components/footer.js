@@ -1,61 +1,61 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import Script from 'next/script'
-import Link from '@/components/compat/GatsbyLink'
-import StaticImage from '@/components/compat/StaticImage'
-import Modal from 'react-modal'
-import HubspotForm from 'react-hubspot-form'
-import SVG from 'react-inlinesvg'
-import AboutIcon from '../assets/img/footerabouticon.svg'
-import BlogIcon from '../assets/img/footerblogicon.svg'
-import CommunityIcon from '../assets/img/footercommunityicon.svg'
-import DocumentationIcon from '../assets/img/footerdocumentationicon.svg'
-import MeltanoHubIcon from '../assets/img/footermeltanohubicon.svg'
-import MeltanoSdkIcon from '../assets/img/footermeltanosdkicon.svg'
-import MeltanoEdkIcon from '../assets/img/footermeltanoedkicon.svg'
-import PartnersIcon from '../assets/img/footerpartnersicon.svg'
-import ProductIcon from '../assets/img/footerproducticon.svg'
-import FooterImg from '../assets/img/footer.svg'
-import contact from '../assets/img/contacticon.svg'
-import CaseStudyIcon from '../assets/img/footer-casestudy.svg'
+import React, { useState } from "react";
+import Script from "next/script";
+import Link from "@/components/compat/GatsbyLink";
+import StaticImage from "@/components/compat/StaticImage";
+import Modal from "react-modal";
+import HubspotForm from "react-hubspot-form";
+import SVG from "react-inlinesvg";
+import AboutIcon from "../assets/img/footerabouticon.svg";
+import BlogIcon from "../assets/img/footerblogicon.svg";
+import CommunityIcon from "../assets/img/footercommunityicon.svg";
+import DocumentationIcon from "../assets/img/footerdocumentationicon.svg";
+import MeltanoHubIcon from "../assets/img/footermeltanohubicon.svg";
+import MeltanoSdkIcon from "../assets/img/footermeltanosdkicon.svg";
+import MeltanoEdkIcon from "../assets/img/footermeltanoedkicon.svg";
+import PartnersIcon from "../assets/img/footerpartnersicon.svg";
+import ProductIcon from "../assets/img/footerproducticon.svg";
+import FooterImg from "../assets/img/footer.svg";
+import contact from "../assets/img/contacticon.svg";
+import CaseStudyIcon from "../assets/img/footer-casestudy.svg";
 import PodcastIcon from '../assets/img/footerpodcasticon.svg'
 
-Modal.defaultStyles.overlay.backgroundColor = 'rgba(8, 2, 22, 0.5)'
-Modal.defaultStyles.overlay.zIndex = '99999'
+Modal.defaultStyles.overlay.backgroundColor = "rgba(8, 2, 22, 0.5)";
+Modal.defaultStyles.overlay.zIndex = "99999";
 
 const footerData = [
   {
     id: 0,
-    header: 'Product',
+    header: "Product",
     links: [
       {
         id: 0,
-        title: 'Overview',
-        url: '/product/',
+        title: "Overview",
+        url: "/product/",
         icon: ProductIcon,
-        desc: 'The only EL tool built for data engineers',
+        desc: "The only EL tool built for data engineers",
       },
       {
         id: 1,
-        title: 'Meltano/SDK',
-        url: 'https://sdk.meltano.com/en/latest/',
+        title: "Meltano/SDK",
+        url: "https://sdk.meltano.com/en/latest/",
         icon: MeltanoSdkIcon,
-        desc: 'Build a connector for any data source under the sun',
+        desc: "Build a connector for any data source under the sun",
       },
       {
         id: 2,
-        title: 'Meltano/EDK',
-        url: 'https://edk.meltano.com/en/latest/',
+        title: "Meltano/EDK",
+        url: "https://edk.meltano.com/en/latest/",
         icon: MeltanoEdkIcon,
-        desc: 'Integrate any existing data tool for any data source',
+        desc: "Integrate any existing data tool for any data source",
       },
       {
         id: 3,
-        title: 'Meltano/Hub',
-        url: 'https://hub.meltano.com/extractors/',
+        title: "Meltano/Hub",
+        url: "https://hub.meltano.com/extractors/",
         icon: MeltanoHubIcon,
-        desc: 'Connectors for 600+ sources and destinations',
+        desc: "Connectors for 600+ sources and destinations",
       },
     ],
   },
@@ -68,33 +68,34 @@ const footerData = [
   // },
   {
     id: 1,
-    header: 'Resources',
+    header: "Resources",
     links: [
       {
         id: 0,
-        title: 'Documentation',
-        url: 'https://docs.meltano.com/',
+        title: "Documentation",
+        url: "https://docs.meltano.com/",
         icon: DocumentationIcon,
-        desc: 'Learn how to use Meltano and where to get started',
+        desc: "Learn how to use Meltano and where to get started",
+        blank: true,
       },
       {
         id: 1,
-        title: 'Community',
-        url: '/community/',
+        title: "Community",
+        url: "/community/",
         icon: CommunityIcon,
-        desc: 'Join 5,500+ data professionals on Slack and GitHub',
+        desc: "Join 5,500+ data professionals on Slack and GitHub",
       },
       {
         id: 2,
-        title: 'Blog',
-        url: '/blog/',
+        title: "Blog",
+        url: "/blog/",
         icon: BlogIcon,
-        desc: 'Stay up to date on Meltano & data engineering',
+        desc: "Stay up to date on Meltano & data engineering",
       },
       {
         id: 3,
-        title: 'Case studies',
-        url: '/case-studies/',
+        title: "Case studies",
+        url: "/case-studies/",
         icon: CaseStudyIcon,
         desc: 'Real-world stories from teams building with Meltano',
       },
@@ -116,35 +117,35 @@ const footerData = [
   },
   {
     id: 2,
-    header: 'Company',
+    header: "Company",
     links: [
       {
         id: 0,
-        title: 'About',
-        url: '/about/',
+        title: "About",
+        url: "/about/",
         icon: AboutIcon,
-        desc: 'Meltano is an open source project by Matatika',
+        desc: "Meltano is an open source project by Matatika",
       },
       {
         id: 1,
-        title: 'Contact',
-        url: '/contact/',
+        title: "Contact",
+        url: "/contact/",
         icon: contact,
-        desc: 'The Meltano team is here to help. Ask us anything, or give us your feedback!',
+        desc: "The Meltano team is here to help. Ask us anything, or give us your feedback!",
       },
     ],
   },
-]
+];
 
 const Footer = () => {
-  const [modalIsOpen, setIsOpen] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
-    setIsOpen(true)
+    setIsOpen(true);
   }
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   return (
@@ -250,21 +251,21 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            {footerData.map(c => (
+            {footerData.map((c) => (
               <div className="footer-col" key={c.header}>
                 <div className="footer-col-info">
                   <p className="footer-col-title">{c.header}</p>
                   <ul>
-                    {c.links?.map(l => (
+                    {c.links?.map((l) => (
                       <li key={l.title}>
                         <SVG src={l.icon} title={l.title} />
-                        {l.url.charAt(0) === '/' ? (
+                        {l.url.charAt(0) === "/" ? (
                           <Link to={l.url}>
                             <p className="footer-list-title">{l.title}</p>
                             <p className="footer-list-info">{l.desc}</p>
                           </Link>
                         ) : (
-                          <a href={l.url}>
+                          <a href={l.url} target={l.blank ? "_blank" : ""}>
                             <p className="footer-list-title">{l.title}</p>
                             <p className="footer-list-info">{l.desc}</p>
                           </a>
@@ -460,9 +461,7 @@ const Footer = () => {
                 <div className="portal-image" />
               </div>
               <div className="portal-logo">
-                <span style={{ color: "white" }}>
-                  OPEN
-                </span>
+                <span style={{ color: "white" }}>OPEN</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -534,8 +533,8 @@ const Footer = () => {
             <HubspotForm
               portalId="7921409"
               formId="5beb0e30-412f-442b-8179-2a85a3f81d47"
-              onSubmit={() => console.log('Submitted!')}
-              onReady={form => console.log('Form ready!')}
+              onSubmit={() => console.log("Submitted!")}
+              onReady={(form) => console.log("Form ready!")}
               loading={<div>Loading...</div>}
               cssClass="form-subscribe"
               submitButtonClass="form-subscribe-submit"
@@ -549,7 +548,7 @@ const Footer = () => {
         strategy="lazyOnload"
       />
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
